@@ -144,7 +144,7 @@
   /* 배경 이미지 레이어 (패럴랙스 대상) */
   .hero-media {
     position: absolute; inset: -8% 0 -8% 0;
-    background-position: center right;
+    background-position: center center;
     background-size: cover;
     will-change: transform;
     /* ↓↓↓ PC/태블릿 히어로 배경 이미지 경로로 교체하세요 ↓↓↓ */
@@ -153,35 +153,45 @@
       radial-gradient(ellipse at 75% 40%, #dde5ef 0%, #c8d5e4 45%, #eaeff5 100%);
   }
 
-  /* 좌측 텍스트 영역을 보호하는 방향성 오버레이 */
+  /* 오버레이: 화이트 그라데이션 완전 제거
+     하단만 아주 얕게 페이드 → 모델 섹션과 자연스럽게 연결 */
   .hero-overlay {
     position: absolute; inset: 0;
-    /* 좌측에서 강하게 페이드 → 우측은 이미지가 보이도록 */
     background:
-      linear-gradient(180deg, rgba(255,255,255,.15) 0%, rgba(255,255,255,.55) 70%, rgba(255,255,255,.92) 100%),
-      linear-gradient(105deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.78) 34%, rgba(255,255,255,.25) 56%, rgba(255,255,255,0) 72%);
+      linear-gradient(180deg,
+        rgba(255,255,255,0)    0%,
+        rgba(255,255,255,0)   72%,
+        rgba(255,255,255,.55)  88%,
+        rgba(255,255,255,.92) 100%
+      );
+    pointer-events: none;
   }
 
-  /* 텍스트 컬럼: 전체 뷰포트 높이에서 좌측 절반 정도 차지 */
+  /* 텍스트 블록: 화면 약 35~40% 지점 배치, center 정렬 */
   .hero-content {
     position: relative; z-index: 2;
     width: 100%;
-    max-width: var(--maxw); margin: 0 auto;
-    padding: 0 28px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     min-height: 100vh;
     min-height: 100svh;
+    padding: 0 0 0 5vw;
   }
   .hero-inner {
-    max-width: 560px;
+    width: min(480px, 42vw);
     padding: 140px 0 120px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .eyebrow {
     font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: .18em;
     color: var(--c-accent); text-transform: uppercase; margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    text-shadow: 0 1px 6px rgba(255,255,255,.5);
   }
   .eyebrow::before {
     content: '';
@@ -194,6 +204,7 @@
     font-size: clamp(60px, 9vw, 112px);
     line-height: .95; letter-spacing: -.03em;
     color: var(--c-platinum);
+    text-shadow: 0 2px 12px rgba(255,255,255,.6), 0 1px 4px rgba(255,255,255,.8);
   }
   .hero-title span { color: var(--c-platinum); }
 
@@ -201,14 +212,16 @@
     margin-top: 24px;
     font-size: clamp(17px, 2vw, 21px);
     color: var(--c-platinum); font-weight: 700; letter-spacing: -.01em; line-height: 1.5;
+    text-shadow: 0 1px 8px rgba(255,255,255,.7);
   }
   .hero-desc {
     margin-top: 14px;
     font-size: 16px; color: var(--c-body); line-height: 1.85;
-    max-width: 460px;
+    max-width: 420px;
+    text-shadow: 0 1px 6px rgba(255,255,255,.65);
   }
 
-  .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
@@ -463,14 +476,16 @@
     /* 모바일: 하단 텍스트 영역 */
     .hero-mobile-text {
       padding: 32px 22px 48px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .hero-mobile-text .eyebrow { margin-bottom: 16px; }
+    .hero-mobile-text .eyebrow { margin-bottom: 16px; justify-content: center; }
     .hero-mobile-text .hero-title {
       font-size: clamp(52px, 15vw, 76px);
     }
     .hero-mobile-text .hero-subtitle { font-size: 17px; margin-top: 18px; }
-    .hero-mobile-text .hero-desc { font-size: 15px; margin-top: 12px; }
-    .hero-mobile-text .hero-actions { margin-top: 28px; }
+    .hero-mobile-text .hero-desc { font-size: 15px; margin-top: 12px; text-align: center; }
+    .hero-mobile-text .hero-actions { margin-top: 28px; justify-content: center; }
     .hero-mobile-text .btn { min-height: 56px; font-size: 15px; width: 100%; justify-content: center; }
 
     /* 모델 섹션 */
