@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLC 300 4MATIC | Mercedes-Benz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+
+<!-- ============================================================
+     이미지 URL 관리 영역
+     ============================================================ -->
+<script>
+const IMAGES = {
+  hero:        "https://github.com/JNOHJINGYU/images/blob/main/glc_avamg.jpg?raw=true",   // S1 히어로 · GLC 차량 사진
+  quiet:       "https://github.com/JNOHJINGYU/images/blob/main/glc_drive.png?raw=true",   // 정숙성
+  power:       "https://github.com/JNOHJINGYU/images/blob/main/glc_pass.png?raw=true",    // 가속감
+  hybrid:      "https://github.com/JNOHJINGYU/images/blob/main/4MATIC.jpg?raw=true",      // 48V MHEV
+  family:      "https://github.com/JNOHJINGYU/images/blob/main/glc_famaily.png?raw=true",  // 패밀리
+  interior:    "https://github.com/JNOHJINGYU/images/blob/main/GLC_interior.jpg?raw=true",// 인테리어
+  avantgardeExterior: "https://github.com/JNOHJINGYU/images/blob/main/glcav_front.jpg?raw=true",   // S5 AVANTGARDE 외관 이미지 URL을 여기에 입력
+  avantgardeInterior: "https://github.com/JNOHJINGYU/images/blob/main/glc300_interior.png?raw=true",   // S5 AVANTGARDE 실내 이미지 URL을 여기에 입력
+  amgExterior:        "https://github.com/JNOHJINGYU/images/blob/main/glcamg_front.jpg?raw=true",   // S6 AMG Line 외관 이미지 URL을 여기에 입력
+  amgInterior:        "https://github.com/JNOHJINGYU/images/blob/main/glcamg_interior.png?raw=true",   // S6 AMG Line 실내 이미지 URL을 여기에 입력
+};
+</script>
+
+<!-- ============================================================
+     AVANTGARDE / AMG Line 비교 데이터
+     ============================================================ -->
+<script>
+const TRIM_COMPARE = {
+  headers: ["비교항목", "AVANTGARDE", "AMG Line"],
+  rows: [
+    { label: "가격",            avg: "8,140만원",                      amg: "9,140만원" },
+    { label: "휠",              avg: "19인치 10트윈 스포크 알로이",     amg: "20인치 AMG 멀티 스포크 알로이" },
+    { label: "범퍼",            avg: "기본 범퍼",                      amg: "AMG 프런트 / 리어 에이프런" },
+    { label: "라디에이터 그릴", avg: "기본 그릴",                      amg: "크롬 마감 무광 다크 그레이 그릴" },
+    { label: "시트",            avg: "ARTICO 시트",                    amg: "AMG 전용 ARTICO 스포츠 시트" },
+    { label: "스티어링",        avg: "가죽 터치컨트롤 스티어링 휠",     amg: "나파 스포츠 터치컨트롤 스티어링 휠" },
+    { label: "실내트림",        avg: "라임 우드 트림",                  amg: "블랙 오픈 포어 알루미늄 라인 우드 트림" },
+    { label: "옵션",            avg: "AVANTGARDE 전용 사양",            amg: "AMG 전용 외장 · 실내 사양 풀패키지" },
+    { label: "가격대",          avg: "균형 잡힌 가성비",                amg: "가장 스포티한 존재감" },
+  ]
+};
+</script>
+
+<!-- ============================================================
+     경쟁차 비교 데이터
+     ============================================================ -->
+<script>
+const COMPARE_DATA = {
+  headers: ["항목", "GLC 300 4MATIC\nAVANTGARDE", "BMW X3 30i xDrive", "Audi Q5 45 TFSI"],
+  highlight: 1,
+  rows: [
+    { label: "가격",              values: ["8,140만원",  "8,390만원", "7,262만원"] },
+    { label: "출력",              values: ["258ps",       "258ps",     "204ps"] },
+    { label: "토크",              values: ["40.8kg.m",    "40.8kg.m",  "34.67kg.m"] },
+    { label: "변속기",            values: ["9G-TRONIC",   "8단 자동",  "7단 S-Tronic"] },
+    { label: "구동방식",          values: ["4MATIC",      "xDrive",    "quattro"] },
+    { label: "실내 고급감",       values: ["★★★★★",     "★★★★",    "★★★"] },
+    { label: "정숙성",            values: ["★★★★★",     "★★★★",    "★★★★"] },
+    { label: "승차감",            values: ["★★★★★",     "★★★★",    "★★★★"] },
+    { label: "반자율주행",        values: ["✓ 기본",      "✓ 기본",   "✓ 기본"] },
+    { label: "헤드라이트",     values: ["디지털 라이트",      "어댑티브 LED",         "LED"] },
+    { label: "헤드업 디스플레이", values: ["✓ 기본",      "✓ 기본",   "✓ 기본"] },
+    { label: "앰비언트 라이트",   values: ["64색 프리미엄","제한적",   "제한적"] },
+    { label: "오디오",         values: ["부메스터 3d 서라운드","하만 카돈",         "뱅앤올룹슨3d사운드"] },
+    { label: "브랜드 가치",       values: ["★★★★★",     "★★★★",    "★★★"] },
+    { label: "중고차 가치",       values: ["★★★★★",     "★★★★★",    "★★"] },
+    { label: "서비스센터",        values: ["75개소",      "70개소",    "40개소"] },
+    { label: "패밀리 적합성",     values: ["★★★★★",     "★★★★★",    "★★★★"] },
+  ]
+};
+</script>
+
+<!-- ============================================================
+     프로모션 데이터
+     ============================================================ -->
+<script>
+const PROMO_DATA = [
+  { icon: "💰", title: "기본 할인",        content: "AVANTGARDE 8%할인<br>AMG LINE 12%할인", tag: "DISCOUNT" },
+  { icon: "🏦", title: "벤츠 파이낸셜",   content: "AVANTGARDE 기본할인 + 4% / 저금리적용<br>AMG LINE 저금리적용", tag: "FINANCIAL" },
+  { icon: "🚗", title: "장기렌트",         content: "AVANTGARDE 기본할인 + 7%할인<br>AMG LINE 기본할인 + 3%할인", tag: "LONG-TERM RENT" },
+  { icon: "🔄", title: "재구매 고객 혜택", content: "기본할인 + 1% 할인", tag: "LOYALTY" },
+  { icon: "🏢", title: "법인 고객 혜택",   content: "2대 이상 구매 시 기본할인 + 3%할인", tag: "CORPORATE" },
+  { icon: "🔃", title: "트레이드인 혜택",  content: "기본할인 + 1% 할인", tag: "TRADE-IN" },
+];
+</script>
+
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic',
+               'Segoe UI', sans-serif;
+  background: #FFFFFF;
+  color: #111111;
+  line-height: 1.65;
+  overflow-x: hidden;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --blue:   #0B5FFF;
+  --blue-deep: #073FAD;
+  --black:  #111111;
+  --gray1:  #F8F9FB;
+  --gray2:  #F2F3F5;
+  --gray3:  #EAEAEA;
+  --gray4:  #8C8C8C;
+  --white:  #FFFFFF;
+  --shadow-sm: 0 2px 12px rgba(11,95,255,.05);
+  --shadow-md: 0 8px 32px rgba(11,95,255,.08);
+  --shadow-lg: 0 20px 60px rgba(11,95,255,.12);
+  --radius: 16px;
+  --section-gap: 120px;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.label-en {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gray4);
+}
+h1 { font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.65rem); font-weight: 700; }
+p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.blue { color: var(--blue); }
+.section { padding: var(--section-gap) 0; }
+.section-alt { background: var(--gray1); }
+.tag {
+  display: inline-block; padding: 4px 14px; border-radius: 100px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+.tag-blue { background: rgba(11,95,255,.08); color: var(--blue); }
+
+/* ============================================================
+   IMAGE PLACEHOLDER
+   ============================================================ */
+.img-box {
+  width: 100%; background: #F5F6F8; border: 2px dashed #DCE2EC;
+  display: flex; align-items: center; justify-content: center;
+  color: #AAAAAA; font-size: .85rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  position: relative; overflow: hidden;
+}
+.img-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.img-box span { position: relative; z-index: 1; pointer-events: none; }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gray3);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 32px; height: 60px; transition: box-shadow .3s;
+}
+.site-header.scrolled { box-shadow: var(--shadow-sm); }
+.header-logo { font-size: .82rem; font-weight: 800; letter-spacing: .18em; color: var(--black); text-transform: uppercase; }
+
+/* ============================================================
+   S1 · HERO
+   ============================================================ */
+#hero {
+  position: relative;
+  background: var(--black);
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-media-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+.hero-eyebrow-text {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,.75);
+}
+.hero-main-title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  margin-bottom: 18px;
+  color: var(--white);
+  text-shadow: 0 4px 30px rgba(0,0,0,.5);
+}
+.hero-subtitle {
+  font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  margin-bottom: 6px;
+  color: var(--white);
+}
+.hero-tagline {
+  font-size: .92rem;
+  letter-spacing: .01em;
+  font-weight: 400;
+  color: rgba(255,255,255,.72);
+  line-height: 1.8;
+}
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-divider-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+}
+.hero-divider-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.hero-price-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.hero-price-card {
+  flex: 1;
+  min-width: 160px;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  background: rgba(10,10,10,.55);
+  border: 1px solid rgba(11,95,255,.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.45);
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+.hero-price-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue);
+  background: rgba(11,95,255,.18);
+}
+.hero-card-badge {
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 6px;
+}
+.hero-card-model {
+  font-size: clamp(.95rem, 1.9vw, 1.1rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.hero-card-price {
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.hero-card-cta {
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.65);
+  letter-spacing: .04em;
+}
+
+/* ---------------- PC (min-width: 769px) ---------------- */
+@media (min-width: 769px) {
+  #hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-media-overlay {
+    background: linear-gradient(90deg,
+      rgba(0,0,0,.68) 0%,
+      rgba(0,0,0,.48) 22%,
+      rgba(0,0,0,.26) 42%,
+      rgba(0,0,0,.05) 58%,
+      rgba(0,0,0,0) 70%);
+  }
+  .hero-media img { object-position: 65% 50%; }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    padding: 90px 5vw 60px;
+  }
+  .hero-text-col {
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+/* ---------------- Mobile (max-width: 768px) ---------------- */
+@media (max-width: 768px) {
+  #hero {
+    background: var(--white);
+  }
+  .hero-media {
+    position: relative;
+    height: 58vh;
+    min-height: 380px;
+  }
+  .hero-media-overlay {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,0) 35%,
+      rgba(0,0,0,0) 78%,
+      rgba(0,0,0,.55) 100%);
+  }
+  .hero-media img { object-position: 60% 35%; }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-text-block {
+    background: var(--black);
+    padding: 28px 24px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .hero-card-block {
+    background: var(--black);
+    padding: 0 24px 40px;
+  }
+  .hero-price-row { flex-direction: column; }
+  .hero-divider { margin-top: 4px; }
+}
+
+/* ============================================================
+   SECTION HEADING
+   ============================================================ */
+.section-heading { text-align: center; margin-bottom: 60px; position: relative; }
+.section-heading .label-en { margin-bottom: 16px; display: block; }
+.section-heading h2 { margin-bottom: 16px; }
+.section-heading p { max-width: 540px; margin: 0 auto; }
+
+.sec-num {
+  position: absolute;
+  top: 0; left: 0;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: var(--gray4);
+  background: var(--gray2);
+  border: 1px solid var(--gray3);
+  border-radius: 6px;
+  padding: 3px 9px;
+  line-height: 1.6;
+  user-select: none;
+}
+.hero-sec-num {
+  position: absolute;
+  top: 80px; left: 24px;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  padding: 3px 9px;
+  line-height: 1.6;
+  user-select: none;
+  z-index: 10;
+}
+
+/* ============================================================
+   WHY GLC300 - REASON CARDS
+   ============================================================ */
+.reason-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+@media (max-width: 768px) { .reason-grid { grid-template-columns: 1fr; } }
+.reason-card {
+  background: var(--white);
+  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+}
+.reason-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+.reason-img { height: 280px; flex-shrink: 0; }
+@media (max-width: 900px) { .reason-img { height: 220px; } }
+@media (max-width: 680px) { .reason-img { height: 200px; } }
+.reason-body { padding: 32px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+.reason-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.reason-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: #EAF1FF; display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; flex-shrink: 0;
+}
+.reason-body h3 { font-size: clamp(1.05rem,2vw,1.25rem); font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+.reason-badge {
+  display: inline-block;
+  background: rgba(11,95,255,.08);
+  color: var(--blue);
+  font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px; margin-bottom: 14px; align-self: flex-start;
+}
+.reason-body p { font-size: .95rem; color: #555; line-height: 1.85; margin: 0; }
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+@media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+.stat-card {
+  border: 1px solid var(--gray3); border-radius: var(--radius);
+  padding: 40px 24px; text-align: center; background: var(--white);
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+}
+.stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.stat-number { font-size: clamp(2.2rem,5vw,3.2rem); font-weight: 800; color: var(--black); line-height: 1.1; margin-bottom: 10px; letter-spacing: -.03em; }
+.stat-label { font-size: 1.05rem; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.stat-desc { font-size: .88rem; color: var(--gray4); line-height: 1.6; }
+
+/* ============================================================
+   TRIM COMPARE (AVANTGARDE vs AMG Line)
+   ============================================================ */
+.trim-compare-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; border: 1px solid var(--gray3); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+@media (max-width: 768px) { .trim-compare-grid { grid-template-columns: 1fr; } }
+.trim-col { background: var(--white); }
+.trim-col-head { padding: 28px 28px 22px; text-align: center; border-bottom: 1px solid var(--gray3); }
+.trim-col-head.avg { background: var(--gray1); }
+.trim-col-head.amg { background: var(--black); }
+.trim-col-head h3 { font-size: 1.3rem; font-weight: 800; }
+.trim-col-head.avg h3 { color: var(--black); }
+.trim-col-head.amg h3 { color: var(--white); }
+.trim-col-head .trim-price { font-size: 1.6rem; font-weight: 800; margin-top: 8px; color: var(--blue); }
+.trim-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 16px 28px; border-bottom: 1px solid var(--gray3); }
+.trim-row:last-child { border-bottom: none; }
+.trim-row-label { font-size: .8rem; font-weight: 700; color: var(--gray4); white-space: nowrap; min-width: 76px; }
+.trim-row-value { font-size: .92rem; font-weight: 600; color: var(--black); text-align: right; }
+.trim-col.amg { background: #0C0C0C; }
+.trim-col.amg .trim-row { border-bottom: 1px solid rgba(255,255,255,.08); }
+.trim-col.amg .trim-row-label { color: rgba(255,255,255,.45); }
+.trim-col.amg .trim-row-value { color: var(--white); }
+
+/* ============================================================
+   OPTION CHIPS (TRIM DETAIL)
+   ============================================================ */
+.chip-group-title { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray4); margin-bottom: 16px; }
+.chip-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px; }
+.chip { background: var(--gray1); border: 1px solid var(--gray3); border-radius: 100px; padding: 6px 16px; font-size: .82rem; font-weight: 600; }
+.chip-blue { background: rgba(11,95,255,.10); border: 1px solid rgba(11,95,255,.3); color: var(--blue); font-weight: 700; }
+.trim-detail-panel { border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow-md); }
+.trim-detail-panel.avg-panel { background: var(--white); border: 1px solid var(--gray3); }
+.trim-detail-panel.amg-panel { background: var(--black); }
+.trim-detail-panel.amg-panel .chip-group-title { color: rgba(255,255,255,.45); }
+.trim-detail-panel.amg-panel .chip { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.85); }
+.trim-detail-panel.amg-panel .chip-blue { background: rgba(11,95,255,.22); border: 1px solid rgba(11,95,255,.5); color: #6FA1FF; }
+.amg-emphasis-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 32px; }
+@media (max-width: 768px) { .amg-emphasis-grid { grid-template-columns: repeat(2,1fr); } }
+.amg-emphasis-card { background: rgba(11,95,255,.08); border: 1px solid rgba(11,95,255,.3); border-radius: 12px; padding: 18px 16px; text-align: center; }
+.amg-emphasis-card .amg-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.amg-emphasis-card span { font-size: .82rem; font-weight: 700; color: var(--blue); }
+
+/* ============================================================
+   TECH CARDS
+   ============================================================ */
+.tech-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .tech-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .tech-grid { grid-template-columns: 1fr; } }
+.tech-card {
+  background: var(--white); border: 1px solid var(--gray3);
+  border-radius: var(--radius); padding: 32px 28px;
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+}
+.tech-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.tech-icon { font-size: 2.2rem; margin-bottom: 16px; }
+.tech-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+.tech-card p { font-size: .9rem; color: var(--gray4); line-height: 1.75; margin: 0; }
+
+/* ============================================================
+   WHY CHOOSE GLC CARDS
+   ============================================================ */
+.choose-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .choose-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .choose-grid { grid-template-columns: 1fr; } }
+.choose-card {
+  background: var(--white); border: 1px solid var(--gray3);
+  border-radius: var(--radius); padding: 32px 26px; text-align: center;
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+}
+.choose-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.choose-icon { font-size: 2.2rem; margin-bottom: 14px; }
+.choose-card h4 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+.choose-card p { font-size: .86rem; color: var(--gray4); margin: 0; }
+
+/* ============================================================
+   추천 고객
+   ============================================================ */
+.customer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+@media (max-width: 900px) { .customer-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .customer-grid { grid-template-columns: 1fr; } }
+.customer-pill {
+  background: var(--white); border: 1px solid var(--gray3);
+  border-radius: 100px; padding: 18px 26px;
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+  display: flex; align-items: center; gap: 12px;
+}
+.customer-pill:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--blue); }
+.customer-pill .check { color: var(--blue); font-size: 1.1rem; font-weight: 800; flex-shrink: 0; }
+.customer-pill span.label { font-size: .96rem; font-weight: 700; color: var(--black); }
+
+/* ============================================================
+   경쟁차 비교
+   ============================================================ */
+.compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.compare-table { width: 100%; min-width: 700px; border-collapse: collapse; }
+.compare-table th { padding: 20px 24px; font-size: .9rem; font-weight: 800; letter-spacing: .06em; text-align: center; white-space: pre-line; border-bottom: 2px solid var(--gray3); background: var(--gray1); }
+.compare-table th.col-glc { background: var(--black); color: var(--white); }
+.compare-table th.col-glc::after { content: 'OUR MODEL'; display: block; font-size: .62rem; letter-spacing: .14em; color: var(--blue); margin-top: 4px; }
+.compare-table td { padding: 18px 24px; font-size: .94rem; font-weight: 500; text-align: center; border-bottom: 1px solid var(--gray3); color: var(--gray4); }
+.compare-table td.col-glc { background: #F0F6FF; color: var(--black); font-weight: 700; }
+.compare-table td.col-label { text-align: left; font-weight: 700; color: var(--black); background: var(--white); font-size: .92rem; padding-left: 28px; white-space: nowrap; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: #FAFAFA; }
+.compare-table tr:hover td.col-glc { background: #E5F0FF; }
+.compare-notice { margin-top: 20px; font-size: .78rem; color: var(--gray4); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.compare-notice::before { content: 'ⓘ'; }
+.scroll-hint { display: none; font-size: .72rem; color: var(--gray4); text-align: right; margin-bottom: 10px; }
+@media (max-width: 768px) { .scroll-hint { display: block; } }
+
+/* ============================================================
+   프로모션
+   ============================================================ */
+.promo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .promo-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .promo-grid { grid-template-columns: 1fr; } }
+.promo-card {
+  background: var(--white); border: 1px solid var(--gray3); border-radius: var(--radius);
+  padding: 36px 28px; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.promo-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.promo-badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: .65rem; font-weight: 800; letter-spacing: .14em; background: var(--gray2); color: var(--gray4); margin-bottom: 20px; }
+.promo-tag { position: absolute; top: 20px; right: 20px; font-size: .6rem; font-weight: 800; letter-spacing: .12em; color: var(--blue); background: rgba(11,95,255,.10); padding: 3px 10px; border-radius: 100px; }
+.promo-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.promo-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; }
+.promo-content { font-size: .92rem; color: var(--gray4); line-height: 1.75; }
+.promo-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #4F8CFF); opacity: 0; transition: opacity .3s; }
+.promo-card:hover::before { opacity: 1; }
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta {
+  background: var(--black);
+  color: var(--white);
+  padding: 110px 0 90px;
+  text-align: center;
+}
+.final-cta .label-en { color: rgba(255,255,255,.4); display:block; margin-bottom: 18px; }
+.final-cta h2 { color: var(--white); margin-bottom: 44px; }
+.final-points { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; max-width: 980px; margin: 0 auto 56px; }
+@media (max-width: 900px) { .final-points { grid-template-columns: repeat(2,1fr); } }
+.final-point {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius); padding: 26px 18px; font-size: .96rem; font-weight: 700;
+  color: var(--white);
+}
+.final-point .check { color: var(--blue); margin-right: 8px; }
+.final-btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; max-width: 720px; margin: 0 auto; }
+.final-btn {
+  flex: 1; min-width: 200px; min-height: 56px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 100px; font-size: 1rem; font-weight: 800;
+  text-decoration: none; cursor: pointer; transition: transform .25s, box-shadow .25s;
+  padding: 16px 24px;
+}
+.final-btn:hover { transform: translateY(-4px); }
+.final-btn-call { background: var(--blue); color: var(--white); box-shadow: 0 12px 32px rgba(11,95,255,.4); }
+.final-btn-kakao { background: #FEE500; color: #3C1E1E; }
+.final-btn-drive { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.4); }
+
+/* ============================================================
+   RESPONSIVE GLOBAL
+   ============================================================ */
+@media (max-width: 768px) { :root { --section-gap: 80px; } }
+@media (max-width: 480px) { :root { --section-gap: 60px; } .site-header { padding: 0 20px; } }
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .stat-card { min-height: 210px; padding: 28px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stat-number { font-size: 2.8rem !important; line-height: 1; }
+  .stat-label { font-size: 1rem !important; line-height: 1.45; word-break: keep-all; }
+  .stat-desc { font-size: .86rem !important; line-height: 1.55; word-break: keep-all; }
+  .trim-detail-panel { padding: 28px 22px; }
+}
+@media (max-width: 480px) {
+  .stat-card { min-height: 200px; padding: 24px 14px; }
+  .stat-number { font-size: 2.5rem !important; }
+  .stat-label { font-size: .9rem !important; }
+  .stat-desc { font-size: .8rem !important; }
+}
+
+/* ============================================================
+   TRIM IMAGE GRID (S5, S6)
+   ============================================================ */
+.trim-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+@media (max-width: 768px) {
+  .trim-image-grid { grid-template-columns: 1fr; }
+}
+.trim-image-card {
+  background: var(--white);
+  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.trim-image-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.trim-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: var(--gray2);
+}
+@media (max-width: 768px) {
+  .trim-image-box { aspect-ratio: auto; height: 240px; }
+}
+.trim-image-box img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.trim-image-card:hover .trim-image-box img { transform: scale(1.04); }
+.trim-image-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  color: var(--gray4);
+}
+.trim-image-placeholder svg { opacity: .35; }
+.trim-image-placeholder span { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.trim-image-label {
+  padding: 14px 18px;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--black);
+  border-top: 1px solid var(--gray3);
+  display: flex; align-items: center; gap: 8px;
+}
+.trim-image-label::before {
+  content: '';
+  display: inline-block; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--blue); flex-shrink: 0;
+}
+
+/* ============================================================
+   IMAGE MODAL (LIGHTBOX)
+   ============================================================ */
+.image-modal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  align-items: center; justify-content: center;
+}
+.image-modal.active { display: flex; }
+.image-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.image-modal-content {
+  position: relative; z-index: 1;
+  max-width: min(92vw, 1080px);
+  max-height: 90svh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  background: var(--black);
+}
+.image-modal-content img {
+  display: block;
+  width: 100%; height: 100%;
+  max-height: 90svh;
+  object-fit: contain;
+}
+.image-modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.2rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s;
+  backdrop-filter: blur(4px);
+}
+.image-modal-close:hover { background: rgba(255,255,255,.28); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-logo">MERCEDES-BENZ</div>
+</header>
+
+<!-- ============================================================
+     S1 · HERO
+     ============================================================ -->
+<section id="hero" style="position:relative;">
+  <span class="hero-sec-num">01 · HERO</span>
+  <div class="hero-media" id="heroMedia">
+    <img id="heroImg" src="" alt="Mercedes-Benz GLC 300 4MATIC" loading="eager" style="display:none;">
+    <div class="hero-media-overlay"></div>
+  </div>
+  <div class="hero-inner">
+
+    <div class="hero-text-col">
+
+      <div class="hero-text-block">
+        <p class="hero-eyebrow-text reveal">GLC-CLASS X254 · MY26</p>
+        <h1 class="hero-main-title reveal reveal-delay-1">GLC 300<br>4MATIC</h1>
+        <p class="hero-subtitle reveal reveal-delay-2">가장 완성도 높은<br>프리미엄 가솔린 SUV</p>
+        <p class="hero-tagline reveal reveal-delay-2">258마력의 여유로운 출력, 48V 마일드 하이브리드, Mercedes-Benz 특유의 정숙성까지.<br><br>패밀리 SUV와 비즈니스 SUV를 모두 만족시키는 가장 균형 잡힌 GLC.</p>
+      </div>
+
+      <div class="hero-card-block">
+        <div class="hero-divider reveal reveal-delay-3">
+          <div class="hero-divider-line"></div>
+          <span class="hero-divider-label">PETROL · 4MATIC</span>
+        </div>
+
+        <div class="reveal reveal-delay-4">
+          <div class="hero-price-row">
+            <a href="#avantgarde" class="hero-price-card">
+              <div class="hero-card-badge">AVANTGARDE</div>
+              <div class="hero-card-model">GLC 300 4MATIC</div>
+              <div class="hero-card-price">8,140만원</div>
+              <div class="hero-card-cta">자세히 보기 →</div>
+            </a>
+            <a href="#amgline" class="hero-price-card">
+              <div class="hero-card-badge">AMG LINE</div>
+              <div class="hero-card-model">GLC 300 4MATIC</div>
+              <div class="hero-card-price">9,140만원</div>
+              <div class="hero-card-cta">자세히 보기 →</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S2 · WHY GLC300
+     ============================================================ -->
+<section id="why" class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">02 · WHY GLC 300</span>
+      <span class="label-en">Why GLC 300</span>
+      <h2>왜 지금<br>GLC 300인가</h2>
+      <p>가솔린 특유의 정숙함과 여유, 그 위에 더해진 하이브리드의 부드러움</p>
+    </div>
+    <div class="reason-grid">
+
+      <div class="reason-card reveal">
+        <div class="img-box reason-img" id="imgQuiet"><span>정숙성 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">🔇</div>
+            <h3>정숙성이<br>다릅니다</h3>
+          </div>
+          <span class="reason-badge">가솔린 특유의 정숙 주행</span>
+          <p>가솔린 특유의 부드럽고 조용한 주행이 GLC 300의 첫인상을 결정합니다. 도심에서도, 고속도로에서도 실내 대화가 편안합니다. 동승자가 먼저 알아차리는 차이입니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-1">
+        <div class="img-box reason-img" id="imgPower"><span>출력 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">🚀</div>
+            <h3>258마력의<br>여유</h3>
+          </div>
+          <span class="reason-badge">258ps · 40.8kg.m · 6.2초</span>
+          <p>최고출력 258마력, 최대토크 40.8kg.m, 정지 상태에서 100km/h까지 6.2초. SUV답지 않은 시원한 가속감을 제공합니다. 추월과 합류, 언제나 여유롭습니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-2">
+        <div class="img-box reason-img" id="imgHybrid"><span>48V 하이브리드 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">⚡</div>
+            <h3>48V<br>Mild Hybrid</h3>
+          </div>
+          <span class="reason-badge">출발과 재시동이 부드럽습니다</span>
+          <p>출발은 더욱 부드럽고, 신호 대기 후 재시동은 거의 느껴지지 않습니다. 48V 마일드 하이브리드 시스템이 연료효율과 승차감을 동시에 향상시킵니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-3">
+        <div class="img-box reason-img" id="imgFamily"><span>패밀리 SUV 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">👨‍👩‍👧‍👦</div>
+            <h3>패밀리 SUV의<br>정답</h3>
+          </div>
+          <span class="reason-badge">모든 순간에 어울리는 한 대</span>
+          <p>아이들과의 여행, 출퇴근, 출장, 골프, 장거리 운전까지. 모든 상황에서 만족도가 높은 SUV입니다. 하나의 차로 모든 라이프스타일을 감당합니다.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S3 · 숫자로 보는 GLC300
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">03 · BY THE NUMBERS</span>
+      <span class="label-en">By the Numbers</span>
+      <h2>숫자로 보는<br>GLC 300</h2>
+      <p>수치로 확인하는 GLC 300의 완성도</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number"><span class="blue">258</span><span style="font-size:1.4rem"> ps</span></div>
+        <div class="stat-label">최고 출력</div>
+        <div class="stat-desc">258마력의 여유로운 가솔린 출력</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number"><span class="blue">40.8</span><span style="font-size:1.4rem"> kg·m</span></div>
+        <div class="stat-label">최대 토크</div>
+        <div class="stat-desc">언제든 시원하게 터지는 가속 응답</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">6.2<span style="font-size:1.4rem">초</span></div>
+        <div class="stat-label">0→100 km/h</div>
+        <div class="stat-desc">SUV답지 않은 스포티한 가속 성능</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number"><span class="blue">★★★★★</span></div>
+        <div class="stat-label">Mercedes-Benz 브랜드 가치</div>
+        <div class="stat-desc">8년 연속 대한민국 수입차 판매 1위</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S4 · AVANTGARDE vs AMG Line 비교
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">04 · TRIM COMPARE</span>
+      <span class="label-en">AVANTGARDE vs AMG Line</span>
+      <h2>나에게 맞는<br>트림은 무엇일까</h2>
+      <p>두 트림의 차이를 한눈에 비교해보세요</p>
+    </div>
+    <div class="trim-compare-grid reveal" id="trimCompareWrap"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S5 · AVANTGARDE 상세설명
+     ============================================================ -->
+<section id="avantgarde" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">05 · AVANTGARDE</span>
+      <span class="label-en">GLC 300 4MATIC AVANTGARDE</span>
+      <h2>GLC 300 4MATIC<br>AVANTGARDE</h2>
+      <p>가장 균형 잡힌 선택, 8,140만원</p>
+    </div>
+
+    <!-- 외관/실내 이미지 2장 -->
+    <div class="trim-image-grid">
+      <div class="trim-image-card reveal" data-modal-img="imgAvantgardeExterior">
+        <div class="trim-image-box" id="imgAvantgardeExterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>외관 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">외관 디자인</div>
+      </div>
+      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAvantgardeInterior">
+        <div class="trim-image-box" id="imgAvantgardeInterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>실내 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">실내 디자인</div>
+      </div>
+    </div>
+
+    <div class="detail-spec-grid reveal" style="display:grid; grid-template-columns:repeat(2,1fr); gap:0; border:1px solid var(--gray3); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:48px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">엔진</span><span style="font-weight:700;">직렬 4기통 가솔린</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">배기량</span><span class="blue" style="font-weight:700;">1,999cc</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최고 출력</span><span class="blue" style="font-weight:700;">258ps / 5,800rpm</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최대 토크</span><span style="font-weight:700;">40.8kg·m / 2,000–3,200rpm</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">변속기</span><span style="font-weight:700;">9G-TRONIC</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">구동방식</span><span style="font-weight:700;">고정식 사륜 구동 (4MATIC)</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">복합연비</span><span style="font-weight:700;">10.6 km/L (4등급)</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">도심/고속</span><span style="font-weight:700;">9.6 / 12.3 km/L</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">0→100km/h</span><span class="blue" style="font-weight:700;">6.2초</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최고속도</span><span style="font-weight:700;">240 km/h</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">타이어</span><span style="font-weight:700;">255/45 R20</span></div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">전장×전폭×전고</span><span style="font-weight:700;">4,720×1,890×1,645</span></div>
+    </div>
+
+    <div class="trim-detail-panel avg-panel reveal">
+      <p class="chip-group-title">🔷 외장 사양</p>
+      <div class="chip-row">
+        <span class="chip">디지털 라이트 & Adaptive Highbeam Assist PLUS</span>
+        <span class="chip">AVANTGARDE 19인치 10트윈 스포크 알로이 휠 (78R)</span>
+        <span class="chip">파노라믹 선루프</span>
+        <span class="chip">알루미늄 루프레일</span>
+        <span class="chip chip-blue">브랜드 프로젝션 로고</span>
+      </div>
+
+      <p class="chip-group-title">🔷 실내 사양</p>
+      <div class="chip-row">
+        <span class="chip">ARTICO 시트</span>
+        <span class="chip">앞좌석 메모리 / 열선 / 통풍 시트</span>
+        <span class="chip">뒷좌석 열선 / ISOFIX / 접이식</span>
+        <span class="chip">신형 가죽 터치컨트롤 + 시프트 패들 스티어링 휠</span>
+        <span class="chip">실버 그레이 다이아몬드 패턴 트림 & 하이 글로시 센터콘솔</span>
+        <span class="chip">나파 룩 ARTICO 대시보드 마감</span>
+        <span class="chip chip-blue">앰비언트 라이트 프리미엄 (64색, 894)</span>
+        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
+      </div>
+
+      <p class="chip-group-title">🔷 편의 사양</p>
+      <div class="chip-row">
+        <span class="chip">12.3인치 계기판 + MBUX 3세대 11.9인치 LCD 디스플레이</span>
+        <span class="chip">T맵 오토 증강현실 내비게이션</span>
+        <span class="chip">앞좌석 휴대폰 무선 충전</span>
+        <span class="chip">무선 안드로이드 오토 & 애플 카플레이</span>
+        <span class="chip">HUD 헤드업 디스플레이</span>
+        <span class="chip chip-blue">부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본</span>
+        <span class="chip">열·소음 차단 글라스</span>
+        <span class="chip">Mercedes Me Connect (원격시동, 5G 커넥티비티)</span>
+        <span class="chip">2존 에어컨디셔너 & 공기청정 패키지</span>
+        <span class="chip">서라운드 카메라 + 액티브 주차 어시스트</span>
+        <span class="chip">KEYLESS-GO</span>
+        <span class="chip">전동식 트렁크 + 핸즈프리 액세스</span>
+      </div>
+
+      <p class="chip-group-title">🔷 안전 사양</p>
+      <div class="chip-row">
+        <span class="chip">Active Bonnet</span>
+        <span class="chip">ADAPTIVE BRAKE (HOLD 기능)</span>
+        <span class="chip">드라이빙 어시스턴스 패키지 플러스 (P20)</span>
+        <span class="chip">능동형 사각지대 어시스트 + 출구 경고</span>
+        <span class="chip">능동형 차선 유지 어시스트</span>
+        <span class="chip">Active Brake Assist with cross-traffic function</span>
+        <span class="chip">Active Distance Assist DISTRONIC</span>
+        <span class="chip">교통 표지판 어시스트 / 경로 기반 속도 조절</span>
+        <span class="chip">에어백 10개</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S6 · AMG Line 상세설명
+     ============================================================ -->
+<section id="amgline" class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">06 · AMG LINE</span>
+      <span class="label-en">GLC 300 4MATIC AMG Line</span>
+      <h2>GLC 300 4MATIC<br>AMG Line</h2>
+      <p>가장 스포티한 존재감, 9,140만원</p>
+    </div>
+
+    <!-- 외관/실내 이미지 2장 -->
+    <div class="trim-image-grid">
+      <div class="trim-image-card reveal" data-modal-img="imgAmgExterior">
+        <div class="trim-image-box" id="imgAmgExterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>외관 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">AMG Line 외관 디자인</div>
+      </div>
+      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAmgInterior">
+        <div class="trim-image-box" id="imgAmgInterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>실내 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">AMG Line 실내 디자인</div>
+      </div>
+    </div>
+
+    <div class="amg-emphasis-grid reveal">
+      <div class="amg-emphasis-card"><div class="amg-icon">🛡️</div><span>AMG 범퍼</span></div>
+      <div class="amg-emphasis-card"><div class="amg-icon">⬛</div><span>AMG 그릴</span></div>
+      <div class="amg-emphasis-card"><div class="amg-icon">💨</div><span>AMG 에어벤트</span></div>
+      <div class="amg-emphasis-card"><div class="amg-icon">⚙️</div><span>AMG 휠</span></div>
+      <div class="amg-emphasis-card"><div class="amg-icon">🎮</div><span>AMG 스티어링</span></div>
+      <div class="amg-emphasis-card"><div class="amg-icon">🪑</div><span>AMG 스포츠 시트</span></div>
+    </div>
+
+    <div class="trim-detail-panel amg-panel reveal">
+      <p class="chip-group-title">🔷 외장 사양 (AMG Line 전용)</p>
+      <div class="chip-row">
+        <span class="chip">디지털 라이트 & Adaptive Highbeam Assist PLUS</span>
+        <span class="chip chip-blue">20인치 AMG 멀티 스포크 알로이 휠 (RVU)</span>
+        <span class="chip chip-blue">AMG 프런트 에이프런 (크롬 트림)</span>
+        <span class="chip chip-blue">AMG 리어 에이프런 (블랙 인서트 + 룩 디퓨저)</span>
+        <span class="chip chip-blue">AMG 사이드 실 패널</span>
+        <span class="chip chip-blue">크롬 마감 무광 다크 그레이 라디에이터 그릴</span>
+        <span class="chip">파노라믹 선루프</span>
+        <span class="chip">브랜드 프로젝션 로고</span>
+      </div>
+
+      <p class="chip-group-title">🔷 실내 사양 (AMG Line 전용)</p>
+      <div class="chip-row">
+        <span class="chip chip-blue">(AMG 라인 전용) ARTICO 시트</span>
+        <span class="chip">앞좌석 메모리 / 열선 / 통풍 시트</span>
+        <span class="chip">뒷좌석 열선 / ISOFIX / 접이식</span>
+        <span class="chip chip-blue">신형 나파 스포츠 터치컨트롤+시프트 패들 스티어링 휠</span>
+        <span class="chip chip-blue">블랙 오픈 포어 알루미늄 라인 우드 트림 & 하이 글로시 센터콘솔</span>
+        <span class="chip">나파 룩 ARTICO 대시보드 마감</span>
+        <span class="chip chip-blue">앰비언트 라이트 프리미엄 (64색, 894)</span>
+        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
+      </div>
+
+      <p class="chip-group-title">🔷 편의 사양</p>
+      <div class="chip-row">
+        <span class="chip">12.3인치 계기반 + MBUX 3세대 11.9인치 LCD 디스플레이</span>
+        <span class="chip">T맵 오토 증강현실 내비게이션</span>
+        <span class="chip">앞좌석 휴대폰 무선 충전</span>
+        <span class="chip">무선 안드로이드 오토 & 애플 카플레이</span>
+        <span class="chip">HUD 헤드업 디스플레이</span>
+        <span class="chip chip-blue">부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본</span>
+        <span class="chip">열·소음 차단 글라스</span>
+        <span class="chip">Mercedes Me Connect (원격시동, 5G 커넥티비티)</span>
+        <span class="chip">2존 에어컨디셔너 & 공기청정 패키지</span>
+        <span class="chip">서라운드 카메라 + 액티브 주차 어시스트</span>
+        <span class="chip">KEYLESS-GO</span>
+        <span class="chip">전동식 트렁크 + 핸즈프리 액세스</span>
+        <span class="chip chip-blue">(26년식 AMG Line 限) 어질리티 컨트롤 서스펜션</span>
+      </div>
+
+      <p class="chip-group-title">🔷 안전 사양</p>
+      <div class="chip-row">
+        <span class="chip">Active Bonnet</span>
+        <span class="chip">ADAPTIVE BRAKE (HOLD 기능)</span>
+        <span class="chip">드라이빙 어시스턴스 패키지 플러스 (P20)</span>
+        <span class="chip">능동형 사각지대 어시스트 + 출구 경고</span>
+        <span class="chip">능동형 차선 유지 어시스트</span>
+        <span class="chip">Active Brake Assist with cross-traffic function</span>
+        <span class="chip">Active Distance Assist DISTRONIC</span>
+        <span class="chip">교통 표지판 어시스트 / 경로 기반 속도 조절</span>
+        <span class="chip">에어백 10개</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S7 · GLC300 핵심 기술
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">07 · CORE TECHNOLOGY</span>
+      <span class="label-en">Core Technology</span>
+      <h2>GLC 300의<br>핵심 기술</h2>
+      <p>매일의 운전이 달라지는 6가지 기술</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card reveal"><div class="tech-icon">⚡</div><h3>48V Mild Hybrid</h3><p>부드러운 출발과 거의 느껴지지 않는 재시동. 연료효율과 승차감을 동시에 향상시키는 마일드 하이브리드 시스템.</p></div>
+      <div class="tech-card reveal reveal-delay-1"><div class="tech-icon">💡</div><h3>DIGITAL LIGHT</h3><p>130만 마이크로미러로 정밀하게 제어되는 조명. 야간 주행 시야와 안전을 동시에 확보합니다.</p></div>
+      <div class="tech-card reveal reveal-delay-2"><div class="tech-icon">🖥️</div><h3>MBUX 3세대</h3><p>12.3인치 계기판과 11.9인치 LCD 디스플레이로 구성된 차세대 인포테인먼트 시스템.</p></div>
+      <div class="tech-card reveal"><div class="tech-icon">🎵</div><h3>Burmester 3D Sound</h3><p>15개 스피커, 710W 출력의 프리미엄 사운드 시스템이 만들어내는 입체적인 음향.</p></div>
+      <div class="tech-card reveal reveal-delay-1"><div class="tech-icon">🚗</div><h3>DISTRONIC</h3><p>앞차와의 거리를 자동으로 유지하는 반자율주행 기술. 고속도로부터 정체 구간까지 편안하게.</p></div>
+      <div class="tech-card reveal reveal-delay-2"><div class="tech-icon">📷</div><h3>360° Camera</h3><p>서라운드 카메라와 액티브 주차 어시스트로 주차 걱정 없는 전방위 시야 확보.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S8 · 경쟁차 비교
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">08 · COMPETITION</span>
+      <span class="label-en">Competitive Comparison</span>
+      <h2>왜 GLC 300이<br>선택받는가</h2>
+      <p>BMW X3, Audi Q5와 직접 비교해보십시오</p>
+    </div>
+    <p class="scroll-hint">← 좌우로 스크롤하여 비교하세요 →</p>
+    <div class="compare-wrap reveal" id="compareWrap"></div>
+    <p class="compare-notice">모든 데이터는 공식 제조사 기준이며 실제와 다를 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 · 왜 GLC를 선택해야 하는가
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">09 · WHY CHOOSE GLC</span>
+      <span class="label-en">Why Choose GLC</span>
+      <h2>왜 GLC를<br>선택해야 하는가</h2>
+      <p>단순한 스펙을 넘어선, 6가지 확실한 이유</p>
+    </div>
+    <div class="choose-grid">
+      <div class="choose-card reveal"><div class="choose-icon">🏆</div><h4>국내 수입 SUV 판매 1위</h4><p>가장 많은 고객이 선택한 검증된 SUV</p></div>
+      <div class="choose-card reveal reveal-delay-1"><div class="choose-icon">💰</div><h4>높은 중고차 가치</h4><p>3년 후에도 유지되는 안정적인 잔존가치</p></div>
+      <div class="choose-card reveal reveal-delay-2"><div class="choose-icon">🔧</div><h4>전국 서비스 네트워크</h4><p>전국 75개소 서비스센터로 어디서나 안심</p></div>
+      <div class="choose-card reveal"><div class="choose-icon">⭐</div><h4>프리미엄 브랜드 가치</h4><p>오랜 시간 증명된 메르세데스-벤츠의 품격</p></div>
+      <div class="choose-card reveal reveal-delay-1"><div class="choose-icon">👨‍👩‍👧‍👦</div><h4>패밀리카 만족도</h4><p>가족 모두가 만족하는 공간과 편의사양</p></div>
+      <div class="choose-card reveal reveal-delay-2"><div class="choose-icon">🛣️</div><h4>장거리 피로감이 적은 SUV</h4><p>탁월한 정숙성과 승차감으로 편안한 장거리</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S10 · 프로모션
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">10 · PROMOTION</span>
+      <span class="label-en">Monthly Promotion</span>
+      <h2>이달의 특별 혜택</h2>
+      <p>혜택 내용은 매월 업데이트됩니다</p>
+    </div>
+    <div class="promo-grid" id="promoGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE MODAL (LIGHTBOX)
+     ============================================================ -->
+<div class="image-modal" id="imageModal" role="dialog" aria-modal="true">
+  <div class="image-modal-backdrop" id="imageModalBackdrop"></div>
+  <div class="image-modal-content">
+    <button class="image-modal-close" id="imageModalClose" aria-label="닫기">✕</button>
+    <img id="imageModalImg" src="" alt="">
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* -- 이미지 자동 적용 -- */
+function applyImages() {
+  const map = {
+    imgQuiet:                IMAGES.quiet,
+    imgPower:                IMAGES.power,
+    imgHybrid:               IMAGES.hybrid,
+    imgFamily:               IMAGES.family,
+    imgAvantgardeExterior:   IMAGES.avantgardeExterior,
+    imgAvantgardeInterior:   IMAGES.avantgardeInterior,
+    imgAmgExterior:          IMAGES.amgExterior,
+    imgAmgInterior:          IMAGES.amgInterior,
+  };
+  Object.entries(map).forEach(([id, url]) => {
+    if (!url) return;
+    const box = document.getElementById(id);
+    if (!box) return;
+    const img = document.createElement('img');
+    img.src = url; img.alt = id; img.loading = 'lazy';
+    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+    box.appendChild(img);
+    /* placeholder 숨기기 */
+    const ph = box.querySelector('.trim-image-placeholder');
+    if (ph) ph.style.display = 'none';
+    const span = box.querySelector('span');
+    if (span && !ph) span.style.display = 'none';
+  });
+
+  const heroImg = document.getElementById('heroImg');
+  const heroMedia = document.getElementById('heroMedia');
+  if (heroImg && heroMedia) {
+    if (IMAGES.hero) {
+      heroImg.src = IMAGES.hero;
+      heroImg.style.display = 'block';
+    } else {
+      heroMedia.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #101830 50%, #0a0a0a 100%)';
+    }
+  }
+}
+
+/* -- 이미지 모달(라이트박스) -- */
+function initImageModal() {
+  const modal       = document.getElementById('imageModal');
+  const backdrop    = document.getElementById('imageModalBackdrop');
+  const closeBtn    = document.getElementById('imageModalClose');
+  const modalImg    = document.getElementById('imageModalImg');
+  if (!modal) return;
+
+  function openModal(src, alt) {
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalImg.src = ''; }, 300);
+  }
+
+  /* 이미지 카드 클릭 → 모달 열기 */
+  document.querySelectorAll('.trim-image-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const boxId = card.getAttribute('data-modal-img');
+      const box   = boxId ? document.getElementById(boxId) : null;
+      const img   = box ? box.querySelector('img') : null;
+      if (img && img.src) {
+        openModal(img.src, img.alt);
+      }
+    });
+  });
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+}
+
+applyImages();
+initImageModal();
+
+/* -- AVANTGARDE / AMG Line 비교 렌더링 -- */
+function renderTrimCompare() {
+  const wrap = document.getElementById('trimCompareWrap');
+  if (!wrap) return;
+  let avgHtml = `<div class="trim-col avg">
+    <div class="trim-col-head avg"><h3>AVANTGARDE</h3><div class="trim-price">8,140만원</div></div>
+    <div class="trim-body">`;
+  let amgHtml = `<div class="trim-col amg">
+    <div class="trim-col-head amg"><h3>AMG Line</h3><div class="trim-price">9,140만원</div></div>
+    <div class="trim-body">`;
+  TRIM_COMPARE.rows.forEach(row => {
+    avgHtml += `<div class="trim-row"><span class="trim-row-label">${row.label}</span><span class="trim-row-value">${row.avg}</span></div>`;
+    amgHtml += `<div class="trim-row"><span class="trim-row-label">${row.label}</span><span class="trim-row-value">${row.amg}</span></div>`;
+  });
+  avgHtml += `</div></div>`;
+  amgHtml += `</div></div>`;
+  wrap.innerHTML = avgHtml + amgHtml;
+}
+renderTrimCompare();
+
+/* -- 경쟁차 비교표 렌더링 -- */
+function renderCompareTable() {
+  const wrap = document.getElementById('compareWrap');
+  if (!wrap) return;
+  let html = '<table class="compare-table"><thead><tr>';
+  COMPARE_DATA.headers.forEach((h, i) => {
+    if (i === 0) html += `<th style="text-align:left;padding-left:28px;min-width:130px;">${h}</th>`;
+    else if (i === COMPARE_DATA.highlight) html += `<th class="col-glc" style="min-width:160px;">${h}</th>`;
+    else html += `<th style="min-width:120px;color:var(--gray4);">${h}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  COMPARE_DATA.rows.forEach(row => {
+    html += '<tr><td class="col-label">' + row.label + '</td>';
+    row.values.forEach((v, i) => {
+      const cls = (i + 1 === COMPARE_DATA.highlight) ? ' col-glc' : '';
+      const empty = v === '-' || v === '';
+      html += `<td class="${cls}"${empty ? ' style="color:#CCC"' : ''}>${v}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+renderCompareTable();
+
+/* -- 프로모션 렌더링 -- */
+function renderPromo() {
+  const grid = document.getElementById('promoGrid');
+  if (!grid) return;
+  grid.innerHTML = PROMO_DATA.map((p, i) => {
+    const d = ['', ' reveal-delay-1', ' reveal-delay-2'][i % 3];
+    return `<div class="promo-card reveal${d}">
+      <span class="promo-tag">${p.tag}</span>
+      <div class="promo-icon">${p.icon}</div>
+      <div class="promo-badge">PROMOTION · COMING SOON</div>
+      <h3>${p.title}</h3>
+      <p class="promo-content">${p.content}</p>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* -- Scroll Reveal -- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.10 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+renderPromo();
+
+/* -- Sticky Header -- */
+const siteHeader = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => { siteHeader.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+/* -- CSS keyframes -- */
+const s = document.createElement('style');
+s.textContent = `@keyframes fadeIn{from{opacity:0}to{opacity:1}} @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}`;
+document.head.appendChild(s);
+</script>
+</body>
+</html>
