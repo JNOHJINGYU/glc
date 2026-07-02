@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLC 300 Coupé | Mercedes-Benz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+
+<!-- ============================================================
+     이미지 URL 관리 영역
+     ============================================================ -->
+<script>
+const IMAGES = {
+  hero:              "https://github.com/JNOHJINGYU/images/blob/main/glccp_main.jpg?raw=true",   // S1 히어로 · GLC Coupé 차량 사진
+  reasonStyle:       "https://github.com/JNOHJINGYU/images/blob/main/glccp_rear_right.jpg?raw=true",   // S2 쿠페 실루엣 이미지
+  reasonPractical:   "https://github.com/JNOHJINGYU/images/blob/main/glc_trunk.png?raw=true",   // S2 SUV 실용성 이미지
+  reasonPerformance: "https://github.com/JNOHJINGYU/images/blob/main/glc43_drive.jpg?raw=true",   // S2 AMG 퍼포먼스 이미지
+  reasonBrand:       "https://github.com/JNOHJINGYU/images/blob/main/ChatGPT.png?raw=true",   // S2 프리미엄 브랜드 이미지
+  avantgardeExterior: "https://github.com/JNOHJINGYU/images/blob/main/glccpav.png?raw=true",   // S5 AVANTGARDE 외관 이미지 URL을 여기에 입력
+  avantgardeInterior: "https://github.com/JNOHJINGYU/images/blob/main/GLCCPAV_interior.png?raw=true",   // S5 AVANTGARDE 실내 이미지 URL을 여기에 입력
+  amglineExterior:    "https://github.com/JNOHJINGYU/images/blob/main/glccpamg.png?raw=true",   // S6 AMG Line 외관 이미지 URL을 여기에 입력
+  amglineInterior:    "https://github.com/JNOHJINGYU/images/blob/main/glccpamg_interior.png?raw=true",   // S6 AMG Line 실내 이미지 URL을 여기에 입력
+  amg43Exterior:       "https://github.com/JNOHJINGYU/images/blob/main/glc43cp.png?raw=true",   // S7 AMG GLC 43 외관 이미지 URL을 여기에 입력
+  amg43Interior:       "https://github.com/JNOHJINGYU/images/blob/main/glc43_interior.png?raw=true",   // S7 AMG GLC 43 실내 이미지 URL을 여기에 입력
+};
+</script>
+
+<!-- ============================================================
+     3개 트림 비교 데이터 (AVANTGARDE / AMG Line / AMG GLC 43)
+     ============================================================ -->
+<script>
+const TRIM_COMPARE3 = {
+  headers: ["항목", "GLC 300\nAVANTGARDE", "GLC 300\nAMG Line", "AMG GLC 43"],
+  rows: [
+    { label: "가격",            values: ["8,550만원", "9,570만원", "1억 690만원"] },
+    { label: "엔진",            values: ["직렬 4기통 가솔린", "직렬 4기통 가솔린", "직렬 4기통 AMG"] },
+    { label: "배기량",          values: ["1,999cc", "1,999cc", "1,991cc (AMG 튜닝)"] },
+    { label: "최고출력",        values: ["258ps", "258ps", "421ps (+163ps)"] },
+    { label: "최대토크",        values: ["40.8kgm", "40.8kgm", "51.0kgm"] },
+    { label: "0→100km/h",       values: ["6.3초", "6.3초", "4.5초 (-1.8초)"] },
+    { label: "변속기",          values: ["9G-TRONIC", "9G-TRONIC", "AMG SPEEDSHIFT MCT"] },
+    { label: "복합연비",        values: ["9.2km/L", "9.2km/L", "8.7km/L"] },
+    { label: "외관 스타일",     values: ["AVANTGARDE", "AMG Line (풀킷)", "AMG 43 전용"] },
+    { label: "휠",              values: ["19\" 10트윈 스포크", "20\" AMG 멀티 스포크", "20\" AMG 탄탈라이트"] },
+    { label: "타이어",          values: ["235/55 R19", "255/45 R20", "265/45·295/40 R20"] },
+    { label: "서스펜션",        values: ["표준", "표준", "AMG RIDE CONTROL"] },
+    { label: "리어 액슬 스티어링", values: ["유료옵션", "유료옵션", "2.5° 기본"] },
+    { label: "스티어링 휠",     values: ["가죽", "나파 가죽", "AMG 퍼포먼스 나파"] },
+    { label: "안전벨트",        values: ["블랙", "블랙", "레드 컬러"] },
+    { label: "AMG 사운드",      values: ["–", "–", "AMG 리얼 퍼포먼스"] },
+  ]
+};
+
+const TRIM_POSITION = [
+  { key: "avantgarde", title: "GLC 300 AVANTGARDE", points: [
+      "쿠페 스타일을 합리적 가격에",
+      "8,550만원 · GLC 쿠페 최저가",
+      "9G-TRONIC의 부드러운 주행",
+      "실용성 + 스타일 균형 추구"
+    ] },
+  { key: "amgline", title: "GLC 300 AMG Line", points: [
+      "AMG 외관에 합리적 유지가 원하는 고객",
+      "+1,020만원으로 20\" 휠 + AMG 풀킷",
+      "나파 스티어링 · AMG 사이드실까지",
+      "퍼포먼스보다 스타일 중시"
+    ] },
+  { key: "amg43", title: "Mercedes-AMG GLC 43", points: [
+      "421ps · 0-100km/h 4.5초 퍼포먼스",
+      "AMG 전용 사운드 · 서스펜션 · 리어스티어링",
+      "GLC 300 대비 +2,140만원",
+      "진짜 퍼포먼스 원하는 드라이버"
+    ] },
+];
+</script>
+
+<!-- ============================================================
+     경쟁차 비교 데이터
+     ============================================================ -->
+<script>
+const COMPARE_DATA = {
+  headers: ["항목", "GLC 300 4MATIC\nCoupé AVANTGARDE", "BMW X4 xDrive 20i", "Audi Q5 스포트백 40 TFSI"],
+  highlight: 1,
+  rows: [
+    { label: "가격",              values: ["8,550만원",  "8,830만원", "7,655만원"] },
+    { label: "출력",              values: ["258ps",       "184ps",     "204ps"] },
+    { label: "토크",              values: ["40.8kg.m",    "29.6kg.m",  "34.67kg.m"] },
+    { label: "변속기",            values: ["9G-TRONIC",   "8단 자동",  "7단 S-Tronic"] },
+    { label: "구동방식",          values: ["4MATIC",      "xDrive",    "quattro"] },
+    { label: "쿠페 실루엣",       values: ["★★★★★",     "★★★★",    "★★★★"] },
+    { label: "실내 고급감",       values: ["★★★★★",     "★★★★",    "★★★"] },
+    { label: "정숙성",            values: ["★★★★★",     "★★★★",    "★★★★"] },
+    { label: "헤드라이트",        values: ["디지털 라이트",  "어댑티브 LED", "LED"] },
+    { label: "헤드업 디스플레이", values: ["✓ 기본",      "✓ 기본",   "✓ 기본"] },
+    { label: "앰비언트 라이트",   values: ["64색 프리미엄", "제한적",   "제한적"] },
+    { label: "오디오",            values: ["부메스터 3D 서라운드","하이 파이 오디오",  "뱅앤올룹슨"] },
+    { label: "트렁크",            values: ["545~1,490L",  "525~1,430L", "510~1,390L"] },
+    { label: "브랜드 가치",       values: ["★★★★★",     "★★★★",    "★★★"] },
+    { label: "서비스센터",        values: ["75개소",      "70개소",    "40개소"] },
+  ]
+};
+</script>
+
+<!-- ============================================================
+     프로모션 데이터
+     ============================================================ -->
+<script>
+const PROMO_DATA = [
+  { icon: "💰", title: "기본 할인",        content: "AVANTGARDE 8%할인<br>AMG Line 9%할인<br>AMG GLC 43 3%할인", tag: "DISCOUNT" },
+  { icon: "🏦", title: "벤츠 파이낸셜",   content: "AVANTGARDE 기본할인 + 4% / 저금리적용<br>AMG Line 저금리적용", tag: "FINANCIAL" },
+  { icon: "🚗", title: "장기렌트",         content: "AVANTGARDE 기본할인 + 7%할인<br>AMG Line 기본할인 + 3%할인<br>AMG GLC 43 기본할인 + 3% 할인", tag: "LONG-TERM RENT" },
+  { icon: "🔄", title: "재구매 고객 혜택", content: "+ 1% 할인", tag: "LOYALTY" },
+  { icon: "🏢", title: "법인 고객 혜택",   content: "2대 이상 구매 시 기본할인 + 3%할인", tag: "CORPORATE" },
+  { icon: "🔃", title: "트레이드인 혜택",  content: " + 1% 할인", tag: "TRADE-IN" },
+];
+</script>
+
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic',
+               'Segoe UI', sans-serif;
+  background: #FFFFFF;
+  color: #111111;
+  line-height: 1.65;
+  overflow-x: hidden;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --black:  #111111;
+  --ink:    #444444;
+  --sub:    #777777;
+  --gray1:  #F8F9FB;
+  --gray2:  #F2F3F5;
+  --gray3:  #EAEAEA;
+  --gray4:  #8C8C8C;
+  --white:  #FFFFFF;
+  --line:   #E5E5E5;
+  --line-dark: rgba(255,255,255,.14);
+  --ink-dark:  rgba(255,255,255,.78);
+  --sub-dark:  rgba(255,255,255,.55);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,.09);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,.14);
+  --radius: 16px;
+  --section-gap: 120px;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.label-en {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gray4);
+}
+h1 { font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.65rem); font-weight: 700; }
+p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.blue, .green, .red { color: var(--black); }
+.section { padding: var(--section-gap) 0; }
+.section-alt { background: var(--gray1); }
+.tag {
+  display: inline-block; padding: 4px 14px; border-radius: 100px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+.tag-blue { background: var(--gray2); color: var(--black); }
+
+/* ============================================================
+   IMAGE PLACEHOLDER
+   ============================================================ */
+.img-box {
+  width: 100%; background: #F5F6F8; border: 2px dashed #DCE2EC;
+  display: flex; align-items: center; justify-content: center;
+  color: #AAAAAA; font-size: .85rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  position: relative; overflow: hidden;
+}
+.img-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.img-box span { position: relative; z-index: 1; pointer-events: none; }
+.img-box.has-image { cursor: pointer; }
+.img-box.has-image:hover img { transform: scale(1.04); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gray3);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 32px; height: 60px; transition: box-shadow .3s;
+}
+.site-header.scrolled { box-shadow: var(--shadow-sm); }
+.header-logo { font-size: .82rem; font-weight: 800; letter-spacing: .18em; color: var(--black); text-transform: uppercase; }
+
+/* ============================================================
+   S1 · HERO
+   ============================================================ */
+#hero {
+  position: relative;
+  background: var(--black);
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-media.has-image { cursor: pointer; }
+.hero-media-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+.hero-eyebrow-text {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,.75);
+}
+.hero-main-title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  margin-bottom: 18px;
+  color: var(--white);
+  text-shadow: 0 4px 30px rgba(0,0,0,.5);
+}
+.hero-subtitle {
+  font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  margin-bottom: 6px;
+  color: var(--white);
+}
+.hero-tagline {
+  font-size: .92rem;
+  letter-spacing: .01em;
+  font-weight: 400;
+  color: rgba(255,255,255,.72);
+  line-height: 1.8;
+}
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-divider-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,.7), transparent);
+}
+.hero-divider-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+}
+.hero-price-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-price-card {
+  flex: 1;
+  min-width: 144px;
+  border-radius: var(--radius);
+  padding: 17px 18px;
+  background: rgba(10,10,10,.55);
+  border: 1px solid rgba(255,255,255,.20);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.45);
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+.hero-price-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.08);
+}
+.hero-card-badge {
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 5px;
+}
+.hero-card-model {
+  font-size: clamp(.88rem, 1.75vw, 1.02rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: -.01em;
+}
+.hero-card-price {
+  font-size: clamp(1.32rem, 3vw, 1.8rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.55);
+  -webkit-text-stroke: .4px rgba(0,0,0,.35);
+}
+.hero-card-cta {
+  font-size: .68rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.65);
+  letter-spacing: .04em;
+}
+
+/* ---------------- PC (min-width: 769px) ---------------- */
+@media (min-width: 769px) {
+  #hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-media-overlay {
+    background: linear-gradient(90deg,
+      rgba(0,0,0,.68) 0%,
+      rgba(0,0,0,.48) 22%,
+      rgba(0,0,0,.26) 42%,
+      rgba(0,0,0,.05) 58%,
+      rgba(0,0,0,0) 70%);
+  }
+  .hero-media img { object-position: 58% 48%; }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    padding: 90px 5vw 60px;
+  }
+  .hero-text-col {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .hero-card-block {
+    transform: translate(-26px, 20px);
+  }
+}
+
+/* ---------------- Mobile (max-width: 768px) ---------------- */
+@media (max-width: 768px) {
+  #hero {
+    background: var(--white);
+  }
+  .hero-media {
+    position: relative;
+    height: 58vh;
+    min-height: 380px;
+  }
+  .hero-media-overlay {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,0) 35%,
+      rgba(0,0,0,0) 78%,
+      rgba(0,0,0,.55) 100%);
+  }
+  .hero-media img { object-position: 60% 35%; }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-text-block {
+    background: var(--black);
+    padding: 28px 24px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .hero-card-block {
+    background: var(--black);
+    padding: 0 24px 40px;
+  }
+  .hero-price-row { flex-direction: column; gap: 10px; }
+  .hero-price-card { padding: 15px 18px; }
+  .hero-divider { margin-top: 4px; }
+}
+
+/* ============================================================
+   SECTION HEADING
+   ============================================================ */
+.section-heading { text-align: center; margin-bottom: 60px; position: relative; }
+.section-heading .label-en { margin-bottom: 16px; display: block; }
+.section-heading h2 { margin-bottom: 16px; }
+.section-heading p { max-width: 540px; margin: 0 auto; }
+
+.sec-num {
+  position: absolute;
+  top: 0; left: 0;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: var(--gray4);
+  background: var(--gray2);
+  border: 1px solid var(--gray3);
+  border-radius: 6px;
+  padding: 3px 9px;
+  line-height: 1.6;
+  user-select: none;
+}
+.hero-sec-num {
+  position: absolute;
+  top: 80px; left: 24px;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  padding: 3px 9px;
+  line-height: 1.6;
+  user-select: none;
+  z-index: 10;
+}
+
+/* ============================================================
+   WHY GLC COUPÉ - REASON CARDS
+   ============================================================ */
+.reason-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+@media (max-width: 768px) { .reason-grid { grid-template-columns: 1fr; } }
+.reason-card {
+  background: var(--white);
+  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+}
+.reason-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+.reason-img { height: 280px; flex-shrink: 0; }
+@media (max-width: 900px) { .reason-img { height: 220px; } }
+@media (max-width: 680px) { .reason-img { height: 200px; } }
+.reason-body { padding: 32px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+.reason-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.reason-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--gray2); display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; flex-shrink: 0;
+}
+.reason-body h3 { font-size: clamp(1.05rem,2vw,1.25rem); font-weight: 800; line-height: 1.3; letter-spacing: -.01em; color: var(--black); }
+.reason-badge {
+  display: inline-block;
+  background: var(--gray2);
+  color: var(--black);
+  font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px; margin-bottom: 14px; align-self: flex-start;
+}
+.reason-body p { font-size: .95rem; color: #555; line-height: 1.85; margin: 0; }
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+@media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+.stat-card {
+  border: 1px solid var(--gray3); border-radius: var(--radius);
+  padding: 40px 24px; text-align: center; background: var(--white);
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+}
+.stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.stat-number { font-size: clamp(2.2rem,5vw,3.2rem); font-weight: 800; color: var(--black); line-height: 1.1; margin-bottom: 10px; letter-spacing: -.03em; }
+.stat-label { font-size: 1.05rem; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.stat-desc { font-size: .88rem; color: var(--gray4); line-height: 1.6; }
+
+/* ============================================================
+   QUICK TRIM COMPARE (S4)
+   ============================================================ */
+.quick-trim-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .quick-trim-grid { grid-template-columns: 1fr; } }
+.quick-trim-card {
+  background: var(--black); border-radius: var(--radius);
+  padding: 32px 28px; box-shadow: var(--shadow-md);
+  border-top: 4px solid rgba(255,255,255,.35);
+  transition: transform .3s, box-shadow .3s;
+}
+.quick-trim-card:hover { transform: translateY(-8px); border-top-color: rgba(255,255,255,.7); }
+.quick-trim-card h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 6px; }
+.quick-trim-price { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+.quick-trim-points { list-style: none; margin-bottom: 24px; }
+.quick-trim-points li { color: var(--ink-dark); font-size: .88rem; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.quick-trim-points li:last-child { border-bottom: none; }
+.quick-trim-points li::before { content: '·'; color: rgba(255,255,255,.55); font-weight: 800; margin-right: 8px; }
+.quick-trim-link { display: inline-block; font-size: .82rem; font-weight: 700; color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); padding-bottom: 2px; }
+
+/* ============================================================
+   OPTION CHIPS (TRIM DETAIL)
+   ============================================================ */
+.chip-group-title { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray4); margin-bottom: 16px; }
+.chip-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px; }
+.chip { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 100px; padding: 6px 16px; font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.85); }
+.chip-blue, .chip-green, .chip-red { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.45); color: var(--white); font-weight: 700; }
+
+.trim-detail-panel { border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow-md); background: var(--black); border-top: 4px solid rgba(255,255,255,.35); }
+.trim-detail-panel .chip-group-title { color: rgba(255,255,255,.45); }
+
+.position-callout { border-radius: 12px; padding: 20px 24px; margin-top: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); }
+.position-callout-title { font-weight: 800; margin-bottom: 8px; font-size: .95rem; color: var(--white); }
+.position-callout p { color: rgba(255,255,255,.75); font-size: .88rem; line-height: 1.75; margin: 0; }
+
+/* ============================================================
+   DETAIL SPEC GRID (4-column, dark)
+   ============================================================ */
+.spec-grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 48px; }
+@media (max-width: 900px) { .spec-grid-4 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .spec-grid-4 { grid-template-columns: repeat(2,1fr); gap: 8px; } }
+.spec-cell {
+  background: var(--black); border: 1px solid rgba(255,255,255,.1); border-radius: 12px;
+  padding: 18px 16px; text-align: center;
+}
+.spec-cell-label { font-size: .72rem; color: rgba(255,255,255,.5); font-weight: 600; margin-bottom: 8px; letter-spacing: .04em; }
+.spec-cell-value { font-size: 1.02rem; color: var(--white); font-weight: 800; }
+.spec-cell-value.blue, .spec-cell-value.green, .spec-cell-value.red { color: var(--white); }
+
+/* ============================================================
+   TECH CARDS
+   ============================================================ */
+.tech-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .tech-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .tech-grid { grid-template-columns: 1fr; } }
+.tech-card {
+  background: var(--white); border: 1px solid var(--gray3);
+  border-radius: var(--radius); padding: 32px 28px;
+  box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+}
+.tech-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.tech-icon { font-size: 2.2rem; margin-bottom: 16px; }
+.tech-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+.tech-card p { font-size: .9rem; color: var(--gray4); line-height: 1.75; margin: 0; }
+
+/* ============================================================
+   3트림 상세 비교표 (S8)
+   ============================================================ */
+.compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.compare-table { width: 100%; min-width: 700px; border-collapse: collapse; }
+.compare-table th { padding: 20px 24px; font-size: .9rem; font-weight: 800; letter-spacing: .06em; text-align: center; white-space: pre-line; border-bottom: 2px solid var(--gray3); background: var(--gray1); }
+.compare-table th.col-glc { background: var(--black); color: var(--white); }
+.compare-table th.col-glc::after { content: 'OUR MODEL'; display: block; font-size: .62rem; letter-spacing: .14em; color: rgba(255,255,255,.6); margin-top: 4px; }
+.compare-table th.col-avg { background: var(--black); color: var(--white); }
+.compare-table th.col-avg::after { content: 'AVANTGARDE'; display: block; font-size: .6rem; letter-spacing: .12em; color: rgba(255,255,255,.6); margin-top: 4px; }
+.compare-table th.col-amgline { background: var(--black); color: var(--white); }
+.compare-table th.col-amgline::after { content: 'AMG LINE'; display: block; font-size: .6rem; letter-spacing: .12em; color: rgba(255,255,255,.6); margin-top: 4px; }
+.compare-table th.col-amg43 { background: var(--black); color: var(--white); }
+.compare-table th.col-amg43::after { content: 'AMG GLC 43'; display: block; font-size: .6rem; letter-spacing: .12em; color: rgba(255,255,255,.6); margin-top: 4px; }
+.compare-table td { padding: 18px 24px; font-size: .94rem; font-weight: 500; text-align: center; border-bottom: 1px solid var(--gray3); color: var(--gray4); }
+.compare-table td.col-glc { background: var(--gray1); color: var(--black); font-weight: 700; }
+.compare-table td.col-avg { background: var(--gray1); color: var(--black); font-weight: 700; }
+.compare-table td.col-amgline { background: var(--gray1); color: var(--black); font-weight: 700; }
+.compare-table td.col-amg43 { background: var(--gray2); color: var(--black); font-weight: 700; }
+.compare-table td.col-label { text-align: left; font-weight: 700; color: var(--black); background: var(--white); font-size: .92rem; padding-left: 28px; white-space: nowrap; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: #FAFAFA; }
+.compare-notice { margin-top: 20px; font-size: .78rem; color: var(--gray4); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.compare-notice::before { content: 'ⓘ'; }
+.scroll-hint { display: none; font-size: .72rem; color: var(--gray4); text-align: right; margin-bottom: 10px; }
+@media (max-width: 768px) { .scroll-hint { display: block; } }
+
+.position-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px; }
+@media (max-width: 900px) { .position-grid { grid-template-columns: 1fr; } }
+.position-card { border-radius: var(--radius); padding: 28px 26px; background: var(--white); border: 1px solid var(--gray3); border-top: 4px solid var(--black); box-shadow: var(--shadow-sm); }
+.position-card h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 14px; color: var(--black); }
+.position-card ul { list-style: none; }
+.position-card li { font-size: .86rem; color: var(--ink); padding: 5px 0; }
+.position-card li::before { content: '·'; color: var(--black); font-weight: 800; margin-right: 6px; }
+
+/* ============================================================
+   프로모션
+   ============================================================ */
+.promo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width: 900px) { .promo-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .promo-grid { grid-template-columns: 1fr; } }
+.promo-card {
+  background: var(--white); border: 1px solid var(--gray3); border-radius: var(--radius);
+  padding: 36px 28px; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.promo-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.promo-badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: .65rem; font-weight: 800; letter-spacing: .14em; background: var(--gray2); color: var(--gray4); margin-bottom: 20px; }
+.promo-tag { position: absolute; top: 20px; right: 20px; font-size: .6rem; font-weight: 800; letter-spacing: .12em; color: var(--black); background: var(--gray2); padding: 3px 10px; border-radius: 100px; }
+.promo-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.promo-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; color: var(--black); }
+.promo-content { font-size: .92rem; color: var(--gray4); line-height: 1.75; }
+.promo-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--black); opacity: 0; transition: opacity .3s; }
+.promo-card:hover::before { opacity: 1; }
+
+/* ============================================================
+   FINAL CTA (S11)
+   ============================================================ */
+.final-cta {
+  background: var(--black);
+  color: var(--white);
+  padding: 110px 0 90px;
+  text-align: center;
+}
+.final-cta .label-en { color: rgba(255,255,255,.4); display:block; margin-bottom: 18px; }
+.final-cta h2 { color: var(--white); margin-bottom: 44px; }
+.final-points { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; max-width: 980px; margin: 0 auto 56px; }
+@media (max-width: 900px) { .final-points { grid-template-columns: repeat(2,1fr); } }
+.final-point {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius); padding: 26px 18px; font-size: .96rem; font-weight: 700;
+  color: var(--white);
+}
+.final-point .check { color: var(--white); margin-right: 8px; }
+.final-btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; max-width: 720px; margin: 0 auto; }
+.final-btn {
+  flex: 1; min-width: 200px; min-height: 56px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 100px; font-size: 1rem; font-weight: 800;
+  text-decoration: none; cursor: pointer; transition: transform .25s, box-shadow .25s;
+  padding: 16px 24px;
+}
+.final-btn:hover { transform: translateY(-4px); }
+.final-btn-call { background: var(--white); color: var(--black); box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+.final-btn-kakao { background: #FEE500; color: #3C1E1E; }
+.final-btn-drive { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.4); }
+
+/* ============================================================
+   RESPONSIVE GLOBAL
+   ============================================================ */
+@media (max-width: 768px) { :root { --section-gap: 80px; } }
+@media (max-width: 480px) { :root { --section-gap: 60px; } .site-header { padding: 0 20px; } }
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .stat-card { min-height: 210px; padding: 28px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stat-number { font-size: 2.8rem !important; line-height: 1; }
+  .stat-label { font-size: 1rem !important; line-height: 1.45; word-break: keep-all; }
+  .stat-desc { font-size: .86rem !important; line-height: 1.55; word-break: keep-all; }
+  .trim-detail-panel { padding: 28px 22px; }
+}
+@media (max-width: 480px) {
+  .stat-card { min-height: 200px; padding: 24px 14px; }
+  .stat-number { font-size: 2.5rem !important; }
+  .stat-label { font-size: .9rem !important; }
+  .stat-desc { font-size: .8rem !important; }
+}
+
+/* ============================================================
+   TRIM IMAGE GRID (S5, S6, S7)
+   ============================================================ */
+.trim-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+@media (max-width: 768px) {
+  .trim-image-grid { grid-template-columns: 1fr; }
+}
+.trim-image-card {
+  background: var(--white);
+  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.trim-image-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.trim-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: var(--gray2);
+}
+@media (max-width: 768px) {
+  .trim-image-box { aspect-ratio: auto; height: 240px; }
+}
+.trim-image-box img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.trim-image-card:hover .trim-image-box img { transform: scale(1.04); }
+.trim-image-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  color: var(--gray4);
+}
+.trim-image-placeholder svg { opacity: .35; }
+.trim-image-placeholder span { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.trim-image-label {
+  padding: 14px 18px;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--black);
+  border-top: 1px solid var(--gray3);
+  display: flex; align-items: center; gap: 8px;
+}
+.trim-image-label::before {
+  content: '';
+  display: inline-block; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--black); flex-shrink: 0;
+}
+
+/* ============================================================
+   IMAGE MODAL (LIGHTBOX)
+   ============================================================ */
+.image-modal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  align-items: center; justify-content: center;
+}
+.image-modal.active { display: flex; }
+.image-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.image-modal-content {
+  position: relative; z-index: 1;
+  max-width: min(92vw, 1080px);
+  max-height: 90svh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  background: var(--black);
+}
+.image-modal-content img {
+  display: block;
+  width: 100%; height: 100%;
+  max-height: 90svh;
+  object-fit: contain;
+}
+.image-modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.2rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s;
+  backdrop-filter: blur(4px);
+}
+.image-modal-close:hover { background: rgba(255,255,255,.28); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-logo">MERCEDES-BENZ</div>
+</header>
+
+<!-- ============================================================
+     S1 · HERO
+     ============================================================ -->
+<section id="hero" style="position:relative;">
+  <span class="hero-sec-num">01 · HERO</span>
+  <div class="hero-media" id="heroMedia">
+    <img id="heroImg" src="" alt="Mercedes-Benz GLC 300 Coupé" loading="eager" style="display:none;">
+    <div class="hero-media-overlay"></div>
+  </div>
+  <div class="hero-inner">
+
+    <div class="hero-text-col">
+
+      <div class="hero-text-block">
+        <p class="hero-eyebrow-text reveal">MERCEDES-BENZ OFFICIAL DEALER</p>
+        <h1 class="hero-main-title reveal reveal-delay-1">GLC Coupé</h1>
+        <p class="hero-subtitle reveal reveal-delay-2">C254 · MY26 · Coupé Lineup</p>
+        <p class="hero-tagline reveal reveal-delay-2">SUV의 실용성에 쿠페의 감각을 더한 프리미엄 쿠페 SUV.<br><br>유려한 루프라인과 258~421마력의 다채로운 파워트레인, 그리고 메르세데스-벤츠 특유의 정숙성까지.</p>
+      </div>
+
+      <div class="hero-card-block">
+        <div class="hero-divider reveal reveal-delay-3">
+          <div class="hero-divider-line"></div>
+          <span class="hero-divider-label">고객 상담 어프로치북 / CUSTOMER CONSULTATION GUIDE</span>
+        </div>
+
+        <div class="reveal reveal-delay-4">
+          <div class="hero-price-row">
+            <a href="#avantgarde" class="hero-price-card">
+              <div class="hero-card-badge">GASOLINE · 4MATIC · COUPÉ</div>
+              <div class="hero-card-model">GLC 300 4MATIC Coupé AVANTGARDE</div>
+              <div class="hero-card-price">8,550만원</div>
+              <div class="hero-card-cta">자세히 보기 →</div>
+            </a>
+            <a href="#amgline" class="hero-price-card card-green">
+              <div class="hero-card-badge">GASOLINE · 4MATIC · COUPÉ</div>
+              <div class="hero-card-model">GLC 300 4MATIC Coupé AMG Line</div>
+              <div class="hero-card-price">9,570만원</div>
+              <div class="hero-card-cta">자세히 보기 →</div>
+            </a>
+            <a href="#amg43" class="hero-price-card card-red">
+              <div class="hero-card-badge">AMG · 4MATIC · COUPÉ</div>
+              <div class="hero-card-model">Mercedes-AMG GLC 43 4MATIC Coupé</div>
+              <div class="hero-card-price">1억 690만원</div>
+              <div class="hero-card-cta">자세히 보기 →</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S2 · 왜 GLC Coupé인가
+     ============================================================ -->
+<section id="why" class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">02 · WHY GLC COUPÉ</span>
+      <span class="label-en">Why GLC Coupé</span>
+      <h2>왜 지금<br>GLC Coupé인가</h2>
+      <p>SUV의 넉넉함과 쿠페의 감각적인 실루엣, 두 가지를 모두 원하는 고객을 위한 선택</p>
+    </div>
+    <div class="reason-grid">
+
+      <div class="reason-card reveal">
+        <div class="img-box reason-img" id="imgReasonStyle"><span>쿠페 실루엣 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">🚘</div>
+            <h3>쿠페 실루엣이<br>다릅니다</h3>
+          </div>
+          <span class="reason-badge">유려하게 떨어지는 루프라인</span>
+          <p>일반 SUV보다 낮고 날렵하게 떨어지는 루프라인이 GLC Coupé의 첫인상을 결정합니다. 정차 중에도, 주행 중에도 시선을 사로잡는 실루엣입니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-1">
+        <div class="img-box reason-img" id="imgReasonPractical"><span>실용성 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">🧳</div>
+            <h3>SUV의<br>실용성 그대로</h3>
+          </div>
+          <span class="reason-badge">트렁크 545~1,490L</span>
+          <p>쿠페 스타일이지만 GLC SUV와 동일한 넉넉한 실내와 트렁크 공간을 그대로 계승했습니다. 스타일을 위해 실용성을 포기할 필요가 없습니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-2">
+        <div class="img-box reason-img" id="imgReasonPerformance"><span>AMG 퍼포먼스 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">🏁</div>
+            <h3>258ps에서<br>421ps까지</h3>
+          </div>
+          <span class="reason-badge">AVANTGARDE부터 AMG GLC 43까지</span>
+          <p>합리적인 가솔린 트림부터 421마력 · 0-100km/h 4.5초의 진짜 퍼포먼스 트림까지. 원하는 성격에 맞춰 고를 수 있는 폭넓은 라인업입니다.</p>
+        </div>
+      </div>
+
+      <div class="reason-card reveal reveal-delay-3">
+        <div class="img-box reason-img" id="imgReasonBrand"><span>프리미엄 브랜드 이미지</span></div>
+        <div class="reason-body">
+          <div class="reason-header">
+            <div class="reason-icon">⭐</div>
+            <h3>프리미엄<br>쿠페 SUV의 정석</h3>
+          </div>
+          <span class="reason-badge">메르세데스-벤츠의 품격</span>
+          <p>쿠페 SUV 세그먼트를 대표하는 브랜드 가치와 서비스 네트워크. 스타일과 신뢰를 동시에 원하는 고객에게 가장 확실한 선택입니다.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S3 · 숫자로 보는 GLC Coupé
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">03 · BY THE NUMBERS</span>
+      <span class="label-en">By the Numbers</span>
+      <h2>숫자로 보는<br>GLC Coupé</h2>
+      <p>수치로 확인하는 GLC Coupé 라인업의 완성도</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number"><span class="red">421</span><span style="font-size:1.4rem"> ps</span></div>
+        <div class="stat-label">AMG GLC 43 최고 출력</div>
+        <div class="stat-desc">라인업 최고 출력, 퍼포먼스 쿠페 SUV</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number"><span class="red">4.5</span><span style="font-size:1.4rem">초</span></div>
+        <div class="stat-label">AMG GLC 43 0→100km/h</div>
+        <div class="stat-desc">쿠페 SUV답지 않은 압도적 가속</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number"><span class="blue">545</span><span style="font-size:1.4rem">~1,490L</span></div>
+        <div class="stat-label">트렁크 용량</div>
+        <div class="stat-desc">쿠페 스타일에도 그대로인 SUV 실용성</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number"><span class="blue">★★★★★</span></div>
+        <div class="stat-label">Mercedes-Benz 브랜드 가치</div>
+        <div class="stat-desc">8년 연속 대한민국 수입차 판매 1위</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S4 · 트림 비교 (퀵 비교)
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">04 · TRIM COMPARE</span>
+      <span class="label-en">AVANTGARDE · AMG Line · AMG GLC 43</span>
+      <h2>나에게 맞는<br>트림은 무엇일까</h2>
+      <p>3가지 트림의 성격을 한눈에 비교해보세요</p>
+    </div>
+    <div class="quick-trim-grid" id="quickTrimWrap"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S5 · AVANTGARDE 상세설명
+     ============================================================ -->
+<section id="avantgarde" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">05 · AVANTGARDE</span>
+      <span class="label-en">GLC Coupé C254 · MY26</span>
+      <h2 class="blue">GLC 300 4MATIC<br>Coupé AVANTGARDE</h2>
+      <p>가장 합리적인 쿠페 SUV의 시작, 8,550만원</p>
+    </div>
+
+    <!-- 외관/실내 이미지 2장 -->
+    <div class="trim-image-grid">
+      <div class="trim-image-card reveal" data-modal-img="imgAvantgardeExterior">
+        <div class="trim-image-box" id="imgAvantgardeExterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>외관 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">외관 디자인</div>
+      </div>
+      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAvantgardeInterior">
+        <div class="trim-image-box" id="imgAvantgardeInterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>실내 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label">실내 디자인</div>
+      </div>
+    </div>
+
+    <div class="spec-grid-4 reveal">
+      <div class="spec-cell"><div class="spec-cell-label">엔진</div><div class="spec-cell-value">직렬 4기통 / 48V ISG</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">배기량</div><div class="spec-cell-value">1,999cc</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고출력</div><div class="spec-cell-value blue">258ps / 5,800rpm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최대토크</div><div class="spec-cell-value">40.8kgm / 1,800-4,000</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">변속기</div><div class="spec-cell-value">9G-TRONIC</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">구동방식</div><div class="spec-cell-value">사륜구동 4MATIC</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">복합연비</div><div class="spec-cell-value blue">9.2 km/L (5등급)</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">도심/고속</div><div class="spec-cell-value">8.0 / 11.3</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">0→100km/h</div><div class="spec-cell-value blue">6.3초</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고속도</div><div class="spec-cell-value">230km/h</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">타이어</div><div class="spec-cell-value">235/55 R19</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">전장×전폭×전고</div><div class="spec-cell-value">4,790×1,890×1,610</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">축거</div><div class="spec-cell-value">2,890mm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">공차중량</div><div class="spec-cell-value">1,990kg</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">연료탱크</div><div class="spec-cell-value">62L</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">트렁크</div><div class="spec-cell-value">545~1,490L</div></div>
+    </div>
+
+    <div class="trim-detail-panel avg-panel reveal">
+      <p class="chip-group-title">🔷 외장 사양</p>
+      <div class="chip-row">
+        <span class="chip chip-blue">AVANTGARDE 익스테리어</span>
+        <span class="chip">19인치 10트윈 스포크 경량 알로이 휠</span>
+        <span class="chip">디지털 라이트 & 어댑티브 상향등 어시스트 플러스</span>
+        <span class="chip">파노라믹 선루프</span>
+        <span class="chip">메르세데스-벤츠 스타 앰블럼</span>
+        <span class="chip">360° 카메라 포함 주차 패키지</span>
+        <span class="chip">사이드 윈도우 서라운드</span>
+        <span class="chip">다크 그레이 루브르 크롬 라디에이터 그릴</span>
+        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
+      </div>
+
+      <p class="chip-group-title">🔷 실내 사양</p>
+      <div class="chip-row">
+        <span class="chip chip-blue">AVANTGARDE 인테리어</span>
+        <span class="chip">앞좌석 열선 및 통풍 시트</span>
+        <span class="chip">앰비언트 라이트</span>
+        <span class="chip">다기능 스포츠 스티어링 휠 (가죽)</span>
+        <span class="chip">공기 청정 패키지</span>
+      </div>
+
+      <p class="chip-group-title">🔷 편의 사양</p>
+      <div class="chip-row">
+        <span class="chip">MBUX 멀티미디어 시스템 (LCD 센터페시아 디스플레이)</span>
+        <span class="chip">MBUX 내비게이션 프리미엄</span>
+        <span class="chip">MBUX 증강현실 내비게이션</span>
+        <span class="chip">지문 스캐너</span>
+        <span class="chip">앞좌석 무선 충전 시스템</span>
+        <span class="chip chip-blue">헤드업 디스플레이</span>
+        <span class="chip chip-blue">부메스터 3D 서라운드 사운드</span>
+        <span class="chip">듀얼 존 시스템</span>
+        <span class="chip">드라이빙 어시스턴스 패키지 플러스</span>
+      </div>
+
+      <div class="position-callout pc-blue">
+        <div class="position-callout-title">💡 AVANTGARDE의 포지션</div>
+        <p>GLC 쿠페 라인업의 엔트리. 쿠페 특유의 유려한 실루엣을 8,550만원에 경험할 수 있는 최고 가성비 트림. 등급 SUV 대비 낮은 루프라인으로 스포티한 이미지를 원하는 고객에게 적합.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S6 · AMG Line 상세설명
+     ============================================================ -->
+<section id="amgline" class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">06 · AMG LINE</span>
+      <span class="label-en">GLC Coupé C254 · MY26</span>
+      <h2 class="green">GLC 300 4MATIC<br>Coupé AMG Line</h2>
+      <p>AMG 외관을 갖춘 스포티한 존재감, 9,570만원</p>
+    </div>
+
+    <!-- 외관/실내 이미지 2장 -->
+    <div class="trim-image-grid">
+      <div class="trim-image-card reveal" data-modal-img="imgAmglineExterior">
+        <div class="trim-image-box" id="imgAmglineExterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>외관 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label tl-green">AMG Line 외관 디자인</div>
+      </div>
+      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAmglineInterior">
+        <div class="trim-image-box" id="imgAmglineInterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>실내 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label tl-green">AMG Line 실내 디자인</div>
+      </div>
+    </div>
+
+    <div class="spec-grid-4 reveal">
+      <div class="spec-cell"><div class="spec-cell-label">엔진</div><div class="spec-cell-value">직렬 4기통 / 48V ISG</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">배기량</div><div class="spec-cell-value">1,999cc</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고출력</div><div class="spec-cell-value green">258ps / 5,800rpm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최대토크</div><div class="spec-cell-value">40.8kgm / 1,800-4,000</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">변속기</div><div class="spec-cell-value">9G-TRONIC</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">구동방식</div><div class="spec-cell-value">사륜구동 4MATIC</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">복합연비</div><div class="spec-cell-value green">9.2 km/L (5등급)</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">도심/고속</div><div class="spec-cell-value">8.0 / 11.3</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">0→100km/h</div><div class="spec-cell-value green">6.3초</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고속도</div><div class="spec-cell-value">230km/h</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">타이어</div><div class="spec-cell-value">255/45 R20 AMG</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">전장×전폭×전고</div><div class="spec-cell-value">4,790×1,940×1,610</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">축거</div><div class="spec-cell-value">2,890mm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">공차중량</div><div class="spec-cell-value">1,990kg</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">연료탱크</div><div class="spec-cell-value">62L</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">트렁크</div><div class="spec-cell-value">545~1,490L</div></div>
+    </div>
+
+    <div class="trim-detail-panel amgline-panel reveal">
+      <p class="chip-group-title">🔷 외장 사양 (AVANTGARDE 대비 추가/변경)</p>
+      <div class="chip-row">
+        <span class="chip chip-green">AMG Line 익스테리어</span>
+        <span class="chip chip-green">20인치 AMG 멀티 스포크 알로이 휠</span>
+        <span class="chip chip-green">AMG 프런트 에이프런 (크롬 트림)</span>
+        <span class="chip chip-green">AMG 리어 에이프런 (블랙 인서트 + 룩 디퓨저)</span>
+        <span class="chip chip-green">AMG 사이드 실 패널</span>
+        <span class="chip chip-green">AMG 휠 아치</span>
+        <span class="chip">메르세데스-벤츠 패턴 라디에이터 그릴</span>
+        <span class="chip">크롬 마감 무광 다크 그레이 루브르</span>
+        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
+      </div>
+
+      <p class="chip-group-title">🔷 실내 사양 (추가/변경)</p>
+      <div class="chip-row">
+        <span class="chip chip-green">AMG Line 인테리어</span>
+        <span class="chip chip-green">다기능 스포츠 스티어링 휠 (나파 가죽)</span>
+        <span class="chip">앞좌석 열선 및 통풍 시트</span>
+        <span class="chip">앰비언트 라이트</span>
+      </div>
+
+      <div class="position-callout pc-green">
+        <div class="position-callout-title">💡 AMG Line의 포지션</div>
+        <p>동일 파워트레인에 AMG 외관 패키지 풀 적용. AVANTGARDE 대비 +1,020만원으로 20" 휠, AMG 에이프런, 나파 스티어링까지 업그레이드. 실 AMG보다 훨씬 합리적 가격에 AMG 룩을 완성하고 싶은 고객에게 최적의 선택.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S7 · Mercedes-AMG GLC 43 Coupé 상세설명
+     ============================================================ -->
+<section id="amg43" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">07 · AMG PERFORMANCE</span>
+      <span class="label-en">GLC Coupé C254 · MY26 · AMG Performance</span>
+      <h2 class="red">Mercedes-AMG<br>GLC 43 4MATIC Coupé</h2>
+      <p>진짜 퍼포먼스 쿠페 SUV, 1억 690만원</p>
+    </div>
+
+    <!-- 외관/실내 이미지 2장 -->
+    <div class="trim-image-grid">
+      <div class="trim-image-card reveal" data-modal-img="imgAmg43Exterior">
+        <div class="trim-image-box" id="imgAmg43Exterior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>외관 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label tl-red">AMG GLC 43 외관 디자인</div>
+      </div>
+      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAmg43Interior">
+        <div class="trim-image-box" id="imgAmg43Interior">
+          <div class="trim-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>실내 이미지</span>
+          </div>
+        </div>
+        <div class="trim-image-label tl-red">AMG GLC 43 실내 디자인</div>
+      </div>
+    </div>
+
+    <div class="spec-grid-4 reveal">
+      <div class="spec-cell"><div class="spec-cell-label">엔진</div><div class="spec-cell-value">직렬 4기통 AMG / 48V BSG</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">배기량</div><div class="spec-cell-value">1,991cc</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고출력</div><div class="spec-cell-value red">421ps / 6,750rpm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최대토크</div><div class="spec-cell-value">51.0kgm / 5,000</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">변속기</div><div class="spec-cell-value">AMG SPEEDSHIFT MCT 9G</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">구동방식</div><div class="spec-cell-value">사륜구동 4MATIC</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">복합연비</div><div class="spec-cell-value red">8.7 km/L (5등급)</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">도심/고속</div><div class="spec-cell-value">7.6 / 10.8</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">0→100km/h</div><div class="spec-cell-value red">4.5초</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">최고속도</div><div class="spec-cell-value">250km/h</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">타이어</div><div class="spec-cell-value">265/45 R20 · 295/40 R20</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">전장×전폭×전고</div><div class="spec-cell-value">4,790×1,940×1,610</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">축거</div><div class="spec-cell-value">2,890mm</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">공차중량</div><div class="spec-cell-value">2,025kg</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">연료탱크</div><div class="spec-cell-value">62L</div></div>
+      <div class="spec-cell"><div class="spec-cell-label">트렁크</div><div class="spec-cell-value">545~1,490L</div></div>
+    </div>
+
+    <div class="trim-detail-panel amg43-panel reveal">
+      <p class="chip-group-title">🔷 AMG 전용 외장 사양</p>
+      <div class="chip-row">
+        <span class="chip chip-red">AMG 43 전용 익스테리어</span>
+        <span class="chip chip-red">20" AMG 10스포크 탄탈라이트 그레이 휠 (RVM)</span>
+        <span class="chip chip-red">AMG 스포일러 립</span>
+        <span class="chip chip-red">브랜드 프로젝션 로고</span>
+        <span class="chip">AMG 발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
+        <span class="chip">디지털 라이트 & Adaptive Highbeam Assist PLUS</span>
+        <span class="chip">파노라믹 선루프</span>
+      </div>
+
+      <p class="chip-group-title">🔷 AMG 전용 실내 사양</p>
+      <div class="chip-row">
+        <span class="chip chip-red">AMG 천연가죽 붐페 시트</span>
+        <span class="chip chip-red">레드 컬러 안전벨트</span>
+        <span class="chip chip-red">AMG 퍼포먼스 나파 터치컨트롤 + 시프트 패들 스티어링 휠</span>
+        <span class="chip chip-red">AMG 스티어링 휠 벨트</span>
+        <span class="chip">매탈스러치 피니시 트림 & 센터콘솔</span>
+        <span class="chip">나파 ARTICO 대시보드 마감</span>
+        <span class="chip chip-red">앰비언트 라이트 프리미엄 (64색, 894)</span>
+        <span class="chip">앞좌석 메모리 / 열선 / 통풍 시트</span>
+        <span class="chip">뒷좌석 열선 / ISOFIX / 접이식 시트</span>
+      </div>
+
+      <p class="chip-group-title">🔷 AMG 전용 편의 사양</p>
+      <div class="chip-row">
+        <span class="chip chip-red">AMG RIDE CONTROL 서스펜션</span>
+        <span class="chip chip-red">AMG 리얼 퍼포먼스 사운드</span>
+        <span class="chip chip-red">리어 액슬 스티어링 (2.5°)</span>
+        <span class="chip">12.3인치 계기반 + MBUX 3세대 11.9인치 LCD 디스플레이</span>
+        <span class="chip">T맵 오토 증강현실 내비게이션</span>
+        <span class="chip">MBUX 인테리어 어시스턴트</span>
+        <span class="chip">앞좌석 휴대폰 무선 충전</span>
+        <span class="chip">Burmester 3D 서라운드 사운드 (15개, 710W)</span>
+        <span class="chip">4존 에어컨디셔너 & 공기청정 패키지</span>
+        <span class="chip">서라운드 카메라 & 액티브 주차 어시스트</span>
+        <span class="chip">KEYLESS-GO</span>
+        <span class="chip">전동식 트렁크 + 핸즈프리 액세스</span>
+      </div>
+
+      <div class="position-callout pc-red">
+        <div class="position-callout-title">🔥 AMG GLC 43의 포지션</div>
+        <p>GLC 쿠페 라인업의 퍼포먼스 플래그십. 421ps / 0-100km/h 4.5초의 압도적 가속감. AMG SPEEDSHIFT 9단 변속기와 RIDE CONTROL 서스펜션, 리얼 퍼포먼스 사운드까지 – 일상과 트랙을 모두 아우르는 진짜 퍼포먼스 SUV 쿠페.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S8 · 3개 트림 비교표
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">08 · FULL TRIM COMPARE</span>
+      <span class="label-en">AVANTGARDE vs AMG Line vs AMG GLC 43</span>
+      <h2>트림별 비교</h2>
+      <p>C254 · MY26 3개 트림 전체 스펙 비교</p>
+    </div>
+    <p class="scroll-hint">← 좌우로 스크롤하여 비교하세요 →</p>
+    <div class="compare-wrap reveal" id="trim3CompareWrap"></div>
+    <div class="position-grid" id="positionGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 · 경쟁차 비교
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">09 · COMPETITION</span>
+      <span class="label-en">Competitive Comparison</span>
+      <h2>왜 GLC Coupé가<br>선택받는가</h2>
+      <p>BMW X4, Audi Q5 스포트백과 직접 비교해보십시오</p>
+    </div>
+    <p class="scroll-hint">← 좌우로 스크롤하여 비교하세요 →</p>
+    <div class="compare-wrap reveal" id="compareWrap"></div>
+    <p class="compare-notice">모든 데이터는 공식 제조사 기준이며 실제와 다를 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S10 · 프로모션
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="sec-num">10 · PROMOTION</span>
+      <span class="label-en">Monthly Promotion</span>
+      <h2>이달의 특별 혜택</h2>
+      <p>혜택 내용은 매월 업데이트됩니다</p>
+    </div>
+    <div class="promo-grid" id="promoGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE MODAL (LIGHTBOX)
+     ============================================================ -->
+<div class="image-modal" id="imageModal" role="dialog" aria-modal="true">
+  <div class="image-modal-backdrop" id="imageModalBackdrop"></div>
+  <div class="image-modal-content">
+    <button class="image-modal-close" id="imageModalClose" aria-label="닫기">✕</button>
+    <img id="imageModalImg" src="" alt="">
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* -- 이미지 자동 적용 -- */
+function applyImages() {
+  const map = {
+    imgReasonStyle:        IMAGES.reasonStyle,
+    imgReasonPractical:    IMAGES.reasonPractical,
+    imgReasonPerformance:  IMAGES.reasonPerformance,
+    imgReasonBrand:        IMAGES.reasonBrand,
+    imgAvantgardeExterior: IMAGES.avantgardeExterior,
+    imgAvantgardeInterior: IMAGES.avantgardeInterior,
+    imgAmglineExterior:    IMAGES.amglineExterior,
+    imgAmglineInterior:    IMAGES.amglineInterior,
+    imgAmg43Exterior:      IMAGES.amg43Exterior,
+    imgAmg43Interior:      IMAGES.amg43Interior,
+  };
+  Object.entries(map).forEach(([id, url]) => {
+    if (!url) return;
+    const box = document.getElementById(id);
+    if (!box) return;
+    const img = document.createElement('img');
+    img.src = url; img.alt = id; img.loading = 'lazy';
+    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+    box.appendChild(img);
+    box.classList.add('has-image');
+    const ph = box.querySelector('.trim-image-placeholder');
+    if (ph) ph.style.display = 'none';
+    const span = box.querySelector('span');
+    if (span && !ph) span.style.display = 'none';
+  });
+
+  const heroImg = document.getElementById('heroImg');
+  const heroMedia = document.getElementById('heroMedia');
+  if (heroImg && heroMedia) {
+    if (IMAGES.hero) {
+      heroImg.src = IMAGES.hero;
+      heroImg.style.display = 'block';
+      heroMedia.classList.add('has-image');
+    } else {
+      heroMedia.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)';
+    }
+  }
+}
+
+/* -- 이미지 모달(라이트박스) -- */
+function initImageModal() {
+  const modal       = document.getElementById('imageModal');
+  const backdrop    = document.getElementById('imageModalBackdrop');
+  const closeBtn    = document.getElementById('imageModalClose');
+  const modalImg    = document.getElementById('imageModalImg');
+  if (!modal) return;
+
+  function openModal(src, alt) {
+    if (!src) return;
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalImg.src = ''; }, 300);
+  }
+
+  // 페이지 안의 모든 이미지 영역(.img-box, .trim-image-box)을 대상으로 라이트박스 연결.
+  // 아이콘 svg나 이미지가 아직 없는 placeholder는 내부에 img 태그가 없으므로 자동으로 클릭에 반응하지 않음.
+  document.querySelectorAll('.img-box, .trim-image-box').forEach(box => {
+    box.addEventListener('click', () => {
+      const img = box.querySelector('img');
+      if (img && img.src) openModal(img.src, img.alt);
+    });
+  });
+
+  // 히어로 이미지: 데스크톱에서는 hero-inner가 히어로 영역 전체를 덮고 있으므로,
+  // 텍스트/버튼 영역(.hero-text-col) 클릭이 아닐 때만 히어로 이미지를 확대.
+  const heroSection = document.getElementById('hero');
+  const heroImgEl   = document.getElementById('heroImg');
+  if (heroSection && heroImgEl) {
+    heroSection.addEventListener('click', (e) => {
+      if (e.target.closest('.hero-text-col')) return;
+      if (heroImgEl.style.display !== 'none' && heroImgEl.src) {
+        openModal(heroImgEl.src, heroImgEl.alt);
+      }
+    });
+  }
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+}
+
+applyImages();
+initImageModal();
+
+/* -- 퀵 트림 비교 카드 렌더링 -- */
+function renderQuickTrim() {
+  const wrap = document.getElementById('quickTrimWrap');
+  if (!wrap) return;
+  const cls = ['', 'qt-green', 'qt-red'];
+  const anchors = ['#avantgarde', '#amgline', '#amg43'];
+  wrap.innerHTML = TRIM_POSITION.map((t, i) => {
+    const price = [ '8,550만원', '9,570만원', '1억 690만원' ][i];
+    return `<div class="quick-trim-card ${cls[i]} reveal reveal-delay-${i}">
+      <h3>${t.title}</h3>
+      <div class="quick-trim-price">${price}</div>
+      <ul class="quick-trim-points">
+        ${t.points.map(p => `<li>${p}</li>`).join('')}
+      </ul>
+      <a class="quick-trim-link" href="${anchors[i]}">자세히 보기 →</a>
+    </div>`;
+  }).join('');
+  wrap.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* -- 3트림 상세 비교표 렌더링 -- */
+function renderTrim3Compare() {
+  const wrap = document.getElementById('trim3CompareWrap');
+  if (!wrap) return;
+  const colClasses = ['col-avg', 'col-amgline', 'col-amg43'];
+  let html = '<table class="compare-table"><thead><tr>';
+  TRIM_COMPARE3.headers.forEach((h, i) => {
+    if (i === 0) html += `<th style="text-align:left;padding-left:28px;min-width:140px;">${h}</th>`;
+    else html += `<th class="${colClasses[i-1]}" style="min-width:150px;">${h}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  TRIM_COMPARE3.rows.forEach(row => {
+    html += '<tr><td class="col-label">' + row.label + '</td>';
+    row.values.forEach((v, i) => {
+      html += `<td class="${colClasses[i]}">${v}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+
+/* -- 트림별 포지션 요약 카드 렌더링 -- */
+function renderPositionCards() {
+  const grid = document.getElementById('positionGrid');
+  if (!grid) return;
+  const cls = ['', 'pos-green', 'pos-red'];
+  grid.innerHTML = TRIM_POSITION.map((t, i) => {
+    return `<div class="position-card ${cls[i]} reveal reveal-delay-${i}">
+      <h4>${t.title}</h4>
+      <ul>${t.points.map(p => `<li>${p}</li>`).join('')}</ul>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* -- 경쟁차 비교표 렌더링 -- */
+function renderCompareTable() {
+  const wrap = document.getElementById('compareWrap');
+  if (!wrap) return;
+  let html = '<table class="compare-table"><thead><tr>';
+  COMPARE_DATA.headers.forEach((h, i) => {
+    if (i === 0) html += `<th style="text-align:left;padding-left:28px;min-width:130px;">${h}</th>`;
+    else if (i === COMPARE_DATA.highlight) html += `<th class="col-glc" style="min-width:160px;">${h}</th>`;
+    else html += `<th style="min-width:120px;color:var(--gray4);">${h}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  COMPARE_DATA.rows.forEach(row => {
+    html += '<tr><td class="col-label">' + row.label + '</td>';
+    row.values.forEach((v, i) => {
+      const cls = (i + 1 === COMPARE_DATA.highlight) ? ' col-glc' : '';
+      const empty = v === '-' || v === '';
+      html += `<td class="${cls}"${empty ? ' style="color:#CCC"' : ''}>${v}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+renderCompareTable();
+
+/* -- 프로모션 렌더링 -- */
+function renderPromo() {
+  const grid = document.getElementById('promoGrid');
+  if (!grid) return;
+  grid.innerHTML = PROMO_DATA.map((p, i) => {
+    const d = ['', ' reveal-delay-1', ' reveal-delay-2'][i % 3];
+    return `<div class="promo-card reveal${d}">
+      <span class="promo-tag">${p.tag}</span>
+      <div class="promo-icon">${p.icon}</div>
+      <div class="promo-badge">PROMOTION · COMING SOON</div>
+      <h3>${p.title}</h3>
+      <p class="promo-content">${p.content}</p>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* -- Scroll Reveal -- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.10 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+renderQuickTrim();
+renderTrim3Compare();
+renderPositionCards();
+renderPromo();
+
+/* -- Sticky Header -- */
+const siteHeader = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => { siteHeader.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+/* -- CSS keyframes -- */
+const s = document.createElement('style');
+s.textContent = `@keyframes fadeIn{from{opacity:0}to{opacity:1}} @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}`;
+document.head.appendChild(s);
+</script>
+</body>
+</html>
