@@ -34,7 +34,7 @@ const IMAGES = {
 const TRIM_COMPARE = {
   headers: ["비교항목", "AVANTGARDE", "AMG Line"],
   rows: [
-    { label: "가격",            avg: "8,140만원",                      amg: "9,140만원" },
+    { label: "가격",            avg: "8,250만원",                      amg: "9,250만원" },
     { label: "휠",              avg: "19인치 10트윈 스포크 알로이",     amg: "20인치 AMG 멀티 스포크 알로이" },
     { label: "범퍼",            avg: "기본 범퍼",                      amg: "AMG 프런트 / 리어 에이프런" },
     { label: "라디에이터 그릴", avg: "기본 그릴",                      amg: "크롬 마감 무광 다크 그레이 그릴" },
@@ -55,7 +55,7 @@ const COMPARE_DATA = {
   headers: ["항목", "GLC 300 4MATIC\nAVANTGARDE", "BMW X3 30i xDrive", "Audi Q5 45 TFSI"],
   highlight: 1,
   rows: [
-    { label: "가격",              values: ["8,140만원",  "8,390만원", "7,262만원"] },
+    { label: "가격",              values: ["8,250만원",  "8,390만원", "7,262만원"] },
     { label: "출력",              values: ["258ps",       "258ps",     "204ps"] },
     { label: "토크",              values: ["40.8kg.m",    "40.8kg.m",  "34.67kg.m"] },
     { label: "변속기",            values: ["9G-TRONIC",   "8단 자동",  "7단 S-Tronic"] },
@@ -266,7 +266,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
   text-transform: uppercase;
   color: var(--blue);
 }
-.hero-price-row {
+.hero--row {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
@@ -802,13 +802,13 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
             <a href="#avantgarde" class="hero-price-card">
               <div class="hero-card-badge">AVANTGARDE</div>
               <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price">8,140만원</div>
+              <div class="hero-card-price">8,250만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
             <a href="#amgline" class="hero-price-card">
               <div class="hero-card-badge">AMG LINE</div>
               <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price">9,140만원</div>
+              <div class="hero-card-price">9,250만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
           </div>
@@ -1316,10 +1316,10 @@ function renderTrimCompare() {
   const wrap = document.getElementById('trimCompareWrap');
   if (!wrap) return;
   let avgHtml = `<div class="trim-col avg">
-    <div class="trim-col-head avg"><h3>AVANTGARDE</h3><div class="trim-price">8,140만원</div></div>
+    <div class="trim-col-head avg"><h3>AVANTGARDE</h3><div class="trim-price">8,250만원</div></div>
     <div class="trim-body">`;
   let amgHtml = `<div class="trim-col amg">
-    <div class="trim-col-head amg"><h3>AMG Line</h3><div class="trim-price">9,140만원</div></div>
+    <div class="trim-col-head amg"><h3>AMG Line</h3><div class="trim-price">9,250만원</div></div>
     <div class="trim-body">`;
   TRIM_COMPARE.rows.forEach(row => {
     avgHtml += `<div class="trim-row"><span class="trim-row-label">${row.label}</span><span class="trim-row-value">${row.avg}</span></div>`;
