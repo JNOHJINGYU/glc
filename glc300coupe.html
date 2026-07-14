@@ -300,12 +300,12 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
   text-transform: uppercase;
   color: rgba(255,255,255,.75);
 }
-.hero-price-row {
+.hero--row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-.hero-price-card {
+.hero--card {
   flex: 1;
   min-width: 144px;
   border-radius: var(--radius);
@@ -321,7 +321,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
   cursor: pointer;
   transition: transform .25s, border-color .25s, background .25s;
 }
-.hero-price-card:hover {
+.hero--card:hover {
   transform: translateY(-4px);
   border-color: rgba(255,255,255,.45);
   background: rgba(255,255,255,.08);
@@ -834,19 +834,19 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
             <a href="#avantgarde" class="hero-price-card">
               <div class="hero-card-badge">GASOLINE · 4MATIC · COUPÉ</div>
               <div class="hero-card-model">GLC 300 4MATIC Coupé AVANTGARDE</div>
-              <div class="hero-card-price">8,550만원</div>
+              <div class="hero-card-price">8,660만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
             <a href="#amgline" class="hero-price-card card-green">
               <div class="hero-card-badge">GASOLINE · 4MATIC · COUPÉ</div>
               <div class="hero-card-model">GLC 300 4MATIC Coupé AMG Line</div>
-              <div class="hero-card-price">9,570만원</div>
+              <div class="hero-card-price">9,690만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
             <a href="#amg43" class="hero-price-card card-red">
               <div class="hero-card-badge">AMG · 4MATIC · COUPÉ</div>
               <div class="hero-card-model">Mercedes-AMG GLC 43 4MATIC Coupé</div>
-              <div class="hero-card-price">1억 690만원</div>
+              <div class="hero-card-price">1억 830만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
           </div>
@@ -1421,7 +1421,7 @@ function renderQuickTrim() {
   const cls = ['', 'qt-green', 'qt-red'];
   const anchors = ['#avantgarde', '#amgline', '#amg43'];
   wrap.innerHTML = TRIM_POSITION.map((t, i) => {
-    const price = [ '8,550만원', '9,570만원', '1억 690만원' ][i];
+    const price = [ '8,660만원', '9,690만원', '1억 830만원' ][i];
     return `<div class="quick-trim-card ${cls[i]} reveal reveal-delay-${i}">
       <h3>${t.title}</h3>
       <div class="quick-trim-price">${price}</div>
