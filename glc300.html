@@ -396,36 +396,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 .section-heading h2 { margin-bottom: 16px; }
 .section-heading p { max-width: 540px; margin: 0 auto; }
 
-.sec-num {
-  position: absolute;
-  top: 0; left: 0;
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  color: var(--gray4);
-  background: var(--gray2);
-  border: 1px solid var(--gray3);
-  border-radius: 6px;
-  padding: 3px 9px;
-  line-height: 1.6;
-  user-select: none;
-}
-.hero-sec-num {
-  position: absolute;
-  top: 80px; left: 24px;
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  color: rgba(255,255,255,.7);
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 6px;
-  padding: 3px 9px;
-  line-height: 1.6;
-  user-select: none;
-  z-index: 10;
-}
-
 /* ============================================================
    WHY GLC300 - REASON CARDS
    ============================================================ */
@@ -638,24 +608,192 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 .final-btn-drive { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.4); }
 
 /* ============================================================
+   DETAIL SPEC GRID (S5 · AVANTGARDE, S6 · AMG)
+   ============================================================ */
+.detail-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 48px;
+  width: 100%;
+}
+.detail-spec-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--gray3);
+  box-sizing: border-box;
+}
+.detail-spec-item:nth-child(odd)  { background: var(--white); }
+.detail-spec-item:nth-child(even) { background: var(--gray1); }
+/* 마지막 두 항목은 하단 border 제거 */
+.detail-spec-item:nth-last-child(-n+2) { border-bottom: none; }
+.detail-spec-label {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--gray4);
+  white-space: nowrap;
+}
+.detail-spec-value {
+  font-weight: 700;
+  text-align: right;
+}
+
+/* ============================================================
    RESPONSIVE GLOBAL
    ============================================================ */
 @media (max-width: 768px) { :root { --section-gap: 80px; } }
 @media (max-width: 480px) { :root { --section-gap: 60px; } .site-header { padding: 0 20px; } }
 
+/* ── container ── */
 @media (max-width: 768px) {
-  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
-  .stat-card { min-height: 210px; padding: 28px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .stat-number { font-size: 2.8rem !important; line-height: 1; }
-  .stat-label { font-size: 1rem !important; line-height: 1.45; word-break: keep-all; }
-  .stat-desc { font-size: .86rem !important; line-height: 1.55; word-break: keep-all; }
-  .trim-detail-panel { padding: 28px 22px; }
+  .container {
+    width: 100%; max-width: 100%;
+    padding-left: 20px; padding-right: 20px;
+    box-sizing: border-box;
+  }
 }
 @media (max-width: 480px) {
-  .stat-card { min-height: 200px; padding: 24px 14px; }
-  .stat-number { font-size: 2.5rem !important; }
-  .stat-label { font-size: .9rem !important; }
-  .stat-desc { font-size: .8rem !important; }
+  .container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ── 가로 넘침 방지 공통 ── */
+@media (max-width: 768px) {
+  .stats-grid, .stat-card,
+  .trim-detail-panel, .chip-row, .chip,
+  .trim-image-grid, .trim-image-card,
+  .amg-emphasis-grid, .tech-grid,
+  .choose-grid, .promo-grid {
+    width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box;
+  }
+}
+
+/* ── 숫자로 보는 GLC 300 카드 ── */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .stat-card {
+    width: 100%;
+    min-width: 0;
+    height: 230px;
+    min-height: unset;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .stat-number {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    font-size: clamp(2rem, 10vw, 2.8rem) !important;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    min-width: 0;
+    max-width: 100%;
+  }
+  /* 별점 카드 전용 — 과도하게 커지지 않게 */
+  .stat-number.rating {
+    font-size: clamp(1.6rem, 8vw, 2rem) !important;
+    letter-spacing: .05em;
+  }
+  .stat-label {
+    font-size: .92rem !important;
+    font-weight: 700;
+    line-height: 1.4;
+    word-break: keep-all;
+    margin-bottom: 6px;
+    max-width: 100%;
+  }
+  .stat-desc {
+    font-size: .78rem !important;
+    line-height: 1.5;
+    word-break: keep-all;
+    color: var(--gray4);
+    max-width: 100%;
+  }
+  /* 단위 span (inline style 1.4rem 덮어쓰기) */
+  .stat-number > span[style] {
+    font-size: 1rem !important;
+  }
+}
+
+/* ── detail-spec-grid 모바일 1열 ── */
+@media (max-width: 768px) {
+  .detail-spec-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  .detail-spec-item {
+    display: grid !important;
+    grid-template-columns: minmax(80px, 32%) minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px 18px !important;
+    box-sizing: border-box !important;
+  }
+  .detail-spec-item:nth-child(odd)  { background: #FFFFFF !important; }
+  .detail-spec-item:nth-child(even) { background: #F8F9FB !important; }
+  .detail-spec-label {
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    font-size: .82rem !important;
+    color: var(--gray4) !important;
+    font-weight: 600 !important;
+  }
+  .detail-spec-value {
+    text-align: right !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: keep-all !important;
+    font-size: .9rem !important;
+    font-weight: 700 !important;
+    line-height: 1.45 !important;
+  }
+}
+
+/* ── 옵션 패널 / 칩 모바일 ── */
+@media (max-width: 768px) {
+  .trim-detail-panel {
+    padding: 22px 18px !important;
+    overflow: hidden;
+  }
+  .chip-row {
+    display: flex; flex-wrap: wrap;
+    width: 100%; max-width: 100%; min-width: 0;
+    gap: 8px; margin-bottom: 24px;
+  }
+  .chip {
+    max-width: 100%; width: auto; min-width: 0;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    line-height: 1.45;
+    padding: 8px 12px;
+    font-size: .78rem;
+    border-radius: 12px !important;
+  }
 }
 
 /* ============================================================
@@ -775,7 +913,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
      S1 · HERO
      ============================================================ -->
 <section id="hero" style="position:relative;">
-  <span class="hero-sec-num">01 · HERO</span>
   <div class="hero-media" id="heroMedia">
     <img id="heroImg" src="" alt="Mercedes-Benz GLC 300 4MATIC" loading="eager" style="display:none;">
     <div class="hero-media-overlay"></div>
@@ -825,7 +962,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section id="why" class="section section-alt">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">02 · WHY GLC 300</span>
       <span class="label-en">Why GLC 300</span>
       <h2>왜 지금<br>GLC 300인가</h2>
       <p>가솔린 특유의 정숙함과 여유, 그 위에 더해진 하이브리드의 부드러움</p>
@@ -890,7 +1026,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">03 · BY THE NUMBERS</span>
       <span class="label-en">By the Numbers</span>
       <h2>숫자로 보는<br>GLC 300</h2>
       <p>수치로 확인하는 GLC 300의 완성도</p>
@@ -912,7 +1047,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
         <div class="stat-desc">SUV답지 않은 스포티한 가속 성능</div>
       </div>
       <div class="stat-card reveal reveal-delay-3">
-        <div class="stat-number"><span class="blue">★★★★★</span></div>
+        <div class="stat-number rating"><span class="blue">★★★★★</span></div>
         <div class="stat-label">Mercedes-Benz 브랜드 가치</div>
         <div class="stat-desc">8년 연속 대한민국 수입차 판매 1위</div>
       </div>
@@ -926,7 +1061,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section section-alt">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">04 · TRIM COMPARE</span>
       <span class="label-en">AVANTGARDE vs AMG Line</span>
       <h2>나에게 맞는<br>트림은 무엇일까</h2>
       <p>두 트림의 차이를 한눈에 비교해보세요</p>
@@ -941,7 +1075,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section id="avantgarde" class="section">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">05 · AVANTGARDE</span>
       <span class="label-en">GLC 300 4MATIC AVANTGARDE</span>
       <h2>GLC 300 4MATIC<br>AVANTGARDE</h2>
       <p>가장 균형 잡힌 선택, 8,140만원</p>
@@ -969,19 +1102,19 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
       </div>
     </div>
 
-    <div class="detail-spec-grid reveal" style="display:grid; grid-template-columns:repeat(2,1fr); gap:0; border:1px solid var(--gray3); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:48px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">엔진</span><span style="font-weight:700;">직렬 4기통 가솔린</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">배기량</span><span class="blue" style="font-weight:700;">1,999cc</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최고 출력</span><span class="blue" style="font-weight:700;">258ps / 5,800rpm</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최대 토크</span><span style="font-weight:700;">40.8kg·m / 2,000–3,200rpm</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">변속기</span><span style="font-weight:700;">9G-TRONIC</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">구동방식</span><span style="font-weight:700;">고정식 사륜 구동 (4MATIC)</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">복합연비</span><span style="font-weight:700;">10.6 km/L (4등급)</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">도심/고속</span><span style="font-weight:700;">9.6 / 12.3 km/L</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">0→100km/h</span><span class="blue" style="font-weight:700;">6.2초</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--gray3); background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">최고속도</span><span style="font-weight:700;">240 km/h</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:var(--white);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">타이어</span><span style="font-weight:700;">255/45 R20</span></div>
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:var(--gray1);"><span style="font-size:.88rem; font-weight:600; color:var(--gray4);">전장×전폭×전고</span><span style="font-weight:700;">4,720×1,890×1,645</span></div>
+    <div class="detail-spec-grid reveal">
+      <div class="detail-spec-item"><span class="detail-spec-label">엔진</span><span class="detail-spec-value">직렬 4기통 가솔린</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">배기량</span><span class="detail-spec-value blue">1,999cc</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">최고 출력</span><span class="detail-spec-value blue">258ps / 5,800rpm</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">최대 토크</span><span class="detail-spec-value">40.8kg·m / 2,000–3,200rpm</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">변속기</span><span class="detail-spec-value">9G-TRONIC</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">구동방식</span><span class="detail-spec-value">고정식 사륜 구동 (4MATIC)</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">복합연비</span><span class="detail-spec-value">10.6 km/L (4등급)</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">도심/고속</span><span class="detail-spec-value">9.6 / 12.3 km/L</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">0→100km/h</span><span class="detail-spec-value blue">6.2초</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">최고속도</span><span class="detail-spec-value">240 km/h</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">타이어</span><span class="detail-spec-value">255/45 R20</span></div>
+      <div class="detail-spec-item"><span class="detail-spec-label">전장×전폭×전고</span><span class="detail-spec-value">4,720×1,890×1,645</span></div>
     </div>
 
     <div class="trim-detail-panel avg-panel reveal">
@@ -1044,7 +1177,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section id="amgline" class="section section-alt">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">06 · AMG LINE</span>
       <span class="label-en">GLC 300 4MATIC AMG Line</span>
       <h2>GLC 300 4MATIC<br>AMG Line</h2>
       <p>가장 스포티한 존재감, 9,140만원</p>
@@ -1145,7 +1277,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">07 · CORE TECHNOLOGY</span>
       <span class="label-en">Core Technology</span>
       <h2>GLC 300의<br>핵심 기술</h2>
       <p>매일의 운전이 달라지는 6가지 기술</p>
@@ -1167,7 +1298,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section section-alt">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">08 · COMPETITION</span>
       <span class="label-en">Competitive Comparison</span>
       <h2>왜 GLC 300이<br>선택받는가</h2>
       <p>BMW X3, Audi Q5와 직접 비교해보십시오</p>
@@ -1184,7 +1314,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">09 · WHY CHOOSE GLC</span>
       <span class="label-en">Why Choose GLC</span>
       <h2>왜 GLC를<br>선택해야 하는가</h2>
       <p>단순한 스펙을 넘어선, 6가지 확실한 이유</p>
@@ -1206,7 +1335,6 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <section class="section section-alt">
   <div class="container">
     <div class="section-heading">
-      <span class="sec-num">10 · PROMOTION</span>
       <span class="label-en">Monthly Promotion</span>
       <h2>이달의 특별 혜택</h2>
       <p>혜택 내용은 매월 업데이트됩니다</p>
