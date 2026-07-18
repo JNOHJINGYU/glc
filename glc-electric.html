@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GLC Electric | The all-new GLC Electric</title>
+<style>
+@font-face{
+  font-family:'S-CoreDream';
+  src:
+    local('S-Core Dream'),
+    local('S-CoreDream'),
+    local('S-CoreDream-4Regular');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:'S-CoreDream';
+  src:
+    local('S-Core Dream 6 Bold'),
+    local('S-CoreDream-6Bold'),
+    local('S-CoreDream-7ExtraBold'),
+    local('S-CoreDream-8Heavy'),
+    local('S-CoreDream-9Black');
+  font-weight:700 900;
+  font-style:normal;
+  font-display:swap;
+}
+:root{
+  --bg:#FFFFFF;
+  --bg-soft:#F7F8F8;
+  --electric-blue-soft:#EAF4FF;
+  --electric-blue-mist:#F3F8FD;
+  --ink:#111111;
+  --ink-soft:#5B5F5E;
+  --ink-faint:#9AA0A0;
+  --line:#E7E9E8;
+  --electric-blue:#1473E6;
+  --electric-blue-deep:#0757B8;
+  --electric-blue-bright:#40A9FF;
+  --radius:20px;
+  --shadow:0 8px 30px rgba(17,17,17,0.06);
+  --maxw:1240px;
+  --font-main:'S-CoreDream','Pretendard','SUIT','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body,
+button,
+input,
+select,
+textarea,
+table,
+th,
+td,
+a,
+span,
+label{
+  font-family:var(--font-main);
+}
+body{
+  background:var(--bg);color:var(--ink);line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+.wrap{width:min(100% - 48px,var(--maxw));margin-inline:auto;padding-inline:0;}
+@media(min-width:1440px){:root{--maxw:1320px;}}
+.eyebrow{font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--electric-blue-deep);font-weight:700;margin-bottom:14px;display:block;}
+h1,h2,h3{font-family:var(--font-main);font-weight:900;letter-spacing:-0.03em;}
+.section-title{font-family:'S-CoreDream','Pretendard','SUIT','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:900;font-synthesis:weight;font-size:clamp(30px,4.3vw,50px);line-height:1.1;margin-bottom:18px;letter-spacing:-0.045em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;}
+.section-desc{font-size:clamp(15px,1.6vw,18px);color:var(--ink-soft);max-width:660px;line-height:1.75;letter-spacing:-0.01em;}
+section{padding-block:clamp(64px,5.5vw,88px);position:relative;}
+@media(min-width:1600px){section{padding-top:78px;padding-bottom:78px;}}
+.section-alt{background:var(--bg-soft);}
+
+.volt-divider{height:64px;position:relative;display:flex;align-items:center;justify-content:center;}
+.volt-divider svg{width:100%;max-width:280px;height:24px;opacity:0.5;}
+.volt-line{stroke:var(--electric-blue);stroke-width:2;fill:none;stroke-dasharray:6 6;}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(1.06);transition:opacity 1.1s ease,transform 1.3s cubic-bezier(.2,.7,.2,1);}
+.reveal-scale.in-view{opacity:1;transform:scale(1);}
+.delay-1{transition-delay:.08s;} .delay-2{transition-delay:.16s;} .delay-3{transition-delay:.24s;}
+.delay-4{transition-delay:.32s;} .delay-5{transition-delay:.4s;} .delay-6{transition-delay:.48s;}
+
+/* HERO — full-bleed magazine layout */
+.hero{position:relative;width:100%;min-height:clamp(620px,78vh,860px);padding:0;overflow:hidden;background:#f5f7f9;}
+
+.hero-media{position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(135deg,var(--electric-blue-soft),#ffffff);}
+.hero-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center;animation:heroImageIn .9s ease both;}
+.hero-media .image-hint{justify-content:flex-end;text-align:right;padding:16px 8% 16px 16px;background:linear-gradient(135deg,var(--electric-blue-soft),#eef5fc);color:var(--electric-blue-deep);font-weight:600;}
+
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.98) 0%,rgba(255,255,255,0.94) 22%,rgba(255,255,255,0.76) 38%,rgba(255,255,255,0.24) 56%,rgba(255,255,255,0) 72%);pointer-events:none;}
+
+.hero-content{position:relative;z-index:2;width:min(100% - 48px,1440px);min-height:clamp(620px,78vh,860px);margin:0 auto;padding:clamp(70px,8vh,110px) 0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;pointer-events:none;}
+.hero-content-inner{max-width:600px;}
+.hero-eyebrow{display:block;color:var(--electric-blue-deep);font-size:13px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;margin-bottom:24px;animation:heroTextIn .7s ease both;animation-delay:.15s;}
+.hero-content-inner h1{margin:0;line-height:0.92;letter-spacing:-0.055em;font-weight:900;font-synthesis:weight;animation:heroTextIn .7s ease both;animation-delay:.25s;}
+.hero-glc{display:block;color:var(--ink);font-size:clamp(74px,8vw,126px);}
+.hero-electric{display:block;color:var(--electric-blue);font-size:clamp(66px,7.2vw,112px);}
+.hero-tagline{margin-top:28px;color:#333;font-size:clamp(22px,2vw,30px);line-height:1.45;font-weight:500;letter-spacing:-0.03em;animation:heroTextIn .7s ease both;animation-delay:.35s;}
+
+.hero-specs{display:grid;grid-template-columns:repeat(4,auto);gap:0;margin-top:38px;}
+.hero-spec{padding:0 22px;border-left:1px solid rgba(17,17,17,0.16);animation:heroTextIn .7s ease both;}
+.hero-spec:first-child{padding-left:0;border-left:none;}
+.hero-spec:nth-child(1){animation-delay:.45s;}
+.hero-spec:nth-child(2){animation-delay:.5s;}
+.hero-spec:nth-child(3){animation-delay:.55s;}
+.hero-spec:nth-child(4){animation-delay:.6s;}
+.hero-spec strong{display:block;color:var(--electric-blue-deep);font-size:clamp(20px,1.8vw,27px);font-weight:900;line-height:1.1;}
+.hero-spec span{display:block;margin-top:7px;color:var(--ink-soft);font-size:12.5px;font-weight:600;}
+
+.hero-mobile-copy{display:none;}
+
+@keyframes heroImageIn{from{opacity:0}to{opacity:1}}
+@keyframes heroTextIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  .hero-background,.hero-eyebrow,.hero-content-inner h1,.hero-tagline,.hero-spec{animation:none!important;opacity:1!important;transform:none!important;}
+}
+
+/* Tablet */
+@media(min-width:861px) and (max-width:1100px){
+  .hero{min-height:660px;}
+  .hero-content{width:min(100% - 48px,980px);}
+  .hero-content-inner{max-width:480px;}
+  .hero-glc{font-size:78px;}
+  .hero-electric{font-size:68px;}
+  .hero-spec{padding-inline:14px;}
+}
+
+/* Mobile — image and text fully separated, never overlapping */
+@media(max-width:860px){
+  .hero{display:block;min-height:auto;padding:0;background:#fff;overflow:visible;}
+  .hero-media{position:relative;inset:auto;width:100%;aspect-ratio:4/3;overflow:hidden;background:#f3f5f6;}
+  .hero-background{position:absolute;inset:0;object-position:68% center;}
+  .hero-overlay,.hero-content{display:none;}
+  .hero-mobile-copy{display:block;padding:34px 22px 56px;background:#fff;}
+  .hero-mobile-copy .hero-eyebrow{margin-bottom:16px;}
+  .hero-mobile-copy h1{margin:0;line-height:0.98;letter-spacing:-0.05em;font-weight:900;font-synthesis:weight;}
+  .hero-mobile-copy .hero-glc,
+  .hero-mobile-copy .hero-electric{display:inline;font-size:clamp(44px,13vw,64px);}
+  .hero-mobile-copy .hero-glc{color:var(--ink);}
+  .hero-mobile-copy .hero-tagline{margin-top:20px;font-size:clamp(18px,4.6vw,22px);}
+  .hero-mobile-copy .hero-specs{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:30px;}
+  .hero-mobile-copy .hero-spec{padding:15px 14px;border:1px solid #dce8f5;border-radius:14px;background:var(--electric-blue-soft);border-left:none;}
+  .hero-mobile-copy .hero-spec strong{font-size:18px;}
+  .hero-mobile-copy .hero-spec span{margin-top:4px;font-size:11.5px;}
+}
+
+/* concern cards */
+.concern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(30px,3vw,44px);}
+.concern-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);}
+.concern-card .icon{width:46px;height:46px;border-radius:14px;background:var(--electric-blue-soft);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;}
+.concern-card h4{font-size:18px;margin-bottom:8px;}
+.concern-card p{font-size:14.5px;color:var(--ink-soft);}
+.concern-resolve{margin-top:clamp(28px,3vw,40px);text-align:center;font-size:clamp(19px,2.4vw,26px);font-weight:800;}
+.concern-resolve .accent{color:var(--electric-blue);}
+@media(max-width:860px){.concern-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.concern-grid{grid-template-columns:1fr;}}
+
+/* tech highlight cards */
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(30px,3vw,44px);}
+.tech-card{background:var(--bg-soft);border-radius:var(--radius);padding:34px 28px;border:1px solid var(--line);}
+.tech-card .num{font-size:clamp(34px,4vw,44px);font-weight:900;color:var(--electric-blue);letter-spacing:-0.02em;}
+.tech-card .num .unit{font-size:0.42em;color:var(--ink);margin-left:4px;font-weight:800;}
+.tech-card h4{margin-top:10px;font-size:16px;}
+.tech-card p{margin-top:6px;font-size:13.5px;color:var(--ink-soft);}
+@media(max-width:860px){.tech-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.tech-grid{grid-template-columns:1fr;}}
+
+/* architecture */
+.arch-layout{display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(30px,4vw,50px);align-items:center;margin-top:clamp(30px,3vw,44px);}
+.arch-image{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/11;background:var(--bg-soft);}
+.arch-image img{width:100%;height:100%;object-fit:cover;}
+.arch-feature{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);}
+.arch-feature:last-child{border-bottom:none;}
+.arch-feature .mark{color:var(--electric-blue);font-weight:900;font-size:15px;min-width:56px;}
+.arch-feature h5{font-size:16px;margin-bottom:4px;}
+.arch-feature p{font-size:14px;color:var(--ink-soft);}
+@media(max-width:860px){.arch-layout{grid-template-columns:1fr;gap:30px;}}
+
+/* fullscreen digital light */
+.fullscreen-feature{min-height:78vh;display:flex;align-items:flex-end;position:relative;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#0d0d0d,#1c1c1c);margin:0 auto;max-width:var(--maxw);}
+.fullscreen-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.9;}
+.fullscreen-feature::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,0.75) 100%);}
+.fullscreen-copy{position:relative;z-index:2;padding:56px;color:#fff;}
+.fullscreen-copy .eyebrow{color:var(--electric-blue-bright);}
+.fullscreen-copy h2{font-family:'S-CoreDream','Pretendard','SUIT','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:900;font-synthesis:weight;letter-spacing:-0.045em;line-height:1.08;color:#fff;word-break:keep-all;overflow-wrap:break-word;}
+.fullscreen-copy p{color:rgba(255,255,255,0.75);max-width:520px;margin-top:14px;}
+@media(max-width:640px){.fullscreen-copy{padding:32px;}.fullscreen-feature{border-radius:18px;min-height:60vh;}}
+@media(max-width:640px){.section-title{font-size:clamp(29px,9vw,40px);line-height:1.12;letter-spacing:-0.045em;font-weight:900;}}
+
+/* exterior intro */
+.exterior-media{border-radius:var(--radius);overflow:hidden;cursor:zoom-in;box-shadow:var(--shadow);aspect-ratio:16/9;margin-top:clamp(30px,3vw,44px);background:var(--bg-soft);}
+.exterior-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.exterior-media:hover img{transform:scale(1.04);}
+.exterior-hint{text-align:center;font-size:13px;color:var(--ink-faint);margin-top:14px;}
+
+/* ===== tab system (shared) ===== */
+.tab-nav{display:flex;gap:10px;margin-top:clamp(28px,2.8vw,38px);overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{
+  flex:0 0 auto;padding:13px 24px;border-radius:100px;border:1.5px solid var(--line);
+  background:#fff;color:var(--ink);font-weight:800;font-size:14px;cursor:pointer;
+  white-space:nowrap;transition:all .25s ease;
+}
+.tab-btn.active{background:var(--electric-blue);border-color:var(--electric-blue);color:#fff;box-shadow:0 8px 18px rgba(20,115,230,0.22);}
+.tab-stage{margin-top:clamp(24px,2.5vw,32px);position:relative;min-height:1px;}
+.tab-panel{transition:opacity .45s ease, transform .45s ease;}
+.tab-panel.switching{opacity:0;transform:translateY(10px) scale(0.99);}
+
+/* AMG 디자인 비교 - tighter section-specific spacing */
+#amgDesign{padding-block:clamp(60px,5vw,82px);}
+#amgDesign .tab-nav{margin-top:clamp(24px,2.5vw,34px);}
+#amgDesign .tab-stage{margin-top:clamp(22px,2.4vw,30px);}
+#amgDesign .split-panel{gap:clamp(30px,3.5vw,48px);}
+
+/* MBUX / AMG compare split panel */
+.split-panel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.5vw,48px);align-items:center;}
+.split-image{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;background:var(--bg-soft);cursor:zoom-in;}
+.split-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.split-image:hover img{transform:scale(1.03);}
+.split-info .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.split-info .badge{background:var(--electric-blue-soft);color:var(--electric-blue-deep);font-size:12.5px;font-weight:800;padding:6px 14px;border-radius:100px;}
+.split-info h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:8px;}
+.split-info .apply-models{font-size:13.5px;color:var(--ink-soft);margin-bottom:20px;font-weight:600;}
+.split-info .apply-models b{color:var(--electric-blue-deep);}
+.feature-list{display:flex;flex-direction:column;gap:12px;}
+.feature-list li{list-style:none;display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--ink-soft);}
+.feature-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--electric-blue);margin-top:8px;flex:0 0 auto;}
+@media(max-width:820px){.split-panel{grid-template-columns:1fr;gap:26px;}}
+
+/* interior grid (reduced) */
+.interior-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(30px,3vw,44px);}
+.interior-card{border-radius:var(--radius);overflow:hidden;position:relative;cursor:zoom-in;box-shadow:var(--shadow);aspect-ratio:4/3;background:var(--bg-soft);}
+.interior-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.interior-card:hover img{transform:scale(1.06);}
+.interior-card .tag{
+  position:absolute;left:14px;right:14px;bottom:14px;width:fit-content;max-width:calc(100% - 28px);
+  background:rgba(255,255,255,0.92);padding:8px 13px;border-radius:100px;font-weight:800;
+  font-size:clamp(11px,1.1vw,13px);line-height:1.35;white-space:normal;word-break:keep-all;text-align:left;
+}
+.interior-card .tag-long{font-size:clamp(10.5px,1vw,12.5px);}
+@media(max-width:560px){
+  .interior-card .tag{font-size:12px;line-height:1.4;left:12px;right:12px;bottom:12px;max-width:calc(100% - 24px);}
+  .interior-card .tag-long{font-size:11.5px;}
+}
+@media(max-width:860px){.interior-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.interior-grid{grid-template-columns:1fr;}}
+
+/* trim comparison */
+.trim-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(28px,2.8vw,38px);}
+.trim-panel{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,2.8vw,40px);align-items:center;background:var(--bg-soft);border-radius:24px;padding:40px;border:1px solid var(--line);}
+.trim-panel .trim-image{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#fff;cursor:zoom-in;}
+.trim-panel .trim-image img{width:100%;height:100%;object-fit:cover;}
+.trim-info .trim-name{font-size:22px;font-weight:900;}
+.trim-info .trim-price{color:var(--electric-blue-deep);font-size:26px;font-weight:900;margin-top:8px;}
+.trim-info .trim-badge{display:inline-block;background:var(--electric-blue-soft);color:var(--electric-blue-deep);font-size:12px;font-weight:800;padding:5px 12px;border-radius:100px;margin-bottom:10px;}
+.trim-spec-list{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.trim-spec-list li{list-style:none;display:flex;justify-content:space-between;font-size:14px;border-bottom:1px dashed var(--line);padding-bottom:8px;color:var(--ink-soft);}
+.trim-spec-list li b{color:var(--ink);font-weight:700;}
+@media(max-width:760px){.trim-panel{grid-template-columns:1fr;padding:26px;}}
+
+/* standard equipment (전 모델 공통 기본 사양) */
+.standard-note-badge{
+  display:inline-block;background:var(--electric-blue-soft);color:var(--electric-blue-deep);
+  font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:100px;margin-top:14px;
+}
+.standard-summary{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.5vw,30px);}
+.standard-summary-chip{
+  background:#fff;border:1px solid var(--line);color:var(--ink-soft);
+  font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;
+}
+.standard-summary-chip b{color:var(--electric-blue-deep);font-weight:800;}
+
+.standard-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:clamp(20px,2.5vw,28px);align-items:stretch;}
+.standard-card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 30px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;
+}
+.standard-card-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+.standard-card-icon{width:34px;height:34px;border-radius:10px;background:var(--electric-blue-soft);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.standard-card-icon svg{width:18px;height:18px;stroke:var(--electric-blue-deep);}
+.standard-card-title{font-size:17px;font-weight:800;color:var(--ink);}
+.standard-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.standard-item{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.65;}
+.standard-item::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--electric-blue);margin-top:8px;flex:0 0 auto;}
+.standard-item .standard-code{color:var(--ink-faint);font-weight:500;}
+.standard-note{margin-top:18px;font-size:12.5px;color:var(--ink-faint);line-height:1.6;}
+.standard-footnote{margin-top:26px;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
+
+.standard-accordion-btn{display:none;}
+
+@media(max-width:768px){
+  .standard-grid{grid-template-columns:1fr;}
+  .standard-card{padding:22px 24px;}
+  .standard-card-title{font-size:18px;}
+  .standard-item{font-size:15px;line-height:1.7;}
+  .standard-card-head{cursor:pointer;position:relative;}
+  .standard-accordion-btn{
+    display:flex;align-items:center;justify-content:center;width:26px;height:26px;
+    margin-left:auto;border:none;background:none;color:var(--electric-blue-deep);font-size:20px;font-weight:900;
+    cursor:pointer;transition:transform .3s ease;flex:0 0 auto;
+  }
+  .standard-card.is-open .standard-accordion-btn{transform:rotate(45deg);}
+  .standard-accordion-content{
+    max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease, opacity .35s ease;
+  }
+  .standard-card.is-open .standard-accordion-content{opacity:1;}
+}
+
+/* option compare (라인업별 옵션 비교) */
+.option-legend{margin-top:16px;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;flex-wrap:wrap;}
+.option-legend .dot-applied{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--electric-blue);margin-right:4px;vertical-align:middle;}
+.option-legend .dash-not{display:inline-block;width:10px;height:2px;background:#C7CBCA;margin-right:4px;vertical-align:middle;}
+.option-legend .mint-chip{display:inline-block;width:14px;height:14px;border-radius:4px;background:rgba(20,115,230,0.10);border:1px solid rgba(20,115,230,0.30);margin-right:4px;vertical-align:middle;}
+
+.option-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:clamp(24px,2.8vw,32px);}
+.option-filter-nav{display:flex;gap:8px;flex-wrap:wrap;}
+.option-filter-btn{padding:10px 18px;border-radius:100px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:13px;cursor:pointer;transition:all .2s ease;}
+.option-filter-btn.active{background:var(--electric-blue);border-color:var(--electric-blue);color:#fff;}
+.option-reset-btn{padding:10px 18px;border-radius:100px;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-weight:700;font-size:13px;cursor:pointer;}
+.option-reset-btn:hover{color:var(--ink);}
+
+.option-compare-wrap{
+  margin-top:26px;background:#fff;border-radius:20px;border:1px solid var(--line);
+  box-shadow:0 4px 18px rgba(17,17,17,0.04);overflow:hidden;overflow-x:auto;
+}
+table.option-compare-table{width:100%;border-collapse:collapse;min-width:760px;table-layout:fixed;}
+table.option-compare-table col.opt-col-label{width:34%;}
+table.option-compare-table col.opt-col-model{width:16.5%;}
+table.option-compare-table thead th{background:#EAF4FF;padding:20px 16px;text-align:center;vertical-align:top;transition:background .3s ease, opacity .3s ease;}
+table.option-compare-table thead th.option-head-label{text-align:left;color:var(--ink);font-weight:800;font-size:14px;}
+table.option-compare-table thead th .model-btn{background:none;border:none;cursor:pointer;font-weight:800;font-size:14.5px;color:var(--ink);line-height:1.4;}
+table.option-compare-table thead th.opt-th-amgline .model-btn{color:var(--electric-blue-deep);}
+table.option-compare-table thead th.opt-th-amglineplus{background:var(--electric-blue-soft);}
+table.option-compare-table thead th.opt-th-amglineplus .model-btn{color:var(--electric-blue-deep);}
+.opt-recommend-tag{display:block;background:var(--electric-blue);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:100px;margin:0 auto 8px;width:fit-content;}
+.opt-top-tag{display:block;background:#2b2b2b;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:100px;margin:8px auto 0;width:fit-content;}
+table.option-compare-table tbody th, table.option-compare-table tbody td{
+  padding:15px 16px;border-bottom:1px solid var(--line);font-size:13.5px;text-align:center;transition:background .3s ease, opacity .3s ease;
+}
+table.option-compare-table tbody th{text-align:left;font-weight:600;color:var(--ink-soft);}
+table.option-compare-table tbody th .opt-code{color:var(--ink-faint);font-weight:500;font-size:12px;margin-left:4px;}
+table.option-compare-table tbody td.opt-val{font-weight:700;color:var(--ink);}
+table.option-compare-table tbody td.opt-val.is-upgrade{color:var(--electric-blue-deep);}
+table.option-compare-table tbody td.opt-first-add{background:rgba(20,115,230,0.10);}
+.option-price-badge{display:inline-block;margin-top:6px;font-size:11px;font-weight:800;padding:3px 10px;border-radius:100px;}
+.option-price-badge.confirmed{background:var(--electric-blue-soft);color:var(--electric-blue-deep);}
+.option-price-badge.estimated{background:#EFEFEF;color:#666;}
+.opt-check{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--electric-blue);color:#fff;font-size:13px;font-weight:900;}
+.opt-dash{display:inline-block;width:14px;height:2px;background:#C7CBCA;}
+table.option-compare-table tbody tr.opt-row-hidden{opacity:0;}
+table.option-compare-table thead th.opt-col-dim, table.option-compare-table tbody td.opt-col-dim{opacity:0.35;}
+table.option-compare-table thead th.opt-col-focus, table.option-compare-table tbody td.opt-col-focus{background:var(--electric-blue-soft);}
+
+.option-mobile-tabs{display:none;gap:8px;margin-top:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;}
+.option-mobile-tabs::-webkit-scrollbar{display:none;}
+.option-mobile-tab{flex:0 0 auto;padding:11px 20px;border-radius:100px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:800;font-size:13.5px;cursor:pointer;white-space:nowrap;}
+.option-mobile-tab.option-active{background:var(--electric-blue);border-color:var(--electric-blue);color:#fff;}
+.option-compare-toggle{display:none;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink-soft);margin-top:16px;cursor:pointer;}
+.option-compare-toggle input{accent-color:var(--electric-blue);width:17px;height:17px;cursor:pointer;}
+.option-compare-select{display:none;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+.option-compare-select select{padding:10px 14px;border-radius:100px;border:1.5px solid var(--line);font-weight:700;font-size:13px;background:#fff;color:var(--ink);}
+.option-common-toggle{padding:9px 16px;border-radius:100px;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-weight:700;font-size:12.5px;cursor:pointer;}
+.option-mobile-panel{display:none;margin-top:18px;transition:opacity .3s ease, transform .3s ease;}
+.option-mobile-panel.switching{opacity:0;transform:translateY(6px);}
+.option-mobile-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow);}
+.option-mobile-card + .option-mobile-card{margin-top:14px;}
+.option-mobile-card h4{color:var(--electric-blue-deep);font-size:13.5px;font-weight:800;margin-bottom:10px;}
+.opt-mobile-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);gap:12px;}
+.opt-mobile-row:last-child{border-bottom:none;}
+.opt-mobile-row .opt-mobile-label{font-size:13px;color:var(--ink-soft);font-weight:600;}
+.opt-mobile-row .opt-mobile-value{font-size:14px;font-weight:800;color:var(--ink);text-align:right;}
+.opt-mobile-row .opt-mobile-value.is-upgrade{color:var(--electric-blue-deep);}
+
+.option-recommend-box{
+  margin-top:30px;background:var(--electric-blue-soft);border-radius:16px;padding:18px 22px;
+  font-size:13.5px;color:var(--electric-blue-deep);font-weight:600;line-height:1.7;
+}
+.option-footnote{margin-top:16px;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+@media(max-width:768px){
+  .option-compare-wrap{display:none;}
+  .option-mobile-tabs{display:flex;}
+  .option-compare-toggle{display:flex;}
+  .option-mobile-panel{display:block;}
+}
+
+/* spec table (국내 출시 제원표) */
+.spec-note-badge{
+  display:inline-block;background:var(--electric-blue-soft);color:var(--electric-blue-deep);
+  font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:100px;margin-top:14px;
+}
+.spec-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(26px,2.8vw,34px);}
+.spec-model-tabs{display:none;gap:8px;}
+.spec-model-btn{padding:10px 20px;border-radius:100px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:800;font-size:13.5px;cursor:pointer;transition:all .2s ease;}
+.spec-model-btn.active{background:var(--electric-blue);border-color:var(--electric-blue);color:#fff;}
+.spec-summary-toggle{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;}
+.spec-summary-toggle input{accent-color:var(--electric-blue);width:17px;height:17px;cursor:pointer;}
+
+.spec-table-wrap{
+  margin-top:28px;background:#fff;border-radius:20px;border:1px solid var(--line);
+  box-shadow:0 4px 18px rgba(17,17,17,0.04);overflow:hidden;
+}
+table.spec-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+table.spec-table col.col-item{width:27%;}
+table.spec-table col.col-300, table.spec-table col.col-400{width:36.5%;}
+table.spec-table thead th{
+  background:var(--electric-blue-soft);color:var(--ink);font-size:14.5px;font-weight:800;
+  text-align:left;padding:18px 22px;position:sticky;top:64px;z-index:5;
+}
+table.spec-table thead th.spec-th-400{color:var(--electric-blue-deep);}
+table.spec-table tbody tr.spec-category td{
+  background:var(--electric-blue-mist);color:var(--electric-blue-deep);font-weight:800;font-size:13.5px;
+  padding:12px 22px;letter-spacing:0.02em;
+}
+table.spec-table tbody tr.spec-row td, table.spec-table tbody tr.spec-row th{
+  padding:15px 22px;font-size:14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;line-height:1.5;
+}
+table.spec-table tbody tr.spec-row th{font-weight:600;color:var(--ink-soft);}
+table.spec-table tbody tr.spec-row td.spec-val-300{font-weight:700;color:var(--ink);}
+table.spec-table tbody tr.spec-row td.spec-val-400{font-weight:700;}
+table.spec-table tbody tr.spec-row td.spec-val-400.is-upgrade{color:var(--electric-blue-deep);}
+.spec-badge-same{
+  display:inline-block;background:#EFEFEF;color:#555;font-size:12px;font-weight:700;
+  padding:4px 11px;border-radius:100px;
+}
+.spec-badge-pending{
+  display:inline-block;background:var(--electric-blue-soft);color:var(--electric-blue-deep);font-size:12px;font-weight:800;
+  padding:4px 11px;border-radius:100px;
+}
+.spec-footnote{margin-top:20px;font-size:12.5px;color:var(--ink-faint);line-height:1.7;}
+
+.spec-mobile-panel{display:none;}
+.spec-mobile-cat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:16px;box-shadow:var(--shadow);}
+.spec-mobile-cat h4{color:var(--electric-blue-deep);font-size:13.5px;font-weight:800;margin-bottom:10px;letter-spacing:0.01em;}
+.spec-mobile-row{padding:12px 0;border-bottom:1px solid var(--line);}
+.spec-mobile-row:last-child{border-bottom:none;}
+.spec-mobile-row .item-label{font-size:13px;color:var(--ink-soft);font-weight:600;margin-bottom:4px;}
+.spec-mobile-row .item-value{font-size:15px;font-weight:800;color:var(--ink);}
+.spec-mobile-row .item-value.is-upgrade{color:var(--electric-blue-deep);}
+.spec-mobile-panel.switching{opacity:0;transform:translateY(6px);}
+.spec-mobile-panel{transition:opacity .3s ease, transform .3s ease;}
+
+@media(max-width:768px){
+  .spec-table-wrap{display:none;}
+  .spec-model-tabs{display:flex;}
+  .spec-mobile-panel{display:block;}
+}
+
+/* competitor table */
+.compare-table-wrap{margin-top:clamp(30px,3vw,44px);overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);}
+table.compare{width:100%;border-collapse:collapse;min-width:640px;font-size:14px;}
+table.compare th,table.compare td{padding:16px 20px;text-align:center;border-bottom:1px solid var(--line);}
+table.compare th{background:var(--bg-soft);font-weight:800;font-size:13px;color:var(--ink-soft);}
+table.compare td:first-child,table.compare th:first-child{text-align:left;font-weight:700;color:var(--ink-soft);}
+table.compare .col-glc{background:var(--electric-blue-soft);}
+table.compare .col-glc td{color:var(--ink);font-weight:800;}
+table.compare th.col-glc{color:var(--electric-blue-deep);}
+
+/* cost calculator */
+.calc-box{margin-top:clamp(30px,3vw,44px);background:var(--bg-soft);border-radius:24px;padding:44px;border:1px solid var(--line);}
+.calc-slider-row{display:flex;justify-content:space-between;margin-bottom:14px;font-weight:800;font-size:14px;color:var(--ink-soft);}
+input[type=range]{width:100%;accent-color:var(--electric-blue);height:6px;}
+.calc-result{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:clamp(24px,2.8vw,32px);}
+.calc-card{background:#fff;border-radius:16px;padding:24px;text-align:center;border:1px solid var(--line);}
+.calc-card .label{font-size:13px;color:var(--ink-soft);font-weight:700;}
+.calc-card .value{font-size:26px;font-weight:900;margin-top:8px;}
+.calc-card.save .value{color:var(--electric-blue);}
+@media(max-width:640px){.calc-result{grid-template-columns:1fr;}}
+
+/* charging */
+.charge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:clamp(30px,3vw,44px);}
+.charge-card{text-align:center;padding:34px 18px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);}
+.charge-card .emoji{font-size:34px;margin-bottom:14px;}
+.charge-card h5{font-size:15.5px;}
+.charge-card p{font-size:13px;color:var(--ink-soft);margin-top:6px;}
+@media(max-width:760px){.charge-grid{grid-template-columns:1fr 1fr;}}
+
+/* safety */
+.safety-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(30px,3vw,44px);}
+.safety-card{background:var(--bg-soft);border-radius:var(--radius);padding:28px;border:1px solid var(--line);}
+.safety-card .icon{width:44px;height:44px;border-radius:12px;background:var(--electric-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:16px;}
+.safety-card h4{font-size:16px;}
+.safety-card p{font-size:13.5px;color:var(--ink-soft);margin-top:6px;}
+@media(max-width:860px){.safety-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.safety-grid{grid-template-columns:1fr;}}
+
+/* color picker */
+.color-stage{margin-top:clamp(30px,3vw,44px);text-align:center;display:flex;flex-direction:column;align-items:center;}
+.color-image{order:1;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;background:var(--bg-soft);box-shadow:var(--shadow);margin-bottom:30px;cursor:zoom-in;width:100%;}
+.color-image img{width:100%;height:100%;object-fit:cover;transition:opacity .28s ease;}
+.color-swatches{order:3;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.swatch{width:38px;height:38px;border-radius:50%;cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line);transition:transform .2s ease;}
+.swatch.active{box-shadow:0 0 0 3px var(--electric-blue);transform:scale(1.12);}
+.color-label{order:2;margin-bottom:18px;transition:opacity .28s ease;}
+.color-code{display:block;font-size:12.5px;font-weight:600;color:var(--ink-faint);letter-spacing:0.04em;margin-bottom:4px;}
+.color-name{font-weight:800;font-size:17px;color:var(--ink);}
+@media(min-width:769px){
+  .color-swatches{order:2;margin-bottom:24px;}
+  .color-label{order:3;margin-bottom:0;}
+}
+
+/* ===== image link placeholder hint (shown while a URL is empty or fails to load) ===== */
+.arch-image,.exterior-media,.split-image,.color-image,.trim-image{position:relative;}
+.image-hint{
+  display:none;position:absolute;inset:0;align-items:center;justify-content:center;
+  color:var(--ink-faint);font-size:12.5px;text-align:center;padding:16px;pointer-events:none;
+  background:linear-gradient(135deg,#f4f5f5,#fafbfb);border-radius:inherit;
+}
+img.image-empty{opacity:0;}
+
+/* ===== unified lightbox system ===== */
+.zoomable-image{cursor:zoom-in;}
+.lightbox{
+  position:fixed;inset:0;width:100%;height:100vh;height:100dvh;
+  background:rgba(0,0,0,0.94);display:none;align-items:center;justify-content:center;
+  z-index:9999;
+}
+.lightbox.active{display:flex;}
+.lightbox-stage{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.lightbox-stage img{
+  max-width:96vw;max-height:94vh;max-height:94dvh;width:auto;height:auto;
+  object-fit:contain;touch-action:pinch-zoom;user-select:none;-webkit-user-drag:none;
+  border-radius:8px;
+}
+.lightbox-close{
+  position:fixed;top:max(16px, env(safe-area-inset-top));right:max(16px, env(safe-area-inset-right));
+  width:44px;height:44px;border-radius:50%;z-index:10001;
+  background:rgba(20,20,20,0.55);color:#fff;border:none;font-size:22px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+  transition:transform .2s ease, background .2s ease;
+}
+.lightbox-close:hover{background:rgba(20,20,20,0.8);transform:scale(1.06);}
+body.lightbox-open{overflow:hidden;touch-action:none;}
+
+@media(max-width:768px){
+  .lightbox{
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .lightbox-stage{width:100vw;height:100dvh;}
+  .lightbox-stage img{width:100vw;height:100dvh;max-width:none;max-height:none;object-fit:contain;border-radius:0;}
+}
+@media(max-width:950px) and (orientation:landscape){
+  .lightbox-stage{width:100vw;height:100dvh;}
+  .lightbox-stage img{width:100vw;height:100dvh;max-width:none;max-height:none;object-fit:contain;border-radius:0;}
+}
+
+footer{padding:50px 0;text-align:center;color:var(--ink-faint);font-size:13px;}
+
+@media(max-width:640px){
+  section{padding-block:clamp(52px,14vw,68px);}
+  .tab-nav{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px;}
+}
+</style>
+
+<script>
+/* =====================================================
+   ★★★ 이미지 링크는 아래 따옴표 안에만 입력하세요 ★★★
+
+   사용 방법:
+   1. 원하는 이미지의 "직접 URL"을 복사합니다.
+      (웹페이지 주소가 아니라 이미지 파일 자체의 주소)
+   2. 아래 항목의 "" 안에 URL을 붙여 넣습니다.
+   3. 이 파일의 다른 코드는 수정하지 않아도 됩니다.
+
+   예:
+   hero: "https://example.com/hero.jpg",
+
+   비워두면 (예: hero: "") 해당 자리에는
+   "이미지 링크를 입력해주세요" 안내와 함께
+   빈 프레임만 표시되고, 페이지는 깨지지 않습니다.
+
+   주의사항:
+   - 일반 웹페이지 주소가 아니라 "이미지 직접 주소"를 입력하세요.
+   - 주소 끝이 .jpg / .jpeg / .png / .webp 등으로 끝나는 URL을 권장합니다.
+   - Google Drive의 "공유 링크"는 바로 표시되지 않을 수 있습니다.
+   - GitHub에 이미지를 올렸다면 raw.githubusercontent.com 주소나
+     GitHub Pages 주소를 사용하세요.
+   - 각 줄의 따옴표(" ")와 끝의 쉼표(,)는 지우지 마세요.
+   - 이미지를 교체했는데 브라우저에 예전 이미지가 계속 보인다면,
+     주소 끝에 ?v=2 처럼 임의의 값을 붙이면 새로고침됩니다.
+     예: https://example.com/image.jpg?v=2
+     (자동으로 붙는 것은 아니며, 필요할 때만 직접 붙이면 됩니다)
+===================================================== */
+
+const IMAGE_LINKS = {
+
+  /* 01. 메인 이미지 */
+  hero: "https://github.com/JNOHJINGYU/images/blob/main/26C0039_016.jpg?raw=true",             // 맨 위 히어로 차량
+  architecture: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_BA.jpg?raw=true",     // Part 3 · 스케이트보드 플랫폼 / 800V 이미지
+  digitalLight: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_GRIL.jpg?raw=true",     // 빛으로 완성한 전기 시대의 얼굴 (Digital Light)
+  exterior: "https://github.com/JNOHJINGYU/images/blob/main/26C0038_008.jpg?raw=true",         // 익스테리어 디자인 대표 이미지
+
+  /* 02. 외관 디자인 (AMG 디자인 비교) */
+  amgLine: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_AMGLINE.jpg?raw=true",          // AMG Line 차량
+  amgLinePlus: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_AMGLINE+_WHITE.png?raw=true",      // AMG Line+ 차량
+
+  /* 03. 외장 컬러 (컬러 선택) */
+  colorPolarWhite: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_white.png?raw=true",              // 149U · 폴라 화이트 (기본 선택 색상)
+  colorObsidianBlack: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_black.png?raw=true",           // 197U · 옵시디언 블랙
+  colorLavenderSilver: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_silver.png?raw=true",          // 689U · 라벤더 실버
+  colorSheerBlue: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_CLEAR.png?raw=true",            // 809U · 시어 블루
+  colorSodaliteBlue: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_BLUE.png?raw=true",            // 842U · 소달라이트 블루
+  colorHighTechSilver: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_HITECH.png?raw=true",          // 922U · 하이테크 실버
+  colorManufakturAlpineGrey: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_GREY.png?raw=true",    // 956U · MANUFAKTUR 알파인 그레이
+  colorManufakturOpaliteWhite: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_OPAL.png?raw=true",  // 885U · MANUFAKTUR 오팔라이트 화이트
+
+  /* 04. 실내 및 MBUX */
+  mbuxSuper: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_SUPER.png?raw=true",        // MBUX 슈퍼스크린 실내
+  mbuxHyper: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_HYPER.png?raw=true",        // MBUX 하이퍼스크린 실내
+  burmester: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_BURMESTER.jpeg?raw=true",        // 인테리어 · 부메스터 4D 서라운드 사운드
+  panorama: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_SKY.jpg?raw=true",         // 인테리어 · 일루미네이티드 파노라믹 루프
+  ambient: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_AMBI.jpg?raw=true",          // 인테리어 · 앰비언트 라이팅
+  seats: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_SEAT.jpg?raw=true",            // 인테리어 · 스포츠 시트
+  storage: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_RED.jpg?raw=true",          // 인테리어 · 수납 공간
+
+  /* 05. 국내 출시 라인업 (라인업 카드) */
+  trimGLC300: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_BASE.png?raw=true",       // GLC 300 라인업 카드
+  trimAMGLine: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_AMGLINE_ALPAIN.png?raw=true",      // GLC 300 AMG Line 라인업 카드
+  trimAMGLinePlus: "https://github.com/JNOHJINGYU/images/blob/main/GLC_EQ_RVQ.png?raw=true",  // GLC 300 AMG Line+ 라인업 카드
+  trimGLC400: "https://github.com/JNOHJINGYU/images/blob/main/GLC400.png?raw=true"        // GLC 400 라인업 카드
+
+};
+
+/* =====================================================
+   ★ 이미지 링크 입력 영역 끝 ★
+   아래 코드는 수정하지 않아도 됩니다.
+===================================================== */
+</script>
+
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-media">
+    <img class="hero-background zoomable-image" data-img="hero" alt="GLC Electric 외관" onerror="handleImageError(this)" fetchpriority="high" decoding="async">
+    <span class="image-hint">이미지 링크를 입력해주세요</span>
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <span class="hero-eyebrow">THE ALL-NEW</span>
+      <h1><span class="hero-glc">GLC</span> <span class="hero-electric">Electric</span></h1>
+      <p class="hero-tagline">전기차의 기준을<br>다시 세우다</p>
+      <div class="hero-specs">
+        <div class="hero-spec"><strong>800V</strong><span>Architecture</span></div>
+        <div class="hero-spec"><strong>616km</strong><span>최대 주행거리</span></div>
+        <div class="hero-spec"><strong>330kW</strong><span>초급속 충전</span></div>
+        <div class="hero-spec"><strong>421PS</strong><span>듀얼모터</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-mobile-copy">
+    <span class="hero-eyebrow">THE ALL-NEW</span>
+    <h1><span class="hero-glc">GLC</span> <span class="hero-electric">Electric</span></h1>
+    <p class="hero-tagline">전기차의 기준을<br>다시 세우다</p>
+    <div class="hero-specs">
+      <div class="hero-spec"><strong>800V</strong><span>Architecture</span></div>
+      <div class="hero-spec"><strong>616km</strong><span>최대 주행거리</span></div>
+      <div class="hero-spec"><strong>330kW</strong><span>초급속 충전</span></div>
+      <div class="hero-spec"><strong>421PS</strong><span>듀얼모터</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 고객의 고민 -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">Part 1 · Before You Decide</span>
+    <h2 class="section-title reveal">전기차...<br>아직 고민되시나요?</h2>
+    <div class="concern-grid">
+      <div class="concern-card reveal delay-1"><div class="icon">⚡</div><h4>충전</h4><p>800V 아키텍처와 330kW 초급속 충전으로 10→80% 충전이 단 22분이면 충분합니다.</p></div>
+      <div class="concern-card reveal delay-2"><div class="icon">🛣️</div><h4>주행거리</h4><p>1회 충전으로 최대 616km, GLC 400 모델은 최대 715km까지 주행이 가능합니다.</p></div>
+      <div class="concern-card reveal delay-3"><div class="icon">🔋</div><h4>배터리 수명</h4><p>정교한 배터리 관리 시스템과 프리컨디셔닝으로 장기 성능 저하를 최소화합니다.</p></div>
+      <div class="concern-card reveal delay-4"><div class="icon">❄️</div><h4>겨울철 성능</h4><p>배터리 예열 시스템이 저온 환경에서도 안정적인 주행거리와 충전 속도를 지켜줍니다.</p></div>
+      <div class="concern-card reveal delay-5"><div class="icon">🔧</div><h4>AS</h4><p>전국 벤츠 공식 서비스센터와 전기차 전담 인프라가 사후관리를 책임집니다.</p></div>
+      <div class="concern-card reveal delay-6"><div class="icon">📉</div><h4>감가상각</h4><p>메르세데스의 브랜드 잔존가치와 안정적인 중고 시세가 자산가치를 지켜줍니다.</p></div>
+    </div>
+    <p class="concern-resolve reveal">GLC Electric은 <span class="accent">이 모든 고민을 해결하기 위해</span> 만들어졌습니다.</p>
+  </div>
+</section>
+
+<!-- 핵심기술 -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Part 2 · Core Technology</span>
+    <h2 class="section-title reveal">GLC Electric 핵심기술</h2>
+    <p class="section-desc reveal">숫자 너머, 실제 주행에서 체감하는 변화입니다.</p>
+    <div class="tech-grid">
+      <div class="tech-card reveal delay-1"><div class="num count" data-target="800">0<span class="unit">V</span></div><h4>800V 초고압 아키텍처</h4><p>충전 손실을 줄이고 더 빠른 급속충전을 가능하게 합니다.</p></div>
+      <div class="tech-card reveal delay-2"><div class="num count" data-target="330">0<span class="unit">kW</span></div><h4>330kW 초급속 충전</h4><p>10분 충전으로 약 260km를 더 달릴 수 있습니다.</p></div>
+      <div class="tech-card reveal delay-3"><div class="num count" data-target="616">0<span class="unit">km</span></div><h4>1회 충전 최대 주행거리</h4><p>WLTP 기준, 서울-부산 왕복도 든든합니다.</p></div>
+      <div class="tech-card reveal delay-4"><div class="num count" data-target="421">0<span class="unit">마력</span></div><h4>듀얼모터 421마력</h4><p>전후륜 PSM 모터가 4MATIC 전 상황 트랙션을 구현합니다.</p></div>
+      <div class="tech-card reveal delay-5"><div class="num">0.26<span class="unit">Cd</span></div><h4>공력저항계수 0.26Cd</h4><p>동급 최고 수준의 공기저항으로 정숙성과 효율을 높였습니다.</p></div>
+      <div class="tech-card reveal delay-6"><div class="num count" data-target="800">0<span class="unit">Nm</span></div><h4>최대토크 800Nm</h4><p>가속 순간에도 흔들림 없는 여유로운 힘을 전달합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 800V Architecture -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">Part 3 · Architecture</span>
+    <h2 class="section-title reveal">스케이트보드 플랫폼,<br>800V의 여유</h2>
+    <div class="arch-layout">
+      <div class="arch-image reveal-scale" style="cursor:zoom-in;"><img class="zoomable-image" data-img="architecture" alt="800V Architecture" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="arch-features reveal delay-2">
+        <div class="arch-feature"><div class="mark">800V</div><div><h5>초고압 시스템</h5><p>전력 손실을 최소화하고 충전·주행 효율을 함께 끌어올립니다.</p></div></div>
+        <div class="arch-feature"><div class="mark">330kW</div><div><h5>초급속 충전</h5><p>전용 800V 인프라에서 최대 성능을 발휘합니다.</p></div></div>
+        <div class="arch-feature"><div class="mark">22분</div><div><h5>10 → 80% 충전</h5><p>커피 한 잔의 시간이면 다음 목적지까지 충분합니다.</p></div></div>
+        <div class="arch-feature"><div class="mark">Pre-Cond.</div><div><h5>배터리 프리컨디셔닝</h5><p>충전소 도착 전 배터리 온도를 미리 최적화합니다.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 충전 -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Charging Life</span>
+    <h2 class="section-title reveal">일상 속 충전</h2>
+    <div class="charge-grid">
+      <div class="charge-card reveal delay-1"><div class="emoji">🏠</div><h5>집</h5><p>완속 충전기로 자고 일어나면 완충</p></div>
+      <div class="charge-card reveal delay-2"><div class="emoji">🏢</div><h5>회사</h5><p>주차와 동시에 충전, 업무 중 완충</p></div>
+      <div class="charge-card reveal delay-3"><div class="emoji">⛽</div><h5>휴게소</h5><p>장거리 이동 중 짧은 휴식으로 충전</p></div>
+      <div class="charge-card reveal delay-4"><div class="emoji">⚡</div><h5>급속충전</h5><p>330kW 인프라에서 22분 초급속 충전</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 유지비 계산 -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">Cost Simulation</span>
+    <h2 class="section-title reveal">유지비 계산</h2>
+    <p class="section-desc reveal">연간 주행거리를 선택하면 예상 연료비 차이를 계산해 드립니다.</p>
+    <div class="calc-box reveal">
+      <div class="calc-slider-row"><span>연간 주행거리</span><span id="calcKmLabel">15,000km</span></div>
+      <input type="range" id="calcSlider" min="10000" max="30000" step="5000" value="15000">
+      <div class="calc-result">
+        <div class="calc-card"><div class="label">휘발유 GLC 연간 유류비</div><div class="value" id="calcGas">-</div></div>
+        <div class="calc-card"><div class="label">GLC Electric 연간 전기료</div><div class="value" id="calcEv">-</div></div>
+        <div class="calc-card save"><div class="label">연간 절감액</div><div class="value" id="calcSave">-</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="volt-divider"><svg viewBox="0 0 280 24"><path class="volt-line" d="M0 12 L100 12 L110 2 L120 22 L130 12 L280 12"/></svg></div>
+
+<!-- Digital Light -->
+<section>
+  <div class="wrap">
+    <div class="fullscreen-feature reveal-scale" style="cursor:zoom-in;">
+      <img class="zoomable-image" data-img="digitalLight" alt="Digital Light" onerror="handleImageError(this)">
+      <div class="fullscreen-copy">
+        <span class="eyebrow">Illumination</span>
+        <h2>빛으로 완성한<br>전기 시대의 얼굴</h2>
+        <p>일루미네이티드 아이코닉 그릴과 Mercedes Digital Light가 밤을 밝힙니다. 정교하게 제어되는 하이빔이 도로 상황에 맞춰 실시간으로 반응합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 익스테리어 디자인 (intro) -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Design Philosophy</span>
+    <h2 class="section-title reveal">익스테리어 디자인</h2>
+    <p class="section-desc reveal">공기 저항 0.26Cd의 매끄러운 실루엣과 일루미네이티드 그릴이 완성하는, 전기 시대 GLC의 얼굴입니다.</p>
+    <div class="exterior-media reveal-scale">
+      <img class="zoomable-image" data-img="exterior" alt="GLC Electric Exterior" onerror="handleImageError(this)">
+      <span class="image-hint">이미지 링크를 입력해주세요</span>
+    </div>
+    <p class="exterior-hint">이미지를 클릭하면 고화질로 확대됩니다</p>
+  </div>
+</section>
+
+<!-- AMG 디자인 비교 -->
+<section id="amgDesign">
+  <div class="wrap">
+    <span class="eyebrow reveal">Design Lines</span>
+    <h2 class="section-title reveal">AMG 디자인 비교</h2>
+    <p class="section-desc reveal">GLC EV는 기본형부터 스포티한 AMG Line 디자인이 적용되며, 상위 라인업은 GLC 최초로 선보이는 AMG Line+로 완성됩니다.</p>
+    <div class="tab-nav reveal" id="amgTabs">
+      <button class="tab-btn active" data-key="amgline">AMG Line</button>
+      <button class="tab-btn" data-key="amglineplus">AMG Line+</button>
+    </div>
+    <div class="tab-stage reveal" id="amgStage"></div>
+  </div>
+</section>
+
+<div class="volt-divider"><svg viewBox="0 0 280 24"><path class="volt-line" d="M0 12 L100 12 L110 2 L120 22 L130 12 L280 12"/></svg></div>
+
+<!-- 컬러 -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Colors</span>
+    <h2 class="section-title reveal">컬러 선택</h2>
+    <div class="color-stage reveal">
+      <div class="color-image"><img class="zoomable-image" id="colorImg" data-img="colorPolarWhite" alt="폴라 화이트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="color-swatches">
+        <div class="swatch active" style="background:#F4F4F2;box-shadow:0 0 0 1.5px var(--line), inset 0 0 0 1px #ddd" data-name="폴라 화이트" data-code="149U" data-key="colorPolarWhite"></div>
+        <div class="swatch" style="background:#1A1A1A" data-name="옵시디언 블랙" data-code="197U" data-key="colorObsidianBlack"></div>
+        <div class="swatch" style="background:#B7B2C2" data-name="라벤더 실버" data-code="689U" data-key="colorLavenderSilver"></div>
+        <div class="swatch" style="background:#2B4A6B" data-name="시어 블루" data-code="809U" data-key="colorSheerBlue"></div>
+        <div class="swatch" style="background:#1C3A56" data-name="소달라이트 블루" data-code="842U" data-key="colorSodaliteBlue"></div>
+        <div class="swatch" style="background:#9BA3A6" data-name="하이테크 실버" data-code="922U" data-key="colorHighTechSilver"></div>
+        <div class="swatch" style="background:#6C6E70" data-name="MANUFAKTUR 알파인 그레이" data-code="956U" data-key="colorManufakturAlpineGrey"></div>
+        <div class="swatch" style="background:#EEE8DC" data-name="MANUFAKTUR 오팔라이트 화이트" data-code="885U" data-key="colorManufakturOpaliteWhite"></div>
+      </div>
+      <div class="color-label">
+        <span class="color-code" id="colorCode">149U</span>
+        <span class="color-name" id="colorName">폴라 화이트</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MBUX Display Experience -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">Display Concept</span>
+    <h2 class="section-title reveal">MBUX Display Experience</h2>
+    <p class="section-desc reveal">트림에 따라 달라지는 Mercedes-Benz 최신 디지털 콕핏.</p>
+    <div class="tab-nav reveal" id="mbuxTabs">
+      <button class="tab-btn active" data-key="super">MBUX 슈퍼스크린</button>
+      <button class="tab-btn" data-key="hyper">MBUX 하이퍼스크린</button>
+    </div>
+    <div class="tab-stage reveal" id="mbuxStage"></div>
+  </div>
+</section>
+
+<!-- 인테리어 (reduced grid) -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Cabin</span>
+    <h2 class="section-title reveal">인테리어</h2>
+    <p class="section-desc reveal">부메스터 4D 서라운드 사운드, 일루미네이티드 파노라믹 루프, 앰비언트 라이팅까지 — 전기차 시대의 프리미엄 공간입니다.</p>
+    <div class="interior-grid">
+      <div class="interior-card reveal delay-1"><img class="zoomable-image" data-img="burmester" alt="부메스터 4D 서라운드 사운드" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">부메스터 4D 서라운드 사운드</span></div>
+      <div class="interior-card reveal delay-2"><img class="zoomable-image" data-img="panorama" alt="일루미네이티드 파노라믹 루프" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">일루미네이티드 파노라믹 루프</span></div>
+      <div class="interior-card reveal delay-3"><img class="zoomable-image" data-img="ambient" alt="앰비언트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">앰비언트 라이팅</span></div>
+      <div class="interior-card reveal delay-4"><img class="zoomable-image" data-img="seats" alt="시트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">스포츠 시트</span></div>
+      <div class="interior-card reveal delay-5"><img class="zoomable-image" data-img="storage" alt="수납" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">수납 공간</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 라인업 -->
+<section id="trims">
+  <div class="wrap">
+    <span class="eyebrow reveal">Part 4 · Line-up</span>
+    <h2 class="section-title reveal">국내 출시 라인업 4종</h2>
+    <p class="section-desc reveal">이번 사전계약 대상은 AMG Line · AMG Line+ 2개 트림이며, 확정 가격이 공개되었습니다. 나머지 2개 트림은 예상 가격대(참고용)입니다.</p>
+    <div class="trim-tabs reveal">
+      <button class="tab-btn active" data-trim="t1">GLC 300 Electric</button>
+      <button class="tab-btn" data-trim="t2">GLC 300 AMG Line</button>
+      <button class="tab-btn" data-trim="t3">GLC 300 AMG Line+</button>
+      <button class="tab-btn" data-trim="t4">GLC 400</button>
+    </div>
+    <div class="trim-panel reveal" id="trimPanel"></div>
+  </div>
+</section>
+
+<!-- 전 모델 공통 기본 사양 -->
+<section class="section-alt standard-equipment-section">
+  <div class="wrap">
+    <span class="eyebrow reveal">Standard Equipment</span>
+    <h2 class="section-title reveal">전 모델 공통 기본 사양</h2>
+    <p class="section-desc reveal">아래 사양은 GLC Electric 전 라인업에 기본 적용됩니다.<br>디스플레이 구성은 라인업에 따라 다르므로 위 MBUX Display Experience 섹션을 참고해주세요.</p>
+    <span class="standard-note-badge reveal">전 라인업 기본 적용</span>
+
+    <div class="standard-summary reveal" id="standardSummary"></div>
+
+    <div class="standard-grid reveal" id="standardGrid"></div>
+
+    <p class="standard-footnote">※ 기본 사양과 옵션 코드는 MY27 국내 출시 예정 자료를 기준으로 정리했으며, 실제 국내 판매 사양은 변경될 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- 라인업별 옵션 비교 -->
+<section class="option-compare-section">
+  <div class="wrap">
+    <span class="eyebrow reveal">Part 4 · Model & Option Guide</span>
+    <h2 class="section-title reveal">라인업별 옵션 비교</h2>
+    <p class="section-desc reveal">상위 라인업으로 갈수록 편의·디자인·주행 옵션이 단계적으로 추가됩니다.<br>라인업별 차이나는 옵션은 에메랄드 그린으로 강조했습니다.</p>
+    <p class="option-legend reveal"><span class="dot-applied"></span> 기본 적용&nbsp;&nbsp;<span class="dash-not"></span> 미적용&nbsp;&nbsp;<span class="mint-chip"></span> 상위 트림에서 신규 추가</p>
+
+    <div class="option-toolbar reveal">
+      <div class="option-filter-nav" id="optionFilterNav">
+        <button class="option-filter-btn active" data-filter="all">전체 옵션</button>
+        <button class="option-filter-btn" data-filter="display">디스플레이</button>
+        <button class="option-filter-btn" data-filter="convenience">편의사양</button>
+        <button class="option-filter-btn" data-filter="drive">주행기술</button>
+        <button class="option-filter-btn" data-filter="design">디자인</button>
+      </div>
+      <button class="option-reset-btn" id="optionResetFocus">전체 보기</button>
+    </div>
+
+    <div class="option-compare-wrap reveal" id="optionTableWrap"></div>
+
+    <div class="option-mobile-tabs" id="optionMobileTabs" role="tablist" aria-label="옵션 비교 모델 선택">
+      <button class="option-mobile-tab" role="tab" data-trim="t1" aria-label="GLC 300 옵션 보기">GLC 300</button>
+      <button class="option-mobile-tab" role="tab" data-trim="t2" aria-label="GLC 300 AMG Line 옵션 보기">AMG Line</button>
+      <button class="option-mobile-tab option-active" role="tab" data-trim="t3" aria-label="GLC 300 AMG Line+ 옵션 보기">AMG Line+</button>
+      <button class="option-mobile-tab" role="tab" data-trim="t4" aria-label="GLC 400 옵션 보기">GLC 400</button>
+    </div>
+    <label class="option-compare-toggle">
+      <input type="checkbox" id="optionCompareToggle">
+      <span>두 모델 비교</span>
+    </label>
+    <div class="option-compare-select" id="optionCompareSelect" style="display:none;">
+      <select id="optionCompareModelB" aria-label="비교할 두 번째 모델 선택">
+        <option value="t1">GLC 300</option>
+        <option value="t2">GLC 300 AMG Line</option>
+        <option value="t3" selected>GLC 300 AMG Line+</option>
+        <option value="t4">GLC 400</option>
+      </select>
+      <button class="option-common-toggle" id="optionCommonToggle">공통 사양도 보기</button>
+    </div>
+    <div class="option-mobile-panel" id="optionMobilePanel" role="tabpanel"></div>
+
+    <div class="option-recommend-box reveal">
+      GLC 300 AMG Line+는 하이퍼스크린, 에어매틱, 리어 액슬 스티어링 등 체감 가치가 높은 핵심 사양이 추가되는 균형 잡힌 라인업입니다.
+    </div>
+
+    <p class="option-footnote">※ 옵션과 가격은 MY27 국내 출시 예정 사양을 기준으로 정리한 참고 자료이며, 실제 국내 판매 사양과 패키지 구성은 변경될 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- 국내 출시 제원표 -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Technical Specification</span>
+    <h2 class="section-title reveal">국내 출시 제원표</h2>
+    <p class="section-desc reveal">GLC 300 4MATIC Electric을 기준으로, GLC 400 4MATIC Electric의 상위 사양을 함께 비교했습니다. MY27 기준이며 국내 출시 사양은 변경될 수 있습니다.</p>
+    <span class="spec-note-badge reveal">MY27 기준 · 국내 출시 사양은 변경될 수 있습니다</span>
+
+    <div class="spec-toolbar reveal">
+      <div class="spec-model-tabs" id="specModelTabs" role="tablist" aria-label="비교 모델 선택">
+        <button class="spec-model-btn active" role="tab" aria-selected="true" aria-controls="specMobilePanel" data-model="300">GLC 300</button>
+        <button class="spec-model-btn" role="tab" aria-selected="false" aria-controls="specMobilePanel" data-model="400">GLC 400</button>
+      </div>
+      <label class="spec-summary-toggle">
+        <input type="checkbox" id="specSummaryToggle">
+        <span>주요 제원만 보기</span>
+      </label>
+    </div>
+
+    <div class="spec-table-wrap reveal" id="specTableWrap"></div>
+    <div class="spec-mobile-panel" id="specMobilePanel" role="tabpanel"></div>
+
+    <p class="spec-footnote">※ 위 수치는 MY27 및 WLTP 기준 참고 자료이며, 국내 인증·트림·선택 사양에 따라 달라질 수 있습니다.<br>최종 사양은 Mercedes-Benz Korea 공식 자료를 기준으로 합니다.</p>
+  </div>
+</section>
+
+<!-- 경쟁차 비교 -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">Benchmark</span>
+    <h2 class="section-title reveal">경쟁차 비교</h2>
+    <p class="section-desc reveal">동급 전기 SUV와 나란히 놓고 본 객관적 제원입니다.</p>
+    <div class="compare-table-wrap reveal">
+      <table class="compare">
+        <thead><tr><th>항목</th><th>BMW iX3</th><th>Audi Q6 e-tron</th><th>Tesla Model Y</th><th class="col-glc">GLC Electric</th></tr></thead>
+        <tbody>
+          <tr><td>최대 주행거리</td><td>560km</td><td>582km</td><td>509km</td><td class="col-glc">616km</td></tr>
+          <tr><td>급속충전 (10→80%)</td><td>26분</td><td>25분</td><td>27분</td><td class="col-glc">22분</td></tr>
+          <tr><td>최고출력</td><td>313마력</td><td>388마력</td><td>378마력</td><td class="col-glc">421마력</td></tr>
+          <tr><td>공력저항계수</td><td>0.29 Cd</td><td>0.27 Cd</td><td>0.23 Cd</td><td class="col-glc">0.26 Cd</td></tr>
+          <tr><td>브랜드 서비스망</td><td>양호</td><td>양호</td><td>제한적</td><td class="col-glc">전국 최다 공식망</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 안전기술 -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="eyebrow reveal">Safety</span>
+    <h2 class="section-title reveal">안전기술</h2>
+    <div class="safety-grid">
+      <div class="safety-card reveal delay-1"><div class="icon">1</div><h4>Drive Assist</h4><p>고속도로와 시내 주행을 함께 보조합니다.</p></div>
+      <div class="safety-card reveal delay-2"><div class="icon">2</div><h4>PRE-SAFE</h4><p>충돌 위험을 감지해 탑승자를 사전 보호합니다.</p></div>
+      <div class="safety-card reveal delay-3"><div class="icon">3</div><h4>360° 카메라</h4><p>주차와 저속 주행 시 사각지대를 없애줍니다.</p></div>
+      <div class="safety-card reveal delay-4"><div class="icon">4</div><h4>차선유지 보조</h4><p>의도치 않은 차선 이탈을 감지하고 개입합니다.</p></div>
+      <div class="safety-card reveal delay-5"><div class="icon">5</div><h4>후측방 경보</h4><p>사각지대 차량을 감지해 경고합니다.</p></div>
+      <div class="safety-card reveal delay-6"><div class="icon">6</div><h4>Digital Light</h4><p>정교한 하이빔 제어로 야간 시야를 확보합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>© Mercedes-Benz GLC Electric · 본 페이지의 가격 및 사양은 사전계약 기준이며 변경될 수 있습니다.</footer>
+
+<div class="lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="확대 이미지 보기">
+  <button class="lightbox-close" type="button" id="lightboxCloseBtn" aria-label="확대 이미지 닫기">×</button>
+  <div class="lightbox-stage">
+    <img id="lightboxImage" alt="">
+  </div>
+</div>
+
+<script>
+// ============================================================
+// ---- unified image application system ----
+// IMAGE_LINKS itself lives in the <head>, right before </head>.
+// Everything below only READS from IMAGE_LINKS - no image URL
+// is ever hardcoded here. Add a new image anywhere by adding a
+// key to IMAGE_LINKS and putting data-img="thatKey" on an <img>
+// (or imageKey:"thatKey" on a dynamic data item).
+// ============================================================
+
+// shared error handler for every static and dynamically created image
+function handleImageError(img){
+  img.removeAttribute('src');
+  img.classList.add('image-empty');
+  showImageHint(img, true);
+}
+
+function showImageHint(img, show){
+  const wrap = img.parentElement;
+  if(!wrap) return;
+  const hint = wrap.querySelector(':scope > .image-hint');
+  if(hint) hint.style.display = show ? 'flex' : 'none';
+}
+
+// sets an image's src from a URL, or shows the "링크를 입력해주세요" hint if empty
+function setImageOrHint(img, url){
+  const clean = (url || '').trim();
+  if(clean){
+    img.src = clean;
+    img.classList.remove('image-empty');
+    showImageHint(img, false);
+  } else {
+    img.removeAttribute('src');
+    img.classList.add('image-empty');
+    showImageHint(img, true);
+  }
+}
+
+// applies IMAGE_LINKS to every [data-img] element under root (defaults to whole page)
+function applyImages(root){
+  (root || document).querySelectorAll('img[data-img]').forEach(img=>{
+    setImageOrHint(img, IMAGE_LINKS[img.dataset.img]);
+  });
+}
+function applyImageLinks(){
+  applyImages(document);
+}
+// belt-and-suspenders: when any [data-img] image finishes loading successfully,
+// make sure its empty-state class and hint overlay are cleared (load doesn't
+// bubble, so this listener uses the capture phase)
+document.addEventListener('load', (e)=>{
+  const img = e.target;
+  if(img && img.tagName === 'IMG' && img.hasAttribute('data-img') && img.src){
+    img.classList.remove('image-empty');
+    showImageHint(img, false);
+  }
+}, true);
+document.addEventListener('DOMContentLoaded', () => {
+  applyImageLinks();
+});
+// in case this script runs after DOMContentLoaded already fired
+// (it's placed at the end of body), also run once immediately
+applyImageLinks();
+
+
+// ---- reveal on scroll ----
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
+},{threshold:0.15});
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el=>io.observe(el));
+
+// ---- count up ----
+const countIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el = e.target; const target = parseFloat(el.dataset.target);
+      const dur=1200; const startTime=performance.now();
+      function tick(now){
+        const p = Math.min((now-startTime)/dur,1);
+        const val = Math.floor(p*target);
+        el.childNodes[0].nodeValue = val;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    }
+  });
+},{threshold:0.6});
+document.querySelectorAll('.count').forEach(el=>countIO.observe(el));
+
+// ============================================================
+// ---- unified lightbox system ----
+// Single lightbox instance (#imageLightbox) reused for every
+// zoomable image on the page, including images created later
+// by tab/trim/color rendering. New images only need the
+// "zoomable-image" class - no per-image onclick wiring needed.
+// ============================================================
+const lightboxEl = document.getElementById('imageLightbox');
+const lightboxStageEl = lightboxEl.querySelector('.lightbox-stage');
+const lightboxImageEl = document.getElementById('lightboxImage');
+const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+let lightboxLastFocused = null;
+let lightboxScrollY = 0;
+
+function isImageZoomable(img){
+  if(!img || img.tagName !== 'IMG') return false;
+  if(img.classList.contains('image-empty')) return false;
+  const src = img.currentSrc || img.src;
+  if(!src) return false;
+  if(!img.complete) return false;
+  if(img.naturalWidth === 0) return false;
+  return true;
+}
+
+function lockBodyScroll(){
+  lightboxScrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${lightboxScrollY}px`;
+  document.body.style.width = '100%';
+  document.body.classList.add('lightbox-open');
+}
+function unlockBodyScroll(){
+  document.body.classList.remove('lightbox-open');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, lightboxScrollY);
+}
+
+function openLightboxFromImage(img){
+  if(!isImageZoomable(img)) return;
+  const src = img.currentSrc || img.src;
+  lightboxLastFocused = img;
+  lightboxImageEl.src = src;
+  lightboxImageEl.alt = img.alt || '';
+  lockBodyScroll();
+  lightboxEl.classList.add('active');
+  lightboxEl.setAttribute('aria-hidden','false');
+  lightboxCloseBtn.focus();
+}
+function closeLightbox(){
+  if(!lightboxEl.classList.contains('active')) return;
+  lightboxEl.classList.remove('active');
+  lightboxEl.setAttribute('aria-hidden','true');
+  unlockBodyScroll();
+  if(lightboxLastFocused && typeof lightboxLastFocused.focus === 'function'){
+    lightboxLastFocused.focus();
+  }
+}
+
+// event delegation: works for any current or future .zoomable-image
+document.addEventListener('click',(e)=>{
+  const img = e.target.closest('.zoomable-image');
+  if(!img) return;
+  openLightboxFromImage(img);
+});
+
+// close interactions
+lightboxCloseBtn.addEventListener('click', closeLightbox);
+lightboxEl.addEventListener('click',(e)=>{
+  if(e.target === lightboxEl || e.target === lightboxStageEl){
+    closeLightbox();
+  }
+});
+lightboxImageEl.addEventListener('click',(e)=>{ e.stopPropagation(); });
+document.addEventListener('keydown',(e)=>{
+  if(e.key === 'Escape'){ closeLightbox(); return; }
+  if(e.key === 'Tab' && lightboxEl.classList.contains('active')){
+    // simple focus trap: only the close button is focusable inside
+    e.preventDefault();
+    lightboxCloseBtn.focus();
+  }
+});
+
+// ---- generic crossfade tab renderer ----
+function renderTabbed(navId, stageId, dataMap, renderFn, defaultKey){
+  const nav = document.getElementById(navId);
+  const stage = document.getElementById(stageId);
+  function paint(key){
+    stage.innerHTML = `<div class="tab-panel switching">${renderFn(dataMap[key])}</div>`;
+    applyImages(stage);
+    const panel = stage.firstElementChild;
+    requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ panel.classList.remove('switching'); }); });
+  }
+  paint(defaultKey);
+  nav.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(btn.classList.contains('active')) return;
+      nav.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const stagePanel = stage.firstElementChild;
+      if(stagePanel){
+        stagePanel.classList.add('switching');
+        setTimeout(()=>paint(btn.dataset.key), 260);
+      } else {
+        paint(btn.dataset.key);
+      }
+    });
+  });
+}
+
+// ---- AMG design comparison ----
+const AMG_DATA = {
+  amgline:{
+    name:"AMG Line", badge:"스포티 · 기본 적용", imageKey:"amgLine",
+    desc:"AMG 전용 바디스타일링과 20인치(50.8cm) AMG 경합금 휠, D컷 스포츠 스티어링 휠과 AMG 스포츠 페달로 역동적인 감성을 강조합니다.",
+    wheel:"20″ AMG 5-스포크", bumper:"AMG 전용 프론트/리어 범퍼", point:"D컷 스포츠 스티어링 휠 · AMG 스포츠 페달", model:"GLC 300 4MATIC AMG Line"
+  },
+  amglineplus:{
+    name:"AMG Line+", badge:"GLC 최초 라인", imageKey:"amgLinePlus",
+    desc:"나이트 패키지의 고광택 블랙 요소와 21인치(53.3cm) AMG 휠, AMG 라인 스포츠 시트 패키지와 레드 포인트 전용 트림으로 개성을 극대화한 GLC 최초의 라인입니다.",
+    wheel:"21″ AMG Y-스포크", bumper:"나이트 패키지 고광택 블랙 범퍼", point:"AMG 스포츠 시트 · 레드 포인트 스티치", model:"GLC 400 4MATIC AMG Line+"
+  }
+};
+function amgTemplate(d){
+  return `<div class="split-panel">
+    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+    <div class="split-info">
+      <span class="badge">${d.badge}</span>
+      <h3>${d.name}</h3>
+      <p class="apply-models">적용모델 · <b>${d.model}</b></p>
+      <ul class="feature-list">
+        <li>${d.desc}</li>
+        <li>기본휠 — ${d.wheel}</li>
+        <li>범퍼 디자인 — ${d.bumper}</li>
+        <li>전용 포인트 — ${d.point}</li>
+      </ul>
+    </div>
+  </div>`;
+}
+renderTabbed('amgTabs','amgStage',AMG_DATA,amgTemplate,'amgline');
+
+// ---- MBUX Display Experience ----
+const MBUX_DATA = {
+  super:{
+    name:"MBUX 슈퍼스크린", badge:"GLC 300 기본 라인업 전용", imageKey:"mbuxSuper", model:"GLC 300",
+    features:["운전자 계기판 + 중앙 디스플레이 구성","제로레이어 UI","MBUX 음성비서","직관적인 인터페이스","깔끔한 대시보드"]
+  },
+  hyper:{
+    name:"MBUX 하이퍼스크린", badge:"GLC 300 외 전 모델 적용", imageKey:"mbuxHyper", model:"AMG Line · AMG Line+ · GLC 400",
+    features:["하나의 유리 패널","조수석 디스플레이","더욱 넓은 화면","몰입형 디지털 경험","액티브 앰비언트"]
+  }
+};
+function mbuxTemplate(d){
+  const li = d.features.map(f=>`<li>${f}</li>`).join('');
+  return `<div class="split-panel">
+    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+    <div class="split-info">
+      <span class="badge">${d.badge}</span>
+      <h3>${d.name}</h3>
+      <p class="apply-models">적용트림 · <b>${d.model}</b></p>
+      <ul class="feature-list">${li}</ul>
+    </div>
+  </div>`;
+}
+renderTabbed('mbuxTabs','mbuxStage',MBUX_DATA,mbuxTemplate,'super');
+
+// ---- trim comparison ----
+const TRIM_DATA = {
+  t1:{name:"GLC 300 4MATIC Electric", badge:"예상가 · 사전계약 미대상", price:"8,700~8,800만원대", imageKey:"trimGLC300",
+      specs:[["내장","ARTICO 인조가죽"],["휠","20″ (RRM)"],["배터리/주행거리","85.5 kWh · 최대 616km"],["기본사양","MBUX 슈퍼스크린 (860)"]]},
+  t2:{name:"GLC 300 4MATIC AMG Line Electric", badge:"사전계약 대상 · 계약금 300만원", price:"9,000만원", imageKey:"trimAMGLine",
+      specs:[["내장","ARTICO 인조가죽"],["휠","20″ (RRN)"],["옵션","파노라믹 루프 (415) · 스포츠 시트 (7U4)"],["기본사양","MBUX 하이퍼스크린 (860)"]]},
+  t3:{name:"GLC 300 4MATIC AMG Line+ Electric", badge:"사전계약 대상 · 계약금 300만원", price:"9,480만원", imageKey:"trimAMGLinePlus",
+      specs:[["내장","ARTICO 인조가죽"],["휠","20″ (RVQ)"],["옵션","에어매틱 (489) · 나이트 패키지"],["기본사양","MBUX 하이퍼스크린 (870)"]]},
+  t4:{name:"GLC 400 4MATIC Electric", badge:"예상가 · 사전계약 미대상", price:"1억원 내외", imageKey:"trimGLC400",
+      specs:[["내장","가죽 (210A)"],["휠","21″ (RWD)"],["배터리/주행거리","최상위 94.4 kWh · 최대 715km"],["기본사양","MBUX 하이퍼스크린 (870)"]]}
+};
+function renderTrim(key){
+  const d = TRIM_DATA[key];
+  const specsHtml = d.specs.map(s=>`<li><span>${s[0]}</span><b>${s[1]}</b></li>`).join('');
+  const panel = document.getElementById('trimPanel');
+  panel.style.opacity = 0; panel.style.transform='translateY(8px)';
+  setTimeout(()=>{
+    panel.innerHTML = `
+      <div class="trim-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="trim-info">
+        <span class="trim-badge">${d.badge}</span>
+        <div class="trim-name">${d.name}</div>
+        <div class="trim-price">${d.price}</div>
+        <ul class="trim-spec-list">${specsHtml}</ul>
+      </div>`;
+    applyImages(panel);
+    panel.style.transition='opacity .4s ease, transform .4s ease';
+    requestAnimationFrame(()=>{ panel.style.opacity=1; panel.style.transform='translateY(0)'; });
+  },180);
+}
+document.querySelectorAll('.trim-tabs .tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.trim-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTrim(btn.dataset.trim);
+  });
+});
+renderTrim('t1');
+
+// ---- 전 모델 공통 기본 사양 (dedicated module) ----
+const STANDARD_ICONS = {
+  design: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
+  display: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>',
+  seat: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"/><path d="M6 12h9a2 2 0 0 1 2 2v3H8a2 2 0 0 1-2-2v-3z"/><path d="M18 14v5M8 19v2M17 19v2"/></svg>',
+  drive: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v2M12 14v2M8 12h2M14 12h2"/><circle cx="12" cy="12" r="2"/></svg>'
+};
+const STANDARD_DATA = [
+  { key:"design", title:"디자인 · 라이팅", icon:"design", items:[
+    {text:"일루미네이티드 아이코닉 그릴"},
+    {text:"디지털 라이트"},
+    {text:"발광 도어 실 패널", code:"U45"},
+    {text:"브랜드 로고 빔 프로젝션", code:"587"},
+    {text:"액티브 앰비언트 라이트", code:"878"},
+    {text:"SKY CONTROL 파노라믹 루프", code:"398"}
+  ]},
+  { key:"display", title:"디스플레이 · 인포테인먼트", icon:"display", items:[
+    {text:"MBUX 내비게이션 · 음성 어시스턴트 (제로 레이어)"},
+    {text:"MBUX AR 내비게이션 헤드업 디스플레이", code:"444"},
+    {text:"Burmester 4D 하이엔드 서라운드 사운드", code:"811"},
+    {text:"앞좌석 무선 충전", code:"869"}
+  ], note:"※ MBUX 디스플레이 구성은 라인업에 따라 다릅니다."},
+  { key:"seat", title:"시트 · 컴포트", icon:"seat", items:[
+    {text:"AMG Line 스포츠 시트 패키지", code:"949"},
+    {text:"앞좌석 열선 및 통풍 시트", code:"401"},
+    {text:"앞좌석 마사지 기능", code:"257"},
+    {text:"뒷좌석 열선 시트", code:"872"},
+    {text:"뒷좌석 접이식 시트", code:"287"},
+    {text:"메모리 패키지", code:"275"},
+    {text:"THERMATIC 자동 온도 조절", code:"580"},
+    {text:"하이 글로스 실버 메탈릭 혼방 패브릭 트림", code:"73H"}
+  ]},
+  { key:"drive", title:"주행 · 편의 · 안전", icon:"drive", items:[
+    {text:"키레스 고 컴포트 패키지", code:"P17"},
+    {text:"전자식 전방 프렁크", code:"3K1"},
+    {text:"공기 청정 패키지", code:"P53"},
+    {text:"컴포트 서스펜션", code:"485"},
+    {text:"저소음 타이어", code:"R06"},
+    {text:"Digital Extra: 360° 주차 어시스트", code:"P47"},
+    {text:"Digital Extra: MB 드라이브 어시스트", code:"P20"}
+  ]}
+];
+
+function renderStandardSummary(){
+  const totalItems = STANDARD_DATA.reduce((sum,g)=>sum+g.items.length,0);
+  document.getElementById('standardSummary').innerHTML = `
+    <span class="standard-summary-chip"><b>${STANDARD_DATA.length}개</b> 카테고리</span>
+    <span class="standard-summary-chip"><b>${totalItems}개</b> 기본 사양</span>
+    <span class="standard-summary-chip">전 라인업 <b>기본 적용</b></span>
+  `;
+}
+
+function renderStandardGrid(){
+  const html = STANDARD_DATA.map((group, idx)=>{
+    const itemsHtml = group.items.map(it=>{
+      const code = it.code ? `<span class="standard-code">(${it.code})</span>` : '';
+      return `<li class="standard-item">${it.text}${code ? ' ' + code : ''}</li>`;
+    }).join('');
+    const note = group.note ? `<p class="standard-note">${group.note}</p>` : '';
+    const panelId = `standardPanel-${group.key}`;
+    return `<article class="standard-card ${idx===0 ? 'is-open' : ''}">
+      <div class="standard-card-head" data-card="${group.key}">
+        <span class="standard-card-icon">${STANDARD_ICONS[group.icon]}</span>
+        <h3 class="standard-card-title">${group.title}</h3>
+        <button type="button" class="standard-accordion-btn" aria-expanded="${idx===0 ? 'true':'false'}" aria-controls="${panelId}">+</button>
+      </div>
+      <div class="standard-accordion-content" id="${panelId}">
+        <ul class="standard-list">${itemsHtml}</ul>
+        ${note}
+      </div>
+    </article>`;
+  }).join('');
+  document.getElementById('standardGrid').innerHTML = html;
+  applyStandardAccordionState();
+}
+
+function applyStandardAccordionState(){
+  const isMobile = window.innerWidth <= 768;
+  document.querySelectorAll('.standard-card').forEach(card=>{
+    const content = card.querySelector('.standard-accordion-content');
+    if(!isMobile){
+      content.style.maxHeight = '';
+      return;
+    }
+    if(card.classList.contains('is-open')){
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '0px';
+    }
+  });
+}
+
+function toggleStandardCard(key){
+  const cards = document.querySelectorAll('.standard-card');
+  cards.forEach(card=>{
+    const head = card.querySelector('.standard-card-head');
+    const btn = card.querySelector('.standard-accordion-btn');
+    if(head.dataset.card === key){
+      const willOpen = !card.classList.contains('is-open');
+      cards.forEach(c=>{ c.classList.remove('is-open'); c.querySelector('.standard-accordion-btn').setAttribute('aria-expanded','false'); });
+      if(willOpen){ card.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    }
+  });
+  applyStandardAccordionState();
+}
+
+renderStandardSummary();
+renderStandardGrid();
+document.getElementById('standardGrid').addEventListener('click',(e)=>{
+  const head = e.target.closest('.standard-card-head');
+  if(head && window.innerWidth <= 768){ toggleStandardCard(head.dataset.card); }
+});
+document.getElementById('standardGrid').addEventListener('keydown',(e)=>{
+  if((e.key==='Enter' || e.key===' ') && e.target.classList.contains('standard-accordion-btn')){
+    e.preventDefault();
+    const head = e.target.closest('.standard-card-head');
+    if(head){ toggleStandardCard(head.dataset.card); }
+  }
+});
+window.addEventListener('resize',()=>{ applyStandardAccordionState(); });
+
+// ---- 라인업별 옵션 비교 (dedicated module, isolated from renderTabbed/spec-table) ----
+const OPTION_MODELS = [
+  {key:"t1", short:"GLC 300", full:"GLC 300"},
+  {key:"t2", short:"AMG Line", full:"GLC 300 AMG Line"},
+  {key:"t3", short:"AMG Line+", full:"GLC 300 AMG Line+"},
+  {key:"t4", short:"GLC 400", full:"GLC 400"}
+];
+const OPTION_BASE_ROWS = [
+  { label:"가격", category:"price", type:"price",
+    vals:{ t1:{text:"8,700~8,800만원대", badge:"estimated", badgeText:"예상 가격"},
+           t2:{text:"9,000만원", badge:"confirmed", badgeText:"사전계약 대상"},
+           t3:{text:"9,480만원", badge:"confirmed", badgeText:"사전계약 대상"},
+           t4:{text:"1억원 내외", badge:"estimated", badgeText:"예상 가격"} } },
+  { label:"디자인 라인", category:"design", type:"text",
+    vals:{ t1:{text:"AMG Line"}, t2:{text:"AMG Line"}, t3:{text:"AMG Line+"}, t4:{text:"AMG Line+"} } },
+  { label:"배터리", category:"battery", type:"text",
+    vals:{ t1:{text:"85.5kWh"}, t2:{text:"85.5kWh"}, t3:{text:"85.5kWh"}, t4:{text:"94.4kWh", upgrade:true} } },
+  { label:"WLTP 주행거리", category:"range", type:"text",
+    vals:{ t1:{text:"최대 616km"}, t2:{text:"최대 616km"}, t3:{text:"최대 616km"}, t4:{text:"최대 715km", upgrade:true} } },
+  { label:"내장", category:"design", type:"text",
+    vals:{ t1:{text:"ARTICO 인조가죽"}, t2:{text:"ARTICO 인조가죽"}, t3:{text:"ARTICO 인조가죽"}, t4:{text:"가죽"} } },
+  { label:"기본 휠", category:"design", type:"text",
+    vals:{ t1:{text:"20″ RRM"}, t2:{text:"20″ RRN"}, t3:{text:"20″ RVQ"}, t4:{text:"21″ RWD"} } }
+];
+const OPTION_FEATURE_ROWS = [
+  { label:"MBUX 슈퍼스크린", code:"860", category:"display", applied:{t1:true,t2:false,t3:false,t4:false}, firstAt:"t1" },
+  { label:"MBUX 하이퍼스크린", code:"870", category:"display", applied:{t1:false,t2:true,t3:true,t4:true}, firstAt:"t2" },
+  { label:"일루미네이티드 파노라믹 루프", code:"415", category:"convenience", applied:{t1:false,t2:true,t3:true,t4:true}, firstAt:"t2" },
+  { label:"스포츠 시트", code:"7U4", category:"convenience", applied:{t1:false,t2:true,t3:true,t4:true}, firstAt:"t2" },
+  { label:"PRE-SAFE® 임펄스 사이드", code:"292", category:"convenience", applied:{t1:false,t2:true,t3:true,t4:true}, firstAt:"t2" },
+  { label:"이지리턴 & 컴포트 패키지", code:"PAD", category:"convenience", applied:{t1:false,t2:false,t3:true,t4:true}, firstAt:"t3" },
+  { label:"에어매틱", code:"489", category:"drive", applied:{t1:false,t2:false,t3:true,t4:true}, firstAt:"t3" },
+  { label:"리어 액슬 스티어링 4.5°", code:"201", category:"drive", applied:{t1:false,t2:false,t3:true,t4:true}, firstAt:"t3" }
+];
+
+function optCheckHtml(applied){
+  return applied
+    ? `<span class="opt-check">✓</span><span class="sr-only">기본 적용</span>`
+    : `<span class="opt-dash"></span><span class="sr-only">미적용</span>`;
+}
+
+function buildOptionDesktopTable(){
+  const headCells = OPTION_MODELS.map(m=>{
+    let cls = "";
+    let extra = "";
+    if(m.key==="t2") cls = "opt-th-amgline";
+    if(m.key==="t3"){ cls = "opt-th-amglineplus"; extra = `<span class="opt-recommend-tag">추천 트림</span>`; }
+    let bottom = "";
+    if(m.key==="t4") bottom = `<span class="opt-top-tag">최상위 모델</span>`;
+    return `<th scope="col" class="${cls}" data-model="${m.key}">${extra}<button type="button" class="model-btn" data-model="${m.key}" aria-label="${m.full} 컬럼 강조">${m.full}</button>${bottom}</th>`;
+  }).join("");
+
+  let baseRowsHtml = OPTION_BASE_ROWS.map(r=>{
+    const cells = OPTION_MODELS.map(m=>{
+      const v = r.vals[m.key];
+      let inner = `<span class="${v.upgrade?'is-upgrade':''}">${v.text}</span>`;
+      if(v.badge){
+        inner += `<span class="option-price-badge ${v.badge}">${v.badgeText}</span>`;
+      }
+      return `<td class="opt-val ${v.upgrade?'is-upgrade':''}" data-model="${m.key}">${inner}</td>`;
+    }).join("");
+    return `<tr class="opt-row" data-cat="${r.category}"><th scope="row">${r.label}</th>${cells}</tr>`;
+  }).join("");
+
+  let featureRowsHtml = OPTION_FEATURE_ROWS.map(r=>{
+    const cells = OPTION_MODELS.map(m=>{
+      const applied = r.applied[m.key];
+      const isFirst = r.firstAt===m.key;
+      return `<td class="opt-val ${isFirst?'opt-first-add':''}" data-model="${m.key}">${optCheckHtml(applied)}</td>`;
+    }).join("");
+    return `<tr class="opt-row" data-cat="${r.category}"><th scope="row">${r.label}<span class="opt-code">(${r.code})</span></th>${cells}</tr>`;
+  }).join("");
+
+  return `<table class="option-compare-table">
+    <colgroup><col class="opt-col-label">${OPTION_MODELS.map(()=>'<col class="opt-col-model">').join("")}</colgroup>
+    <thead><tr><th scope="col" class="option-head-label">구분</th>${headCells}</tr></thead>
+    <tbody>${baseRowsHtml}${featureRowsHtml}</tbody>
+  </table>`;
+}
+
+let optionFilterState = "all";
+let optionFocusModel = null;
+
+function renderOptionTable(){
+  document.getElementById('optionTableWrap').innerHTML = buildOptionDesktopTable();
+  applyOptionFilter(optionFilterState, true);
+  attachOptionTableEvents();
+}
+function applyOptionFilter(filter, skipFade){
+  optionFilterState = filter;
+  const rows = document.querySelectorAll('#optionTableWrap tr.opt-row');
+  rows.forEach(row=>{
+    const cat = row.dataset.cat;
+    const shouldShow = filter==="all" ? true : cat===filter;
+    if(skipFade){
+      row.classList.toggle('opt-row-hidden', !shouldShow);
+      row.style.display = shouldShow ? '' : 'none';
+    } else {
+      if(shouldShow){
+        row.style.display = '';
+        requestAnimationFrame(()=>row.classList.remove('opt-row-hidden'));
+      } else {
+        row.classList.add('opt-row-hidden');
+        setTimeout(()=>{ if(row.classList.contains('opt-row-hidden')) row.style.display='none'; },260);
+      }
+    }
+  });
+}
+function attachOptionTableEvents(){
+  document.querySelectorAll('#optionTableWrap .model-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const key = btn.dataset.model;
+      optionFocusModel = optionFocusModel===key ? null : key;
+      applyOptionColumnFocus();
+    });
+  });
+}
+function applyOptionColumnFocus(){
+  const ths = document.querySelectorAll('#optionTableWrap thead th[data-model]');
+  const tds = document.querySelectorAll('#optionTableWrap tbody td[data-model]');
+  [...ths, ...tds].forEach(cell=>{
+    cell.classList.remove('opt-col-focus','opt-col-dim');
+    if(optionFocusModel){
+      if(cell.dataset.model===optionFocusModel) cell.classList.add('opt-col-focus');
+      else cell.classList.add('opt-col-dim');
+    }
+  });
+}
+document.getElementById('optionResetFocus').addEventListener('click',()=>{
+  optionFocusModel = null;
+  applyOptionColumnFocus();
+});
+document.querySelectorAll('.option-filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.option-filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyOptionFilter(btn.dataset.filter, false);
+  });
+});
+renderOptionTable();
+
+// ---- mobile option panel ----
+function buildOptionMobilePanel(modelKey){
+  const model = OPTION_MODELS.find(m=>m.key===modelKey);
+  const baseRowsHtml = OPTION_BASE_ROWS.map(r=>{
+    const v = r.vals[modelKey];
+    let valueHtml = `<span class="opt-mobile-value ${v.upgrade?'is-upgrade':''}">${v.text}</span>`;
+    return `<div class="opt-mobile-row"><span class="opt-mobile-label">${r.label}</span>${valueHtml}</div>`;
+  }).join("");
+  const featureRowsHtml = OPTION_FEATURE_ROWS.map(r=>{
+    return `<div class="opt-mobile-row"><span class="opt-mobile-label">${r.label} <span class="opt-code">(${r.code})</span></span>${optCheckHtml(r.applied[modelKey])}</div>`;
+  }).join("");
+  return `<div class="option-mobile-card"><h4>${model.full} 기본 정보</h4>${baseRowsHtml}</div>
+    <div class="option-mobile-card"><h4>${model.full} 옵션 적용</h4>${featureRowsHtml}</div>`;
+}
+function buildOptionCompareDiff(keyA, keyB, showCommon){
+  const modelA = OPTION_MODELS.find(m=>m.key===keyA);
+  const modelB = OPTION_MODELS.find(m=>m.key===keyB);
+  let diffHtml = "";
+  let commonHtml = "";
+  OPTION_FEATURE_ROWS.forEach(r=>{
+    const a = r.applied[keyA], b = r.applied[keyB];
+    const row = `<div class="opt-mobile-row"><span class="opt-mobile-label">${r.label} <span class="opt-code">(${r.code})</span></span><span class="opt-mobile-value">${modelA.short} ${optCheckHtml(a)} · ${modelB.short} ${optCheckHtml(b)}</span></div>`;
+    if(a!==b) diffHtml += row; else commonHtml += row;
+  });
+  let html = `<div class="option-mobile-card"><h4>${modelA.full} vs ${modelB.full} · 차이나는 옵션</h4>${diffHtml || '<p style="font-size:13px;color:var(--ink-soft);">두 트림의 옵션 구성이 동일합니다.</p>'}</div>`;
+  if(showCommon){
+    html += `<div class="option-mobile-card"><h4>공통 사양</h4>${commonHtml || '<p style="font-size:13px;color:var(--ink-soft);">공통 옵션이 없습니다.</p>'}</div>`;
+  }
+  return html;
+}
+let optionMobileModel = "t3";
+let optionCompareMode = false;
+let optionShowCommon = false;
+function renderOptionMobile(){
+  const panel = document.getElementById('optionMobilePanel');
+  panel.classList.add('switching');
+  setTimeout(()=>{
+    if(optionCompareMode){
+      const keyB = document.getElementById('optionCompareModelB').value;
+      panel.innerHTML = buildOptionCompareDiff(optionMobileModel, keyB, optionShowCommon);
+    } else {
+      panel.innerHTML = buildOptionMobilePanel(optionMobileModel);
+    }
+    requestAnimationFrame(()=>panel.classList.remove('switching'));
+  },180);
+}
+document.querySelectorAll('.option-mobile-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.option-mobile-tab').forEach(b=>{ b.classList.remove('option-active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('option-active'); btn.setAttribute('aria-selected','true');
+    optionMobileModel = btn.dataset.trim;
+    renderOptionMobile();
+  });
+  btn.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+      e.preventDefault();
+      const buttons = Array.from(document.querySelectorAll('.option-mobile-tab'));
+      const idx = buttons.indexOf(btn);
+      const next = e.key==='ArrowRight' ? buttons[(idx+1)%buttons.length] : buttons[(idx-1+buttons.length)%buttons.length];
+      next.focus(); next.click();
+    }
+  });
+});
+document.getElementById('optionCompareToggle').addEventListener('change',(e)=>{
+  optionCompareMode = e.target.checked;
+  document.getElementById('optionCompareSelect').style.display = optionCompareMode ? 'flex' : 'none';
+  renderOptionMobile();
+});
+document.getElementById('optionCompareModelB').addEventListener('change', renderOptionMobile);
+document.getElementById('optionCommonToggle').addEventListener('click',()=>{
+  optionShowCommon = !optionShowCommon;
+  document.getElementById('optionCommonToggle').textContent = optionShowCommon ? '공통 사양 숨기기' : '공통 사양도 보기';
+  renderOptionMobile();
+});
+renderOptionMobile();
+
+// ---- 국내 출시 제원표 (dedicated module, isolated from renderTabbed/tab-btn) ----
+const SPEC_DATA = [
+  { cat:"모터 및 성능", rows:[
+    { label:"전기 모터", v300:{type:"value", text:"전·후륜 영구자석 동기모터(PSM)"}, v400:{type:"same"}, key:false },
+    { label:"구동 방식", v300:{type:"value", text:"가변식 사륜구동(4MATIC)"}, v400:{type:"same"}, key:false },
+    { label:"최고 출력", v300:{type:"value", text:"421마력 (310kW)"}, v400:{type:"pending", text:"상위"}, key:true },
+    { label:"최대 토크", v300:{type:"value", text:"800Nm (81.6kg·m)"}, v400:{type:"pending", text:"상위"}, key:true },
+    { label:"0→100km/h", v300:{type:"value", text:"4.7초"}, v400:{type:"pending", text:"추후 공개"}, key:true },
+    { label:"최고 속도", v300:{type:"value", text:"210km/h"}, v400:{type:"value", text:"210km/h"}, key:false }
+  ]},
+  { cat:"배터리 및 충전", rows:[
+    { label:"셀 타입·화학 조성", v300:{type:"value", text:"각형(Prismatic) · NCM"}, v400:{type:"same"}, key:false },
+    { label:"배터리 구성", v300:{type:"value", text:"셀-모듈-팩 (4개 모듈)"}, v400:{type:"same"}, key:false },
+    { label:"에너지 용량", v300:{type:"value", text:"85.5kWh"}, v400:{type:"value", text:"94.4kWh"}, key:true },
+    { label:"고전압 배터리 무게", v300:{type:"value", text:"496kg"}, v400:{type:"value", text:"546kg"}, key:false },
+    { label:"완속 충전 (0→100%)", v300:{type:"value", text:"약 9시간 (11kW AC)"}, v400:{type:"same"}, key:false },
+    { label:"급속 충전 (DC 최대)", v300:{type:"value", text:"최대 330kW · 800V"}, v400:{type:"same"}, key:false },
+    { label:"급속 충전 (10→80%)", v300:{type:"value", text:"약 22분"}, v400:{type:"same"}, key:true }
+  ]},
+  { cat:"전비 및 주행거리 (WLTP)", rows:[
+    { label:"복합 전비", v300:{type:"value", text:"약 5.3~6.3km/kWh"}, v400:{type:"value", text:"약 5.3~6.7km/kWh"}, key:false },
+    { label:"인증 주행거리", v300:{type:"value", text:"523~616km"}, v400:{type:"value", text:"568~715km"}, key:true }
+  ]},
+  { cat:"서스펜션·브레이크", rows:[
+    { label:"서스펜션 (전/후)", v300:{type:"value", text:"코일 또는 에어 스프링 · 멀티링크"}, v400:{type:"same"}, key:false },
+    { label:"브레이크", v300:{type:"value", text:"내부 벤틸레이티드 디스크(공랭식)"}, v400:{type:"same"}, key:false },
+    { label:"공기저항계수 (Cd)", v300:{type:"value", text:"0.26"}, v400:{type:"same"}, key:false }
+  ]},
+  { cat:"크기 및 중량", rows:[
+    { label:"전장 / 전폭 / 전고", v300:{type:"value", text:"4,845 / 1,913 / 1,644mm"}, v400:{type:"same"}, key:true },
+    { label:"휠베이스", v300:{type:"value", text:"2,972mm"}, v400:{type:"same"}, key:false },
+    { label:"트렁크 용량", v300:{type:"value", text:"570L (2열 폴딩 시 1,740L)"}, v400:{type:"same"}, key:true },
+    { label:"공차 중량", v300:{type:"value", text:"2,485kg"}, v400:{type:"value", text:"2,535kg"}, key:true },
+    { label:"최대 적재량", v300:{type:"value", text:"545kg"}, v400:{type:"value", text:"505kg"}, key:false },
+    { label:"차량 총중량", v300:{type:"value", text:"3,030kg"}, v400:{type:"value", text:"3,040kg"}, key:false }
+  ]}
+];
+
+function specValueHtml(v, isFor400){
+  if(v.type==="same") return '<span class="spec-badge-same">공통</span>';
+  if(v.type==="pending") return `<span class="spec-badge-pending">${v.text}</span>`;
+  const cls = isFor400 ? "is-upgrade" : "";
+  return `<span class="${cls}">${v.text}</span>`;
+}
+
+function buildSpecDesktopTable(keyOnly){
+  let rows = "";
+  SPEC_DATA.forEach(group=>{
+    const filtered = keyOnly ? group.rows.filter(r=>r.key) : group.rows;
+    if(filtered.length===0) return;
+    rows += `<tr class="spec-category"><td colspan="3">${group.cat}</td></tr>`;
+    filtered.forEach(r=>{
+      rows += `<tr class="spec-row">
+        <th scope="row">${r.label}</th>
+        <td class="spec-val-300">${specValueHtml(r.v300,false)}</td>
+        <td class="spec-val-400 ${r.v400.type==='value' ? 'is-upgrade':''}">${specValueHtml(r.v400,true)}</td>
+      </tr>`;
+    });
+  });
+  return `<table class="spec-table">
+    <colgroup><col class="col-item"><col class="col-300"><col class="col-400"></colgroup>
+    <thead><tr>
+      <th scope="col">항목</th>
+      <th scope="col">GLC 300 4MATIC Electric</th>
+      <th scope="col" class="spec-th-400">GLC 400 4MATIC Electric</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function buildSpecMobilePanel(model, keyOnly){
+  let html = "";
+  SPEC_DATA.forEach(group=>{
+    const filtered = keyOnly ? group.rows.filter(r=>r.key) : group.rows;
+    if(filtered.length===0) return;
+    let rowsHtml = "";
+    filtered.forEach(r=>{
+      const v = model==="300" ? r.v300 : r.v400;
+      const isUpgrade = model==="400" && v.type==="value";
+      rowsHtml += `<div class="spec-mobile-row">
+        <div class="item-label">${r.label}</div>
+        <div class="item-value ${isUpgrade?'is-upgrade':''}">${specValueHtml(v, model==="400")}</div>
+      </div>`;
+    });
+    html += `<div class="spec-mobile-cat"><h4>${group.cat}</h4>${rowsHtml}</div>`;
+  });
+  return html;
+}
+
+let specState = { model:"300", keyOnly:false };
+function renderSpecTable(){
+  document.getElementById('specTableWrap').innerHTML = buildSpecDesktopTable(specState.keyOnly);
+  const panel = document.getElementById('specMobilePanel');
+  panel.classList.add('switching');
+  setTimeout(()=>{
+    panel.innerHTML = buildSpecMobilePanel(specState.model, specState.keyOnly);
+    requestAnimationFrame(()=>{ panel.classList.remove('switching'); });
+  },180);
+}
+renderSpecTable();
+
+document.querySelectorAll('.spec-model-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.spec-model-btn').forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+    specState.model = btn.dataset.model;
+    renderSpecTable();
+  });
+  btn.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+      e.preventDefault();
+      const buttons = Array.from(document.querySelectorAll('.spec-model-btn'));
+      const idx = buttons.indexOf(btn);
+      const next = e.key==='ArrowRight' ? buttons[(idx+1)%buttons.length] : buttons[(idx-1+buttons.length)%buttons.length];
+      next.focus(); next.click();
+    }
+  });
+});
+document.getElementById('specSummaryToggle').addEventListener('change',(e)=>{
+  specState.keyOnly = e.target.checked;
+  renderSpecTable();
+});
+
+// ---- cost calculator ----
+const slider = document.getElementById('calcSlider');
+function updateCalc(){
+  const km = parseInt(slider.value);
+  document.getElementById('calcKmLabel').textContent = km.toLocaleString()+"km";
+  const gasCostPerKm = 180;
+  const evCostPerKm = 45;
+  const gas = km*gasCostPerKm;
+  const ev = km*evCostPerKm;
+  document.getElementById('calcGas').textContent = "약 "+gas.toLocaleString()+"원";
+  document.getElementById('calcEv').textContent = "약 "+ev.toLocaleString()+"원";
+  document.getElementById('calcSave').textContent = "약 "+(gas-ev).toLocaleString()+"원";
+}
+slider.addEventListener('input',updateCalc);
+updateCalc();
+
+// ---- color picker ----
+document.querySelectorAll('.swatch').forEach(sw=>{
+  sw.addEventListener('click',()=>{
+    if(sw.classList.contains('active')) return;
+    document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+    sw.classList.add('active');
+    const colorImg = document.getElementById('colorImg');
+    const colorCodeEl = document.getElementById('colorCode');
+    const colorNameEl = document.getElementById('colorName');
+    const colorLabelEl = document.querySelector('.color-label');
+    colorImg.style.opacity = 0;
+    colorLabelEl.style.opacity = 0;
+    setTimeout(()=>{
+      setImageOrHint(colorImg, IMAGE_LINKS[sw.dataset.key]);
+      colorImg.alt = sw.dataset.name;
+      colorCodeEl.textContent = sw.dataset.code;
+      colorNameEl.textContent = sw.dataset.name;
+      colorImg.style.opacity = 1;
+      colorLabelEl.style.opacity = 1;
+    },140);
+  });
+});
+</script>
+</body>
+</html>
