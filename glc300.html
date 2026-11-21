@@ -28,21 +28,299 @@ const IMAGES = {
 </script>
 
 <!-- ============================================================
-     AVANTGARDE / AMG Line 비교 데이터
+     GLC 300 4MATIC 트림 비교 통합 데이터 (S4 인터랙티브 비교 · S5 제원 · 히어로 가격)
+     - 옵션 문구는 기존 S4 비교표와 S5·S6 옵션 태그를 그대로 옮겼습니다.
+     - comparisonStatus: same(동일 확인) · different(차이 확인) · unverified(정보 부족/충돌)
+     - verify:true  → 차이는 확인되지만 한쪽 표기가 서로 충돌해 확인이 필요한 항목
+     - image: 옵션 이미지가 생기면 URL을 넣으면 카드에 표시됩니다.
      ============================================================ -->
 <script>
-const TRIM_COMPARE = {
-  headers: ["비교항목", "AVANTGARDE", "AMG Line"],
-  rows: [
-    { label: "가격",            avg: "8,250만원",                      amg: "9,250만원" },
-    { label: "휠",              avg: "19인치 10트윈 스포크 알로이",     amg: "20인치 AMG 멀티 스포크 알로이" },
-    { label: "범퍼",            avg: "기본 범퍼",                      amg: "AMG 프런트 / 리어 에이프런" },
-    { label: "라디에이터 그릴", avg: "기본 그릴",                      amg: "크롬 마감 무광 다크 그레이 그릴" },
-    { label: "시트",            avg: "ARTICO 시트",                    amg: "AMG 전용 ARTICO 스포츠 시트" },
-    { label: "스티어링",        avg: "가죽 터치컨트롤 스티어링 휠",     amg: "나파 스포츠 터치컨트롤 스티어링 휠" },
-    { label: "실내트림",        avg: "라임 우드 트림",                  amg: "블랙 오픈 포어 알루미늄 라인 우드 트림" },
-    { label: "옵션",            avg: "AVANTGARDE 전용 사양",            amg: "AMG 전용 외장 · 실내 사양 풀패키지" },
-    { label: "가격대",          avg: "균형 잡힌 가성비",                amg: "가장 스포티한 존재감" },
+const GLC_TRIM_DATA = {
+  /* 가격: 히어로·기존 비교표 표기를 임시 기준으로 사용 (기존 S5·S6 본문에는 8,140만원 / 9,140만원으로 표기되어 있었음 → 공식 가격 확인 필요) */
+  priceNote: "표시 가격은 안내용 기준가입니다. 정확한 판매 가격과 구매 조건은 상담 시 안내해 드립니다.",
+  trims: {
+    avantgarde: {
+      name: "AVANTGARDE",
+      price: 82500000,
+      tagline: "가장 균형 잡힌 선택",
+      summary: "우아한 디자인과 풍부한 기본 사양을 갖춘 균형 잡힌 GLC 300",
+      exterior: IMAGES.avantgardeExterior,
+      interior: IMAGES.avantgardeInterior
+    },
+    amgline: {
+      name: "AMG Line",
+      price: 92500000,
+      tagline: "가장 스포티한 존재감",
+      summary: "AMG 전용 외장·실내 디자인으로 스포티함을 더한 GLC 300",
+      highlights: ["AMG 범퍼", "AMG 그릴", "AMG 에어벤트", "AMG 휠", "AMG 스티어링", "AMG 스포츠 시트"],
+      exterior: IMAGES.amgExterior,
+      interior: IMAGES.amgInterior
+    }
+  },
+  categories: [
+    { id: "exterior",    label: "외장 디자인" },
+    { id: "interior",    label: "실내 디자인" },
+    { id: "convenience", label: "편의 사양" },
+    { id: "safety",      label: "안전 사양" }
+  ],
+  options: [
+    /* ---------- 외장 디자인 ---------- */
+    { id: "wheel", category: "exterior", label: "알로이 휠",
+      avantgarde: "AVANTGARDE 19인치 10트윈 스포크 알로이 휠 (78R)",
+      amgline: "20인치 AMG 멀티 스포크 알로이 휠 (RVU)",
+      comparisonStatus: "different",
+      description: "AVANTGARDE는 10개의 트윈 스포크로 단정하고 우아한 인상을, AMG Line은 한 치수 큰 20인치 AMG 멀티 스포크 디자인으로 더 스포티한 인상을 줍니다.",
+      image: null },
+    { id: "frontBumper", category: "exterior", label: "프런트 범퍼",
+      avantgarde: "기본 범퍼",
+      amgline: "AMG 프런트 에이프런 (크롬 트림)",
+      comparisonStatus: "different",
+      description: "AMG Line은 크롬 트림이 들어간 AMG 전용 프런트 에이프런으로 앞모습이 더 역동적으로 보입니다.",
+      image: null },
+    { id: "rearBumper", category: "exterior", label: "리어 범퍼",
+      avantgarde: "기본 범퍼",
+      amgline: "AMG 리어 에이프런 (블랙 인서트 + 룩 디퓨저)",
+      comparisonStatus: "different",
+      description: "AMG Line은 블랙 인서트와 디퓨저 형상을 더한 AMG 리어 에이프런으로 뒷모습까지 스포티하게 완성합니다.",
+      image: null },
+    { id: "grille", category: "exterior", label: "라디에이터 그릴",
+      avantgarde: "기본 그릴",
+      amgline: "크롬 마감 무광 다크 그레이 라디에이터 그릴",
+      comparisonStatus: "different",
+      description: "AMG Line은 크롬 마감의 무광 다크 그레이 그릴로 전면의 인상이 달라집니다.",
+      image: null },
+    { id: "sideSill", category: "exterior", label: "사이드 실 패널",
+      avantgarde: null,
+      amgline: "AMG 사이드 실 패널",
+      comparisonStatus: "unverified",
+      description: "AMG Line에 AMG 사이드 실 패널이 적용됩니다. AVANTGARDE의 사이드 실 사양은 상담 시 확인해 드립니다.",
+      image: null },
+    { id: "digitalLight", category: "exterior", label: "디지털 라이트",
+      avantgarde: "디지털 라이트 & Adaptive Highbeam Assist PLUS",
+      amgline: "디지털 라이트 & Adaptive Highbeam Assist PLUS",
+      comparisonStatus: "same",
+      description: "정밀하게 빛을 제어하는 디지털 라이트와 상향등 자동 제어 기능이 두 트림 모두 적용됩니다.",
+      image: null },
+    { id: "panorama", category: "exterior", label: "파노라믹 선루프",
+      avantgarde: "파노라믹 선루프",
+      amgline: "파노라믹 선루프",
+      comparisonStatus: "same",
+      description: "넓은 유리 지붕으로 실내를 밝고 개방감 있게 만들어 줍니다.",
+      image: null },
+    { id: "roofRail", category: "exterior", label: "루프레일",
+      avantgarde: "알루미늄 루프레일",
+      amgline: null,
+      comparisonStatus: "unverified",
+      description: "AVANTGARDE에 알루미늄 루프레일이 적용됩니다. AMG Line의 루프레일 사양은 상담 시 확인해 드립니다.",
+      image: null },
+    { id: "projectionLogo", category: "exterior", label: "브랜드 프로젝션 로고",
+      avantgarde: "브랜드 프로젝션 로고",
+      amgline: "브랜드 프로젝션 로고",
+      comparisonStatus: "same",
+      description: "문을 열면 바닥에 브랜드 로고를 비춰 주는 기능입니다.",
+      image: null },
+
+    /* ---------- 실내 디자인 ---------- */
+    { id: "seat", category: "interior", label: "시트",
+      avantgarde: "ARTICO 시트",
+      amgline: "(AMG 라인 전용) ARTICO 시트 · AMG 전용 ARTICO 스포츠 시트",
+      comparisonStatus: "different",
+      description: "두 트림 모두 ARTICO 소재 시트이며, AMG Line에는 AMG 전용 스포츠 시트 디자인이 적용됩니다.",
+      image: null },
+    { id: "steering", category: "interior", label: "스티어링 휠",
+      avantgarde: "신형 가죽 터치컨트롤 + 시프트 패들 스티어링 휠",
+      amgline: "신형 나파 스포츠 터치컨트롤 + 시프트 패들 스티어링 휠",
+      comparisonStatus: "different",
+      description: "AVANTGARDE는 가죽 스티어링 휠, AMG Line은 나파 가죽 스포츠 스티어링 휠입니다. 두 트림 모두 터치 컨트롤과 시프트 패들을 갖췄습니다.",
+      image: null },
+    { id: "interiorTrim", category: "interior", label: "인테리어 트림",
+      avantgarde: "실버 그레이 다이아몬드 패턴 트림 & 하이 글로시 센터콘솔 (비교표 표기: 라임 우드 트림)",
+      amgline: "블랙 오픈 포어 알루미늄 라인 우드 트림 & 하이 글로시 센터콘솔",
+      comparisonStatus: "different", verify: true,
+      description: "AMG Line은 블랙 오픈 포어 알루미늄 라인 우드 트림으로 차분하고 스포티한 실내 분위기를 만듭니다. AVANTGARDE 트림 소재는 표기가 두 가지로 달라 상담 시 정확히 확인해 드립니다.",
+      image: null },
+    { id: "dashboard", category: "interior", label: "대시보드 마감",
+      avantgarde: "나파 룩 ARTICO 대시보드 마감",
+      amgline: "나파 룩 ARTICO 대시보드 마감",
+      comparisonStatus: "same",
+      description: "대시보드를 나파 가죽 느낌의 ARTICO 소재로 마감했습니다.",
+      image: null },
+    { id: "ambient", category: "interior", label: "앰비언트 라이트",
+      avantgarde: "앰비언트 라이트 프리미엄 (64색, 894)",
+      amgline: "앰비언트 라이트 프리미엄 (64색, 894)",
+      comparisonStatus: "same",
+      description: "64가지 색상 중에서 실내 조명 분위기를 고를 수 있습니다.",
+      image: null },
+    { id: "frontSeats", category: "interior", label: "앞좌석 메모리·열선·통풍",
+      avantgarde: "앞좌석 메모리 / 열선 / 통풍 시트",
+      amgline: "앞좌석 메모리 / 열선 / 통풍 시트",
+      comparisonStatus: "same",
+      description: "시트 위치 기억과 열선·통풍 기능으로 사계절 편안하게 앉을 수 있습니다.",
+      image: null },
+    { id: "rearSeats", category: "interior", label: "뒷좌석 편의 기능",
+      avantgarde: "뒷좌석 열선 / ISOFIX / 접이식",
+      amgline: "뒷좌석 열선 / ISOFIX / 접이식",
+      comparisonStatus: "same",
+      description: "뒷좌석 열선, 카시트를 단단히 고정하는 ISOFIX, 짐을 더 싣는 접이식 등받이를 갖췄습니다.",
+      image: null },
+    { id: "doorSill", category: "interior", label: "도어 실 패널",
+      avantgarde: "발광 도어 실 패널 \"Mercedes-Benz\" 레터링",
+      amgline: "발광 도어 실 패널 \"Mercedes-Benz\" 레터링",
+      comparisonStatus: "same",
+      description: "문을 열면 'Mercedes-Benz' 레터링이 은은하게 빛납니다.",
+      image: null },
+
+    /* ---------- 편의 사양 ---------- */
+    { id: "display", category: "convenience", label: "MBUX 디스플레이",
+      avantgarde: "12.3인치 계기판 + MBUX 3세대 11.9인치 LCD 디스플레이",
+      amgline: "12.3인치 계기판 + MBUX 3세대 11.9인치 LCD 디스플레이",
+      comparisonStatus: "same",
+      description: "12.3인치 디지털 계기판과 11.9인치 중앙 디스플레이로 구성된 MBUX 3세대 시스템입니다.",
+      image: null },
+    { id: "arNavi", category: "convenience", label: "증강현실 내비게이션",
+      avantgarde: "T맵 오토 증강현실 내비게이션",
+      amgline: "T맵 오토 증강현실 내비게이션",
+      comparisonStatus: "same",
+      description: "실제 도로 영상 위에 길 안내를 겹쳐 보여 주어 갈림길에서도 쉽게 길을 찾을 수 있습니다.",
+      image: null },
+    { id: "wirelessCharging", category: "convenience", label: "무선 충전",
+      avantgarde: "앞좌석 휴대폰 무선 충전",
+      amgline: "앞좌석 휴대폰 무선 충전",
+      comparisonStatus: "same",
+      description: "앞좌석에서 휴대폰을 올려 두기만 하면 충전됩니다.",
+      image: null },
+    { id: "smartphone", category: "convenience", label: "애플 카플레이·안드로이드 오토",
+      avantgarde: "무선 안드로이드 오토 & 애플 카플레이",
+      amgline: "무선 안드로이드 오토 & 애플 카플레이",
+      comparisonStatus: "same",
+      description: "케이블 없이 스마트폰을 차량 화면에 연결할 수 있습니다.",
+      image: null },
+    { id: "hud", category: "convenience", label: "헤드업 디스플레이",
+      avantgarde: "HUD 헤드업 디스플레이",
+      amgline: "HUD 헤드업 디스플레이",
+      comparisonStatus: "same",
+      description: "주행 정보를 앞 유리에 띄워 시선을 크게 옮기지 않고 확인할 수 있습니다.",
+      image: null },
+    { id: "burmester", category: "convenience", label: "부메스터® 3D 사운드",
+      avantgarde: "부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본",
+      amgline: "부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본",
+      comparisonStatus: "same",
+      description: "15개 스피커, 710W 출력의 입체 사운드 시스템입니다.",
+      image: null },
+    { id: "glass", category: "convenience", label: "열·소음 차단 글라스",
+      avantgarde: "열·소음 차단 글라스",
+      amgline: "열·소음 차단 글라스",
+      comparisonStatus: "same",
+      description: "외부의 열과 소음 유입을 줄여 주는 글라스입니다.",
+      image: null },
+    { id: "meConnect", category: "convenience", label: "Mercedes me connect",
+      avantgarde: "Mercedes Me Connect (원격시동, 5G 커넥티비티)",
+      amgline: "Mercedes Me Connect (원격시동, 5G 커넥티비티)",
+      comparisonStatus: "same",
+      description: "스마트폰 앱으로 원격 시동 등 차량 기능을 이용할 수 있습니다.",
+      image: null },
+    { id: "airCon", category: "convenience", label: "에어컨디셔너",
+      avantgarde: "2존 에어컨디셔너 & 공기청정 패키지",
+      amgline: "2존 에어컨디셔너 & 공기청정 패키지",
+      comparisonStatus: "same",
+      description: "운전석과 동승석 온도를 따로 맞추는 2존 에어컨과 공기청정 패키지입니다.",
+      image: null },
+    { id: "parking", category: "convenience", label: "서라운드 카메라·주차 어시스트",
+      avantgarde: "서라운드 카메라 + 액티브 주차 어시스트",
+      amgline: "서라운드 카메라 + 액티브 주차 어시스트",
+      comparisonStatus: "same",
+      description: "차량 주변을 화면으로 보여 주고 주차를 도와줍니다.",
+      image: null },
+    { id: "keyless", category: "convenience", label: "KEYLESS-GO",
+      avantgarde: "KEYLESS-GO",
+      amgline: "KEYLESS-GO",
+      comparisonStatus: "same",
+      description: "키를 꺼내지 않고 문을 열고 시동을 걸 수 있습니다.",
+      image: null },
+    { id: "trunk", category: "convenience", label: "전동식 트렁크",
+      avantgarde: "전동식 트렁크 + 핸즈프리 액세스",
+      amgline: "전동식 트렁크 + 핸즈프리 액세스",
+      comparisonStatus: "same",
+      description: "양손에 짐이 있어도 발 동작으로 트렁크를 열 수 있습니다.",
+      image: null },
+    { id: "agility", category: "convenience", label: "어질리티 컨트롤 서스펜션",
+      avantgarde: null,
+      amgline: "(26년식 AMG Line 限) 어질리티 컨트롤 서스펜션",
+      comparisonStatus: "unverified",
+      description: "AMG Line에 26년식 한정으로 표기된 사양입니다. 연식·트림별 적용 여부는 상담 시 확인해 드립니다.",
+      image: null },
+
+    /* ---------- 안전 사양 ---------- */
+    { id: "dapPlus", category: "safety", label: "드라이빙 어시스턴스 패키지 플러스",
+      avantgarde: "드라이빙 어시스턴스 패키지 플러스 (P20)",
+      amgline: "드라이빙 어시스턴스 패키지 플러스 (P20)",
+      comparisonStatus: "same",
+      description: "차간거리 유지, 차선 유지 등 주행 보조 기능을 묶은 패키지입니다.",
+      image: null },
+    { id: "distronic", category: "safety", label: "DISTRONIC",
+      avantgarde: "Active Distance Assist DISTRONIC",
+      amgline: "Active Distance Assist DISTRONIC",
+      comparisonStatus: "same",
+      description: "앞차와의 거리를 유지하도록 속도를 조절해 줍니다.",
+      image: null },
+    { id: "laneKeeping", category: "safety", label: "능동형 차선 유지 어시스트",
+      avantgarde: "능동형 차선 유지 어시스트",
+      amgline: "능동형 차선 유지 어시스트",
+      comparisonStatus: "same",
+      description: "차선을 벗어나려 할 때 경고하고 차선 유지를 도와줍니다.",
+      image: null },
+    { id: "blindSpot", category: "safety", label: "능동형 사각지대 어시스트",
+      avantgarde: "능동형 사각지대 어시스트 + 출구 경고",
+      amgline: "능동형 사각지대 어시스트 + 출구 경고",
+      comparisonStatus: "same",
+      description: "사각지대 차량을 알려 주고, 문을 열 때 접근하는 차량이나 자전거를 경고합니다.",
+      image: null },
+    { id: "activeBrake", category: "safety", label: "Active Brake Assist",
+      avantgarde: "Active Brake Assist with cross-traffic function",
+      amgline: "Active Brake Assist with cross-traffic function",
+      comparisonStatus: "same",
+      description: "충돌 위험을 감지하면 경고하고 제동을 돕습니다.",
+      image: null },
+    { id: "trafficSign", category: "safety", label: "교통 표지판 어시스트",
+      avantgarde: "교통 표지판 어시스트 / 경로 기반 속도 조절",
+      amgline: "교통 표지판 어시스트 / 경로 기반 속도 조절",
+      comparisonStatus: "same",
+      description: "제한 속도 표지판을 알려 주고 경로에 맞춰 속도 조절을 돕습니다.",
+      image: null },
+    { id: "adaptiveBrake", category: "safety", label: "ADAPTIVE BRAKE",
+      avantgarde: "ADAPTIVE BRAKE (HOLD 기능)",
+      amgline: "ADAPTIVE BRAKE (HOLD 기능)",
+      comparisonStatus: "same",
+      description: "정차 후 브레이크 페달에서 발을 떼도 차를 멈춰 두는 HOLD 기능을 제공합니다.",
+      image: null },
+    { id: "activeBonnet", category: "safety", label: "Active Bonnet",
+      avantgarde: "Active Bonnet",
+      amgline: "Active Bonnet",
+      comparisonStatus: "same",
+      description: "보행자 충돌 시 보닛을 들어 올려 충격 완화를 돕는 장치입니다.",
+      image: null },
+    { id: "airbags", category: "safety", label: "에어백",
+      avantgarde: "에어백 10개",
+      amgline: "에어백 10개",
+      comparisonStatus: "same",
+      description: "탑승자 보호를 위한 에어백 10개가 적용됩니다.",
+      image: null }
+  ],
+  /* S5 상세 제원 — 기존 S5(AVANTGARDE) 제원표 기준. 기존 S6(AMG Line)에는 별도 제원표가 없었음 */
+  specs: [
+    { label: "엔진",           value: "직렬 4기통 가솔린" },
+    { label: "배기량",         value: "1,999cc", accent: true },
+    { label: "최고 출력",      value: "258ps / 5,800rpm", accent: true },
+    { label: "최대 토크",      value: "40.8kg·m / 2,000–3,200rpm" },
+    { label: "변속기",         value: "9G-TRONIC" },
+    { label: "구동방식",       value: "고정식 사륜 구동 (4MATIC)" },
+    { label: "복합연비",       value: "10.6 km/L (4등급)" },
+    { label: "도심/고속",      value: "9.6 / 12.3 km/L" },
+    { label: "0→100km/h",      value: "6.2초", accent: true },
+    { label: "최고속도",       value: "240 km/h" },
+    { label: "전장×전폭×전고", value: "4,720×1,890×1,645" },
+    { label: "휠",             byTrim: { avantgarde: "19인치", amgline: "20인치" } },
+    { label: "타이어",         value: "255/45 R20", verify: true }
   ]
 };
 </script>
@@ -901,6 +1179,182 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 }
 .image-modal-close:hover { background: rgba(255,255,255,.28); }
 
+/* ============================================================
+   S4 · 인터랙티브 트림 비교 (tc-)
+   ============================================================ */
+.tc-section { position: relative; }
+.tc-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; scroll-margin-top: 64px; }
+.tc { width: 100%; min-width: 0; }
+.tc *, .tc *::before, .tc *::after { box-sizing: border-box; }
+
+/* 세그먼트 버튼 */
+.tc-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+.tc-seg { display: inline-flex; padding: 4px; background: var(--white); border: 1px solid var(--gray3); border-radius: 999px; box-shadow: var(--shadow-sm); }
+.tc-seg-btn { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer;
+  min-height: 44px; padding: 0 22px; border-radius: 999px; font-size: .92rem; font-weight: 700; color: var(--gray4);
+  transition: background .2s, color .2s; white-space: nowrap; }
+.tc-seg-btn:hover { color: var(--black); }
+.tc-seg-btn[aria-pressed="true"] { background: var(--black); color: var(--white); }
+.tc-seg-btn:focus-visible, .tc-tab:focus-visible, .tc-card-btn:focus-visible, .tc-media-box:focus-visible, .tc-common-btn:focus-visible, .tc-link:focus-visible, .tc-hint:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.tc-trim-switch { display: none; }
+
+/* 차량 이미지 */
+.tc-media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.tc-media-card { background: var(--white); border: 1px solid var(--gray3); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; display: flex; flex-direction: column; transition: border-color .25s, box-shadow .25s; }
+.tc-media-card.is-sel { border-color: rgba(11,95,255,.45); box-shadow: var(--shadow-md); }
+.tc-media-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding: 22px 24px 16px; }
+.tc-media-name { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+.tc-media-tag { font-size: .85rem; color: var(--gray4); line-height: 1.5; margin-top: 2px; }
+.tc-media-price { font-size: 1.45rem; font-weight: 800; color: var(--blue); white-space: nowrap; }
+.tc-media-box { position: relative; display: block; width: 100%; aspect-ratio: 3 / 2; padding: 0; border: 0; margin: 0; background: var(--gray2); overflow: hidden; cursor: zoom-in; font: inherit; }
+.tc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .35s ease; }
+.tc-img-exterior { object-position: 50% 62%; }
+.tc-img.is-on.is-loaded { opacity: 1; }
+.tc-media-skel { position: absolute; inset: 0; opacity: 0; background: linear-gradient(100deg, var(--gray2) 30%, #fafbfc 50%, var(--gray2) 70%); background-size: 220% 100%; transition: opacity .2s; }
+.tc-media-box.is-loading .tc-media-skel { opacity: 1; animation: tcShimmer 1.3s linear infinite; }
+@keyframes tcShimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.tc-media-fail { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--gray4); font-size: .9rem; background: var(--gray2); cursor: default; }
+.tc-media-box.is-failed .tc-media-fail { display: flex; }
+.tc-retry { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--black); color: var(--white); font-weight: 700; font-size: .85rem; cursor: pointer; }
+.tc-media-zoom { position: absolute; right: 12px; bottom: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(17,17,17,.55); color: #fff; font-size: .75rem; font-weight: 600; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.tc-media-box:hover .tc-media-zoom { opacity: 1; }
+.tc-media-box.is-failed .tc-media-zoom, .tc-media-box.is-loading .tc-media-zoom { display: none; }
+.tc-media-sum { font-size: .92rem; color: #444; line-height: 1.65; padding: 18px 24px 4px; }
+.tc-media-hl { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 24px 0; margin: 0; }
+.tc-media-hl li { font-size: .74rem; font-weight: 700; color: var(--blue); background: rgba(11,95,255,.07); border-radius: 999px; padding: 4px 10px; }
+.tc-media-card > :last-child { padding-bottom: 22px; }
+.tc-price-note { margin-top: 12px; text-align: center; font-size: .78rem; color: var(--gray4); line-height: 1.6; }
+
+/* 가격 차이 요약 */
+.tc-diff-summary { margin-top: 36px; background: var(--white); border: 1px solid var(--gray3); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 26px 28px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 10px 32px; align-items: start; }
+.tc-ds-k { font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--gray4); }
+.tc-ds-v { font-size: 2rem; font-weight: 800; color: var(--black); line-height: 1.2; margin: 4px 0 6px; }
+.tc-ds-s { font-size: .88rem; color: #444; line-height: 1.5; }
+.tc-ds-s b { color: var(--blue); }
+.tc-ds-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; }
+.tc-ds-list li { font-size: .88rem; line-height: 1.5; color: var(--black); padding: 8px 0 8px 14px; border-bottom: 1px solid var(--gray3); position: relative; word-break: keep-all; overflow-wrap: anywhere; }
+.tc-ds-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.tc-ds-list li span { display: block; font-size: .74rem; font-weight: 700; color: var(--gray4); }
+.tc-ds-foot { grid-column: 2; font-size: .8rem; color: var(--gray4); line-height: 1.6; margin-top: 4px; }
+
+/* 카테고리 탭 */
+.tc-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 44px; border-bottom: 1px solid var(--gray3); }
+.tc-tab { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer; min-height: 56px; padding: 10px 8px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-bottom: 3px solid transparent; margin-bottom: -1px; color: var(--gray4); transition: color .2s, border-color .2s; }
+.tc-tab-l { font-size: 1rem; font-weight: 800; }
+.tc-tab-n { font-size: .72rem; font-weight: 700; color: var(--blue); }
+.tc-tab-n.is-zero { color: var(--gray4); }
+.tc-tab:hover { color: var(--black); }
+.tc-tab[aria-selected="true"] { color: var(--black); border-bottom-color: var(--blue); }
+
+.tc-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 22px 0 14px; flex-wrap: wrap; }
+.tc-count { font-size: .95rem; color: var(--black); }
+.tc-count span { color: var(--gray4); font-size: .85rem; }
+.tc-filter .tc-seg-btn { padding: 0 18px; font-size: .86rem; }
+
+/* 옵션 카드 */
+.tc-colhead { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr) 28px; gap: 16px; padding: 0 22px 8px; font-size: .72rem; font-weight: 800; letter-spacing: .1em; color: var(--gray4); }
+.tc-colhead span:nth-child(3) { color: var(--blue); }
+.tc-list { display: flex; flex-direction: column; gap: 10px; }
+.tc-list.is-swap { animation: tcFade .22s ease; }
+@keyframes tcFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.tc-card { background: var(--white); border: 1px solid var(--gray3); border-radius: 14px; transition: border-color .2s, box-shadow .2s; }
+.tc-card:hover { border-color: #d6dbe3; }
+.tc-card.is-open { box-shadow: var(--shadow-md); }
+.tc-card-btn { appearance: none; border: 0; background: transparent; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; min-height: 64px;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 2fr) 28px; gap: 16px; align-items: center; padding: 16px 22px; }
+.tc-card-title { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+.tc-card-name { font-size: 1rem; font-weight: 800; color: var(--black); line-height: 1.4; word-break: keep-all; }
+.tc-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.tc-badge { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .02em; border-radius: 6px; padding: 3px 7px; line-height: 1.3; white-space: nowrap; vertical-align: middle; }
+.tc-badge.is-diff { background: rgba(11,95,255,.1); color: var(--blue); }
+.tc-badge.is-same { background: var(--gray2); color: #555; }
+.tc-badge.is-warn { background: #FFF4E0; color: #A15C00; }
+.tc-vals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; min-width: 0; }
+.tc-val { font-size: .9rem; line-height: 1.55; color: var(--black); font-weight: 600; word-break: keep-all; overflow-wrap: anywhere; min-width: 0; }
+.tc-val em { display: none; font-style: normal; font-size: .68rem; font-weight: 800; letter-spacing: .06em; color: var(--gray4); margin-bottom: 2px; }
+.tc-card.is-diff .tc-val:nth-child(2) { color: var(--blue); }
+.tc-val.is-none { color: var(--gray4); font-weight: 500; }
+.tc-val.is-both { grid-column: 1 / -1; text-align: center; color: #333; }
+.tc-val.is-both em { display: block; }
+.tc-arrow { width: 10px; height: 10px; border-right: 2px solid var(--gray4); border-bottom: 2px solid var(--gray4); transform: rotate(45deg) translate(-2px, -2px); transition: transform .25s; justify-self: center; display: block; }
+.tc-card.is-open .tc-arrow, .tc-common.is-open .tc-arrow { transform: rotate(-135deg) translate(-2px, -2px); }
+.tc-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+.tc-card.is-open > .tc-collapse, .tc-common.is-open > .tc-collapse { grid-template-rows: 1fr; }
+.tc-collapse-in { overflow: hidden; min-height: 0; }
+.tc-desc { margin: 0 22px 18px; padding-top: 14px; border-top: 1px dashed var(--gray3); }
+.tc-desc p { font-size: .9rem; color: #444; line-height: 1.7; }
+.tc-opt-img { display: block; width: 100%; max-width: 420px; border-radius: 10px; margin-bottom: 10px; }
+
+.tc-empty { background: var(--white); border: 1px dashed #d6dbe3; border-radius: 14px; padding: 28px 22px; text-align: center; }
+.tc-empty p { font-size: .95rem; color: #444; margin-bottom: 10px; }
+.tc-link, .tc-hint { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer; color: var(--blue); font-weight: 700; font-size: .88rem; min-height: 44px; padding: 0 6px; }
+.tc-hint { text-align: left; align-self: flex-start; }
+.tc-safety-link { display: inline-flex; align-items: center; min-height: 44px; font-size: .88rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+
+/* 공통 적용 사양 */
+.tc-common { margin-top: 28px; background: var(--white); border: 1px solid var(--gray3); border-radius: 14px; }
+.tc-common-btn { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer; width: 100%; min-height: 60px; padding: 0 22px; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; font-weight: 800; color: var(--black); }
+.tc-common-body { padding: 4px 22px 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; }
+.tc-common-t { font-size: .8rem; font-weight: 800; letter-spacing: .06em; color: var(--gray4); margin-bottom: 8px; }
+.tc-common-t span { color: var(--blue); }
+.tc-common-grp ul { list-style: none; margin: 0; padding: 0; }
+.tc-common-grp li { padding: 8px 0; border-bottom: 1px solid var(--gray2); font-size: .86rem; line-height: 1.5; color: #444; word-break: keep-all; overflow-wrap: anywhere; }
+.tc-common-grp li b { display: block; color: var(--black); font-weight: 700; }
+
+.tc-spec-note { margin-top: -28px; font-size: .8rem; color: var(--gray4); line-height: 1.6; }
+
+/* ---------- 태블릿 ---------- */
+@media (max-width: 1023px) {
+  .tc-diff-summary { grid-template-columns: 1fr; }
+  .tc-ds-foot { grid-column: 1; }
+}
+
+/* ---------- 모바일: 선택 트림 1장 + 압축 2열 비교 ---------- */
+@media (max-width: 767px) {
+  .tc-controls { flex-direction: column; align-items: stretch; gap: 10px; margin-bottom: 18px; }
+  .tc-seg { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .tc-trim-switch { display: grid; }
+  .tc-seg-btn { padding: 0 10px; font-size: .88rem; }
+  .tc-media-grid { grid-template-columns: 1fr; gap: 0; }
+  .tc-media-card:not(.is-sel) { display: none; }
+  .tc-media-card.is-sel { border-color: var(--gray3); }
+  .tc-media-box { aspect-ratio: 4 / 3; }
+  .tc-media-head { order: 2; padding: 16px 18px 6px; }
+  .tc-media-box { order: 1; }
+  .tc-media-sum { order: 3; padding: 4px 18px 0; font-size: .88rem; }
+  .tc-media-hl { order: 4; padding: 10px 18px 0; }
+  .tc-media-name { font-size: 1.15rem; }
+  .tc-media-price { font-size: 1.25rem; }
+  .tc-media-zoom { opacity: 1; font-size: .7rem; }
+  .tc-diff-summary { padding: 20px 18px; margin-top: 24px; }
+  .tc-ds-v { font-size: 1.6rem; }
+  .tc-ds-list { grid-template-columns: 1fr; }
+  .tc-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 32px; }
+  .tc-tab { min-height: 56px; padding: 8px 2px 10px; }
+  .tc-tab-l { font-size: .82rem; word-break: keep-all; text-align: center; line-height: 1.3; }
+  .tc-toolbar { flex-direction: column; align-items: stretch; }
+  .tc-filter { width: 100%; }
+  .tc-colhead { display: none; }
+  .tc-card-btn { grid-template-columns: minmax(0, 1fr) 20px; grid-template-areas: "t a" "v v"; gap: 10px; padding: 14px 14px 16px; }
+  .tc-card-title { grid-area: t; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .tc-arrow { grid-area: a; }
+  .tc-vals { grid-area: v; gap: 10px; }
+  .tc-val { font-size: .84rem; background: var(--gray1); border-radius: 10px; padding: 8px 10px; }
+  .tc-val em { display: block; }
+  .tc-card.is-diff .tc-val:nth-child(2) { background: rgba(11,95,255,.06); }
+  .tc-val.is-both { text-align: left; }
+  .tc-desc { margin: 0 14px 14px; }
+  .tc-common-btn { padding: 0 16px; font-size: .95rem; }
+  .tc-common-body { grid-template-columns: 1fr; padding: 0 16px 18px; }
+  .tc-spec-note { margin-top: -20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-img, .tc-collapse, .tc-arrow, .tc-seg-btn, .tc-tab, .tc-card { transition: none !important; }
+  .tc-list.is-swap { animation: none; }
+  .tc-media-box.is-loading .tc-media-skel { animation: none; }
+}
+
 /* ===== 통합 안전 4단계 모듈 (mb-integral-safety v1.2) ===== */
 /* ===== Integral Safety module (mb-integral-safety v1.1, .mbis 범위 전용) ===== */
 /*!
@@ -1348,13 +1802,13 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
             <a href="#avantgarde" class="hero-price-card">
               <div class="hero-card-badge">AVANTGARDE</div>
               <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price">8,250만원</div>
+              <div class="hero-card-price" data-trim-price="avantgarde">8,250만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
             <a href="#amgline" class="hero-price-card">
               <div class="hero-card-badge">AMG LINE</div>
               <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price">9,250만원</div>
+              <div class="hero-card-price" data-trim-price="amgline">9,250만원</div>
               <div class="hero-card-cta">자세히 보기 →</div>
             </a>
           </div>
@@ -1465,225 +1919,82 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 </section>
 
 <!-- ============================================================
-     S4 · AVANTGARDE vs AMG Line 비교
+     S4 · 인터랙티브 트림 비교 (AVANTGARDE vs AMG Line)
+     - 데이터: <head>의 GLC_TRIM_DATA 한 곳에서 관리
+     - #avantgarde / #amgline 앵커는 히어로 버튼 호환용으로 유지
      ============================================================ -->
-<section class="section section-alt">
+<section class="section section-alt tc-section" id="trimCompare" aria-labelledby="tcTitle">
+  <span class="tc-anchor" id="avantgarde" aria-hidden="true"></span>
+  <span class="tc-anchor" id="amgline" aria-hidden="true"></span>
   <div class="container">
     <div class="section-heading">
-      <span class="label-en">AVANTGARDE vs AMG Line</span>
-      <h2>나에게 맞는<br>트림은 무엇일까</h2>
-      <p>두 트림의 차이를 한눈에 비교해보세요</p>
-    </div>
-    <div class="trim-compare-grid reveal" id="trimCompareWrap"></div>
-  </div>
-</section>
-
-<!-- ============================================================
-     S5 · AVANTGARDE 상세설명
-     ============================================================ -->
-<section id="avantgarde" class="section">
-  <div class="container">
-    <div class="section-heading">
-      <span class="label-en">GLC 300 4MATIC AVANTGARDE</span>
-      <h2>GLC 300 4MATIC<br>AVANTGARDE</h2>
-      <p>가장 균형 잡힌 선택, 8,140만원</p>
+      <span class="label-en">GLC 300 4MATIC</span>
+      <h2 id="tcTitle">당신에게 맞는<br>트림을 선택하세요</h2>
+      <p>AVANTGARDE와 AMG Line, 디자인부터 편의사양까지 직접 비교해보세요.</p>
     </div>
 
-    <!-- 외관/실내 이미지 2장 -->
-    <div class="trim-image-grid">
-      <div class="trim-image-card reveal" data-modal-img="imgAvantgardeExterior">
-        <div class="trim-image-box" id="imgAvantgardeExterior">
-          <div class="trim-image-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>외관 이미지</span>
-          </div>
+    <div class="tc" id="tc">
+      <!-- 상단 컨트롤: 모바일 트림 선택 · 외관/실내 전환 -->
+      <div class="tc-controls">
+        <div class="tc-seg tc-trim-switch" role="group" aria-label="트림 선택">
+          <button type="button" class="tc-seg-btn" data-trim="avantgarde" aria-pressed="true">AVANTGARDE</button>
+          <button type="button" class="tc-seg-btn" data-trim="amgline" aria-pressed="false">AMG Line</button>
         </div>
-        <div class="trim-image-label">외관 디자인</div>
-      </div>
-      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAvantgardeInterior">
-        <div class="trim-image-box" id="imgAvantgardeInterior">
-          <div class="trim-image-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>실내 이미지</span>
-          </div>
+        <div class="tc-seg tc-view-switch" role="group" aria-label="이미지 보기">
+          <button type="button" class="tc-seg-btn" data-view="exterior" aria-pressed="true">외관 디자인</button>
+          <button type="button" class="tc-seg-btn" data-view="interior" aria-pressed="false">실내 디자인</button>
         </div>
-        <div class="trim-image-label">실내 디자인</div>
-      </div>
-    </div>
-
-    <div class="detail-spec-grid reveal">
-      <div class="detail-spec-item"><span class="detail-spec-label">엔진</span><span class="detail-spec-value">직렬 4기통 가솔린</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">배기량</span><span class="detail-spec-value blue">1,999cc</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">최고 출력</span><span class="detail-spec-value blue">258ps / 5,800rpm</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">최대 토크</span><span class="detail-spec-value">40.8kg·m / 2,000–3,200rpm</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">변속기</span><span class="detail-spec-value">9G-TRONIC</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">구동방식</span><span class="detail-spec-value">고정식 사륜 구동 (4MATIC)</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">복합연비</span><span class="detail-spec-value">10.6 km/L (4등급)</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">도심/고속</span><span class="detail-spec-value">9.6 / 12.3 km/L</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">0→100km/h</span><span class="detail-spec-value blue">6.2초</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">최고속도</span><span class="detail-spec-value">240 km/h</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">타이어</span><span class="detail-spec-value">255/45 R20</span></div>
-      <div class="detail-spec-item"><span class="detail-spec-label">전장×전폭×전고</span><span class="detail-spec-value">4,720×1,890×1,645</span></div>
-    </div>
-
-    <div class="trim-detail-panel avg-panel reveal">
-      <p class="chip-group-title">🔷 외장 사양</p>
-      <div class="chip-row">
-        <span class="chip">디지털 라이트 & Adaptive Highbeam Assist PLUS</span>
-        <span class="chip">AVANTGARDE 19인치 10트윈 스포크 알로이 휠 (78R)</span>
-        <span class="chip">파노라믹 선루프</span>
-        <span class="chip">알루미늄 루프레일</span>
-        <span class="chip chip-blue">브랜드 프로젝션 로고</span>
       </div>
 
-      <p class="chip-group-title">🔷 실내 사양</p>
-      <div class="chip-row">
-        <span class="chip">ARTICO 시트</span>
-        <span class="chip">앞좌석 메모리 / 열선 / 통풍 시트</span>
-        <span class="chip">뒷좌석 열선 / ISOFIX / 접이식</span>
-        <span class="chip">신형 가죽 터치컨트롤 + 시프트 패들 스티어링 휠</span>
-        <span class="chip">실버 그레이 다이아몬드 패턴 트림 & 하이 글로시 센터콘솔</span>
-        <span class="chip">나파 룩 ARTICO 대시보드 마감</span>
-        <span class="chip chip-blue">앰비언트 라이트 프리미엄 (64색, 894)</span>
-        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
-      </div>
+      <!-- 차량 이미지 비교 (PC 2열 · 모바일 선택 트림 1장) -->
+      <div class="tc-media-grid" id="tcMedia"></div>
+      <p class="tc-price-note" id="tcPriceNote"></p>
 
-      <p class="chip-group-title">🔷 편의 사양</p>
-      <div class="chip-row">
-        <span class="chip">12.3인치 계기판 + MBUX 3세대 11.9인치 LCD 디스플레이</span>
-        <span class="chip">T맵 오토 증강현실 내비게이션</span>
-        <span class="chip">앞좌석 휴대폰 무선 충전</span>
-        <span class="chip">무선 안드로이드 오토 & 애플 카플레이</span>
-        <span class="chip">HUD 헤드업 디스플레이</span>
-        <span class="chip chip-blue">부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본</span>
-        <span class="chip">열·소음 차단 글라스</span>
-        <span class="chip">Mercedes Me Connect (원격시동, 5G 커넥티비티)</span>
-        <span class="chip">2존 에어컨디셔너 & 공기청정 패키지</span>
-        <span class="chip">서라운드 카메라 + 액티브 주차 어시스트</span>
-        <span class="chip">KEYLESS-GO</span>
-        <span class="chip">전동식 트렁크 + 핸즈프리 액세스</span>
-      </div>
+      <!-- 가격 차이 요약 -->
+      <div class="tc-diff-summary" id="tcDiffSummary"></div>
 
-      <p class="chip-group-title">🔷 안전 사양</p>
-      <div class="chip-row">
-        <span class="chip">Active Bonnet</span>
-        <span class="chip">ADAPTIVE BRAKE (HOLD 기능)</span>
-        <span class="chip">드라이빙 어시스턴스 패키지 플러스 (P20)</span>
-        <span class="chip">능동형 사각지대 어시스트 + 출구 경고</span>
-        <span class="chip">능동형 차선 유지 어시스트</span>
-        <span class="chip">Active Brake Assist with cross-traffic function</span>
-        <span class="chip">Active Distance Assist DISTRONIC</span>
-        <span class="chip">교통 표지판 어시스트 / 경로 기반 속도 조절</span>
-        <span class="chip">에어백 10개</span>
+      <!-- 옵션 카테고리 -->
+      <div class="tc-tabs" role="tablist" aria-label="옵션 카테고리" id="tcTabs"></div>
+      <div class="tc-toolbar">
+        <p class="tc-count" id="tcCount" aria-live="polite"></p>
+        <div class="tc-seg tc-filter" role="group" aria-label="표시 방식">
+          <button type="button" class="tc-seg-btn" data-filter="diff" aria-pressed="true">차이점만 보기</button>
+          <button type="button" class="tc-seg-btn" data-filter="all" aria-pressed="false">전체 옵션 보기</button>
+        </div>
+      </div>
+      <div class="tc-colhead" aria-hidden="true"><span></span><span>AVANTGARDE</span><span>AMG Line</span></div>
+      <div class="tc-list" id="tcList" role="tabpanel"></div>
+
+      <!-- 공통 적용 사양 -->
+      <div class="tc-common">
+        <button type="button" class="tc-common-btn" id="tcCommonBtn" aria-expanded="false" aria-controls="tcCommonPanel">
+          <span id="tcCommonLabel">공통 적용 사양 전체 보기</span><i class="tc-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="tc-collapse" id="tcCommonPanel"><div class="tc-collapse-in"><div class="tc-common-body" id="tcCommonBody"></div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     S6 · AMG Line 상세설명
+     S5 · GLC 300 4MATIC 상세 제원 (기존 S5·S6 제원 통합)
      ============================================================ -->
-<section id="amgline" class="section section-alt">
+<section class="section" id="glc300Specs">
   <div class="container">
     <div class="section-heading">
-      <span class="label-en">GLC 300 4MATIC AMG Line</span>
-      <h2>GLC 300 4MATIC<br>AMG Line</h2>
-      <p>가장 스포티한 존재감, 9,140만원</p>
+      <span class="label-en">Specifications</span>
+      <h2>GLC 300 4MATIC<br>상세 제원</h2>
+      <p>두 트림에 공통으로 적용되는 제원과 트림별로 다른 항목을 한 번에 확인하세요.</p>
     </div>
-
-    <!-- 외관/실내 이미지 2장 -->
-    <div class="trim-image-grid">
-      <div class="trim-image-card reveal" data-modal-img="imgAmgExterior">
-        <div class="trim-image-box" id="imgAmgExterior">
-          <div class="trim-image-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>외관 이미지</span>
-          </div>
-        </div>
-        <div class="trim-image-label">AMG Line 외관 디자인</div>
-      </div>
-      <div class="trim-image-card reveal reveal-delay-1" data-modal-img="imgAmgInterior">
-        <div class="trim-image-box" id="imgAmgInterior">
-          <div class="trim-image-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>실내 이미지</span>
-          </div>
-        </div>
-        <div class="trim-image-label">AMG Line 실내 디자인</div>
-      </div>
-    </div>
-
-    <div class="amg-emphasis-grid reveal">
-      <div class="amg-emphasis-card"><div class="amg-icon">🛡️</div><span>AMG 범퍼</span></div>
-      <div class="amg-emphasis-card"><div class="amg-icon">⬛</div><span>AMG 그릴</span></div>
-      <div class="amg-emphasis-card"><div class="amg-icon">💨</div><span>AMG 에어벤트</span></div>
-      <div class="amg-emphasis-card"><div class="amg-icon">⚙️</div><span>AMG 휠</span></div>
-      <div class="amg-emphasis-card"><div class="amg-icon">🎮</div><span>AMG 스티어링</span></div>
-      <div class="amg-emphasis-card"><div class="amg-icon">🪑</div><span>AMG 스포츠 시트</span></div>
-    </div>
-
-    <div class="trim-detail-panel amg-panel reveal">
-      <p class="chip-group-title">🔷 외장 사양 (AMG Line 전용)</p>
-      <div class="chip-row">
-        <span class="chip">디지털 라이트 & Adaptive Highbeam Assist PLUS</span>
-        <span class="chip chip-blue">20인치 AMG 멀티 스포크 알로이 휠 (RVU)</span>
-        <span class="chip chip-blue">AMG 프런트 에이프런 (크롬 트림)</span>
-        <span class="chip chip-blue">AMG 리어 에이프런 (블랙 인서트 + 룩 디퓨저)</span>
-        <span class="chip chip-blue">AMG 사이드 실 패널</span>
-        <span class="chip chip-blue">크롬 마감 무광 다크 그레이 라디에이터 그릴</span>
-        <span class="chip">파노라믹 선루프</span>
-        <span class="chip">브랜드 프로젝션 로고</span>
-      </div>
-
-      <p class="chip-group-title">🔷 실내 사양 (AMG Line 전용)</p>
-      <div class="chip-row">
-        <span class="chip chip-blue">(AMG 라인 전용) ARTICO 시트</span>
-        <span class="chip">앞좌석 메모리 / 열선 / 통풍 시트</span>
-        <span class="chip">뒷좌석 열선 / ISOFIX / 접이식</span>
-        <span class="chip chip-blue">신형 나파 스포츠 터치컨트롤+시프트 패들 스티어링 휠</span>
-        <span class="chip chip-blue">블랙 오픈 포어 알루미늄 라인 우드 트림 & 하이 글로시 센터콘솔</span>
-        <span class="chip">나파 룩 ARTICO 대시보드 마감</span>
-        <span class="chip chip-blue">앰비언트 라이트 프리미엄 (64색, 894)</span>
-        <span class="chip">발광 도어 실 패널 "Mercedes-Benz" 레터링</span>
-      </div>
-
-      <p class="chip-group-title">🔷 편의 사양</p>
-      <div class="chip-row">
-        <span class="chip">12.3인치 계기반 + MBUX 3세대 11.9인치 LCD 디스플레이</span>
-        <span class="chip">T맵 오토 증강현실 내비게이션</span>
-        <span class="chip">앞좌석 휴대폰 무선 충전</span>
-        <span class="chip">무선 안드로이드 오토 & 애플 카플레이</span>
-        <span class="chip">HUD 헤드업 디스플레이</span>
-        <span class="chip chip-blue">부메스터® 3D 서라운드 사운드 (15개, 710W) ★기본</span>
-        <span class="chip">열·소음 차단 글라스</span>
-        <span class="chip">Mercedes Me Connect (원격시동, 5G 커넥티비티)</span>
-        <span class="chip">2존 에어컨디셔너 & 공기청정 패키지</span>
-        <span class="chip">서라운드 카메라 + 액티브 주차 어시스트</span>
-        <span class="chip">KEYLESS-GO</span>
-        <span class="chip">전동식 트렁크 + 핸즈프리 액세스</span>
-        <span class="chip chip-blue">(26년식 AMG Line 限) 어질리티 컨트롤 서스펜션</span>
-      </div>
-
-      <p class="chip-group-title">🔷 안전 사양</p>
-      <div class="chip-row">
-        <span class="chip">Active Bonnet</span>
-        <span class="chip">ADAPTIVE BRAKE (HOLD 기능)</span>
-        <span class="chip">드라이빙 어시스턴스 패키지 플러스 (P20)</span>
-        <span class="chip">능동형 사각지대 어시스트 + 출구 경고</span>
-        <span class="chip">능동형 차선 유지 어시스트</span>
-        <span class="chip">Active Brake Assist with cross-traffic function</span>
-        <span class="chip">Active Distance Assist DISTRONIC</span>
-        <span class="chip">교통 표지판 어시스트 / 경로 기반 속도 조절</span>
-        <span class="chip">에어백 10개</span>
-      </div>
-    </div>
+    <div class="detail-spec-grid reveal" id="tcSpecGrid"></div>
+    <p class="tc-spec-note">※ 제원은 AVANTGARDE 기준 표기입니다. 휠 크기 등 트림 사양에 따라 연비·타이어 규격은 달라질 수 있으며, 정확한 제원은 상담 시 안내해 드립니다.</p>
   </div>
 </section>
 
 <!-- ============================================================
      S7 · GLC300 핵심 기술
      ============================================================ -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-heading">
       <span class="label-en">Core Technology</span>
@@ -1704,7 +2015,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <!-- ============================================================
      통합 안전 4단계 (Mercedes-Benz Integral Safety)
      ============================================================ -->
-<section class="section section-alt" id="safety">
+<section class="section" id="safety">
   <div class="container">
     <div class="section-heading">
       <span class="label-en">Integral Safety</span>
@@ -1718,7 +2029,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <!-- ============================================================
      S8 · 경쟁차 비교
      ============================================================ -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-heading">
       <span class="label-en">Competitive Comparison</span>
@@ -1734,7 +2045,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <!-- ============================================================
      S9 · 왜 GLC를 선택해야 하는가
      ============================================================ -->
-<section class="section section-alt">
+<section class="section">
   <div class="container">
     <div class="section-heading">
       <span class="label-en">Why Choose GLC</span>
@@ -1755,7 +2066,7 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 <!-- ============================================================
      S10 · 프로모션
      ============================================================ -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-heading">
       <span class="label-en">Monthly Promotion</span>
@@ -1840,16 +2151,17 @@ function initImageModal() {
     setTimeout(() => { modalImg.src = ''; }, 300);
   }
 
-  /* 이미지 카드 클릭 → 모달 열기 */
-  document.querySelectorAll('.trim-image-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const boxId = card.getAttribute('data-modal-img');
-      const box   = boxId ? document.getElementById(boxId) : null;
-      const img   = box ? box.querySelector('img') : null;
-      if (img && img.src) {
-        openModal(img.src, img.alt);
-      }
-    });
+  /* 외부(트림 비교 등)에서도 같은 모달을 쓰도록 공개 */
+  window.openImageModal = openModal;
+
+  /* 이미지 카드 클릭 → 모달 열기 (이벤트 위임: 카드가 다시 그려져도 연결 유지) */
+  document.addEventListener('click', e => {
+    const card = e.target.closest ? e.target.closest('.trim-image-card[data-modal-img]') : null;
+    if (!card) return;
+    const boxId = card.getAttribute('data-modal-img');
+    const box   = boxId ? document.getElementById(boxId) : null;
+    const img   = box ? (box.querySelector('img.is-on') || box.querySelector('img')) : null;
+    if (img && img.src && !img.classList.contains('is-error')) openModal(img.currentSrc || img.src, img.alt);
   });
 
   backdrop.addEventListener('click', closeModal);
@@ -1862,25 +2174,312 @@ function initImageModal() {
 applyImages();
 initImageModal();
 
-/* -- AVANTGARDE / AMG Line 비교 렌더링 -- */
-function renderTrimCompare() {
-  const wrap = document.getElementById('trimCompareWrap');
-  if (!wrap) return;
-  let avgHtml = `<div class="trim-col avg">
-    <div class="trim-col-head avg"><h3>AVANTGARDE</h3><div class="trim-price">8,250만원</div></div>
-    <div class="trim-body">`;
-  let amgHtml = `<div class="trim-col amg">
-    <div class="trim-col-head amg"><h3>AMG Line</h3><div class="trim-price">9,250만원</div></div>
-    <div class="trim-body">`;
-  TRIM_COMPARE.rows.forEach(row => {
-    avgHtml += `<div class="trim-row"><span class="trim-row-label">${row.label}</span><span class="trim-row-value">${row.avg}</span></div>`;
-    amgHtml += `<div class="trim-row"><span class="trim-row-label">${row.label}</span><span class="trim-row-value">${row.amg}</span></div>`;
+/* -- S4 인터랙티브 트림 비교 · S5 상세 제원 (데이터: GLC_TRIM_DATA) -- */
+(function initTrimCompare() {
+  const D = window.GLC_TRIM_DATA || (typeof GLC_TRIM_DATA !== 'undefined' ? GLC_TRIM_DATA : null);
+  const root = document.getElementById('tc');
+  if (!D || !root) return;
+
+  const TRIMS = ['avantgarde', 'amgline'];
+  const STATUS = {
+    different:  { label: '트림별 차이', cls: 'diff' },
+    same:       { label: '공통 적용',   cls: 'same' },
+    unverified: { label: '확인 필요',   cls: 'warn' }
+  };
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mqMobile = window.matchMedia('(max-width: 767px)');
+  let started = false;
+  const state = { trim: 'avantgarde', view: 'exterior', cat: D.categories[0].id, filter: 'diff', open: new Set() };
+
+  const $ = (sel, el) => (el || document).querySelector(sel);
+  const $$ = (sel, el) => Array.from((el || document).querySelectorAll(sel));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const won = n => {
+    const man = Math.round(n / 10000);
+    return man.toLocaleString('ko-KR') + '만원';
+  };
+
+  /* ---------- 가격 (히어로 포함, 한 곳에서 관리) ---------- */
+  $$('[data-trim-price]').forEach(el => {
+    const t = D.trims[el.getAttribute('data-trim-price')];
+    if (t && t.price) el.textContent = won(t.price);
   });
-  avgHtml += `</div></div>`;
-  amgHtml += `</div></div>`;
-  wrap.innerHTML = avgHtml + amgHtml;
-}
-renderTrimCompare();
+  const priceDiff = D.trims.amgline.price - D.trims.avantgarde.price;
+
+  /* ---------- 차량 이미지 비교 (DOM은 한 번만 생성, 이후 클래스만 전환) ---------- */
+  const media = $('#tcMedia');
+  const imgEls = {};           // imgEls[trim][view] = <img>
+  media.innerHTML = TRIMS.map(k => {
+    const t = D.trims[k];
+    const hl = (t.highlights || []).map(x => `<li>${esc(x)}</li>`).join('');
+    return `<article class="tc-media-card" data-trim="${k}">
+      <header class="tc-media-head">
+        <div><h3 class="tc-media-name">${esc(t.name)}</h3><p class="tc-media-tag">${esc(t.tagline || '')}</p></div>
+        <div class="tc-media-price">${won(t.price)}</div>
+      </header>
+      <button type="button" class="tc-media-box" data-trim="${k}" aria-label="${esc(t.name)} 이미지 크게 보기">
+        <span class="tc-media-skel" aria-hidden="true"></span>
+        <span class="tc-media-fail" role="status"><span>이미지를 불러오지 못했습니다</span><span class="tc-retry" data-trim="${k}" role="button" tabindex="0">다시 시도</span></span>
+        <span class="tc-media-zoom" aria-hidden="true">＋ 크게 보기</span>
+      </button>
+      <p class="tc-media-sum">${esc(t.summary || '')}</p>
+      ${hl ? `<ul class="tc-media-hl" aria-label="AMG Line 강조 사양">${hl}</ul>` : ''}
+    </article>`;
+  }).join('');
+
+  TRIMS.forEach(k => {
+    imgEls[k] = {};
+    const box = $(`.tc-media-box[data-trim="${k}"]`, media);
+    ['exterior', 'interior'].forEach(v => {
+      const img = document.createElement('img');
+      img.alt = `GLC 300 4MATIC ${D.trims[k].name} ${v === 'exterior' ? '외관' : '실내'}`;
+      img.decoding = 'async';
+      img.className = 'tc-img tc-img-' + v;
+      img.dataset.src = D.trims[k][v] || '';
+      img.addEventListener('load', () => { img.classList.add('is-loaded'); img.classList.remove('is-error'); syncBox(k); });
+      img.addEventListener('error', () => { img.classList.add('is-error'); syncBox(k); });
+      box.insertBefore(img, box.firstChild);
+      imgEls[k][v] = img;
+    });
+  });
+
+  function load(k, v, retry) {
+    const img = imgEls[k] && imgEls[k][v];
+    if (!img || !img.dataset.src) return;
+    if (img.getAttribute('src') && !retry) return;
+    let src = img.dataset.src;
+    if (retry) src += (src.indexOf('?') >= 0 ? '&' : '?') + 'retry=' + Date.now();
+    img.classList.remove('is-error');
+    img.src = src;
+  }
+  function syncBox(k) {
+    const img = imgEls[k][state.view];
+    const box = $(`.tc-media-box[data-trim="${k}"]`, media);
+    box.classList.toggle('is-loading', !!img.getAttribute('src') && !img.classList.contains('is-loaded') && !img.classList.contains('is-error'));
+    box.classList.toggle('is-failed', img.classList.contains('is-error'));
+  }
+  function visibleTrims() { return mqMobile.matches ? [state.trim] : TRIMS; }
+  function applyMedia() {
+    TRIMS.forEach(k => {
+      ['exterior', 'interior'].forEach(v => imgEls[k][v].classList.toggle('is-on', v === state.view));
+      const card = $(`.tc-media-card[data-trim="${k}"]`, media);
+      card.classList.toggle('is-sel', k === state.trim);
+    });
+    if (started) {
+      visibleTrims().forEach(k => load(k, state.view));
+      TRIMS.forEach(syncBox);
+      schedulePreload();
+    }
+  }
+  /* 다음에 볼 가능성이 높은 이미지를 화면이 한가할 때 하나씩 미리 받기 */
+  let preloadTimer = null;
+  function schedulePreload() {
+    clearTimeout(preloadTimer);
+    const idle = window.requestIdleCallback || (fn => setTimeout(fn, 400));
+    preloadTimer = setTimeout(() => idle(() => {
+      const order = mqMobile.matches
+        ? [[other(state.trim), state.view], [state.trim, otherView()]]
+        : [[TRIMS[0], otherView()], [TRIMS[1], otherView()]];
+      const next = order.find(([k, v]) => !imgEls[k][v].getAttribute('src'));
+      if (next) {
+        const img = imgEls[next[0]][next[1]];
+        const visibleNow = imgEls[state.trim][state.view];
+        if (!visibleNow.getAttribute('src') || visibleNow.classList.contains('is-loaded') || visibleNow.classList.contains('is-error')) {
+          load(next[0], next[1]);
+          img.addEventListener('load', schedulePreload, { once: true });
+        } else visibleNow.addEventListener('load', schedulePreload, { once: true });
+      }
+    }), 600);
+  }
+  const other = k => (k === 'avantgarde' ? 'amgline' : 'avantgarde');
+  const otherView = () => (state.view === 'exterior' ? 'interior' : 'exterior');
+
+  media.addEventListener('click', e => {
+    const retry = e.target.closest('.tc-retry');
+    if (retry) { e.stopPropagation(); load(retry.dataset.trim, state.view, true); syncBox(retry.dataset.trim); return; }
+    const box = e.target.closest('.tc-media-box');
+    if (!box) return;
+    const k = box.dataset.trim, img = imgEls[k][state.view];
+    if (img.classList.contains('is-loaded') && typeof window.openImageModal === 'function') window.openImageModal(img.currentSrc || img.src, img.alt);
+  });
+  media.addEventListener('keydown', e => {
+    const retry = e.target.closest && e.target.closest('.tc-retry');
+    if (retry && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); load(retry.dataset.trim, state.view, true); syncBox(retry.dataset.trim); }
+  });
+
+  /* 섹션이 가까워지면 이미지 로딩 시작 (첫 화면에서 큰 이미지 동시 다운로드 방지) */
+  function start() { if (started) return; started = true; applyMedia(); }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(en => { if (en.some(x => x.isIntersecting)) { start(); io.disconnect(); } }, { rootMargin: '600px 0px' });
+    io.observe(root);
+  } else start();
+  mqMobile.addEventListener ? mqMobile.addEventListener('change', applyMedia) : mqMobile.addListener(applyMedia);
+
+  $('#tcPriceNote').textContent = D.priceNote || '';
+
+  /* ---------- 세그먼트 버튼 ---------- */
+  function setPressed(group, attr, val) {
+    $$(`[data-${attr}]`, group).forEach(b => b.setAttribute('aria-pressed', String(b.dataset[attr] === val)));
+  }
+  function setTrim(k) {
+    if (!D.trims[k]) return;
+    state.trim = k;
+    setPressed($('.tc-trim-switch', root), 'trim', k);
+    applyMedia();
+  }
+  function setView(v) {
+    state.view = v;
+    setPressed($('.tc-view-switch', root), 'view', v);
+    applyMedia();
+  }
+  $('.tc-trim-switch', root).addEventListener('click', e => { const b = e.target.closest('[data-trim]'); if (b) setTrim(b.dataset.trim); });
+  $('.tc-view-switch', root).addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) setView(b.dataset.view); });
+
+  /* ---------- 가격 차이 요약 ---------- */
+  const byCat = id => D.options.filter(o => o.category === id);
+  const diffs = D.options.filter(o => o.comparisonStatus === 'different');
+  const sameCats = D.categories.filter(c => !byCat(c.id).some(o => o.comparisonStatus === 'different')).map(c => c.label);
+  $('#tcDiffSummary').innerHTML = `
+    <div class="tc-ds-head">
+      <p class="tc-ds-k">가격 차이</p>
+      <p class="tc-ds-v">${won(priceDiff)}</p>
+      <p class="tc-ds-s">AMG Line을 선택하면 달라지는 점 <b>${diffs.length}가지</b></p>
+    </div>
+    <ul class="tc-ds-list">${diffs.map(o => `<li><span>${esc(o.label)}</span>${esc(o.amgline || '')}</li>`).join('')}</ul>
+    ${sameCats.length ? `<p class="tc-ds-foot">${sameCats.map(esc).join(' · ')}에서는 두 트림 간 확인된 차이가 없습니다.</p>` : ''}`;
+
+  /* ---------- 카테고리 탭 ---------- */
+  const tabs = $('#tcTabs');
+  tabs.innerHTML = D.categories.map(c => {
+    const n = byCat(c.id).filter(o => o.comparisonStatus === 'different').length;
+    return `<button type="button" role="tab" class="tc-tab" id="tcTab-${c.id}" data-cat="${c.id}" aria-selected="${c.id === state.cat}" aria-controls="tcList" tabindex="${c.id === state.cat ? 0 : -1}">
+      <span class="tc-tab-l">${esc(c.label)}</span><span class="tc-tab-n${n ? '' : ' is-zero'}">차이 ${n}</span></button>`;
+  }).join('');
+  tabs.addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (b) setCat(b.dataset.cat, true); });
+  tabs.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const ids = D.categories.map(c => c.id), i = ids.indexOf(state.cat);
+    const n = ids[(i + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length];
+    setCat(n, true); $(`#tcTab-${n}`).focus(); e.preventDefault();
+  });
+  function setCat(id, anim) {
+    state.cat = id;
+    $$('.tc-tab', tabs).forEach(b => { const on = b.dataset.cat === id; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+    $('#tcList').setAttribute('aria-labelledby', 'tcTab-' + id);
+    renderList(anim);
+  }
+  function setFilter(f) {
+    state.filter = f;
+    setPressed($('.tc-filter', root), 'filter', f);
+    renderList(true);
+  }
+  $('.tc-filter', root).addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (b) setFilter(b.dataset.filter); });
+
+  /* ---------- 옵션 비교 카드 ---------- */
+  function valHtml(k, v) {
+    const name = D.trims[k].name;
+    if (v == null || v === '') return `<span class="tc-val is-none"><em>${esc(name)}</em>표기 없음 · 확인 필요</span>`;
+    return `<span class="tc-val"><em>${esc(name)}</em>${esc(v)}</span>`;
+  }
+  function cardHtml(o) {
+    const st = STATUS[o.comparisonStatus] || STATUS.unverified;
+    const open = state.open.has(o.id);
+    const vals = o.comparisonStatus === 'same' && o.avantgarde === o.amgline
+      ? `<span class="tc-val is-both"><em>두 트림 동일</em>${esc(o.avantgarde)}</span>`
+      : valHtml('avantgarde', o.avantgarde) + valHtml('amgline', o.amgline);
+    const badges = `<span class="tc-badge is-${st.cls}">${st.label}</span>` + (o.verify ? '<span class="tc-badge is-warn">표기 확인 필요</span>' : '');
+    const img = o.image ? `<img class="tc-opt-img" src="${esc(o.image)}" alt="${esc(o.label)}" loading="lazy">` : '';
+    return `<div class="tc-card is-${st.cls}${open ? ' is-open' : ''}" data-id="${o.id}">
+      <button type="button" class="tc-card-btn" aria-expanded="${open}" aria-controls="tcd-${o.id}">
+        <span class="tc-card-title"><span class="tc-card-name">${esc(o.label)}</span><span class="tc-badges">${badges}</span></span>
+        <span class="tc-vals">${vals}</span>
+        <i class="tc-arrow" aria-hidden="true"></i>
+      </button>
+      <div class="tc-collapse" id="tcd-${o.id}"><div class="tc-collapse-in"><div class="tc-desc">${img}<p>${esc(o.description || '')}</p></div></div></div>
+    </div>`;
+  }
+  function renderList(anim) {
+    const list = $('#tcList');
+    const cat = D.categories.find(c => c.id === state.cat);
+    const all = byCat(state.cat);
+    const nd = all.filter(o => o.comparisonStatus === 'different').length;
+    const ns = all.filter(o => o.comparisonStatus === 'same').length;
+    const nu = all.filter(o => o.comparisonStatus === 'unverified').length;
+    const shown = state.filter === 'diff' ? all.filter(o => o.comparisonStatus === 'different') : all;
+    $('#tcCount').innerHTML = state.filter === 'diff'
+      ? `<b>${esc(cat.label)}</b> · 차이 ${nd}개`
+      : `<b>${esc(cat.label)}</b> · 전체 ${all.length}개 <span>(차이 ${nd} · 공통 ${ns}${nu ? ' · 확인 필요 ' + nu : ''})</span>`;
+    let html = shown.map(cardHtml).join('');
+    if (!shown.length) {
+      html = `<div class="tc-empty"><p>${esc(cat.label)}은 두 트림 간 확인된 차이가 없습니다.</p>
+        <button type="button" class="tc-link" data-go="all">전체 ${all.length}개 사양 보기</button></div>`;
+    }
+    if (state.filter === 'diff' && nu) {
+      html += `<button type="button" class="tc-hint" data-go="all">확인이 필요한 사양 ${nu}개는 ‘전체 옵션 보기’에서 확인할 수 있어요 →</button>`;
+    }
+    if (state.cat === 'safety') {
+      html += `<a class="tc-safety-link" href="#safety">안전 기능이 작동하는 모습은 ‘통합 안전 4단계’에서 확인하세요 →</a>`;
+    }
+    list.innerHTML = html;
+    if (anim && !reduceMotion) { list.classList.remove('is-swap'); void list.offsetWidth; list.classList.add('is-swap'); }
+  }
+  $('#tcList').addEventListener('click', e => {
+    const go = e.target.closest('[data-go]');
+    if (go) { setFilter(go.dataset.go); return; }
+    const btn = e.target.closest('.tc-card-btn');
+    if (!btn) return;
+    const card = btn.closest('.tc-card'), id = card.dataset.id;
+    const open = !card.classList.contains('is-open');
+    card.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    open ? state.open.add(id) : state.open.delete(id);
+  });
+
+  /* ---------- 공통 적용 사양 (카테고리별 아코디언, 데이터에서 자동 생성) ---------- */
+  const commons = D.options.filter(o => o.comparisonStatus === 'same');
+  $('#tcCommonLabel').textContent = `공통 적용 사양 전체 보기 (${commons.length}개)`;
+  $('#tcCommonBody').innerHTML = D.categories.map(c => {
+    const items = commons.filter(o => o.category === c.id);
+    if (!items.length) return '';
+    return `<div class="tc-common-grp"><p class="tc-common-t">${esc(c.label)} <span>${items.length}</span></p>
+      <ul>${items.map(o => `<li><b>${esc(o.label)}</b><span>${esc(o.avantgarde)}</span></li>`).join('')}</ul></div>`;
+  }).join('');
+  const cbtn = $('#tcCommonBtn');
+  cbtn.addEventListener('click', () => {
+    const open = cbtn.getAttribute('aria-expanded') !== 'true';
+    cbtn.setAttribute('aria-expanded', String(open));
+    cbtn.parentElement.classList.toggle('is-open', open);
+  });
+
+  /* ---------- S5 상세 제원 ---------- */
+  const sg = $('#tcSpecGrid');
+  if (sg && D.specs) {
+    sg.innerHTML = D.specs.map(s => {
+      let v;
+      if (s.byTrim) v = TRIMS.map(k => `${esc(D.trims[k].name)} ${esc(s.byTrim[k] || '-')}`).join('<br>');
+      else v = esc(s.value) + (s.verify ? ' <span class="tc-badge is-warn">확인 필요</span>' : '');
+      return `<div class="detail-spec-item"><span class="detail-spec-label">${esc(s.label)}</span><span class="detail-spec-value${s.accent ? ' blue' : ''}">${v}</span></div>`;
+    }).join('');
+  }
+
+  /* ---------- 히어로 트림 버튼 · URL 해시 연동 ---------- */
+  function fromHash() {
+    const k = (location.hash || '').replace('#', '');
+    if (TRIMS.indexOf(k) >= 0) { setTrim(k); start(); }
+  }
+  window.addEventListener('hashchange', fromHash);
+  window.addEventListener('popstate', fromHash);
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href="#avantgarde"], a[href="#amgline"]');
+    if (a) setTrim(a.getAttribute('href').slice(1));   // 같은 해시를 다시 눌러도 선택
+  });
+
+  setPressed($('.tc-trim-switch', root), 'trim', state.trim);
+  setCat(state.cat, false);
+  fromHash();
+  applyMedia();
+})();
+
 
 /* -- 경쟁차 비교표 렌더링 -- */
 function renderCompareTable() {
