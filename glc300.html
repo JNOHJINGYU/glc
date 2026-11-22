@@ -351,15 +351,40 @@ GLC_TRIM_DATA.specFor = function (spec, trim) {
 <script>
 /* ============================================================
    외장 컬러 (EXTERIOR COLOURS)
-   - 현재 GLC 300 컬러별 차량 이미지가 없어 비어 있습니다. (확인되지 않은 색상명·추가금액은 넣지 않음)
-   - 항목을 추가하면 스와치·이미지 전환·확대·사전 로딩이 자동으로 활성화됩니다.
-     image       : PC 이미지 주소 (jpg/png/webp — 실제로 존재하는 파일만)
-     mobileImage : 휴대폰 이미지 주소 (없으면 image 사용)
-     srcset      : 선택. 예) "…-828.webp 828w, …-1448.webp 1448w"  (sizes는 자동)
-     price       : 추가금액(원). 숫자일 때만 '+금액' 표시, null이면 표시 안 함
+   - 명칭·추가금액: 사용자 제공 자료 그대로 (임의 변경 금지)
+   - 항목마다 스와치·이미지 전환·확대·사전 로딩이 자동으로 적용됩니다.
+     cat         : solid(일반 페인트) · metallic(메탈릭 페인트) · manufaktur(MANUFAKTUR 페인트)
+     image       : PC 이미지 (1600px WebP)
+     mobileImage : 휴대폰 이미지 (960px WebP)
+     price       : 추가금액(원). 0 → '추가금 없음', 숫자 → '+금액'
+     image가 비어 있으면 스와치는 선택되고 이미지 자리에 '이미지 준비 중'이 표시됩니다.
+   - 이미지 파일: https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-<id>-1600.webp / -960.webp (GitHub images 저장소 colors 폴더)
    ============================================================ */
+const GLC_COLOR_CATS = [
+  { id: "all",        name: "전체" },
+  { id: "solid",      name: "일반 페인트" },
+  { id: "metallic",   name: "메탈릭 페인트" },
+  { id: "manufaktur", name: "MANUFAKTUR 페인트" }
+];
 const GLC_COLORS = [
-  // { id: "polar-white", name: "공식 컬러명", swatch: "#F4F4F1", image: "", mobileImage: "", srcset: "", price: null },
+  { id: "polar-white",              cat: "solid",      name: "폴라 화이트",                            swatch: "#F1F2F0", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-polar-white-1600.webp",              mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-polar-white-960.webp" },
+  { id: "verde-silver",             cat: "metallic",   name: "베르데 실버",                            swatch: "#56696B", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-verde-silver-1600.webp",             mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-verde-silver-960.webp" },
+  { id: "obsidian-black",           cat: "metallic",   name: "옵시디안 블랙",                          swatch: "#1B1C1E", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-obsidian-black-1600.webp",           mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-obsidian-black-960.webp" },
+  { id: "graphite-grey",            cat: "metallic",   name: "그라파이트 그레이 메탈릭",               swatch: "#4A4D52", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-graphite-grey-1600.webp",            mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-graphite-grey-960.webp" },
+  { id: "high-tech-silver",         cat: "metallic",   name: "하이 테크 실버",                         swatch: "#A1AAB5", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-high-tech-silver-1600.webp",         mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-high-tech-silver-960.webp" },
+  { id: "spectral-blue",            cat: "metallic",   name: "스펙트럴 블루",                          swatch: "#16437A", price: 0,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-spectral-blue-1600.webp",            mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-spectral-blue-960.webp" },
+  { id: "manufaktur-opalite-white", cat: "manufaktur", name: "MANUFAKTUR 오팔라이트 화이트 브라이트",  swatch: "#ECEDEF", price: 1500000,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-opalite-white-1600.webp", mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-opalite-white-960.webp" },
+  { id: "manufaktur-alpine-grey",   cat: "manufaktur", name: "MANUFAKTUR 알파인 그레이 솔리드",        swatch: "#8B8C8D", price: 3160000,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-alpine-grey-1600.webp",   mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-alpine-grey-960.webp" },
+  { id: "manufaktur-graphite-magno", cat: "manufaktur", name: "MANUFAKTUR 그라파이트 그레이 마그노",   swatch: "#4C4D4F", price: 7140000, matte: true,
+    image: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-graphite-magno-1600.webp", mobileImage: "https://raw.githubusercontent.com/JNOHJINGYU/images/main/colors/glc300-color-manufaktur-graphite-magno-960.webp" }
 ];
 
 /* ============================================================
@@ -1113,25 +1138,54 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 /* ============================================================
    외장 컬러
    ============================================================ */
-.col-wrap { max-width: 980px; margin: 0 auto; }
-.col-stage { aspect-ratio: 4 / 3; background: linear-gradient(180deg, #ECEEF1 0%, #F8F9FB 100%); }
-.col-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
-.col-img.is-fade { animation: colFade .26s ease; }
-@keyframes colFade { from { opacity: .35; } to { opacity: 1; } }
-.col-stage.is-empty .col-img { object-fit: cover; }
-.col-stage.is-loading::after { content: ""; position: absolute; left: 50%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%;
+.col-wrap { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr); gap: clamp(28px, 3.4vw, 48px); align-items: start; }
+.col-view { min-width: 0; position: sticky; top: 96px; }
+.col-stage { aspect-ratio: 16 / 9; background: linear-gradient(180deg, #ECEEF1 0%, #F8F9FB 100%); contain: layout paint; }
+.col-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .32s ease; }
+.col-img.is-on { opacity: 1; }
+.col-stage.is-loading::after { content: ""; position: absolute; left: 50%; top: 50%; z-index: 2; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%;
   border: 2px solid rgba(17,17,17,.12); border-top-color: var(--black); animation: stSpin .8s linear infinite; }
-.col-bar { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 28px; text-align: center; }
-.col-swatches { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.col-sw { appearance: none; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; background: var(--sw);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); position: relative; transition: transform .2s var(--ease); }
-.col-sw.is-light { box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
-.col-sw[aria-pressed="true"]::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--black); }
-.col-sw:hover { transform: scale(1.06); }
-.col-ghost { width: 44px; height: 44px; border-radius: 50%; border: 1.5px dashed #C9CFD8; background: var(--white); }
-.col-name { font-size: 1.05rem; font-weight: 800; display: flex; flex-direction: column; gap: 4px; }
-.col-name small { font-size: .84rem; font-weight: 500; color: var(--gray4); }
-.col-wait { color: var(--black); }
+.col-ph { position: absolute; inset: 0; z-index: 1; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; text-align: center;
+  background: radial-gradient(120% 90% at 50% 40%, #FFFFFF 0%, #EEF0F3 100%); }
+.col-ph-chip { width: clamp(64px, 9vw, 96px); aspect-ratio: 1; border-radius: 50%; background: var(--sw-bg, var(--sw, #ccc)); box-shadow: 0 10px 28px rgba(17,17,17,.14), inset 0 0 0 1px rgba(0,0,0,.08); }
+.col-ph p { font-size: clamp(.92rem, 1.4vw, 1.02rem); font-weight: 700; color: var(--black); }
+.col-ph small { font-size: .82rem; color: var(--gray4); }
+.col-stage.is-noimg { cursor: default; }
+.col-stage.is-noimg .col-ph { display: flex; }
+.col-stage.is-noimg .stage-zoom, .col-stage.is-noimg .col-img { display: none; }
+.col-info { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "cat cat" "name price"; align-items: end; column-gap: 16px; row-gap: 4px; margin-top: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--gray3); }
+.col-cat { grid-area: cat; font-size: .76rem; font-weight: 700; letter-spacing: .04em; color: var(--gray4); }
+.col-name { grid-area: name; font-size: clamp(1.08rem, 1.8vw, 1.32rem); font-weight: 800; line-height: 1.35; word-break: keep-all; }
+.col-price { grid-area: price; font-size: clamp(.95rem, 1.4vw, 1.05rem); font-weight: 800; color: var(--blue); white-space: nowrap; }
+.col-price.is-free { color: var(--gray4); font-weight: 600; }
+.col-panel { min-width: 0; }
+.col-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.col-tab { appearance: none; border: 1px solid var(--gray3); background: var(--white); color: var(--black); font: inherit; font-size: .84rem; font-weight: 700;
+  min-height: 44px; padding: 0 16px; border-radius: 999px; cursor: pointer; white-space: nowrap; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: background .2s, color .2s, border-color .2s; }
+.col-tab[aria-selected="true"] { background: var(--black); border-color: var(--black); color: var(--white); }
+.col-tab:focus-visible, .col-sw:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+/* 원형 스와치: 보이는 원 32px · 터치 영역 44×44px · 5열 그리드(9색 → 2행) */
+.col-swatches { display: grid; grid-template-columns: repeat(5, 44px); gap: 12px; justify-content: start; }
+.col-sw { appearance: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent;
+  cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.col-dot { display: block; position: relative; width: 32px; height: 32px; border-radius: 50%; background: var(--sw-bg, var(--sw)); box-shadow: inset 0 0 0 1px rgba(0,0,0,.14); }
+.col-sw.is-light .col-dot { box-shadow: inset 0 0 0 1px rgba(0,0,0,.22); }
+.col-sw[aria-pressed="true"] .col-dot::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 1.5px solid var(--black); }
+.col-sw[hidden] { display: none; }
+@media (max-width: 1023px) {
+  .col-wrap { grid-template-columns: minmax(0, 1fr); max-width: 860px; gap: 24px; }
+  .col-view { position: static; }
+}
+@media (max-width: 767px) {
+  .col-info { margin-top: 16px; padding-bottom: 16px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "cat" "name" "price"; }
+  .col-price { white-space: normal; }
+  .col-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+  .col-tab { padding: 0 10px; font-size: .8rem; }
+  .col-swatches { justify-content: center; gap: 10px; }
+}
+@media (max-width: 330px) {
+  .col-swatches { gap: 6px; }
+}
 
 /* ============================================================
    내장 디자인
@@ -1238,7 +1292,7 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 }
 @media (prefers-reduced-motion: reduce) {
   .stage .stage-img, .hdr-trim, .tech-media img, .col-sw { transition: none !important; }
-  .col-img.is-fade { animation: none; }
+  .col-img { transition: none !important; }
 }
 
 /*!
@@ -1944,14 +1998,21 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
       <h2 id="colTitle">나만의 GLC를 완성하는 컬러</h2>
     </div>
     <div class="col-wrap">
-      <div class="stage col-stage" id="colStage" role="button" tabindex="0" aria-label="컬러 이미지 크게 보기">
-        <span class="stage-zoom" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5M7 5v4M5 7h4"/></svg>확대</span>
-        <div class="stage-fail" role="status"><p>이미지를 불러오지 못했습니다.</p></div>
+      <div class="col-view">
+        <div class="stage col-stage" id="colStage" role="button" tabindex="0" aria-label="컬러 이미지 크게 보기">
+          <span class="stage-zoom" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5M7 5v4M5 7h4"/></svg>확대</span>
+          <div class="col-ph" aria-hidden="true"><span class="col-ph-chip"></span><p>이 컬러의 실차 이미지는 준비 중입니다</p><small>전시장에서 실제 색상을 확인해 보세요.</small></div>
+          <div class="stage-fail" role="status"><p>이미지를 불러오지 못했습니다.</p><button type="button" class="stage-retry" id="colRetry">다시 시도</button></div>
+        </div>
+        <div class="col-info" aria-live="polite">
+          <span class="col-cat" id="colCat"></span>
+          <p class="col-name" id="colName"></p>
+          <p class="col-price" id="colPrice"></p>
+        </div>
       </div>
-      <div class="col-bar">
-        <div class="col-swatches" id="colSwatches" role="group" aria-label="외장 컬러 선택"></div>
-        <p class="col-name" id="colName" aria-live="polite"></p>
-      </div>
+      <div class="col-panel">
+        <div class="col-tabs" id="colTabs" role="tablist" aria-label="외장 컬러 종류"></div>
+        <div class="col-swatches" id="colSwatches" role="group" aria-label="외장 컬러 선택"></div>      </div>
     </div>
   </div>
 </section>
@@ -2806,60 +2867,113 @@ initImageModal();
     $('#extNote').textContent = D.priceNote || '';
   }
 
-  /* ---------------- 4. 외장 컬러 ---------------- */
+  /* ---------------- 4. 외장 컬러 (탭 · 스와치 · 이미지 교차 전환) ---------------- */
   (function colors() {
-    const stage = $('#colStage'), sw = $('#colSwatches'), nameEl = $('#colName');
-    if (!stage) return;
-    const list = (typeof GLC_COLORS !== 'undefined' ? GLC_COLORS : []).filter(c => c && c.id && (c.image || c.mobileImage));
-    const img = document.createElement('img');
-    img.className = 'col-img'; img.decoding = 'async'; img.loading = 'lazy'; img.width = 1280; img.height = 960;
-    stage.insertBefore(img, stage.firstChild);
-    img.addEventListener('load', () => stage.classList.remove('is-failed'));
-    img.addEventListener('error', () => { if (!img.dataset.prev) stage.classList.add('is-failed'); else { img.src = img.dataset.prev; } });
-    stage.addEventListener('click', () => { if (img.complete && img.naturalWidth) zoom(img); });
-    stage.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && img.naturalWidth) { e.preventDefault(); zoom(img); } });
+    const stage = $('#colStage'), sw = $('#colSwatches'), tabs = $('#colTabs');
+    if (!stage || !sw) return;
+    const list = (typeof GLC_COLORS !== 'undefined' ? GLC_COLORS : []).filter(c => c && c.id && c.name);
+    const cats = (typeof GLC_COLOR_CATS !== 'undefined' ? GLC_COLOR_CATS : [{ id: 'all', name: '전체' }]);
+    const catName = id => (cats.find(x => x.id === id) || {}).name || '';
+    const ph = $('.col-ph', stage);
+    if (!list.length) return;
 
-    if (!list.length) {   /* 컬러 데이터 없음 → 기본 GLC 이미지 + 비활성 안내 */
-      stage.classList.add('is-empty');
-      img.src = IMAGES.hero; img.alt = 'GLC 300 4MATIC';
-      sw.innerHTML = '<span class="col-ghost" aria-hidden="true"></span>'.repeat(5);
-      sw.setAttribute('aria-disabled', 'true');
-      nameEl.innerHTML = '<span class="col-wait">컬러별 차량 이미지를 준비하고 있습니다</span><small>선택 가능한 외장 컬러와 추가 금액은 상담 시 안내해 드립니다.</small>';
-      return;
-    }
+    /* 두 장을 겹쳐 두고 새 이미지가 완전히 준비된 뒤 교차 전환 → 깜빡임·레이아웃 이동 없음 */
+    const SIZES = '(max-width: 1023px) 92vw, 760px';
+    const mk = () => { const im = document.createElement('img'); im.className = 'col-img'; im.decoding = 'async'; im.width = 1600; im.height = 900; im.sizes = SIZES; im.draggable = false; stage.insertBefore(im, stage.firstChild); return im; };
+    const layers = [mk(), mk()];
+    let front = 0;
+    const has = c => !!(c.image || c.mobileImage);
+    const srcset = c => [c.mobileImage && c.mobileImage + ' 960w', c.image && c.image + ' 1600w'].filter(Boolean).join(', ');
+    const fallback = c => c.image || c.mobileImage;
+
+    const won = n => (typeof n === 'number' && n > 0) ? '+' + n.toLocaleString('ko-KR') + '원' : '추가금 없음';
     const isLight = hex => { const m = String(hex || '').replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i); if (!m) return false; const [r, g, b] = m.slice(1).map(x => parseInt(x, 16)); return (0.299 * r + 0.587 * g + 0.114 * b) > 175; };
-    sw.innerHTML = list.map(c => `<button type="button" class="col-sw${isLight(c.swatch) ? ' is-light' : ''}" data-col="${esc(c.id)}" style="--sw:${esc(c.swatch || '#ccc')}" aria-pressed="false" aria-label="${esc(c.name)}" title="${esc(c.name)}"></button>`).join('');
-    const url = c => (mqMobile.matches && c.mobileImage) ? c.mobileImage : (c.image || c.mobileImage);
+    /* 스와치 질감: 메탈릭·MANUFAKTUR 유광은 하이라이트, 무광(마그노)은 평평하게 */
+    const swBg = c => {
+      const base = c.swatch || '#ccc';
+      if (c.matte) return `radial-gradient(circle at 50% 40%, rgba(255,255,255,.08), rgba(0,0,0,.12) 75%), ${base}`;
+      if (c.cat === 'solid' || /솔리드/.test(c.name)) return `radial-gradient(circle at 34% 28%, rgba(255,255,255,.35), rgba(255,255,255,0) 50%), ${base}`;
+      return `radial-gradient(circle at 32% 26%, rgba(255,255,255,.6), rgba(255,255,255,0) 42%), linear-gradient(150deg, rgba(255,255,255,.16), rgba(0,0,0,.26)), ${base}`;
+    };
+
+    /* 탭 */
+    tabs.innerHTML = cats.map((t, i) => `<button type="button" class="col-tab" role="tab" data-cat="${esc(t.id)}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${esc(t.name)}</button>`).join('');
+    /* 스와치: 원형 버튼은 선택만 담당 — 컬러명·금액은 이미지 아래(#colName·#colPrice)에서 한 번만 표시.
+       화면에 글자는 없고, 스크린리더용 aria-label과 PC 마우스 툴팁(title)에 컬러명·금액을 담음 */
+    sw.innerHTML = list.map(c => `<button type="button" class="col-sw${isLight(c.swatch) ? ' is-light' : ''}" data-col="${esc(c.id)}" data-cat="${esc(c.cat || '')}" style="--sw-bg:${esc(swBg(c))}" aria-pressed="false" aria-label="${esc(c.name)}, ${esc(won(c.price))}" title="${esc(c.name)} · ${esc(won(c.price))}"><span class="col-dot" aria-hidden="true"></span></button>`).join('');
+
+    /* 사전 로딩 (실제 표시할 레이어와 같은 srcset·sizes로 받아 브라우저 캐시를 그대로 재사용) */
     const cache = new Map();
     function preload(c) {
-      const u = url(c);
-      if (cache.has(u)) return cache.get(u);
-      const p = new Promise((res, rej) => { const im = new Image(); im.decoding = 'async'; if (c.srcset) { im.srcset = c.srcset; im.sizes = '(max-width: 1240px) 92vw, 1150px'; } im.onload = () => res(u); im.onerror = rej; im.src = u; });
-      p.catch(() => cache.delete(u)); cache.set(u, p); return p;
+      if (!has(c)) return Promise.reject();
+      if (cache.has(c.id)) return cache.get(c.id);
+      const im = new Image(); im.decoding = 'async'; im.sizes = SIZES; im.srcset = srcset(c); im.src = fallback(c);
+      const p = (im.decode ? im.decode() : new Promise((res, rej) => { im.onload = res; im.onerror = rej; })).then(() => c.id);
+      p.catch(() => cache.delete(c.id)); cache.set(c.id, p); return p;
     }
-    let token = 0, cur = list[0].id;
+
+    let token = 0, cur = (list.find(has) || list[0]).id, curCat = 'all';
+    function paintInfo(c) {
+      $$('.col-sw', sw).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.col === c.id)));
+      $('#colCat').textContent = catName(c.cat);
+      $('#colName').textContent = c.name;
+      const pr = $('#colPrice'); pr.textContent = won(c.price); pr.classList.toggle('is-free', !(c.price > 0));
+    }
+    const fail = my => { if (my === token) { stage.classList.remove('is-loading'); stage.classList.add('is-failed'); } };
     function show(id, first) {
       const c = list.find(x => x.id === id) || list[0], my = ++token; cur = c.id;
-      $$('.col-sw', sw).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.col === c.id)));
-      nameEl.innerHTML = esc(c.name) + ((typeof c.price === 'number' && c.price > 0) ? `<small>+${c.price.toLocaleString('ko-KR')}원</small>` : '');
+      paintInfo(c);
+      stage.classList.remove('is-failed');
+      if (!has(c)) {   /* 이미지 없는 컬러: 스와치 색 안내 화면 */
+        stage.classList.remove('is-loading'); stage.classList.add('is-noimg');
+        if (ph) ph.style.setProperty('--sw-bg', swBg(c));
+        stage.setAttribute('aria-label', c.name + ' — 실차 이미지 준비 중');
+        return;
+      }
+      stage.setAttribute('aria-label', '컬러 이미지 크게 보기');
       const apply = () => {
-        if (my !== token) return;                     // 늦게 도착한 이전 이미지는 무시
-        img.dataset.prev = img.getAttribute('src') || '';
-        if (c.srcset) { img.srcset = c.srcset; img.sizes = '(max-width: 1240px) 92vw, 1150px'; } else { img.removeAttribute('srcset'); img.removeAttribute('sizes'); }
-        img.src = url(c); img.alt = 'GLC 300 4MATIC 외장 컬러 — ' + c.name;
-        if (!reduceMotion && !first) { img.classList.remove('is-fade'); void img.offsetWidth; img.classList.add('is-fade'); }
-        stage.classList.remove('is-loading');
+        if (my !== token) return;                      // 늦게 도착한 이전 선택은 무시
+        const next = layers[1 - front], prev = layers[front];
+        if (next.dataset.col !== c.id) { next.srcset = srcset(c); next.src = fallback(c); next.dataset.col = c.id; }
+        next.alt = 'GLC 300 4MATIC 외장 컬러 — ' + c.name;
+        const flip = () => { if (my !== token) return; stage.classList.remove('is-noimg', 'is-loading'); next.classList.add('is-on'); prev.classList.remove('is-on'); front = 1 - front; };
+        (next.decode ? next.decode() : Promise.resolve()).then(flip, () => fail(my));
       };
       if (first) { apply(); return; }
-      const t = setTimeout(() => { if (my === token) stage.classList.add('is-loading'); }, 120);
-      preload(c).then(() => { clearTimeout(t); apply(); }).catch(() => { clearTimeout(t); if (my === token) stage.classList.remove('is-loading'); });
+      const t = setTimeout(() => { if (my === token) stage.classList.add('is-loading'); }, 140);
+      preload(c).then(() => { clearTimeout(t); apply(); }, () => { clearTimeout(t); fail(my); });
     }
-    sw.addEventListener('click', e => { const b = e.target.closest('.col-sw'); if (b) show(b.dataset.col); });
+    function setCat(id) {
+      curCat = id;
+      $$('.col-tab', tabs).forEach(b => { const on = b.dataset.cat === id; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+      $$('.col-sw', sw).forEach(b => { b.hidden = !(id === 'all' || b.dataset.cat === id); });
+      const curC = list.find(x => x.id === cur);
+      if (id !== 'all' && curC && curC.cat !== id) { const f = list.find(x => x.cat === id && has(x)) || list.find(x => x.cat === id); if (f) show(f.id); }
+    }
+
+    sw.addEventListener('click', e => { const b = e.target.closest('.col-sw'); if (b && b.dataset.col !== cur) show(b.dataset.col); });
+    /* 손가락이 닿거나 마우스를 올리는 순간 미리 받아 두기 */
+    const warm = e => { const b = e.target.closest && e.target.closest('.col-sw'); if (b) { const c = list.find(x => x.id === b.dataset.col); if (c && has(c)) preload(c).catch(() => {}); } };
+    sw.addEventListener('pointerdown', warm, { passive: true });
+    sw.addEventListener('pointerover', warm, { passive: true });
+    tabs.addEventListener('click', e => { const b = e.target.closest('.col-tab'); if (b) setCat(b.dataset.cat); });
+    tabs.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const bs = $$('.col-tab', tabs), i = bs.findIndex(b => b.dataset.cat === curCat), n = bs[(i + (e.key === 'ArrowRight' ? 1 : -1) + bs.length) % bs.length];
+      e.preventDefault(); setCat(n.dataset.cat); n.focus();
+    });
+    const retry = $('#colRetry');
+    if (retry) retry.addEventListener('click', e => { e.stopPropagation(); cache.delete(cur); layers.forEach(l => { if (l.dataset.col === cur) l.removeAttribute('data-col'); }); show(cur); });
+    const zoomCur = () => { const im = layers[front]; if (!stage.classList.contains('is-noimg') && im.complete && im.naturalWidth) zoom(im); };
+    stage.addEventListener('click', e => { if (!e.target.closest('.stage-fail')) zoomCur(); });
+    stage.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('.stage-fail')) { e.preventDefault(); zoomCur(); } });
+
+    /* 최초 컬러는 바로 로딩, 나머지는 섹션이 가까워지면 유휴 시간에 하나씩 미리 받기 */
+    layers[0].fetchPriority = 'high';
     show(cur, true);
     const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); if (saveData()) return;
-      const rest = list.filter(c => c.id !== cur); const next = () => { const c = rest.shift(); if (c) preload(c).catch(() => {}).finally(() => idle(next)); }; idle(next); } }, { rootMargin: '50% 0px' });
+      const rest = list.filter(c => c.id !== cur && has(c)); const next = () => { const c = rest.shift(); if (c) preload(c).catch(() => {}).finally(() => idle(next)); }; idle(next); } }, { rootMargin: '100% 0px' });
     io.observe(stage);
-    mqMobile.addEventListener && mqMobile.addEventListener('change', () => show(cur, true));
   })();
 
   /* ---------------- 5. 내장 디자인 ---------------- */
