@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GLC 300 4MATIC | Mercedes-Benz</title>
 <meta name="description" content="GLC 300 4MATIC AVANTGARDE · AMG Line — 외관·컬러·실내·기술·안전·제원·상세 옵션을 한 페이지에서 비교하세요.">
-<link rel="preload" as="image" href="https://github.com/JNOHJINGYU/images/blob/main/glc_avamg.jpg?raw=true" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(max-width: 767px)" imagesrcset="images/hero/glc300-hero-mobile-720.webp 720w, images/hero/glc300-hero-mobile-940.webp 940w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(min-width: 768px)" imagesrcset="images/hero/glc300-hero-pc-960.webp 960w, images/hero/glc300-hero-pc-1280.webp 1280w, images/hero/glc300-hero-pc-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
@@ -16,15 +17,17 @@
      ============================================================ -->
 <script>
 const IMAGES = {
-  hero:        "https://github.com/JNOHJINGYU/images/blob/main/glc_avamg.jpg?raw=true",   // S1 히어로 · GLC 차량 사진
+  hero:        "images/hero/glc300-hero-pc-1600.webp",   // S1 히어로 (실제 표시는 히어로 <picture>에서 PC/모바일 이미지 자동 선택)
   quiet:       "https://github.com/JNOHJINGYU/images/blob/main/glc_drive.png?raw=true",   // 정숙성
   power:       "https://github.com/JNOHJINGYU/images/blob/main/glc_pass.png?raw=true",    // 가속감
   hybrid:      "https://github.com/JNOHJINGYU/images/blob/main/4MATIC.jpg?raw=true",      // 48V MHEV
   family:      "https://github.com/JNOHJINGYU/images/blob/main/glc_famaily.png?raw=true",  // 패밀리
   interior:    "https://github.com/JNOHJINGYU/images/blob/main/GLC_interior.jpg?raw=true",// 인테리어
-  avantgardeExterior: "https://github.com/JNOHJINGYU/images/blob/main/glcav_front.jpg?raw=true",   // S5 AVANTGARDE 외관 이미지 URL을 여기에 입력
+  avantgardeExterior: "images/exterior/glc300-exterior-avantgarde-1600.webp",   // 외관 디자인 AVANTGARDE (PC 1600px WebP)
+  avantgardeExteriorMobile: "images/exterior/glc300-exterior-avantgarde-960.webp", // 외관 디자인 AVANTGARDE (모바일 960px WebP)
   avantgardeInterior: "https://github.com/JNOHJINGYU/images/blob/main/glc300_interior.png?raw=true",   // S5 AVANTGARDE 실내 이미지 URL을 여기에 입력
-  amgExterior:        "https://github.com/JNOHJINGYU/images/blob/main/glcamg_front.jpg?raw=true",   // S6 AMG Line 외관 이미지 URL을 여기에 입력
+  amgExterior:        "images/exterior/glc300-exterior-amgline-1600.webp",      // 외관 디자인 AMG Line (PC 1600px WebP)
+  amgExteriorMobile:  "images/exterior/glc300-exterior-amgline-960.webp",       // 외관 디자인 AMG Line (모바일 960px WebP)
   amgInterior:        "https://github.com/JNOHJINGYU/images/blob/main/glcamg_interior.png?raw=true",   // S6 AMG Line 실내 이미지 URL을 여기에 입력
 };
 </script>
@@ -38,7 +41,7 @@ const IMAGES = {
      ============================================================ -->
 <script>
 const GLC_TRIM_DATA = {
-  /* 가격: 히어로·기존 비교표 표기를 임시 기준으로 사용 (기존 S5·S6 본문에는 8,140만원 / 9,140만원으로 표기되어 있었음 → 공식 가격 확인 필요) */
+  /* 가격: 2027 AMG Line 95,500,000원(사용자 제공), AVANTGARDE 82,500,000원은 기존 기준가 유지. 판매 시 최신 공식 가격 확인. */
   priceNote: "표시 가격은 안내용 기준가입니다. 정확한 판매 가격과 구매 조건은 상담 시 안내해 드립니다.",
   trims: {
     avantgarde: {
@@ -53,7 +56,7 @@ const GLC_TRIM_DATA = {
     },
     amgline: {
       name: "AMG Line",
-      price: 92500000,
+      price: 95500000,
       tagline: "가장 스포티한 존재감",
       summary: "AMG 전용 외장·실내 디자인으로 스포티함을 더한 GLC 300",
       highlights: ["AMG 범퍼", "AMG 그릴", "AMG 에어벤트", "AMG 휠", "AMG 스티어링", "AMG 스포츠 시트"],
@@ -140,10 +143,10 @@ const GLC_TRIM_DATA = {
       description: "AVANTGARDE는 가죽 스티어링 휠, AMG Line은 나파 가죽 스포츠 스티어링 휠입니다. 두 트림 모두 터치 컨트롤과 시프트 패들을 갖췄습니다.",
       image: null },
     { id: "interiorTrim", category: "interior", label: "인테리어 트림",
-      avantgarde: "실버 그레이 다이아몬드 패턴 트림 & 하이 글로시 센터콘솔 (비교표 표기: 라임 우드 트림)",
+      avantgarde: "실버 그레이 다이아몬드 패턴 트림 & 하이 글로시 센터콘솔",
       amgline: "블랙 오픈 포어 알루미늄 라인 우드 트림 & 하이 글로시 센터콘솔",
-      comparisonStatus: "different", verify: true,
-      description: "AMG Line은 블랙 오픈 포어 알루미늄 라인 우드 트림으로 차분하고 스포티한 실내 분위기를 만듭니다. AVANTGARDE 트림 소재는 표기가 두 가지로 달라 상담 시 정확히 확인해 드립니다.",
+      comparisonStatus: "different",
+      description: "AVANTGARDE는 실버 그레이 다이아몬드 패턴, AMG Line은 블랙 오픈 포어 알루미늄 라인 우드 트림을 기본으로 적용합니다.",
       image: null },
     { id: "dashboard", category: "interior", label: "대시보드 마감",
       avantgarde: "나파 룩 ARTICO 대시보드 마감",
@@ -249,11 +252,17 @@ const GLC_TRIM_DATA = {
       comparisonStatus: "same",
       description: "양손에 짐이 있어도 발 동작으로 트렁크를 열 수 있습니다.",
       image: null },
-    { id: "agility", category: "convenience", label: "어질리티 컨트롤 서스펜션",
+    { id: "airmatic", category: "convenience", label: "AIRMATIC 에어 서스펜션",
       avantgarde: null,
-      amgline: "(26년식 AMG Line 限) 어질리티 컨트롤 서스펜션",
-      comparisonStatus: "unverified",
-      description: "AMG Line에 26년식 한정으로 표기된 사양입니다. 연식·트림별 적용 여부는 상담 시 확인해 드립니다.",
+      amgline: "2027년형 AMG Line AIRMATIC 에어 서스펜션",
+      comparisonStatus: "different",
+      description: "2027년형 AMG Line에 추가된 AIRMATIC 에어 서스펜션입니다. 작동 시연은 테크놀로지 섹션에서 확인하세요.",
+      image: null },
+    { id: "rearAxle", category: "convenience", label: "리어 액슬 스티어링",
+      avantgarde: null,
+      amgline: "2027년형 AMG Line 리어 액슬 스티어링 (후륜 최대 4.5°)",
+      comparisonStatus: "different",
+      description: "저속에서는 앞바퀴와 반대 방향, 고속에서는 같은 방향으로 후륜을 조향합니다. 후륜 최대 조향각은 4.5°입니다.",
       image: null },
 
     /* ---------- 안전 사양 ---------- */
@@ -312,33 +321,40 @@ const GLC_TRIM_DATA = {
       description: "탑승자 보호를 위한 에어백 10개가 적용됩니다.",
       image: null }
   ],
-  /* 상세 제원 — 기존 AVANTGARDE 제원표 기준(AMG Line은 별도 제원표 없음).
-     이 목록 하나가 제원 섹션과 경쟁차 비교 모듈(MBVC_VEHICLES)의 GLC 제원을 함께 만듭니다.
-       key   : 비교 모듈 항목 이름 (없으면 제원 섹션에만 표시)
-       num   : 비교 모듈에 넘길 숫자 값 · note: 비교 모듈 보조 문구
-       byTrim: 트림별로 다른 값/검증 상태. ref:true → 다른 트림 수치를 참고로만 보여 주고 '확인 필요'로 표시 */
+  /* 2027년형 GLC 300 SUV 제원 (2026-11-25 자료 교차 확인)
+     공식 코리아 온라인 스토어 2027 AVANTGARDE / AMG Line: 258ps, 1,999cc, 6.2초, 240km/h, 1915kg,
+       전장/폭/고 4720/1890/1645, 복합 10.6, 도심 9.6, 고속도로 12.3km/L.
+     국내 딜러 카탈로그 및 GLC SUV 제원: 휠베이스 2890mm, 트렁크 620L, 연료탱크 62L.
+     MY27 AMG Line 적용: AIRMATIC, 후륜 조향 최대 4.5도, 전 255/45R20 후 285/40R20.
+     인증 미확인 회전반경 및 MY27 CO₂ 수치는 근거 없이 작성하지 않음.
+     이 데이터는 경쟁차 비교 화면 하나에만 사용됨. */
   specs: [
-    { key: "engine",       label: "엔진",       value: "직렬 4기통 가솔린" },
-    { key: "displacement", label: "배기량",     value: "1,999cc", num: 1999, accent: true },
-    { key: "power",        label: "최고 출력",  value: "258ps / 5,800rpm", num: 258, note: "5,800 rpm", accent: true },
-    { key: "torque",       label: "최대 토크",  value: "40.8kg·m / 2,000–3,200rpm", num: 40.8, note: "2,000–3,200 rpm" },
-    { key: "transmission", label: "변속기",     value: "9G-TRONIC" },
-    { key: "drive",        label: "구동방식",   value: "고정식 사륜 구동 (4MATIC)" },
-    { key: "accel",        label: "0→100km/h",  value: "6.2초", num: 6.2, accent: true },
+    { key: "engine",       label: "엔진",       value: "M254 직렬 4기통 가솔린 터보 · 48V 마일드 하이브리드" },
+    { key: "displacement", label: "배기량",     value: "1,999cc", num: 1999 },
+    { key: "power",        label: "최고 출력",  value: "258ps / 5,800rpm", num: 258 },
+    { key: "torque",       label: "최대 토크",  value: "40.8kg·m / 2,000–3,200rpm", num: 40.8 },
+    { key: "transmission", label: "변속기",     value: "9G-TRONIC 9단 자동" },
+    { key: "drive",        label: "구동방식",   value: "4MATIC 사륜구동" },
+    { key: "accel",        label: "0→100km/h",  value: "6.2초", num: 6.2 },
     { key: "topSpeed",     label: "최고속도",   value: "240 km/h", num: 240 },
-    { key: "fuelCombined", label: "복합연비",   value: "10.6 km/L (4등급)", num: 10.6, note: "4등급",
-      byTrim: { amgline: { ref: true, verify: true, note: "AVANTGARDE 수치 · AMG Line(20인치 휠) 인증값 확인 필요" } } },
-    { key: "fuelCity",     label: "도심연비",   value: "9.6 km/L", num: 9.6,
-      byTrim: { amgline: { ref: true, verify: true, note: "AVANTGARDE 수치" } } },
-    { key: "fuelHighway",  label: "고속도로연비", value: "12.3 km/L", num: 12.3,
-      byTrim: { amgline: { ref: true, verify: true, note: "AVANTGARDE 수치" } } },
+    { key: "fuelCombined", label: "복합연비",  value: "10.6 km/L (4등급)", num: 10.6 },
+    { key: "fuelCity",     label: "도심연비",   value: "9.6 km/L", num: 9.6 },
+    { key: "fuelHighway",  label: "고속도로연비", value: "12.3 km/L", num: 12.3 },
     { key: "length",       label: "전장",       value: "4,720 mm", num: 4720 },
     { key: "width",        label: "전폭",       value: "1,890 mm", num: 1890 },
     { key: "height",       label: "전고",       value: "1,645 mm", num: 1645 },
-    {                      label: "휠",         byTrim: { avantgarde: { value: "19인치" }, amgline: { value: "20인치" } } },
-    { key: "tireFront",    label: "타이어",
-      byTrim: { avantgarde: { value: "255/45 R20", verify: true, note: "19인치 휠 표기와 불일치 · 확인 필요" },
-                amgline:    { value: null, verify: true, note: "20인치 휠 타이어 규격 확인 필요" } } }
+    { key: "wheelbase",    label: "휠베이스",   value: "2,890 mm", num: 2890 },
+    { key: "weight",       label: "공차 중량",  value: "1,915 kg", num: 1915 },
+    { key: "trunk",        label: "트렁크 용량", value: "620 L", num: 620 },
+    { key: "fuelTank",     label: "연료 탱크",  value: "62 L", num: 62 },
+    { key: "tireFront",    label: "전륜 타이어", byTrim: {
+        avantgarde: { value: "235/55 R19" }, amgline: { value: "255/45 R20" } } },
+    { key: "tireRear",     label: "후륜 타이어", byTrim: {
+        avantgarde: { value: "235/55 R19" }, amgline: { value: "285/40 R20" } } },
+    { key: "suspension",   label: "서스펜션", byTrim: {
+        avantgarde: { value: "AGILITY CONTROL 서스펜션" }, amgline: { value: "AIRMATIC 에어 서스펜션" } } },
+    { key: "wheelsSize", label: "휠", byTrim: { avantgarde: {value:"19인치"}, amgline:{value:"20인치 AMG"} } }
+  
   ]
 };
 /* 트림별 제원 값 해석: 공통 값 + byTrim 덮어쓰기 */
@@ -401,8 +417,33 @@ const GLC_INTERIOR = {
 };
 
 /* ============================================================
+   시트 컬러 (SEAT COLORS) · #seat-colors 섹션 데이터
+   - 명칭·추가금액: 메르세데스-벤츠 공식 차량 구성 화면 기준
+   - trim  : avantgarde | amgline  (GLCTrim 트림 선택과 자동 연동)
+   - id    : 두 트림에 같은 컬러는 같은 id → 트림을 바꿔도 선택 유지, 없으면 블랙으로
+   - swatch: 단색 "#hex" · 2톤 ["#메인", "#보조"] (원 안을 반으로 나눠 표시)
+   - price : 추가금액(원). 0 → '추가금 없음'
+   - image / mobileImage : 컬러별 실내 사진 (PC 1600px · 모바일 960px WebP)
+       비어 있으면 트림 기본 실내 사진 + '컬러별 사진 준비 중' 안내를 표시합니다.
+       권장 경로: GitHub JNOHJINGYU/images 저장소의 seat/ 폴더
+       예) "https://raw.githubusercontent.com/JNOHJINGYU/images/main/seat/glc300-seat-avantgarde-black-1600.webp"
+   ============================================================ */
+const GLC_SEAT_COLORS = [
+  { trim: "avantgarde", id: "black",           name: "ARTICO 인조 가죽, 블랙",               swatch: "#1E1F21",              price: 0,      image: "images/seat/glc300-seat-avantgarde-black-1600.webp", mobileImage: "images/seat/glc300-seat-avantgarde-black-960.webp" },
+  { trim: "avantgarde", id: "siena-brown",     name: "ARTICO 인조 가죽, 시에나 브라운/블랙",  swatch: ["#9A5536", "#1E1F21"], price: 310000, image: "images/seat/glc300-seat-avantgarde-siena-brown-1600.webp", mobileImage: "images/seat/glc300-seat-avantgarde-siena-brown-960.webp" },
+  { trim: "avantgarde", id: "macchiato-beige", name: "ARTICO 인조 가죽, 마키아토 베이지/블랙", swatch: ["#D6CCBE", "#1E1F21"], price: 310000, image: "images/seat/glc300-seat-avantgarde-macchiato-beige-1600.webp", mobileImage: "images/seat/glc300-seat-avantgarde-macchiato-beige-960.webp" },
+  { trim: "amgline",    id: "black",           name: "ARTICO 인조 가죽, 블랙",               swatch: "#1E1F21",              price: 0,      image: "images/seat/glc300-seat-amgline-black-1600.webp", mobileImage: "images/seat/glc300-seat-amgline-black-960.webp" },
+  { trim: "amgline",    id: "neva-grey",       name: "ARTICO 인조 가죽, 네바 그레이/블랙",    swatch: ["#C9CBCC", "#1E1F21"], price: 310000, image: "images/seat/glc300-seat-amgline-neva-grey-1600.webp", mobileImage: "images/seat/glc300-seat-amgline-neva-grey-960.webp" },
+  { trim: "amgline",    id: "siena-brown",     name: "ARTICO 인조 가죽, 시에나 브라운/블랙",  swatch: ["#9A5536", "#1E1F21"], price: 310000, image: "images/seat/glc300-seat-amgline-siena-brown-1600.webp", mobileImage: "images/seat/glc300-seat-amgline-siena-brown-960.webp" }
+];
+
+/* ============================================================
    테크놀로지 (기존 Core Technology 6가지 + Why GLC 300 내용 흡수)
-   - image: 기존 페이지에 등록된 이미지만 사용. 없으면 null → 텍스트 카드로 표시
+   - image  : 카드 기본 사진(960px WebP). 없으면 null → 핵심 수치(key) 카드로 표시
+   - srcset : 같은 사진의 크기별 WebP (브라우저가 화면에 맞는 크기만 내려받음)
+   - zoom   : 클릭 시 확대 창에 띄울 가장 큰 사진
+   - verify : true → 카드에 '트림별 적용 여부 확인 필요' 표시
+   - 사진 파일: images/tech/glc300-tech-<id>-<폭>.webp
    ============================================================ */
 const GLC_TECH = [
   { id: "mhev", name: "48V Mild Hybrid", key: "48V",
@@ -412,30 +453,50 @@ const GLC_TECH = [
       "출발은 더욱 부드럽고, 신호 대기 후 재시동은 거의 느껴지지 않습니다.",
       "가솔린 특유의 부드럽고 조용한 주행으로 도심에서도, 고속도로에서도 실내 대화가 편안합니다."
     ],
-    image: IMAGES.quiet, imageAlt: "GLC 실내에서 편안하게 운전하는 모습" },
+    image: "images/tech/glc300-tech-mhev-960.webp",
+    srcset: "images/tech/glc300-tech-mhev-640.webp 640w, images/tech/glc300-tech-mhev-960.webp 960w, images/tech/glc300-tech-mhev-1440.webp 1440w",
+    zoom: "images/tech/glc300-tech-mhev-1440.webp",
+    imageAlt: "해안 도로를 달리는 GLC 운전석에서 운전자가 스티어링 휠을 잡고 있는 모습" },
   { id: "digitalLight", name: "DIGITAL LIGHT", key: "130만",
     short: "130만 마이크로미러로 정밀하게 제어되는 조명.",
     detail: [
       "헤드램프 속 수많은 마이크로미러가 빛을 잘게 나눠 비추는 방향과 범위를 조절합니다.",
       "Adaptive Highbeam Assist PLUS가 상향등을 자동으로 제어해, 야간 시야를 넓히면서도 다른 운전자의 눈부심을 줄여 줍니다."
     ],
-    image: null },
+    image: "images/tech/glc300-tech-digital-light-960.webp",
+    srcset: "images/tech/glc300-tech-digital-light-640.webp 640w, images/tech/glc300-tech-digital-light-960.webp 960w, images/tech/glc300-tech-digital-light-1600.webp 1600w",
+    zoom: "images/tech/glc300-tech-digital-light-1600.webp",
+    imageAlt: "밤의 산길을 달리는 GLC 300이 헤드램프로 앞 노면을 넓게 비추는 모습" },
   { id: "mbux", name: "MBUX 3세대", key: "12.3 + 11.9″",
     short: "12.3인치 계기판과 11.9인치 LCD 디스플레이로 구성된 차세대 인포테인먼트 시스템.",
     detail: [
       "T맵 오토 증강현실 내비게이션은 실제 도로 영상 위에 길 안내를 겹쳐 보여 줍니다.",
       "무선 안드로이드 오토·애플 카플레이로 케이블 없이 스마트폰을 연결합니다."
     ],
-    image: IMAGES.interior, imageAlt: "GLC 실내 MBUX 디스플레이" },
+    image: "images/tech/glc300-tech-mbux-960.webp",
+    srcset: "images/tech/glc300-tech-mbux-640.webp 640w, images/tech/glc300-tech-mbux-960.webp 960w, images/tech/glc300-tech-mbux-1280.webp 1280w",
+    zoom: "images/tech/glc300-tech-mbux-1280.webp",
+    imageAlt: "GLC 운전석 앞의 디지털 계기판과 세로형 중앙 디스플레이, 브라운 시트" },
   { id: "burmester", name: "Burmester 3D Sound", key: "710W",
     short: "15개 스피커, 710W 출력의 프리미엄 사운드 시스템.",
     detail: [ "실내 곳곳에 배치한 15개 스피커가 소리를 여러 방향에서 들려주어, 실내 전체를 감싸는 입체적인 음향을 만들어냅니다." ],
-    image: null },
+    image: "images/tech/glc300-tech-burmester-960.webp",
+    srcset: "images/tech/glc300-tech-burmester-640.webp 640w, images/tech/glc300-tech-burmester-960.webp 960w, images/tech/glc300-tech-burmester-1440.webp 1440w",
+    zoom: "images/tech/glc300-tech-burmester-1440.webp",
+    imageAlt: "위에서 내려다본 GLC 실내의 스피커 배치와 소리가 퍼지는 모습을 표현한 그림" },
   /* DISTRONIC은 안전 섹션 4단계 통합 안전(supportedSafetyFeatures)에서 작동 시연으로 설명합니다 → 테크놀로지 카드에서 제외 */
-  { id: "camera", name: "360° Camera", key: "360°",
-    short: "서라운드 카메라와 액티브 주차 어시스트로 전방위 시야 확보.",
-    detail: [ "차량 주변 카메라 영상을 합쳐 위에서 내려다본 듯한 화면으로 보여 주고, 액티브 주차 어시스트가 주차를 도와줍니다." ],
-    image: null }
+  /* 360° Camera 카드 → 투명 보닛으로 교체 (서라운드 카메라·액티브 주차 어시스트 적용 여부는 상세 옵션 데이터에 그대로 있음) */
+  { id: "transparentBonnet", name: "투명 보닛", key: "보닛 아래",
+    short: "보닛에 가려 보이지 않는 앞바퀴 주변 노면을 MBUX 화면에 보여 줍니다.",
+    detail: [
+      "차량 카메라가 앞서 찍어 둔 노면 영상을 이어 붙여, 차가 지나가며 보닛 아래로 들어간 바위나 경계석을 화면에 계속 보여 줍니다.",
+      "앞바퀴 위치가 함께 표시되어, 좁은 길이나 비포장 노면에서 바퀴가 지나갈 자리를 가늠하기 쉽습니다."
+    ],
+    verify: true,
+    image: "images/tech/glc300-tech-transparent-bonnet-960.webp",
+    srcset: "images/tech/glc300-tech-transparent-bonnet-640.webp 640w, images/tech/glc300-tech-transparent-bonnet-960.webp 960w, images/tech/glc300-tech-transparent-bonnet-1440.webp 1440w",
+    zoom: "images/tech/glc300-tech-transparent-bonnet-1440.webp",
+    imageAlt: "MBUX 화면에 보닛 아래 바위와 앞바퀴 위치가 표시되고, 흰색 GLC가 바위 위를 지나는 모습을 함께 보여 주는 그림" }
 ];
 
 /* ============================================================
@@ -447,7 +508,7 @@ const GLC_TECH = [
    - ratings: 공식 기관의 객관적 평가가 확인되면 { label, value, source, method } 형식으로 추가하세요.
    ============================================================ */
 (function () {
-  var D = GLC_TRIM_DATA, T = D.trims, CHECK = '기존 페이지 경쟁차 비교표 수치 · 연식·트림·출처 확인 필요';
+  var D = GLC_TRIM_DATA, T = D.trims;
 
   /* ---- GLC 제원: GLC_TRIM_DATA.specs 에서 변환 (제원을 한 곳에서 고치면 비교 모듈도 함께 바뀜) ---- */
   function glcSpecs(trim) {
@@ -464,14 +525,14 @@ const GLC_TECH = [
      [비교 항목, 옵션 id, 비교표용 짧은 문구(없으면 옵션 문구 그대로)] — 적용 여부는 옵션 데이터를 따름 */
   var EQUIP_FROM_OPTIONS = [
     ['headlamp', 'digitalLight', '디지털 라이트'], ['adaptiveHighBeam', 'digitalLight', 'Adaptive Highbeam Assist PLUS'],
-    ['panoramaRoof', 'panorama'], ['seatMaterial', 'seat', 'ARTICO'], ['ambient', 'ambient', '앰비언트 라이트 프리미엄 (64색)'],
+    ['panoramaRoof', 'panorama'], ['acousticGlass', 'glass', '열·소음 차단 글래스'], ['seatMaterial', 'seat', 'ARTICO'], ['ambient', 'ambient', '앰비언트 라이트 프리미엄 (64색)'],
     ['heatedSeats', 'frontSeats', '앞좌석 · 뒷좌석'], ['ventSeats', 'frontSeats', '앞좌석'],
     ['hud', 'hud'], ['sound', 'burmester', '부메스터® 3D 서라운드 (15개, 710W)'], ['arNavi', 'arNavi'],
     ['wirelessCarplay', 'smartphone'], ['wirelessCharging', 'wirelessCharging'], ['keylessGo', 'keyless'],
     ['powerTrunk', 'trunk'], ['surroundCamera', 'parking', '서라운드 카메라'], ['parkingAssist', 'parking', '액티브 주차 어시스트'],
     ['drivingAssistPlus', 'dapPlus'], ['semiAuto', 'dapPlus', ''], ['distronic', 'distronic'], ['laneKeeping', 'laneKeeping'],
     ['blindSpot', 'blindSpot'], ['activeBrake', 'activeBrake'], ['activeBonnet', 'activeBonnet'], ['airbags', 'airbags'],
-    ['wheels', 'wheel'], ['steering', 'steering']
+    ['wheels', 'wheel'], ['steering', 'steering'], ['rearSteer', 'rearAxle', '후륜 최대 4.5°']
   ];
   function glcEquip(trim) {
     var out = {};
@@ -480,7 +541,8 @@ const GLC_TECH = [
       D.options.forEach(function (x) { if (x.id === m[1]) o = x; });
       if (!o) return;
       var t = o[trim];
-      if (t == null || o.comparisonStatus === 'unverified') out[m[0]] = { status: 'check', note: '적용 여부 확인 필요' };
+      if (t == null && (o.id === 'rearAxle' || o.id === 'airmatic')) out[m[0]] = { status: 'na' };
+      else if (t == null || o.comparisonStatus === 'unverified') out[m[0]] = { status: 'check' };
       else out[m[0]] = { status: 'std', text: m.length > 2 ? m[2] : t.replace(/\s*\([0-9A-Z]{2,4}\)$/, '') };   /* 끝의 옵션 코드 (78R) 등은 비교표에서 생략 */
     });
     return out;
@@ -489,64 +551,134 @@ const GLC_TECH = [
   var V = {
     'glc300-4matic-avantgarde': {
       brand: 'Mercedes-Benz', model: 'GLC', name: 'GLC 300 4MATIC', trim: 'AVANTGARDE', short: 'GLC 300',
-      powertrain: 'gasoline', modelYear: null, market: '국내 판매',
-      source: { page: 'glc300.html', note: 'GLC 300 페이지 상세 제원·트림 옵션 데이터' },
-      price: { value: T.avantgarde.price, verify: true, note: '안내용 기준가 · 공식 가격 확인 필요' },
+      powertrain: 'gasoline', modelYear: 2027, market: '국내 판매',
+      source: { page: 'https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/MBNALYL2EU', note: '메르세데스-벤츠 코리아 2027 AVANTGARDE · 국내 카탈로그' },
+      price: { value: T.avantgarde.price },
       specs: glcSpecs('avantgarde'),
       equipment: merge(glcEquip('avantgarde'), {
         exteriorPackage: { status: 'std', text: 'AVANTGARDE' },
-        interiorTrim: { status: 'check', note: '실버 그레이 다이아몬드 패턴 / 라임 우드 — 표기 확인 필요' }
+        interiorTrim: { status: 'std', text: '실버 그레이 다이아몬드 패턴 트림' },
+        seatType: { status: 'std', text: '컴포트 시트' },
+        rooflinerBlack: { status: 'std', text: '블랙 루프라이너' },
+        preSafe: { status: 'std', text: 'PRE-SAFE 탑승자 보호 시스템' }
       })
     },
     'glc300-4matic-amg-line': {
       brand: 'Mercedes-Benz', model: 'GLC', name: 'GLC 300 4MATIC', trim: 'AMG Line', short: 'GLC 300 AMG',
-      powertrain: 'gasoline', modelYear: null, market: '국내 판매',
-      source: { page: 'glc300.html', note: 'GLC 300 페이지 트림 옵션 데이터 · 제원은 AVANTGARDE 기준 표기' },
-      price: { value: T.amgline.price, verify: true, note: '안내용 기준가 · 공식 가격 확인 필요' },
-      specs: merge(glcSpecs('amgline'), {
-        suspension: { value: '어질리티 컨트롤 서스펜션', verify: true, note: '26년식 AMG Line 한정 표기 · 확인 필요' }
-      }),
+      powertrain: 'gasoline', modelYear: 2027, market: '국내 판매',
+      source: { page: 'https://www.mercedes-benz.co.kr/passengercars/buy/new-car/product.html/MBO0U4VFNB', note: '메르세데스-벤츠 코리아 2027 AMG Line AIRMATIC · 국내 카탈로그' },
+      price: { value: T.amgline.price },
+      specs: glcSpecs('amgline'),
       equipment: merge(glcEquip('amgline'), {
         exteriorPackage: { status: 'std', text: 'AMG Line (AMG 프런트·리어 에이프런, 사이드 실 패널)' },
         seatType: { status: 'std', text: 'AMG 전용 스포츠 시트' },
-        interiorTrim: { status: 'std', text: '블랙 오픈 포어 알루미늄 라인 우드' }
+        interiorTrim: { status: 'std', text: '블랙 오픈 포어 알루미늄 라인 우드' },
+        rooflinerBlack: { status: 'std', text: '블랙 루프라이너' },
+        preSafe: { status: 'std', text: 'PRE-SAFE 탑승자 보호 시스템' }
       })
     },
     'bmw-x3-30i-xdrive': {
-      brand: 'BMW', model: 'X3', name: 'BMW X3 30i xDrive', trim: '트림 미표기', short: 'X3 30i',
-      powertrain: 'gasoline', modelYear: null, market: '국내 판매',
-      source: { page: 'glc300.html', note: CHECK },
-      price: { value: 83900000, verify: true, note: CHECK },
+      brand: 'BMW', model: 'X3', name: 'BMW X3 30 xDrive', trim: 'M 스포츠 프로', short: 'X3 30 xDrive',
+      powertrain: 'gasoline', modelYear: 2026, market: '국내 판매',
+      source: { page: 'https://www.bmw.co.kr/', note: 'BMW X3 어프로치북(2026.09), BMW 코리아 2026.11 가격표, BMW 코리아 공식 발표' },
+      price: { value: 86300000 },
       specs: {
-        power: { value: 258, verify: true, note: CHECK }, torque: { value: 40.8, verify: true, note: CHECK },
-        drive: 'xDrive', transmission: { value: '8단 자동', verify: true }
+        engine: '직렬 4기통 가솔린 터보 · 48V 마일드 하이브리드',
+        displacement: 1998, power: 258, torque: 40.8,
+        drive: 'xDrive 사륜구동', transmission: '8단 스텝트로닉',
+        accel: 6.3, topSpeed: 240,
+        fuelCombined: 10.9, fuelCity: 9.9, fuelHighway: 12.4, co2: 154,
+        length: 4755, width: 1920, height: 1660, wheelbase: 2865,
+        weight: 1930, trunk: 570, fuelTank: 65,
+        tireFront: '255/45 R20', tireRear: '285/40 R20',
+        suspension: '어댑티브 서스펜션'
       },
       equipment: {
-        headlamp: { status: 'std', text: '어댑티브 LED', verify: true }, hud: { status: 'std', verify: true },
-        sound: { status: 'std', text: '하만 카돈', verify: true }, semiAuto: { status: 'std', verify: true },
-        ambient: { status: 'check', note: '기존 표기 "제한적" · 사양 확인 필요' }
+        exteriorPackage: { status: 'std', text: 'M 스포츠 프로 외장 패키지' },
+        headlamp: { status: 'std', text: '어댑티브 LED 헤드라이트' },
+        adaptiveHighBeam: { status: 'std', text: '하이빔 어시스턴트' },
+        wheels: { status: 'std', text: '20인치 M 더블 스포크 1036 휠' },
+        panoramaRoof: { status: 'std', text: '파노라마 글라스 루프(고정형)' },
+        seatType: { status: 'std', text: '스포츠 시트' },
+        seatMaterial: { status: 'std', text: '베간자(Veganza) 시트' },
+        steering: { status: 'std', text: 'M 스포츠 가죽 스티어링 휠 · 열선 · 패들' },
+        interiorTrim: { status: 'std', text: '파인 브러시드 알루미늄 트림' },
+        ambient: { status: 'std', text: '앰비언트 라이트 · BMW 인터랙션 바' },
+        rooflinerBlack: { status: 'std', text: '안트라사이트 헤드라이너' },
+        heatedSeats: { status: 'std', text: '앞·뒷좌석 열선 시트' },
+        ventSeats: { status: 'std', text: '앞좌석 통풍 시트' },
+        hud: { status: 'std', text: '헤드업 디스플레이' },
+        sound: { status: 'std', text: '하만 카돈 서라운드 사운드 · 15개 스피커 · 765W' },
+        wirelessCarplay: { status: 'std', text: 'Apple CarPlay · Android Auto' },
+        wirelessCharging: { status: 'std', text: '스마트폰 무선 충전' },
+        keylessGo: { status: 'std', text: '컴포트 액세스 · 디지털 키(카드키 포함)' },
+        powerTrunk: { status: 'std', text: '킥 모션 전동식 트렁크' },
+        surroundCamera: { status: 'std', text: '서라운드 뷰 카메라' },
+        parkingAssist: { status: 'std', text: '파킹 어시스턴트 플러스 · 후진 어시스턴트' },
+        rearSteer: { status: 'na' },
+        drivingAssistPlus: { status: 'std', text: '드라이빙 어시스턴트 프로페셔널' },
+        semiAuto: { status: 'std', text: '차선 유지·차선 변경 보조 · 스톱&고' },
+        distronic: { status: 'std', text: '액티브 크루즈 컨트롤(스톱&고)' },
+        laneKeeping: { status: 'std', text: '차선 유지 보조' },
+        blindSpot: { status: 'std', text: '차선 변경 경고 · 후방 충돌 경고' },
+        activeBrake: { status: 'std', text: '전방 충돌 경고 · 긴급 제동 지원' },
+        preSafe: { status: 'std', text: 'BMW 액티브 프로텍션' },
+        airbags: { status: 'std', text: '8개 에어백' }
       }
     },
     'audi-q5-45-tfsi': {
-      brand: 'Audi', model: 'Q5', name: 'Audi Q5 45 TFSI', trim: '트림 미표기', short: 'Q5 45 TFSI',
-      powertrain: 'gasoline', modelYear: null, market: '국내 판매',
-      source: { page: 'glc300.html', note: CHECK },
-      price: { value: 72620000, verify: true, note: CHECK },
+      brand: 'Audi', model: 'Q5', name: 'Audi Q5 45 TFSI quattro', trim: 'S-line', short: 'Q5 45 TFSI',
+      powertrain: 'gasoline', modelYear: 2026, market: '국내 판매',
+      source: { page: 'https://www.audi.co.kr/ko/aboutaudi/news_article/2026/202607/20260709/20260709', note: 'Audi Q5 어프로치북(25MY 상세 제원), Audi 코리아 2026.07 상품성 개선 발표 및 국내 판매 가격' },
+      price: { value: 85900000 },
       specs: {
-        power: { value: 204, verify: true, note: CHECK + ' (모델명 대비 출력 수치 재확인 필요)' },
-        torque: { value: 34.67, verify: true, note: CHECK },
-        drive: 'quattro', transmission: { value: '7단 S tronic', verify: true }
+        engine: '직렬 4기통 2.0 TFSI 가솔린 터보',
+        displacement: 1984, power: 271.9, torque: 40.79,
+        drive: 'quattro 사륜구동', transmission: '7단 S tronic',
+        accel: 6.1, topSpeed: 210,
+        fuelCombined: 9.4, fuelCity: 8.4, fuelHighway: 11.0, co2: 179,
+        length: 4715, width: 1900, height: 1655, wheelbase: 2820,
+        weight: 1975, trunk: 520, fuelTank: 68,
+        tireFront: '255/45 R20', tireRear: '255/45 R20',
+        suspension: '어댑티브 에어 서스펜션'
       },
       equipment: {
-        headlamp: { status: 'std', text: 'LED', verify: true }, hud: { status: 'std', verify: true },
-        sound: { status: 'std', text: '뱅앤올룹슨 3D 사운드', verify: true }, semiAuto: { status: 'std', verify: true },
-        ambient: { status: 'check', note: '기존 표기 "제한적" · 사양 확인 필요' }
+        exteriorPackage: { status: 'std', text: 'S-line 익스테리어 패키지' },
+        headlamp: { status: 'std', text: '매트릭스 LED 헤드라이트 · 디지털 OLED 테일라이트' },
+        adaptiveHighBeam: { status: 'std', text: '하이빔 어시스트' },
+        wheels: { status: 'std', text: '20인치 Audi Sport 휠' },
+        panoramaRoof: { status: 'std', text: '파노라믹 선루프' },
+        acousticGlass: { status: 'std', text: '앞좌석 어쿠스틱 글래스' },
+        seatType: { status: 'std', text: '스포츠 시트' },
+        seatMaterial: { status: 'std', text: '가죽 스포츠 시트' },
+        steering: { status: 'std', text: '스포츠 가죽 스티어링 휠 · 열선 · 패들' },
+        interiorTrim: { status: 'std', text: '매트 브러시드 알루미늄 인레이' },
+        ambient: { status: 'std', text: '다이내믹 인터랙션 라이트 · 멀티컬러 앰비언트' },
+        heatedSeats: { status: 'std', text: '앞·뒷좌석 열선 시트' },
+        ventSeats: { status: 'std', text: '앞좌석 통풍 시트' },
+        hud: { status: 'std', text: '헤드업 디스플레이' },
+        sound: { status: 'std', text: 'B&O 3D 프리미엄 사운드 · 16개 스피커 · 685W' },
+        passengerScreen: { status: 'opt', text: '10.9인치 조수석 디스플레이' },
+        wirelessCarplay: { status: 'std', text: 'Audi 스마트폰 인터페이스 · CarPlay · Android Auto' },
+        wirelessCharging: { status: 'std', text: '스마트폰 무선 충전' },
+        keylessGo: { status: 'std', text: '디지털 키' },
+        powerTrunk: { status: 'std', text: '전동식 테일게이트' },
+        surroundCamera: { status: 'std', text: '360° 서라운드 뷰 카메라' },
+        parkingAssist: { status: 'std', text: '파크 어시스트 · 전후방 주차 보조' },
+        rearSteer: { status: 'na' },
+        drivingAssistPlus: { status: 'std', text: '어댑티브 크루즈 어시스트 플러스' },
+        semiAuto: { status: 'std', text: '차선 중앙 유지 · 차선 변경 보조' },
+        distronic: { status: 'std', text: '어댑티브 크루즈 어시스트 플러스' },
+        laneKeeping: { status: 'std', text: '차선 유지·이탈 경고 기능' },
+        blindSpot: { status: 'std', text: '사이드 어시스트 · 하차 경고' },
+        activeBrake: { status: 'std', text: '아우디 프리센스 360' },
+        preSafe: { status: 'std', text: '아우디 프리센스 360' }
       }
     }
   };
   var store = window.MBVC_VEHICLES = window.MBVC_VEHICLES || {};
   for (var id in V) store[id] = V[id];
-  window.MBVC_DATA_META = { basis: '메르세데스-벤츠: GLC 300 페이지 제원·옵션 · BMW/Audi: 기존 페이지 경쟁차 비교표 (확인 필요)', checked: null };
+  window.MBVC_DATA_META = { basis: '2027 메르세데스-벤츠 코리아 온라인 스토어·GLC 카탈로그 / 2026 BMW X3·Audi Q5 국내 자료', checked: '2026-11-25' };
   window.GLC_COMPARE_RATINGS = [];   /* { label, values: { 'glc300-4matic-avantgarde': '…', … }, source, method } */
 })();
 
@@ -557,7 +689,7 @@ const GLC_TECH = [
    RESET & BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: auto; font-size: 16px; }   /* 섹션 이동: 슬라이딩 없이 바로 이동 */
 body {
   font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic',
                'Segoe UI', sans-serif;
@@ -650,205 +782,62 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 .header-logo { font-size: .82rem; font-weight: 800; letter-spacing: .18em; color: var(--black); text-transform: uppercase; }
 
 /* ============================================================
-   S1 · HERO
+   S1 · HERO  (PC 16:9 노을 하늘 왼쪽에 제목 · 모바일 9:16 하늘 위쪽에 제목)
    ============================================================ */
-#hero {
-  position: relative;
-  background: var(--black);
-  overflow: hidden;
-}
-.hero-media {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-}
-.hero-media img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.hero-media-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-}
-.hero-eyebrow-text {
-  display: block;
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  color: rgba(255,255,255,.75);
-}
-.hero-main-title {
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -.02em;
-  margin-bottom: 18px;
-  color: var(--white);
-  text-shadow: 0 4px 30px rgba(0,0,0,.5);
-}
-.hero-subtitle {
-  font-size: clamp(1.05rem, 1.9vw, 1.3rem);
-  font-weight: 700;
-  letter-spacing: .01em;
-  margin-bottom: 6px;
-  color: var(--white);
-}
-.hero-tagline {
-  font-size: .92rem;
-  letter-spacing: .01em;
-  font-weight: 400;
-  color: rgba(255,255,255,.72);
-  line-height: 1.8;
-}
-.hero-divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.hero-divider-line {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--blue), transparent);
-}
-.hero-divider-label {
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--blue);
-}
-.hero--row {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.hero-price-card {
-  flex: 1;
-  min-width: 160px;
-  border-radius: var(--radius);
-  padding: 20px 22px;
-  background: rgba(10,10,10,.55);
-  border: 1px solid rgba(11,95,255,.35);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.45);
-  text-align: left;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
-  transition: transform .25s, border-color .25s, background .25s;
-}
-.hero-price-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--blue);
-  background: rgba(11,95,255,.18);
-}
-.hero-card-badge {
-  font-size: .64rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.6);
-  margin-bottom: 6px;
-}
-.hero-card-model {
-  font-size: clamp(.95rem, 1.9vw, 1.1rem);
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 10px;
-  letter-spacing: -.01em;
-}
-.hero-card-price {
-  font-size: clamp(1.5rem, 3.4vw, 2rem);
-  font-weight: 800;
-  color: var(--blue);
-  letter-spacing: -.02em;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.hero-card-cta {
-  font-size: .72rem;
-  font-weight: 700;
-  color: rgba(255,255,255,.65);
-  letter-spacing: .04em;
+#hero { position: relative; overflow: hidden; background: #E9DED6; }   /* 이미지 로딩 전 노을 톤 바탕 */
+.hero-media { position: relative; z-index: 0; width: 100%; }
+.hero-media picture, .hero-media img { display: block; width: 100%; height: 100%; }
+.hero-media img { object-fit: cover; }
+.hero-media-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-main-title { font-size: clamp(2.6rem, 5.4vw, 5.2rem); font-weight: 800; line-height: 1.02; letter-spacing: -.03em; margin: 0 0 18px; text-wrap: balance; }
+.hero-subtitle { font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 700; line-height: 1.45; letter-spacing: -.01em; }
+.hero-tagline { font-size: clamp(.92rem, 1.05vw, 1rem); font-weight: 400; line-height: 1.8; text-wrap: pretty; word-break: keep-all; }
+.hero-tagline .nowrap { white-space: nowrap; }
+
+/* ---------------- PC (1360px 이상): 사진 16:9 그대로, 왼쪽 하늘에 제목 + 소개 글 ---------------- */
+@media (min-width: 1360px) {
+  #hero { height: max(620px, min(56.25vw, 100svh)); }
+  .hero-media { position: absolute; inset: 0; height: 100%; }
+  .hero-media img { object-position: 66% 50%; }
+  .hero-media-overlay { background: linear-gradient(90deg, rgba(252,246,240,.62) 0%, rgba(252,246,240,.34) 26%, rgba(252,246,240,0) 46%); }
+  /* 글은 지평선(사진 높이 약 62%) 위 하늘 안에만 놓이도록 */
+  .hero-inner { position: relative; z-index: 2; height: 100%; display: flex; align-items: flex-start; padding: max(80px, 7.4vw) 5vw 0; }
+  .hero-copy { max-width: min(520px, 40vw); color: #111; }
+  .hero-subtitle { color: #111; }
+  .hero-tagline { margin-top: 20px; max-width: min(410px, 28.5vw); color: #2E2A27; }   /* 왼쪽 소나무·집 앞에서 줄바꿈 */
 }
 
-/* ---------------- PC (min-width: 769px) ---------------- */
-@media (min-width: 769px) {
-  #hero {
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-  }
-  .hero-media-overlay {
-    background: linear-gradient(90deg,
-      rgba(0,0,0,.68) 0%,
-      rgba(0,0,0,.48) 22%,
-      rgba(0,0,0,.26) 42%,
-      rgba(0,0,0,.05) 58%,
-      rgba(0,0,0,0) 70%);
-  }
-  .hero-media img { object-position: 65% 50%; }
-  .hero-inner {
-    display: flex;
-    align-items: center;
-    padding: 90px 5vw 60px;
-  }
-  .hero-text-col {
-    max-width: 520px;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
+/* ---------------- 1359px 이하 공통: 제목은 사진 위, 소개 글은 사진 아래 흰 바탕 ---------------- */
+@media (max-width: 1359px) {
+  #hero { display: grid; background: var(--white); }
+  .hero-media { grid-area: 1 / 1; }
+  .hero-inner, .hero-copy { display: contents; }
+  .hero-head { grid-area: 1 / 1; align-self: start; position: relative; z-index: 2; }
+  .hero-tagline { grid-row: 2; }
 }
 
-/* ---------------- Mobile (max-width: 768px) ---------------- */
-@media (max-width: 768px) {
-  #hero {
-    background: var(--white);
-  }
-  .hero-media {
-    position: relative;
-    height: 58vh;
-    min-height: 380px;
-  }
-  .hero-media-overlay {
-    background: linear-gradient(180deg,
-      rgba(0,0,0,.15) 0%,
-      rgba(0,0,0,0) 35%,
-      rgba(0,0,0,0) 78%,
-      rgba(0,0,0,.55) 100%);
-  }
-  .hero-media img { object-position: 60% 35%; }
-  .hero-inner {
-    display: flex;
-    flex-direction: column;
-  }
-  .hero-text-block {
-    background: var(--black);
-    padding: 28px 24px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .hero-card-block {
-    background: var(--black);
-    padding: 0 24px 40px;
-  }
-  .hero-price-row { flex-direction: column; }
-  .hero-divider { margin-top: 4px; }
+/* ---------------- 태블릿·작은 PC (768~1359px): 가로 사진 16:9, 왼쪽 하늘에 진한 제목 ---------------- */
+@media (min-width: 768px) and (max-width: 1359px) {
+  .hero-media { height: 56.25vw; }
+  .hero-media img { object-position: 66% 50%; }
+  .hero-media-overlay { background: linear-gradient(90deg, rgba(252,246,240,.62) 0%, rgba(252,246,240,.3) 28%, rgba(252,246,240,0) 46%); }
+  .hero-head { padding: calc(60px + 3.2vw) 5vw 0; max-width: min(460px, 44vw); color: #111; }
+  .hero-main-title { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 12px; }
+  .hero-subtitle { color: #111; }
+  .hero-tagline { padding: 32px 5vw 8px; max-width: calc(640px + 10vw); color: #333; }
 }
+
+/* ---------------- 모바일 (767px 이하): 세로 사진 위쪽 하늘에 흰 제목 → 사진 아래 소개 글 ---------------- */
+@media (max-width: 767px) {
+  .hero-media { height: min(177.7vw, 100svh); min-height: 520px; }
+  .hero-media img { object-position: 50% 72%; }
+  .hero-media-overlay { background: linear-gradient(180deg, rgba(16,18,34,.58) 0%, rgba(16,18,34,.32) 24%, rgba(16,18,34,0) 44%); }
+  .hero-head { padding: calc(60px + clamp(24px, 6vw, 36px)) 24px 0; color: #fff; text-shadow: 0 2px 18px rgba(10,12,28,.35); }
+  .hero-main-title { font-size: clamp(2.5rem, 12vw, 3.4rem); margin-bottom: 12px; }
+  .hero-subtitle { color: #fff; }
+  .hero-tagline { padding: 28px 24px 8px; color: #333; }
+}
+@media (max-width: 360px) { .hero-head { padding-left: 20px; padding-right: 20px; } .hero-tagline { padding-left: 20px; padding-right: 20px; } }
 
 /* ============================================================
    SECTION HEADING
@@ -951,8 +940,8 @@ p  { color: #444; font-size: clamp(1rem, 1.9vw, 1.1rem); line-height: 1.8; }
 .tc-ds-cell.is-gap .tc-ds-p { color: var(--blue); }
 .tc-ds-s { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--gray2); font-size: .9rem; color: #444; line-height: 1.55; }
 
-/* 상태 탭: 차이점 | 공통 사양 | 확인 필요 */
-.tc-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 40px; border-bottom: 1px solid var(--gray3); }
+/* 상태 탭: 차이점 | 공통 사양 */
+.tc-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 40px; border-bottom: 1px solid var(--gray3); }
 .tc-tab { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer; min-height: 56px; padding: 10px 8px 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 3px solid transparent; margin-bottom: -1px; color: var(--gray4); transition: color .2s, border-color .2s; }
 .tc-tab-l { font-size: 1rem; font-weight: 800; word-break: keep-all; }
 .tc-tab-n { font-size: .74rem; font-weight: 800; min-width: 24px; padding: 2px 7px; border-radius: 999px; background: var(--gray2); color: var(--gray4); font-variant-numeric: tabular-nums; }
@@ -1076,17 +1065,25 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .section[id] { scroll-margin-top: 60px; }
 .num { font-variant-numeric: tabular-nums; }
 
-/* 헤더: 히어로를 지나면 트림 스위치 표시 */
-.site-header { justify-content: space-between; }
-.hdr-trim { display: inline-flex; padding: 3px; border: 1px solid var(--gray3); border-radius: 999px; background: var(--white);
-  opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s; }
-.site-header.show-trim .hdr-trim { opacity: 1; visibility: visible; transform: none; }
-.hdr-trim button { appearance: none; border: 0; background: transparent; font: inherit; cursor: pointer; min-height: 36px; padding: 0 14px;
-  border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .02em; color: var(--gray4); white-space: nowrap; transition: background .2s, color .2s; }
-.hdr-trim button:hover { color: var(--black); }
-.hdr-trim button[aria-pressed="true"] { background: var(--black); color: var(--white); }
-@media (max-width: 480px) { .header-logo { font-size: .7rem; letter-spacing: .12em; } .hdr-trim button { padding: 0 10px; font-size: .72rem; } }
-@media (max-width: 359px) { .header-logo { display: none; } .site-header { justify-content: center; } }
+/* 헤더: 섹션 바로가기 (클릭 시 애니메이션 없이 바로 이동) */
+.site-header { justify-content: space-between; gap: 24px; }
+.header-logo { flex: 0 0 auto; }
+.hdr-nav { position: relative; display: flex; align-items: center; gap: 2px; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.hdr-nav::-webkit-scrollbar { display: none; }
+.hdr-nav a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px;
+  font-size: .84rem; font-weight: 700; color: #6B6B6B; white-space: nowrap; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .2s, background .2s; }
+.hdr-nav a:hover { color: var(--black); }
+.hdr-nav a[aria-current="true"] { color: var(--black); background: var(--gray2); }
+.hdr-nav a:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+@media (max-width: 1023px) { .site-header { gap: 12px; padding: 0 16px; } .hdr-nav a { padding: 0 11px; font-size: .8rem; } }
+/* 모바일: 로고 숨기고 메뉴를 가로로 밀어서 보기 */
+@media (max-width: 767px) {
+  .site-header { padding: 0 8px; }
+  .header-logo { display: none; }
+  .hdr-nav { flex: 1 1 auto; gap: 0; }
+  .hdr-nav a { padding: 0 9px; font-size: .78rem; }
+}
+@media (max-width: 380px) { .site-header { padding: 0 4px; } .hdr-nav a { padding: 0 7px; font-size: .76rem; } }
 
 /* 트림 세그먼트 (tc-seg 재사용) */
 .trim-seg { display: flex; justify-content: center; margin: 0 auto 28px; }
@@ -1112,8 +1109,8 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 /* ============================================================
    외관 디자인
    ============================================================ */
-.ext-stage { max-width: 980px; margin: 0 auto; aspect-ratio: 4 / 3; background: linear-gradient(180deg, #F2F3F5 0%, #FAFAFB 70%, #EEF0F3 100%); }
-.ext-stage .stage-img { object-fit: contain; }
+.ext-stage { max-width: 980px; margin: 0 auto; aspect-ratio: 16 / 9; background: linear-gradient(180deg, #F2F3F5 0%, #FAFAFB 70%, #EEF0F3 100%); }
+.ext-stage .stage-img { object-fit: cover; }   /* 전시장 사진 16:9 = 영역 16:9 → 잘림·여백 없음 */
 .ext-info { text-align: center; margin: 32px auto 0; max-width: 640px; }
 .ext-name { font-size: clamp(1.35rem, 2.6vw, 1.9rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.3; }
 .ext-price { font-size: clamp(1.25rem, 2.2vw, 1.55rem); font-weight: 800; color: var(--blue); margin-top: 4px; }
@@ -1136,9 +1133,71 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .sec-more a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
 
 /* ============================================================
+   시트 컬러 (#seat-colors) — 외장 컬러 섹션과 같은 문법: 큰 사진 + 오른쪽 좁은 선택 패널
+   ============================================================ */
+@media (min-width: 1100px) {
+  #seat-colors > .container { max-width: 1440px; padding-left: clamp(24px, 2.8vw, 40px); padding-right: clamp(24px, 2.8vw, 40px); }
+}
+.seat-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; align-items: start; }
+.seat-view { min-width: 0; position: sticky; top: 96px; }
+.seat-stage { aspect-ratio: 16 / 9; background: var(--gray2); contain: layout paint; }   /* 시트 사진 16:9 그대로 (잘림·왜곡 없음) */
+.seat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .38s ease, transform .6s var(--ease); }
+.seat-img.is-on { opacity: 1; }
+@media (hover: hover) { .seat-stage:hover .seat-img.is-on { transform: scale(1.025); } }
+.seat-stage.is-loading::after { content: ""; position: absolute; left: 50%; top: 50%; z-index: 2; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%;
+  border: 2px solid rgba(17,17,17,.12); border-top-color: var(--black); animation: stSpin .8s linear infinite; }
+.seat-note { position: absolute; left: 14px; bottom: 14px; z-index: 2; max-width: calc(100% - 110px); display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--black); font-size: .74rem; font-weight: 600; line-height: 1.35; box-shadow: 0 2px 10px rgba(17,17,17,.08); }
+.seat-note::before { content: ""; flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.seat-note[hidden] { display: none; }
+.seat-panel { min-width: 0; display: flex; flex-direction: column; }
+.seat-trim { display: grid; grid-template-columns: 1fr 1fr; width: 100%; box-shadow: none; }
+.seat-trim .tc-seg-btn { min-width: 0; padding: 0 10px; font-size: .8rem; }
+.seat-info { margin-top: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--gray3); }
+.seat-cat { display: block; font-size: .76rem; font-weight: 700; color: var(--gray4); margin-bottom: 6px; }
+.seat-name { font-size: clamp(1.02rem, 1.4vw, 1.18rem); font-weight: 800; line-height: 1.4; word-break: keep-all; text-wrap: balance; }
+.seat-price { margin-top: 6px; font-size: .95rem; font-weight: 800; color: var(--blue); }
+.seat-price.is-free { color: var(--gray4); font-weight: 600; }
+/* 원형 스와치: 보이는 원 36px · 누르는 영역 44×44px · 2톤은 원을 반으로 나눠 표시 */
+.seat-swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.seat-sw { appearance: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent;
+  cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: transform .15s var(--ease); }
+.seat-sw:active { transform: scale(.92); }
+.seat-dot { display: block; position: relative; width: 36px; height: 36px; border-radius: 50%; background: var(--sw-bg); box-shadow: inset 0 0 0 1px rgba(0,0,0,.16); transition: transform .2s var(--ease); }
+@media (hover: hover) { .seat-sw:hover .seat-dot { transform: scale(1.06); } }
+.seat-sw[aria-checked="true"] .seat-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--black); }
+.seat-sw:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+@media (max-width: 1099px) {
+  .seat-wrap { grid-template-columns: minmax(0, 1fr); max-width: 960px; margin: 0 auto; gap: 24px; }
+  .seat-view { position: static; }
+  .seat-panel { max-width: 520px; }
+}
+/* 모바일: 트림 → 사진 → 컬러명 → 추가금액 → 원형 버튼 */
+@media (max-width: 767px) {
+  .seat-wrap { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .seat-panel { display: contents; }
+  .seat-trim { order: 0; margin-bottom: 16px; }
+  .seat-trim .tc-seg-btn { min-height: 44px; }
+  .seat-view { order: 1; }
+  .seat-info { order: 2; margin-top: 16px; padding-bottom: 14px; }
+  .seat-swatches { order: 3; justify-content: center; gap: 14px; margin-top: 16px; }
+  .seat-stage { aspect-ratio: 4 / 3; }   /* 모바일: 시트가 크게 보이도록 4:3, 왼쪽 시트~센터 콘솔 중심 */
+  .seat-img { object-position: 30% 50%; }
+  .seat-note { left: 10px; bottom: 10px; max-width: calc(100% - 92px); font-size: .7rem; padding: 6px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seat-img, .seat-dot, .seat-sw { transition: none !important; }
+  .seat-stage:hover .seat-img.is-on { transform: none; }
+}
+
+/* ============================================================
    외장 컬러
    ============================================================ */
-.col-wrap { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr); gap: clamp(28px, 3.4vw, 48px); align-items: start; }
+/* PC: 섹션 폭 최대 1440px · 오른쪽 컬러 선택 300px 고정 · 나머지는 모두 차량 이미지 (1440px 화면 기준 약 76:24) */
+@media (min-width: 1100px) {
+  #colors > .container { max-width: 1440px; padding-left: clamp(24px, 2.8vw, 40px); padding-right: clamp(24px, 2.8vw, 40px); }
+}
+.col-wrap { margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start; }
 .col-view { min-width: 0; position: sticky; top: 96px; }
 .col-stage { aspect-ratio: 16 / 9; background: linear-gradient(180deg, #ECEEF1 0%, #F8F9FB 100%); contain: layout paint; }
 .col-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .32s ease; }
@@ -1159,9 +1218,10 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .col-price { grid-area: price; font-size: clamp(.95rem, 1.4vw, 1.05rem); font-weight: 800; color: var(--blue); white-space: nowrap; }
 .col-price.is-free { color: var(--gray4); font-weight: 600; }
 .col-panel { min-width: 0; }
-.col-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-.col-tab { appearance: none; border: 1px solid var(--gray3); background: var(--white); color: var(--black); font: inherit; font-size: .84rem; font-weight: 700;
-  min-height: 44px; padding: 0 16px; border-radius: 999px; cursor: pointer; white-space: nowrap; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: background .2s, color .2s, border-color .2s; }
+/* 카테고리: 컴팩트 캡슐 2열 (높이 38px · 12.5px) */
+.col-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 16px; }
+.col-tab { appearance: none; border: 1px solid var(--gray3); background: var(--white); color: var(--black); font: inherit; font-size: .78rem; font-weight: 700; letter-spacing: -.01em;
+  min-height: 38px; padding: 0 10px; border-radius: 999px; cursor: pointer; white-space: nowrap; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: background .2s, color .2s, border-color .2s; }
 .col-tab[aria-selected="true"] { background: var(--black); border-color: var(--black); color: var(--white); }
 .col-tab:focus-visible, .col-sw:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 /* 원형 스와치: 보이는 원 32px · 터치 영역 44×44px · 5열 그리드(9색 → 2행) */
@@ -1172,9 +1232,12 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .col-sw.is-light .col-dot { box-shadow: inset 0 0 0 1px rgba(0,0,0,.22); }
 .col-sw[aria-pressed="true"] .col-dot::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 1.5px solid var(--black); }
 .col-sw[hidden] { display: none; }
-@media (max-width: 1023px) {
-  .col-wrap { grid-template-columns: minmax(0, 1fr); max-width: 860px; gap: 24px; }
+/* 태블릿 이하: 1열 (이미지 → 컬러명·가격 → 카테고리 → 원형 버튼) */
+@media (max-width: 1099px) {
+  .col-wrap { grid-template-columns: minmax(0, 1fr); max-width: 960px; gap: 24px; }
   .col-view { position: static; }
+  .col-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .col-tab { min-height: 44px; padding: 0 14px; }
 }
 @media (max-width: 767px) {
   .col-info { margin-top: 16px; padding-bottom: 16px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "cat" "name" "price"; }
@@ -1190,8 +1253,15 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 /* ============================================================
    내장 디자인
    ============================================================ */
-.int-layout { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-.int-stage { aspect-ratio: 16 / 10; }
+/* 시트 컬러 섹션과 같은 틀: 섹션 폭 최대 1440px · 오른쪽 320px · 간격 32px → 사진 크기 동일 */
+@media (min-width: 1100px) {
+  #interior > .container { max-width: 1440px; padding-left: clamp(24px, 2.8vw, 40px); padding-right: clamp(24px, 2.8vw, 40px); }
+}
+.int-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; align-items: center; }
+@media (max-width: 1099px) {
+  .int-layout { grid-template-columns: minmax(0, 1fr); max-width: 960px; margin: 0 auto; gap: 28px; }
+}
+.int-stage { aspect-ratio: 16 / 9; }   /* 시트 컬러 섹션과 같은 비율 (모바일은 둘 다 4:3) */
 .int-stage .stage-img { object-fit: cover; }
 .int-side h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -.01em; margin-bottom: 8px; }
 .int-desc { font-size: 1rem; line-height: 1.75; color: var(--ink2); word-break: keep-all; overflow-wrap: anywhere; }
@@ -1270,7 +1340,6 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 @media (max-width: 1023px) {
   .tech-grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .spec-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .int-layout { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 767px) {
   .trim-seg { margin-bottom: 20px; }
@@ -1291,7 +1360,7 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
   .stage-zoom { font-size: .7rem; padding: 6px 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .stage .stage-img, .hdr-trim, .tech-media img, .col-sw { transition: none !important; }
+  .stage .stage-img, .hdr-nav a, .tech-media img, .col-sw { transition: none !important; }
   .col-img { transition: none !important; }
 }
 
@@ -1328,6 +1397,17 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .mbvc button { font-family: inherit; }
 .mbvc-sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .mbvc-error { padding: 24px; text-align: center; color: var(--mbvc-ink-2); }
+
+
+/* 경쟁 차량 비교: 기준차 카드 내부 트림 선택 */
+#mbvcGlc .mbvc-car--base .mbvc-car-trim { display: none; }
+#mbvcGlc .mbvc-base-switch { display: flex; gap: 6px; flex-wrap: wrap; margin: 14px 0 8px; }
+#mbvcGlc .mbvc-base-trim { min-height: 40px; font: inherit; font-size: .82rem; font-weight: 700; padding: 8px 13px; border: 1px solid #d3d9e3; background: #fff; color: #3e495b; border-radius: 999px; cursor: pointer; transition: background .16s, border-color .16s, color .16s; }
+#mbvcGlc .mbvc-base-trim.is-on, #mbvcGlc .mbvc-base-trim[aria-pressed="true"] { background: #111; border-color: #111; color: #fff; }
+#mbvcGlc .mbvc-base-trim:focus-visible { outline: 3px solid #397cf4; outline-offset: 2px; }
+#mbvcGlc .mbvc-car--base .mbvc-car-price { margin-top: 10px !important; }
+#glc300Specs .cmp-block { margin-top: 0; }
+@media (max-width:767px) { #mbvcGlc .mbvc-base-switch { gap: 5px; } #mbvcGlc .mbvc-base-trim { min-height: 44px; padding: 7px 9px; font-size: .72rem; } }
 
 /* ---------- 차량 카드 ---------- */
 .mbvc-cars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
@@ -1898,60 +1978,365 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 .mbis-intro h3{font-size:clamp(22px,2.6vw,30px);font-weight:800;margin:10px 0 8px;letter-spacing:-0.02em;}
 .mbis-intro p{color:#555;}
 </style>
+<style id="glc-technology-atelier-style">
+/* ===== GLC 300 · Technology (scoped)
+   - 색: 페이지 공통 토큰(--black · --blue · --gray1~4 · --ink2), 강조색은 파란색 하나 (조향되는 뒷바퀴·에어 스프링·궤적)
+   - 간격: 4px 단위 · 굵기 400~600 · 본문 14px 이상, 보조 문구 12px 이상 ===== */
+#technology.gt-section{scroll-margin-top:76px;--gt-gutter:20px}
+#technology #gt-amg-tech{scroll-margin-top:76px}
+#technology .gt-group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px}
+#technology .gt-group-head h3{font-size:clamp(1.25rem,2.2vw,1.5rem);font-weight:600;line-height:1.35;color:var(--black)}
+#technology .gt-group-head p{margin-top:8px;font-size:15px;line-height:1.6;color:var(--ink2)}
+#technology .gt-trims{display:flex;flex-wrap:wrap;gap:8px;flex-shrink:0}
+.gt-chip{display:inline-flex;align-items:center;height:28px;padding:0 12px;border:1px solid var(--gray3);border-radius:999px;background:var(--white);font-size:13px;font-weight:500;line-height:1;color:var(--black);white-space:nowrap}
+.gt-ico{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* 두 트림 공통 카드: 3장 + 2장, 미디어 높이를 같게 */
+#technology .gt-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+#technology .gt-card{grid-column:span 2;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:var(--white);border:1px solid var(--gray3);border-radius:16px;transition:border-color .15s ease}
+#technology .gt-card:nth-child(n+4){grid-column:span 3}
+#technology .gt-card:hover{border-color:#D5D8DD}
+#technology .gt-media,#technology .gt-plate{position:relative;aspect-ratio:16/10;background:var(--gray2)}
+#technology .gt-card:nth-child(n+4) .gt-media,#technology .gt-card:nth-child(n+4) .gt-plate{aspect-ratio:16/9}
+#technology .gt-media{display:block;width:100%;padding:0;border:0;overflow:hidden;font:inherit;cursor:zoom-in}
+#technology .gt-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* 사진에 들어 있는 제목 글자가 카드에서는 잘려 보이도록 위치 조정 (확대 창에서는 원본 전체) */
+#technology .gt-card[data-tech="burmester"] .gt-media img{object-position:50% 80%}
+#technology .gt-card[data-tech="transparentBonnet"] .gt-media img{object-position:50% 100%}
+#technology .gt-zoom{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--black);transition:background-color .15s ease}
+#technology .gt-media:hover .gt-zoom{background:var(--white)}
+#technology .gt-media:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+#technology .gt-plate{display:flex;align-items:flex-end;padding:20px 24px;border-bottom:1px solid var(--gray3)}
+#technology .gt-plate-key{font-size:clamp(40px,4.4vw,56px);font-weight:500;line-height:1;letter-spacing:-.03em;color:var(--black);font-variant-numeric:tabular-nums}
+#technology .gt-plate.is-long .gt-plate-key{font-size:clamp(28px,2.8vw,36px);letter-spacing:-.02em}
+#technology .gt-body{display:flex;flex:1;flex-direction:column;min-width:0;padding:20px 24px 12px}
+#technology .gt-body h4{margin:0 0 8px;font-size:19px;font-weight:600;line-height:1.35;color:var(--black)}
+#technology .gt-body>p{margin:0 0 12px;font-size:15px;line-height:1.65;color:var(--ink2)}
+#technology .gt-body>p.gt-verify{margin:-4px 0 8px;font-size:13px;color:#A15C00}
+#technology .gt-more{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:44px;margin-top:auto;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:500;color:var(--black);cursor:pointer;transition:color .15s ease}
+#technology .gt-more:hover{color:var(--blue)}
+#technology .gt-more .gt-ico{transition:transform .2s ease}
+#technology .gt-more[aria-expanded="true"] .gt-ico{transform:rotate(180deg)}
+#technology .gt-detail{margin-bottom:8px;padding-top:12px;border-top:1px solid var(--gray3)}
+#technology .gt-detail p{margin:0 0 8px;font-size:14px;line-height:1.7;color:var(--ink2)}
+
+/* AMG Line 추가 기술 */
+#technology .gt-amg-head{margin-top:80px}
+#technology .gt-trim-note{margin:0 0 16px;padding:12px 16px;border:1px solid var(--gray3);border-radius:12px;background:var(--white);font-size:14px;line-height:1.6;color:var(--ink2)}
+#technology .gt-trim-note b{margin-right:8px;font-weight:600;color:var(--black)}
+#technology .gt-amg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#technology .gt-amg-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-width:0;overflow:hidden;background:var(--white);border:1px solid var(--gray3);border-radius:16px}
+/* 카드 사진: 4:3 영역 · 사진 배경색과 같은 #F2F4F7 · 차가 잘리지 않게 contain · 높이는 비율로 고정되어 로딩 전후 밀림 없음 */
+#technology .gt-diagram{position:relative;display:block;align-self:stretch;width:100%;min-height:0;aspect-ratio:4/3;padding:0;border:0;overflow:hidden;background:#F2F4F7;font:inherit;cursor:zoom-in}
+#technology .gt-diagram img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none}
+#technology .gt-diagram:hover .gt-zoom{background:var(--white)}
+#technology .gt-diagram:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+#technology .gt-dots{display:none}
+/* PC(1024px 이상): 카드 폭이 넓지 않아 사진 칸이 좁아지므로 사진을 위, 글을 아래에 둠 → 4:3 사진이 카드 폭을 모두 사용 */
+@media (min-width:1024px){
+  #technology .gt-amg-card{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  #technology .gt-diagram{align-self:start}
+}
+#technology .gt-amg-body{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:24px}
+#technology .gt-amg-body .gt-amg-meta{margin:0 0 8px;font-size:13px;line-height:1.5;color:var(--ink2)}
+#technology .gt-amg-body h4{margin:0 0 8px;font-size:19px;font-weight:600;line-height:1.35;color:var(--black)}
+#technology .gt-amg-body p{margin:0 0 16px;font-size:15px;line-height:1.65;color:var(--ink2)}
+#technology .gt-open{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1px solid var(--black);border-radius:10px;background:var(--black);color:var(--white);font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+#technology .gt-open:hover{background:#2B2B2B;border-color:#2B2B2B}
+#technology .gt-footnote{display:flex;align-items:flex-start;gap:8px;margin:20px 0 0;font-size:13px;line-height:1.7;color:var(--ink2)}
+#technology .gt-footnote .gt-ico{margin-top:4px;color:var(--gray4)}
+#technology .gt-section-links{margin-top:16px;font-size:14px}
+#technology button:focus-visible,#technology a:focus-visible,.gt-dialog button:focus-visible,.gt-dialog input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* 작동 원리 체험 팝업 — 이 섹션에서 유일하게 파란색으로 움직임을 강조하는 곳 */
+.gt-dialog{width:min(1120px,calc(100vw - 32px));max-width:1120px;max-height:calc(100dvh - 32px);margin:auto;padding:0;overflow:auto;border:0;border-radius:20px;background:var(--white);color:var(--black);font-family:'SUIT','Pretendard','Apple SD Gothic Neo',sans-serif;box-shadow:0 24px 64px rgba(17,17,17,.16)}
+.gt-dialog::backdrop{background:rgba(17,17,17,.48)}
+.gt-dialog-top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 28px;background:var(--white);border-bottom:1px solid var(--gray3)}
+.gt-dialog-top .gt-chip{margin-bottom:8px}
+.gt-dialog-top h2{margin:0;font-size:clamp(22px,2.6vw,28px);font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.gt-close{display:grid;place-items:center;flex-shrink:0;width:44px;height:44px;border:1px solid var(--gray3);border-radius:50%;background:var(--white);color:var(--black);cursor:pointer;transition:background-color .15s ease}
+.gt-close:hover{background:var(--gray2)}
+.gt-close .gt-ico{width:18px;height:18px}
+.gt-dialog-content{padding:24px 28px 28px}
+.gt-demo-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.gt-demo-intro p{max-width:720px;margin:0;font-size:15px;line-height:1.7;color:var(--ink2)}
+.gt-demo-intro strong{font-weight:600;color:var(--black)}
+.gt-demo-note{margin-top:4px;font-size:13px;color:var(--gray4);white-space:nowrap}
+.gt-demo-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:16px 0}
+.gt-pills{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid var(--gray3);border-radius:12px;background:var(--white)}
+.gt-pills button{min-height:44px;padding:0 16px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.gt-pills button:hover{color:var(--black)}
+.gt-pills button.is-active{background:var(--black);color:var(--white)}
+
+.gt-play-row{display:flex;align-items:center;gap:8px}
+.gt-action,.gt-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:10px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+.gt-action{border:1px solid var(--black);background:var(--black);color:var(--white)}
+.gt-action:hover{background:#2B2B2B;border-color:#2B2B2B}
+.gt-secondary{border:1px solid var(--gray3);background:var(--white);color:var(--black)}
+.gt-secondary:hover{background:var(--gray2)}
+.gt-disclaimer{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--gray3);font-size:13px;line-height:1.7;color:var(--ink2)}
+
+/* ---------- 리어 액슬 스티어링 (실사 탑뷰 · 계산 기반) ----------
+   좌표: 월드 = 도로 사진 픽셀, 차량 내부 = 탑뷰 차체 크롭(557×1075) 픽셀
+   움직임: 월드(카메라)·차량·바퀴 모두 transform 만 변경 · will-change 는 재생 중에만 */
+.ras-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.ras-max{font-size:14px;color:var(--ink2)}
+.ras-max b{font-weight:600;color:var(--blue);font-variant-numeric:tabular-nums}
+.ras-lead{max-width:720px;margin:0 0 16px;font-size:15px;line-height:1.7;color:var(--ink2)}
+.ras-layout{display:grid;grid-template-columns:minmax(0,1fr) 248px;gap:16px;align-items:start}
+.ras-stage{position:relative;aspect-ratio:16/9;overflow:hidden;contain:layout paint;border-radius:16px;background:#3A3D41}
+.ras-world{position:absolute;left:0;top:0;transform-origin:0 0;transition:opacity .22s cubic-bezier(.23,1,.32,1)}
+.ras-world.is-swapping{opacity:0}
+.ras-road{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;pointer-events:none}
+.ras-paths{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.ras-path-off{fill:none;stroke:rgba(255,255,255,.8);stroke-width:5;stroke-dasharray:18 14;stroke-linecap:round}
+.ras-path-on{fill:none;stroke:#4D8DFF;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.ras-stage.is-off .ras-path-on,.ras-stage.is-on .ras-path-off{opacity:.45}
+.ras-stage.show-head .ras-path-off{opacity:.6}   /* 고속: 흰 점선 = 두 방식 공통 목표 경로 */
+.ras-car{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.ras-car-in{position:absolute;width:557px;height:1075px}
+.ras-shadow{position:absolute;left:-12px;top:8px;width:581px;height:1083px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.42),rgba(0,0,0,0))}
+/* 탑뷰 타이어: 트레드(가로 홈) + 밝은 옆면 테두리 → 어두운 아스팔트 위에서도 조향 각도가 보임 */
+.ras-tire{position:absolute;box-sizing:border-box;width:65px;height:168px;border:6px solid #9AA0A8;border-radius:18px;background:#24272B repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 6px,transparent 6px 16px)}
+.ras-body{position:absolute;left:0;top:0;width:557px;height:1075px;display:block;user-select:none;pointer-events:none}
+.ras-vec{position:absolute;width:12px;height:320px;margin:-320px 0 0 -6px;border-radius:6px;transform-origin:50% 100%;background:linear-gradient(to top,rgba(255,255,255,.95),rgba(255,255,255,0))}
+/* 뒷바퀴 방향선은 차체 뒤쪽으로 뻗음 (바퀴 축과 같은 선 → 같은 각도, 차체 위에 겹치지 않음) */
+.ras-vec.is-r{height:440px;margin:0 0 0 -6px;transform-origin:50% 0;background:linear-gradient(to bottom,#4D8DFF,rgba(77,141,255,0))}
+.ras-car.no-body .ras-car-in::before{content:"";position:absolute;inset:8px 40px;border-radius:140px;background:#5A5E66}
+.ras-car.is-ghost{opacity:.5}
+.ras-car.is-ghost .ras-body{filter:grayscale(1) brightness(1.7)}
+/* 비교 차량: 저속 PC·태블릿에서만 (모바일은 GLC 1대 + 회색 일반 조향 궤적, 고속은 두 방식이 같은 차선 경로) */
+.ras-car.is-ghost .ras-vec,.ras-stage.is-single:not(.show-head) .ras-car.is-ghost,.ras-stage.no-ghost .ras-car.is-ghost{display:none}
+.ras-stage.is-playing .ras-world,.ras-stage.is-playing .ras-car{will-change:transform}
+.ras-scene{position:absolute;left:12px;top:12px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.94);font-size:13px;font-weight:500;color:var(--black)}
+.ras-fail{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:16px;font-size:14px;color:#FFFFFF;text-align:center}
+.ras-fail[hidden]{display:none}
+.ras-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ras-read{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start;padding:16px;border:1px solid var(--gray3);border-radius:16px;background:var(--white)}
+.ras-mini{width:72px;height:auto;display:block}
+.ras-stats{display:grid;gap:12px;margin:0}
+.ras-stats dt{font-size:12px;color:var(--gray4);margin-bottom:2px}
+.ras-stats dd{margin:0;font-size:15px;font-weight:500;line-height:1.4;color:var(--black);word-break:keep-all}
+.ras-deg{font-size:24px;font-weight:600;line-height:1.1;color:var(--blue);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.ras-side-t{margin-left:8px;font-size:14px;font-weight:500;color:var(--ink2)}
+.ras-legend{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink2)}
+.ras-legend[hidden]{display:none}
+.ras-key{display:inline-flex;align-items:center;gap:8px}
+.ras-key::before{content:"";width:24px;height:0;border-top:3px dashed #8C8C8C}
+.ras-key.is-on::before{border-top:4px solid #4D8DFF}
+/* ----- 고속 비교: 두 화면(PC) · 겹침 윤곽(모바일) · 차체 방향선 · 확대도 · 5단계 ----- */
+.ras-stages{display:grid;gap:12px;min-width:0}
+.ras-stage[hidden],.ras-toggle-m[hidden],.ras-cmp[hidden],.ras-phase[hidden],.ras-read[hidden]{display:none}
+#gtRearDemo.is-compare .ras-layout{grid-template-columns:1fr}
+#gtRearDemo.is-compare .ras-stages{grid-template-columns:1fr 1fr}
+#gtRearDemo.is-compare .ras-stage{aspect-ratio:4/3}
+#gtRearDemo.is-high .ras-steer-pc,#gtRearDemo:not(.is-high) .ras-high-only{display:none}
+.ras-scene.is-on{background:#0B5FFF;color:#FFFFFF}
+/* 차체 방향선: 차체 중심선을 앞뒤로 연장 (OFF 회색 · ON 파란색). 각도는 차체 회전 그대로 */
+.ras-head{position:absolute;width:10px;margin-left:-5px;border-radius:5px;background:rgba(214,218,224,.95);display:none}
+.ras-car.mode-on .ras-head{background:#4D8DFF}
+.ras-head.is-ref{display:none !important;transform-origin:50% 50%;background:rgba(214,218,224,.95) !important}
+#gtRearDemo.is-compare #rasStage2 .ras-head.is-ref{display:block !important}
+.ras-stage.show-head .ras-head{display:block}
+.ras-stage.show-head .ras-car.is-ghost{opacity:.45}
+.ras-toggle-m{display:flex;flex-direction:column;gap:8px}
+.ras-toggle-m .gt-pills{width:100%;display:grid;grid-template-columns:1fr 1fr}
+.ras-toggle-t{margin:0;font-size:14px;line-height:1.55;color:var(--ink2);min-height:3.1em}
+.ras-cmp{padding:16px;border:1px solid var(--gray3);border-radius:16px;background:var(--white)}
+.ras-cmp-cap{margin:0 0 12px;font-size:13px;line-height:1.55;color:var(--ink2)}
+.ras-cmp-cap b{display:inline-block;margin-right:8px;padding:2px 8px;border-radius:6px;background:var(--gray2);font-weight:600;color:var(--black)}
+.ras-cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ras-cmp-col{display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 12px;align-items:start;min-width:0}
+.ras-cmp-h{grid-column:1/-1;margin:0 0 4px;font-size:14px;font-weight:600;color:var(--black)}
+.ras-cmp-h span{margin-left:8px;font-size:12px;font-weight:500;color:var(--gray4)}
+.ras-cmp-col.is-on .ras-cmp-h span{color:var(--blue)}
+.ras-cmp-fig svg{display:block;width:72px;height:auto}
+.ras-cmp-dl{display:grid;gap:8px;margin:0}
+.ras-cmp-dl dt{font-size:12px;color:var(--gray4)}
+.ras-cmp-dl dd{margin:0;font-size:14px;font-weight:500;color:var(--black);font-variant-numeric:tabular-nums;word-break:keep-all}
+.ras-cmp-col.is-on .ras-cmp-dl div:nth-child(2) dd{color:var(--blue)}
+.ras-cmp-diff{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--gray3);font-size:14px;color:var(--ink2)}
+.ras-cmp-diff b{font-size:20px;font-weight:600;color:var(--black);font-variant-numeric:tabular-nums}
+.ras-cmp-diff span{font-size:12px;color:var(--gray4)}
+.ras-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:16px 0 0;padding:0;list-style:none}
+.ras-steps li{padding-top:8px;border-top:3px solid var(--gray3);font-size:12px;color:var(--gray4);word-break:keep-all;transition:border-color .2s ease,color .2s ease}
+.ras-steps li.is-done{border-top-color:#A9C4FF}
+.ras-steps li.is-on{border-top-color:var(--blue);color:var(--black);font-weight:600}
+.ras-phase-t{margin:8px 0 0;min-height:3.2em;font-size:14px;line-height:1.6;color:var(--ink2)}
+.ras-key-btn{min-height:44px}
+.ras-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0 0}
+.ras-play{margin-left:auto;min-width:132px}
+#gtRearDemo .gt-pills button,#gtRearDemo .ras-play{transition:background-color .15s ease,color .15s ease,transform .16s cubic-bezier(.23,1,.32,1)}
+#gtRearDemo .gt-pills button:active,#gtRearDemo .ras-play:active{transform:scale(.97)}
+@media (max-width:1023px){
+  #gtRearDemo.is-compare .ras-stage{aspect-ratio:1/1}
+  .ras-layout{grid-template-columns:1fr}
+  .ras-side{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
+}
+@media (max-width:767px){
+  .ras-lead{font-size:14px;margin-bottom:12px}
+  .ras-stage{aspect-ratio:4/5;border-radius:12px}
+  .ras-side{display:flex;flex-direction:column;gap:8px}
+  .ras-read{grid-template-columns:56px minmax(0,1fr);padding:12px}
+  .ras-mini{width:56px}
+  .ras-stats{grid-template-columns:1fr 1fr;gap:8px 12px}
+  .ras-deg{font-size:20px}
+  .ras-legend{flex-direction:row;flex-wrap:wrap;gap:4px 16px}
+  .ras-controls{gap:8px}
+  .ras-controls .gt-pills{width:100%}
+  .ras-play{width:100%;margin-left:0}
+  .ras-key-btn{flex:1}
+  .ras-cmp{padding:12px}
+  .ras-cmp-cols{gap:8px}
+  .ras-cmp-col{grid-template-columns:1fr;justify-items:start}
+  .ras-cmp-fig svg{width:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ras-world{transition:none}
+}
+/* ---------- AIRMATIC (실사 측면 · 반차 스프링-댐퍼 모델) ----------
+   좌표: 월드 = 도로 레이어 픽셀(3490×740), 차체 내부 = 측면 차체 크롭(1641×546) 픽셀
+   움직임: 카메라·차체·바퀴·회전 모두 transform 만 변경 · will-change 는 재생 중에만 */
+.air-note{font-size:13px;color:var(--ink2)}
+.air-ghost-k{position:absolute;right:12px;top:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.9);font-size:12px;color:var(--ink2)}
+.air-stages{display:grid;gap:8px}
+.air-stage{position:relative;aspect-ratio:16/5;overflow:hidden;contain:layout paint;border-radius:16px;background:#6A6D72}
+.air-stage[hidden],.air-toggle-m[hidden],.air-row[hidden]{display:none}
+#gtAirDemo.is-solo .air-stage{aspect-ratio:16/7}
+.air-world{position:absolute;left:0;top:0;width:3490px;height:740px;transform-origin:0 0}
+.air-road{position:absolute;left:0;top:0;width:3490px;height:740px;display:block;user-select:none;pointer-events:none}
+.air-shadow{position:absolute;left:0;top:0;width:960px;height:30px;margin:-15px 0 0 -480px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),rgba(0,0,0,0))}
+.air-wheel{position:absolute;left:0;top:0;width:162px;height:162px}
+.air-wheel svg,.air-wheel img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;pointer-events:none}
+.air-body{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.air-body.is-ghost{opacity:.4}
+.air-body.is-ghost img{filter:brightness(.15)}   /* 정적 필터(애니메이션 아님): 어긋난 부분만 어두운 테두리로 보임 */
+.air-body img{position:absolute;left:-869.3px;top:-416px;width:1641px;height:546px;display:block;user-select:none;pointer-events:none}
+.air-stage.is-playing .air-world,.air-stage.is-playing .air-body,.air-stage.is-playing .air-wheel img{will-change:transform}
+.air-toggle-m{margin-top:8px}
+.air-toggle-m .gt-pills{width:100%;display:grid;grid-template-columns:1fr 1fr}
+.air-info{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px;margin-top:12px}
+.air-gauges,.air-graph{padding:12px 16px;border:1px solid var(--gray3);border-radius:16px;background:var(--white);min-width:0}
+.air-row{display:grid;grid-template-columns:96px repeat(4,minmax(0,1fr));gap:4px 12px;align-items:center;padding:4px 0}
+.air-row + .air-row{border-top:1px solid var(--gray2);padding-top:8px;margin-top:4px}
+.air-row-h{margin:0;font-size:13px;font-weight:600;color:var(--black);word-break:keep-all}
+.air-row-h span{display:block;font-size:12px;font-weight:500;color:var(--blue)}
+.air-g{display:flex;flex-direction:column;gap:4px;min-width:0}
+.air-g span{font-size:12px;color:var(--gray4)}
+.air-bar{position:relative;display:block;height:8px;border-radius:4px;background:var(--gray2);overflow:hidden}
+.air-bar::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#C9CDD3}
+.air-bar b{position:absolute;left:50%;top:0;bottom:0;width:50%;transform-origin:0 50%;transform:scaleX(0);background:#8C8C8C;border-radius:4px}
+.air-row.is-air .air-bar b{background:var(--blue)}
+.air-tilt{width:64px;height:24px;display:block}
+.air-tilt g{transform-origin:32px 12px}
+.air-legend-t{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--gray4)}
+.air-graph-h{margin:0 0 4px;font-size:13px;font-weight:600;color:var(--black)}
+.air-graph-h span{margin-left:8px;font-size:12px;font-weight:500;color:var(--gray4)}
+#airGraph{display:block;width:100%;height:96px}
+.air-graph-k{display:flex;gap:16px;margin:4px 0 0;font-size:12px;color:var(--ink2)}
+.air-graph-k span::before{content:"";display:inline-block;width:18px;margin-right:6px;vertical-align:middle;border-top:2px dashed #8C8C8C}
+.air-graph-k .is-a::before{border-top:3px solid var(--blue)}
+.air-mode-t{margin:12px 0 0;min-height:3.2em;font-size:14px;line-height:1.6;color:var(--ink2)}
+.air-controls .gt-pills small{margin-left:4px;font-size:12px;opacity:.8}
+#gtAirDemo .gt-pills button,#gtAirDemo .ras-play{transition:background-color .15s ease,color .15s ease,transform .16s cubic-bezier(.23,1,.32,1)}
+#gtAirDemo .gt-pills button:active,#gtAirDemo .ras-play:active{transform:scale(.97)}
+@media (max-width:1023px){
+  .air-info{grid-template-columns:1fr}
+}
+@media (max-width:767px){
+  .air-stage,#gtAirDemo.is-solo .air-stage{aspect-ratio:16/9;border-radius:12px}
+  .air-ghost-k{top:auto;bottom:8px;right:8px;padding:2px 8px}
+  .air-view-pc{display:none}
+  .air-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .air-row-h{grid-column:1/-1}
+  .air-gauges,.air-graph{padding:12px}
+  .air-controls .gt-pills{width:100%;display:grid;grid-auto-flow:column;grid-auto-columns:1fr}
+  .air-keys button{padding:0 4px;font-size:13px}
+}
+
+@media (max-width:1023px){
+  #technology .gt-amg-grid{grid-template-columns:1fr}
+}
+@media (max-width:767px){
+  #technology .gt-group-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:16px}
+  /* 모바일: 카드를 세로로 쌓지 않고 왼쪽으로 밀어 넘기는 가로 슬라이드 (다음 카드가 살짝 보임) */
+  #technology .gt-grid,#technology .gt-amg-grid{display:flex;gap:12px;margin-inline:calc(var(--gt-gutter) * -1);padding:0 var(--gt-gutter) 4px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gt-gutter);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #technology .gt-grid::-webkit-scrollbar,#technology .gt-amg-grid::-webkit-scrollbar{display:none}
+  #technology .gt-card,#technology .gt-card:nth-child(n+4),#technology .gt-amg-card{flex:0 0 84%;grid-column:auto;scroll-snap-align:start}
+  #technology .gt-grid:focus-visible,#technology .gt-amg-grid:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+  #technology .gt-media,#technology .gt-card:nth-child(n+4) .gt-media{aspect-ratio:16/9}
+  #technology .gt-plate,#technology .gt-card:nth-child(n+4) .gt-plate{aspect-ratio:auto;height:96px;padding:16px 20px}
+  #technology .gt-plate-key{font-size:40px}
+  #technology .gt-plate.is-long .gt-plate-key{font-size:28px}
+  #technology .gt-body{padding:16px 20px 8px}
+  #technology .gt-body h4,#technology .gt-amg-body h4{font-size:18px}
+  #technology .gt-amg-head{margin-top:56px}
+  #technology .gt-amg-grid{align-items:stretch}
+  #technology .gt-amg-card{grid-template-columns:1fr;grid-template-rows:auto 1fr}   /* 남는 높이는 글 영역이 가져가서 두 카드 높이가 같고 사진 비율은 유지 */
+  #technology .gt-diagram{aspect-ratio:4/3}
+  #technology .gt-dots{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:8px}
+  #technology .gt-dot{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer}
+  #technology .gt-dot i{width:8px;height:8px;border-radius:50%;background:var(--gray3);transition:background-color .15s ease,transform .15s ease}
+  #technology .gt-dot[aria-current="true"] i{background:var(--black);transform:scale(1.25)}
+  #technology .gt-dot:focus-visible{outline:2px solid var(--blue);outline-offset:-4px;border-radius:50%}
+  #technology .gt-dots-n{min-width:48px;text-align:center;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+  #technology .gt-amg-body{padding:20px}
+  .gt-dialog{width:100%;max-width:100%;height:100dvh;max-height:100dvh;border-radius:0}
+  .gt-dialog-top{padding:12px 16px}
+  .gt-dialog-content{padding:16px 16px 24px}
+  .gt-demo-intro{display:block}
+  .gt-demo-note{display:block}
+  .gt-demo-controls{gap:8px;margin:12px 0}
+  .gt-pills{display:grid;grid-auto-columns:1fr;grid-auto-flow:column;width:100%}
+  .gt-pills button{padding:0 8px}
+  .gt-play-row>*{flex:1}
+}
+@media (max-width:480px){
+  #technology.gt-section{--gt-gutter:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  #technology *,.gt-dialog *{transition:none!important}
+  #technology .gt-grid,#technology .gt-amg-grid{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
 
 <header class="site-header" id="siteHeader">
   <div class="header-logo">MERCEDES-BENZ</div>
-  <div class="hdr-trim" role="group" aria-label="트림 선택">
-    <button type="button" data-trim-set="avantgarde" aria-pressed="true">AVANTGARDE</button>
-    <button type="button" data-trim-set="amgline" aria-pressed="false">AMG Line</button>
-  </div>
+  <nav class="hdr-nav" id="hdrNav" aria-label="섹션 바로가기">
+    <a href="#exterior">외관</a>
+    <a href="#colors">컬러</a>
+    <a href="#interior">실내</a>
+    <a href="#seat-colors">시트 컬러</a>
+    <a href="#technology">테크놀로지</a>
+    <a href="#safety">안전</a>
+    <a href="#glc300Specs">경쟁차 비교</a>
+    <a href="#trimCompare">상세 옵션</a>
+  </nav>
 </header>
 
 <!-- ============================================================
      1 · HERO
      ============================================================ -->
-<section id="hero" style="position:relative;">
+<section id="hero" aria-labelledby="heroTitle">
   <div class="hero-media" id="heroMedia">
-    <img id="heroImg" src="https://github.com/JNOHJINGYU/images/blob/main/glc_avamg.jpg?raw=true" alt="Mercedes-Benz GLC 300 4MATIC AVANTGARDE와 AMG Line" loading="eager" fetchpriority="high" decoding="async" width="1280" height="960">
+    <picture>
+      <source media="(max-width: 767px)" type="image/webp" width="940" height="1670" sizes="100vw"
+        srcset="images/hero/glc300-hero-mobile-720.webp 720w, images/hero/glc300-hero-mobile-940.webp 940w">
+      <img id="heroImg" src="images/hero/glc300-hero-pc-1600.webp"
+        srcset="images/hero/glc300-hero-pc-960.webp 960w, images/hero/glc300-hero-pc-1280.webp 1280w, images/hero/glc300-hero-pc-1600.webp 1600w" sizes="100vw"
+        width="1600" height="900" alt="해 질 녘 목조 주택 앞, 흰색 GLC 300 4MATIC 옆에 선 가족" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-media-overlay"></div>
   </div>
   <div class="hero-inner">
-
-    <div class="hero-text-col">
-
-      <div class="hero-text-block">
-        <p class="hero-eyebrow-text reveal">GLC-CLASS X254 · MY26</p>
-        <h1 class="hero-main-title reveal reveal-delay-1">GLC 300<br>4MATIC</h1>
-        <p class="hero-subtitle reveal reveal-delay-2">가장 완성도 높은<br>프리미엄 가솔린 SUV</p>
-        <p class="hero-tagline reveal reveal-delay-2">258마력의 여유로운 출력, 48V 마일드 하이브리드, Mercedes-Benz 특유의 정숙성까지.<br><br>패밀리 SUV와 비즈니스 SUV를 모두 만족시키는 가장 균형 잡힌 GLC.</p>
+    <div class="hero-copy">
+      <div class="hero-head">
+        <h1 class="hero-main-title" id="heroTitle">GLC 300<br>4MATIC</h1>
+        <p class="hero-subtitle">가장 완성도 높은<br>프리미엄 가솔린 SUV</p>
       </div>
-
-      <div class="hero-card-block">
-        <div class="hero-divider reveal reveal-delay-3">
-          <div class="hero-divider-line"></div>
-          <span class="hero-divider-label">PETROL · 4MATIC</span>
-        </div>
-
-        <div class="reveal reveal-delay-4">
-          <div class="hero-price-row">
-            <a href="#avantgarde" class="hero-price-card" aria-label="AVANTGARDE 외관 보기">
-              <div class="hero-card-badge">AVANTGARDE</div>
-              <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price" data-trim-price="avantgarde">8,250만원</div>
-              <div class="hero-card-cta">외관 보기 →</div>
-            </a>
-            <a href="#amgline" class="hero-price-card" aria-label="AMG Line 외관 보기">
-              <div class="hero-card-badge">AMG LINE</div>
-              <div class="hero-card-model">GLC 300 4MATIC</div>
-              <div class="hero-card-price" data-trim-price="amgline">9,250만원</div>
-              <div class="hero-card-cta">외관 보기 →</div>
-            </a>
-          </div>
-        </div>
-      </div>
-
+      <p class="hero-tagline">258마력의 여유로운 출력, 48V 마일드 하이브리드, <span class="nowrap">Mercedes-Benz</span> 특유의 정숙성까지.<br><br>패밀리 SUV와 비즈니스 SUV를 모두 만족시키는 가장 균형 잡힌 GLC.</p>
     </div>
   </div>
 </section>
@@ -2047,19 +2432,212 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 </section>
 
 <!-- ============================================================
-     5 · 테크놀로지 (데이터: GLC_TECH)
+     4-1 · 시트 컬러 (데이터: GLC_SEAT_COLORS · 트림은 GLCTrim과 연동)
      ============================================================ -->
-<section class="section section-alt" id="technology" aria-labelledby="techTitle">
+<section class="section" id="seat-colors" aria-labelledby="seatTitle">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="label-en">Seat Colors</span>
+      <h2 id="seatTitle">나만의 인테리어 컬러</h2>
+      <p>취향에 맞는 시트 컬러를 선택하고 실내 분위기를 비교해 보세요.</p>
+    </div>
+    <div class="seat-wrap">
+      <div class="seat-view">
+        <div class="stage seat-stage" id="seatStage" role="button" tabindex="0" aria-label="실내 이미지 크게 보기">
+          <span class="stage-zoom" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5M7 5v4M5 7h4"/></svg>확대</span>
+          <p class="seat-note" id="seatNote" hidden></p>
+          <div class="stage-fail" role="status"><p>이미지를 불러오지 못했습니다.</p><button type="button" class="stage-retry" id="seatRetry">다시 시도</button></div>
+        </div>
+      </div>
+      <div class="seat-panel">
+        <div class="tc-seg seat-trim" role="group" aria-label="시트 컬러 트림 선택">
+          <button type="button" class="tc-seg-btn" data-trim-set="avantgarde" aria-pressed="true">AVANTGARDE</button>
+          <button type="button" class="tc-seg-btn" data-trim-set="amgline" aria-pressed="false">AMG Line</button>
+        </div>
+        <div class="seat-info" aria-live="polite">
+          <span class="seat-cat" id="seatTrimName">GLC 300 4MATIC AVANTGARDE</span>
+          <p class="seat-name" id="seatName"></p>
+          <p class="seat-price" id="seatPrice"></p>
+        </div>
+        <div class="seat-swatches" id="seatSwatches" role="radiogroup" aria-label="시트 컬러 선택"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TECHNOLOGY · 두 트림 공통 기술 + 2027 AMG Line 추가 기술 (독립 체험)
+     - 카드 내용: head 의 GLC_TECH 데이터 (사진은 GLC_TECH.image 가 있을 때만)
+     ============================================================ -->
+<section class="section section-alt gt-section" id="technology" aria-labelledby="techTitle">
   <div class="container">
     <div class="section-heading reveal">
       <span class="label-en">Technology</span>
-      <h2 id="techTitle">일상의 주행을 바꾸는 기술</h2>
-      <p>258마력 가솔린 엔진과 48V 마일드 하이브리드, 그리고 매일 쓰는 편의 기술이 어떻게 작동하는지 소개합니다.</p>
+      <h2 id="techTitle">기술이 만드는 주행의 차이</h2>
+      <p>움직임에 담긴 정교함부터 매일 마주하는 편의까지. GLC 300의 기술을 눈으로 경험해 보세요.</p>
     </div>
-    <div class="tech-grid2" id="techGrid"></div>
-    <p class="sec-more">트림별 적용 여부는 <a href="#trimCompare">상세 옵션</a>에서, 주행 보조 기술(DISTRONIC)은 <a href="#safety">통합 안전</a>에서 확인하세요.</p>
+
+    <div class="gt-group-head">
+      <h3>두 트림에서 경험하는 기술</h3>
+      <span class="gt-trims" aria-label="적용 트림"><span class="gt-chip">AVANTGARDE</span><span class="gt-chip">AMG Line</span></span>
+    </div>
+    <div id="techGrid" class="gt-grid" role="region" aria-label="두 트림 공통 테크놀로지"></div>
+
+    <div class="gt-group-head gt-amg-head" id="gt-amg-tech">
+      <div><h3>AMG Line에서 더해지는 기술</h3><p>2027년형 AMG Line에 적용된 두 가지 섀시 기술을 별도로 살펴보세요.</p></div>
+      <span class="gt-trims" aria-label="적용 트림"><span class="gt-chip">AMG Line</span></span>
+    </div>
+    <p class="gt-trim-note" id="gtTrimNote" aria-live="polite"></p>
+    <div class="gt-amg-grid" role="region" aria-label="AMG Line 추가 기술">
+      <article class="gt-amg-card">
+        <button type="button" class="gt-diagram" data-zoom="images/tech/glc300-tech-rear-steer-1080.webp" aria-label="위에서 내려다본 GLC가 곡선을 돌며 뒷바퀴가 함께 조향되는 모습 사진 크게 보기"><img src="images/tech/glc300-tech-rear-steer-720.webp" srcset="images/tech/glc300-tech-rear-steer-480.webp 480w, images/tech/glc300-tech-rear-steer-720.webp 720w, images/tech/glc300-tech-rear-steer-1080.webp 1080w" sizes="(max-width:767px) calc((100vw - 40px) * .84), (max-width:1023px) calc((100vw - 48px) * .4167), (min-width:1240px) 568px, calc((100vw - 64px) / 2)" width="1448" height="1086" alt="위에서 내려다본 GLC가 곡선을 돌며 뒷바퀴가 함께 조향되는 모습" loading="lazy" decoding="async"><span class="gt-zoom" aria-hidden="true"><svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></button>
+        <div class="gt-amg-body">
+          <p class="gt-amg-meta">2027년형 적용 · 주행 안정성</p>
+          <h4>리어 액슬 스티어링</h4>
+          <p>저속에서는 더 민첩하게, 고속에서는 더 안정적으로. 뒷바퀴 조향 움직임을 확인해 보세요.</p>
+          <button class="gt-open" type="button" data-gt-open="rear">작동 원리 체험</button>
+        </div>
+      </article>
+      <article class="gt-amg-card">
+        <button type="button" class="gt-diagram" data-zoom="images/tech/glc300-tech-airmatic-1080.webp" aria-label="GLC 옆모습에 앞뒤 에어 스프링과 차고 조절 방향을 표시한 그림 사진 크게 보기"><img src="images/tech/glc300-tech-airmatic-720.webp" srcset="images/tech/glc300-tech-airmatic-480.webp 480w, images/tech/glc300-tech-airmatic-720.webp 720w, images/tech/glc300-tech-airmatic-1080.webp 1080w" sizes="(max-width:767px) calc((100vw - 40px) * .84), (max-width:1023px) calc((100vw - 48px) * .4167), (min-width:1240px) 568px, calc((100vw - 64px) / 2)" width="1448" height="1086" alt="GLC 옆모습에 앞뒤 에어 스프링과 차고 조절 방향을 표시한 그림" loading="lazy" decoding="async"><span class="gt-zoom" aria-hidden="true"><svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></button>
+        <div class="gt-amg-body">
+          <p class="gt-amg-meta">2027년형 적용 · 승차감</p>
+          <h4>AIRMATIC 에어 서스펜션</h4>
+          <p>노면 충격을 다루는 방식과 차고 조절 개념을 단계별로 확인해 보세요.</p>
+          <button class="gt-open" type="button" data-gt-open="air">작동 원리 체험</button>
+        </div>
+      </article>
+    </div>
+    <div class="gt-dots" id="gtDots" role="group" aria-label="AMG Line 카드 위치"><button type="button" class="gt-dot" data-dot="0" aria-label="첫 번째 카드 보기" aria-current="true"><i></i></button><span class="gt-dots-n" id="gtDotsN" aria-live="polite">1 / 2</span><button type="button" class="gt-dot" data-dot="1" aria-label="두 번째 카드 보기"><i></i></button></div>
+    <p class="gt-footnote"><svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg><span>신규 섀시 기술 2종은 AVANTGARDE 미적용. 애니메이션은 원리 이해를 돕기 위한 시각화이며 실제 차량의 속도·회전반경·차고 제어값을 재현한 계측 자료가 아닙니다.</span></p>
+    <p class="sec-more gt-section-links">트림별 적용 여부는 <a href="#trimCompare">상세 옵션</a>에서, 주행 보조 기술은 <a href="#safety">통합 안전</a>에서 확인하세요.</p>
   </div>
 </section>
+
+<dialog id="gtTechDialog" class="gt-dialog" aria-labelledby="gtDialogTitle">
+  <div class="gt-dialog-shell">
+    <div class="gt-dialog-top"><div><span class="gt-chip">AMG Line</span><h2 id="gtDialogTitle">테크놀로지 체험</h2></div><button id="gtDialogClose" type="button" class="gt-close" aria-label="기술 체험 닫기"><svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div class="gt-dialog-content">
+      <div id="gtRearDemo" class="gt-demo ras" hidden>
+        <div class="ras-meta"><span class="gt-chip">2027 GLC 300 AMG Line 적용 사양</span><span class="ras-max">최대 후륜 조향각 <b>4.5°</b></span></div>
+        <p class="ras-lead" id="rasLead"></p>
+        <div class="ras-layout">
+          <div class="ras-stages" id="rasStages">
+          <div class="ras-stage" id="rasStage" role="img" aria-label="위에서 본 GLC 300이 도로를 달리며 앞바퀴와 뒷바퀴의 조향 방향을 보여주는 애니메이션. 저속 U턴에서는 뒷바퀴가 반대 방향으로 조향되어 더 작게 돌고, 고속 차선 변경에서는 같은 방향으로 조향됩니다.">
+            <div class="ras-world" id="rasWorld">
+              <img class="ras-road" id="rasRoad" alt="" decoding="async" draggable="false">
+              <svg class="ras-paths" id="rasPaths" aria-hidden="true"><path id="rasPathOff" class="ras-path-off"/><path id="rasPathOn" class="ras-path-on"/></svg>
+              <div class="ras-car is-ghost" id="rasGhost" aria-hidden="true"></div>
+              <div class="ras-car" id="rasCar" aria-hidden="true"></div>
+            </div>
+            <span class="ras-scene" id="rasScene"></span>
+            <p class="ras-fail" id="rasFail" hidden>도로 이미지를 불러오지 못했습니다</p>
+          </div>
+          <!-- 고속 · PC: 같은 시간·같은 카메라로 움직이는 두 번째 화면 (후륜 조향 ON) -->
+          <div class="ras-stage" id="rasStage2" hidden role="img" aria-label="후륜 조향 ON 상태의 GLC 300이 같은 차선 변경 경로를 달리는 모습">
+            <div class="ras-world" id="rasWorld2">
+              <img class="ras-road" id="rasRoad2" alt="" decoding="async" draggable="false">
+              <svg class="ras-paths" id="rasPaths2" aria-hidden="true"><path id="rasPathOff2" class="ras-path-off"/><path id="rasPathOn2" class="ras-path-on"/></svg>
+              <div class="ras-car" id="rasCar2" aria-hidden="true"></div>
+            </div>
+            <span class="ras-scene is-on" id="rasScene2">리어 액슬 스티어링 · 후륜 ON</span>
+            <p class="ras-fail" id="rasFail2" hidden>도로 이미지를 불러오지 못했습니다</p>
+          </div>
+          </div>
+          <!-- 고속 · 모바일: 일반 조향 / 후륜 조향 ON 선택 -->
+          <div class="ras-toggle-m" id="rasToggleM" hidden>
+            <div class="gt-pills" role="group" aria-label="비교할 조향 방식"><button type="button" data-ras-steer="off" aria-pressed="false">일반 조향</button><button type="button" data-ras-steer="on" aria-pressed="true">후륜 조향 ON</button></div>
+            <p class="ras-toggle-t" id="rasToggleT"></p>
+          </div>
+          <div class="ras-side">
+            <div class="ras-read">
+              <svg class="ras-mini" viewBox="0 0 96 136" aria-hidden="true">
+                <path d="M48 6 l-6 7 h12z" fill="#8C8C8C"/>
+                <rect x="28" y="16" width="40" height="112" rx="14" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"/>
+                <g transform="translate(22 40)"><g id="rasMiniFL"><path d="M0 -26 V-12" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/><rect x="-5" y="-11" width="10" height="22" rx="3" fill="#1F2328"/></g></g>
+                <g transform="translate(74 40)"><g id="rasMiniFR"><path d="M0 -26 V-12" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/><rect x="-5" y="-11" width="10" height="22" rx="3" fill="#1F2328"/></g></g>
+                <g transform="translate(22 104)"><g id="rasMiniRL"><path d="M0 -26 V-12" stroke="#0B5FFF" stroke-width="1.5" stroke-linecap="round"/><rect x="-5" y="-11" width="10" height="22" rx="3" fill="#0B5FFF"/></g></g>
+                <g transform="translate(74 104)"><g id="rasMiniRR"><path d="M0 -26 V-12" stroke="#0B5FFF" stroke-width="1.5" stroke-linecap="round"/><rect x="-5" y="-11" width="10" height="22" rx="3" fill="#0B5FFF"/></g></g>
+              </svg>
+              <dl class="ras-stats">
+                <div><dt>주행 모드</dt><dd id="rasMode"></dd></div>
+                <div><dt>앞바퀴</dt><dd id="rasFront">직진</dd></div>
+                <div><dt>뒷바퀴 조향각</dt><dd><b class="ras-deg" id="rasRearDeg">0.0°</b><span class="ras-side-t" id="rasRearSide"></span></dd></div>
+                <div><dt>후륜 조향 방향</dt><dd id="rasRearRel">직진</dd></div>
+              </dl>
+            </div>
+            <div class="ras-cmp" id="rasCmp" hidden>
+              <p class="ras-cmp-cap"><b>조향 방향 확대도</b> 바퀴 각도를 4배로 키워 그린 그림이며, 실제 각도는 숫자로 표시합니다.</p>
+              <div class="ras-cmp-cols">
+                <div class="ras-cmp-col is-off">
+                  <p class="ras-cmp-h">일반 조향 <span>후륜 0°</span></p>
+                  <div class="ras-cmp-fig" id="rasFigOff"></div>
+                  <dl class="ras-cmp-dl"><div><dt>앞바퀴</dt><dd id="rasOffF">직진</dd></div><div><dt>뒷바퀴</dt><dd id="rasOffR">0.0°</dd></div><div><dt>차체 방향</dt><dd id="rasOffH">차선과 나란히</dd></div></dl>
+                </div>
+                <div class="ras-cmp-col is-on">
+                  <p class="ras-cmp-h">리어 액슬 스티어링 <span>후륜 ON</span></p>
+                  <div class="ras-cmp-fig" id="rasFigOn"></div>
+                  <dl class="ras-cmp-dl"><div><dt>앞바퀴</dt><dd id="rasOnF">직진</dd></div><div><dt>뒷바퀴</dt><dd id="rasOnR">0.0°</dd></div><div><dt>차체 방향</dt><dd id="rasOnH">차선과 나란히</dd></div></dl>
+                </div>
+              </div>
+              <p class="ras-cmp-diff">차체 방향 차이 <b id="rasDiff">0.0°</b><span>차선 방향 기준 · 애니메이션 계산값</span></p>
+            </div>
+            <div class="ras-legend" id="rasLegend"><span class="ras-key is-off">일반 조향 · 뒷바퀴 0°</span><span class="ras-key is-on">리어 액슬 스티어링</span></div>
+          </div>
+        </div>
+        <div class="ras-phase" id="rasPhase" hidden>
+          <ol class="ras-steps" id="rasSteps"><li>1 직진</li><li>2 변경 시작</li><li>3 변경 진행</li><li>4 자세 복귀</li><li>5 직진 완료</li></ol>
+          <p class="ras-phase-t" id="rasPhaseT"></p>
+        </div>
+        <div class="ras-controls">
+          <div class="gt-pills" role="group" aria-label="주행 상황"><button type="button" data-ras-scene="low" aria-pressed="true">저속 주행</button><button type="button" data-ras-scene="high" aria-pressed="false">고속 주행</button></div>
+          <div class="gt-pills ras-steer-pc" role="group" aria-label="리어 액슬 스티어링"><button type="button" data-ras-steer="off" aria-pressed="false">후륜 조향 OFF</button><button type="button" data-ras-steer="on" aria-pressed="true">후륜 조향 ON</button></div>
+          <div class="gt-pills ras-high-only" role="group" aria-label="재생 속도"><button type="button" data-ras-rate="0.5" aria-pressed="false">0.5배속</button><button type="button" data-ras-rate="1" aria-pressed="true">1배속</button></div>
+          <button id="rasKey" type="button" class="gt-secondary ras-high-only ras-key-btn">핵심 장면 ①</button>
+          <button id="rasPlay" type="button" class="gt-action ras-play">재생</button>
+        </div>
+      </div>
+      <div id="gtAirDemo" class="gt-demo air" hidden>
+        <div class="air-stages" id="airStages">
+          <div class="air-stage" id="airStageP" role="img" aria-label="일반 서스펜션 GLC가 방지턱을 넘을 때 앞바퀴와 뒷바퀴가 차례로 올라가고 차체가 상하·앞뒤로 반응하는 모습"><div class="air-world"></div><span class="ras-scene">일반 서스펜션 · 기준 비교</span><p class="ras-fail" hidden>이미지를 불러오지 못했습니다</p></div>
+          <div class="air-stage" id="airStageA" role="img" aria-label="AIRMATIC GLC가 같은 방지턱을 같은 속도로 넘을 때 감쇠 제어에 따라 차체 반응이 달라지는 모습"><div class="air-world"></div><span class="ras-scene is-on" id="airSceneA">AIRMATIC · 컴포트</span><span class="air-ghost-k">어두운 윤곽 = 같은 순간 일반 서스펜션 차체</span><p class="ras-fail" hidden>이미지를 불러오지 못했습니다</p></div>
+        </div>
+        <div class="air-toggle-m" id="airToggleM" hidden>
+          <div class="gt-pills" role="group" aria-label="비교할 서스펜션"><button type="button" data-air-show="passive" aria-pressed="false">일반 서스펜션</button><button type="button" data-air-show="air" aria-pressed="true">AIRMATIC</button></div>
+        </div>
+        <div class="air-info">
+          <div class="air-gauges">
+            <div class="air-row" data-row="passive"><p class="air-row-h">일반 서스펜션</p>
+              <div class="air-g"><span>앞 서스펜션</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>뒤 서스펜션</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>차체 상하</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>차체 자세</span><svg class="air-tilt" viewBox="0 0 64 24" aria-hidden="true"><path d="M8 12 H56" stroke="#B8BDC4" stroke-width="2"/><g><path d="M10 12 H54" stroke="#4A5059" stroke-width="4" stroke-linecap="round"/><circle cx="54" cy="12" r="3" fill="#4A5059"/></g></svg></div>
+            </div>
+            <div class="air-row is-air" data-row="air"><p class="air-row-h">AIRMATIC <span id="airRowMode">컴포트</span></p>
+              <div class="air-g"><span>앞 서스펜션</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>뒤 서스펜션</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>차체 상하</span><i class="air-bar"><b></b></i></div><div class="air-g"><span>차체 자세</span><svg class="air-tilt" viewBox="0 0 64 24" aria-hidden="true"><path d="M8 12 H56" stroke="#B8BDC4" stroke-width="2"/><g><path d="M10 12 H54" stroke="#0B5FFF" stroke-width="4" stroke-linecap="round"/><circle cx="54" cy="12" r="3" fill="#0B5FFF"/></g></svg></div>
+            </div>
+            <p class="air-legend-t">막대: 가운데 기준 오른쪽 = 압축·상승, 왼쪽 = 늘어남·하강 (상대 표시) · 차체 자세는 기울기를 3배로 확대 표시</p>
+          </div>
+          <div class="air-graph">
+            <p class="air-graph-h">차체 상하 움직임 <span>같은 시간축 · 상대 크기</span></p>
+            <svg id="airGraph" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 60 H600" stroke="#EAEAEA" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path id="airCurveP" fill="none" stroke="#8C8C8C" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"/>
+              <path id="airCurveA" fill="none" stroke="#0B5FFF" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+              <line id="airHead" x1="0" y1="0" x2="0" y2="120" stroke="#111111" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <p class="air-graph-k"><span class="is-p">일반 서스펜션</span><span class="is-a">AIRMATIC</span></p>
+          </div>
+        </div>
+        <p class="air-mode-t" id="airModeT"></p>
+        <div class="ras-controls air-controls">
+          <div class="gt-pills" role="group" aria-label="AIRMATIC 주행 모드"><button type="button" data-air-mode="comfort" aria-pressed="true">컴포트</button><button type="button" data-air-mode="sport" aria-pressed="false">스포츠</button><button type="button" data-air-mode="sportp" aria-pressed="false">스포츠+ <small>개념</small></button></div>
+          <div class="gt-pills air-view-pc" role="group" aria-label="보기 방식"><button type="button" data-air-view="both" aria-pressed="true">동시 비교</button><button type="button" data-air-view="solo" aria-pressed="false">AIRMATIC 단독</button></div>
+          <div class="gt-pills" role="group" aria-label="재생 속도"><button type="button" data-air-rate="0.5" aria-pressed="false">0.5배속</button><button type="button" data-air-rate="1" aria-pressed="true">1배속</button></div>
+          <div class="gt-pills air-keys" role="group" aria-label="핵심 장면 정지"><button type="button" data-air-key="front">앞바퀴 충격</button><button type="button" data-air-key="rear">뒷바퀴 충격</button><button type="button" data-air-key="settle">잔진동 감쇠</button></div>
+          <button id="airPlay" type="button" class="gt-action ras-play">재생</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <!-- ============================================================
      6 · 안전 (통합 안전 4단계 — 기존 유지)
@@ -2078,24 +2656,12 @@ h2 { text-wrap: balance; } .section-heading p { text-wrap: pretty; }
 <!-- ============================================================
      7 · 제원 + 경쟁 차량 비교
      ============================================================ -->
-<section class="section section-alt" id="glc300Specs" aria-labelledby="specTitle">
+<section class="section section-alt" id="glc300Specs" aria-labelledby="glcComparisonTitle">
   <div class="container">
-    <div class="section-heading reveal">
-      <span class="label-en">Specifications</span>
-      <h2 id="specTitle">GLC 300 4MATIC<br>제원</h2>
-      <p>두 트림에 공통으로 적용되는 제원과 트림별로 다른 항목을 한 번에 확인하세요.</p>
-    </div>
-    <div class="trim-seg"><div class="tc-seg" role="group" aria-label="제원 트림 선택">
-        <button type="button" class="tc-seg-btn" data-trim-set="avantgarde" aria-pressed="true">AVANTGARDE</button>
-        <button type="button" class="tc-seg-btn" data-trim-set="amgline" aria-pressed="false">AMG Line</button>
-      </div></div>
-    <div class="spec-groups" id="specGroups" aria-live="polite"></div>
-    <p class="spec-note" id="specNote"></p>
-
     <div class="cmp-block" id="compare">
       <div class="cmp-head">
-        <h3>경쟁 차량과 비교</h3>
-        <p>핵심 항목을 먼저 보여드립니다. 카테고리를 누르면 상세 비교를 볼 수 있으며, 경쟁 차량 수치는 확인이 필요한 참고 자료입니다.</p>
+        <h3 id="glcComparisonTitle">경쟁 차량과 비교</h3>
+        <p>GLC 300은 2027년형, X3와 Q5는 2026년 국내 판매 모델 기준입니다. 카테고리를 눌러 제원과 기본·선택 사양을 비교해 보세요.</p>
       </div>
       <div class="mbvc-container" id="mbvcGlc" data-mbvc-manual></div>
       <div class="cmp-ratings" id="compareRatings" hidden></div>
@@ -2212,7 +2778,7 @@ initImageModal();
     engine:       { label: '엔진', type: 'text', applies: ENG },
     displacement: { label: '배기량', type: 'num', unit: 'cc', applies: ENG },
     power:        { label: '최고 출력', labelBy: { phev: '엔진 최고 출력' }, type: 'num', unit: 'ps', applies: ENG },
-    torque:       { label: '최대 토크', labelBy: { phev: '엔진 최대 토크' }, type: 'num', unit: 'kg·m', dec: 1, applies: ENG },
+    torque:       { label: '최대 토크', labelBy: { phev: '엔진 최대 토크' }, type: 'num', unit: 'kg·m', applies: ENG },
     systemPower:  { label: '시스템 출력', type: 'num', unit: 'ps', applies: ELEC },
     systemTorque: { label: '시스템 토크', type: 'num', unit: 'kg·m', dec: 1, applies: ELEC },
     motorPower:   { label: '전기모터 출력', type: 'num', unit: 'ps', applies: ELEC },
@@ -2256,7 +2822,7 @@ initImageModal();
     hud:              { label: '헤드업 디스플레이', type: 'equip' },
     sound:            { label: '오디오 시스템', type: 'equip' },
     arNavi:           { label: '증강현실 내비게이션', type: 'equip' },
-    wirelessCarplay:  { label: '무선 CarPlay · Android Auto', type: 'equip' },
+    wirelessCarplay:  { label: 'CarPlay · Android Auto', type: 'equip' },
     wirelessCharging: { label: '무선 충전', type: 'equip' },
     interiorAssistant:{ label: 'MBUX 인테리어 어시스턴트', type: 'equip' },
     keylessGo:        { label: '키리스 고', type: 'equip' },
@@ -2267,16 +2833,16 @@ initImageModal();
     exteriorPackage:  { label: '외장 패키지', type: 'equip' },
     seatType:         { label: '시트 타입', type: 'equip' },
     steering:         { label: '스티어링 휠', type: 'equip' },
-    passengerScreen:  { label: 'MBUX 슈퍼스크린', type: 'equip' },
+    passengerScreen:  { label: '조수석 디스플레이', type: 'equip' },
     engineSound:      { label: '스포티 엔진 사운드', type: 'equip' },
     /* 안전 */
-    drivingAssistPlus:{ label: '드라이빙 어시스턴스 패키지 플러스', type: 'equip' },
+    drivingAssistPlus:{ label: '주행 보조 패키지', type: 'equip' },
     semiAuto:         { label: '반자율 주행 보조', type: 'equip' },
-    distronic:        { label: '차간거리 유지 (DISTRONIC)', type: 'equip' },
+    distronic:        { label: '차간거리 유지 어시스트', type: 'equip' },
     laneKeeping:      { label: '차선 유지 보조', type: 'equip' },
     blindSpot:        { label: '사각지대 어시스트', type: 'equip' },
     activeBrake:      { label: '긴급 제동 보조 (Active Brake Assist)', type: 'equip' },
-    preSafe:          { label: 'PRE-SAFE®', type: 'equip' },
+    preSafe:          { label: '사전 위험 대응 시스템', type: 'equip' },
     activeBonnet:     { label: '액티브 보닛', type: 'equip' },
     airbags:          { label: '에어백', type: 'equip' }
   };
@@ -2288,7 +2854,7 @@ initImageModal();
     { key: 'safety',      label: '안전사양', fields: ['drivingAssistPlus', 'semiAuto', 'distronic', 'laneKeeping', 'blindSpot', 'activeBrake', 'preSafe', 'activeBonnet', 'airbags'] }
   ];
   var FUEL = { gasoline: '가솔린', diesel: '디젤', phev: '플러그인 하이브리드 (가솔린)', ev: '전기' };
-  var STATUS = { std: '기본', opt: '선택', na: '미적용', check: '확인 필요' };
+  var STATUS = { std: '기본', opt: '선택', na: '미적용', check: '—' };
   var BRAND_ORDER = ['Mercedes-Benz', 'BMW', 'Audi'];
 
   /* ------------------------------------------------------------------ *
@@ -2325,9 +2891,10 @@ initImageModal();
     return { state: 'ok', value: o.value, note: o.note || '', verify: !!o.verify };
   }
   function numFmt(n, dec) {
-    var s = Number(n).toFixed(dec || 0);
-    var p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return p.join('.');
+    var x = Number(n);
+    return x.toLocaleString('ko-KR', dec == null
+      ? { maximumFractionDigits: 2 }
+      : { minimumFractionDigits: dec, maximumFractionDigits: dec });
   }
   function priceFmt(won) {
     var man = Math.round(won / 10000), eok = Math.floor(man / 10000), rest = man % 10000;
@@ -2337,9 +2904,9 @@ initImageModal();
   function display(key, r) {
     var f = FIELDS[key];
     if (r.state === 'na') return '해당 없음';
-    if (r.state === 'none') return '정보 없음';
+    if (r.state === 'none') return '—';
     if (f.type === 'equip') {
-      if (r.status === 'check') return '확인 필요';
+      if (r.status === 'check') return '—';
       if (r.text) return r.status === 'std' ? r.text : r.text + ' (' + (STATUS[r.status] || '') + ')';
       return STATUS[r.status] || r.status;
     }
@@ -2409,7 +2976,7 @@ initImageModal();
     var prev = this.baseId, k = vid(v);
     if (k === prev) return true;
     this.base = v; this.baseId = k;
-    if (this.requested.length && this.requested.indexOf(k) < 0) this.requested.unshift(k);
+    /* 기준 차량은 비교 후보에 넣지 않음. 경쟁차 목록은 X3·Q5로 유지. */
     this.candidates = this.candidateList();
     if (this.cmpId === k || this.candidates.indexOf(this.cmpId) < 0) {
       this.cmpId = this.candidates.indexOf(prev) > -1 ? prev : this.candidates[0];
@@ -2446,7 +3013,11 @@ initImageModal();
     this.root.innerHTML =
       '<div class="mbvc-cars">' +
         '<div class="mbvc-car mbvc-car--base"><span class="mbvc-car-tag">기준 차량</span>' +
-          '<p class="mbvc-car-brand"></p><p class="mbvc-car-name"></p><p class="mbvc-car-trim"></p><p class="mbvc-car-price"></p></div>' +
+          '<p class="mbvc-car-brand"></p><p class="mbvc-car-name"></p>' +
+          '<div class="mbvc-base-switch" role="group" aria-label="GLC 300 트림 선택">' +
+            '<button type="button" class="mbvc-base-trim" data-trim-set="avantgarde" aria-pressed="true">AVANTGARDE</button>' +
+            '<button type="button" class="mbvc-base-trim" data-trim-set="amgline" aria-pressed="false">AMG Line</button>' +
+          '</div><p class="mbvc-car-trim"></p><p class="mbvc-car-price"></p></div>' +
         '<div class="mbvc-car mbvc-car--cmp"><span class="mbvc-car-tag">비교 차량</span>' +
           '<button type="button" class="mbvc-pick" id="' + id + '-pick" aria-haspopup="listbox" aria-expanded="false" aria-controls="' + id + '-list">' +
             '<span class="mbvc-pick-text"><span class="mbvc-car-brand"></span><span class="mbvc-car-name"></span><span class="mbvc-car-trim"></span></span>' +
@@ -2518,8 +3089,8 @@ initImageModal();
       self.el.dBody.hidden = !open;
     });
     var meta = window.MBVC_DATA_META || {};
-    this.el.note.innerHTML = '가격·제원 기준: ' + esc(meta.basis || '메르세데스-벤츠 각 모델 페이지') + (meta.checked ? ' (확인일 ' + esc(meta.checked) + ')' : '') +
-      '이며, 실제 판매 조건·옵션에 따라 달라질 수 있습니다. <b>확인 필요</b>는 자료 간 수치가 다르거나 공식 확인 전인 항목으로 차이 비교에서 제외됩니다. ' +
+    this.el.note.innerHTML = '가격·제원 출처: ' + esc(meta.basis || '메르세데스-벤츠 각 모델 페이지') + (meta.checked ? ' · 자료 기준일 ' + esc(meta.checked) : '') +
+      '을 사용했습니다. 실제 판매 가격은 시점과 선택 사양에 따라 달라질 수 있습니다. ' +
       '수치 차이는 우열이 아닌 차이만 표시합니다. 단위 기준: 출력 ps(1 kW = 1.36 ps) · 토크 kg·m(1 kg·m = 9.81 Nm) · 연비 km/L · 전비 km/kWh.';
   };
 
@@ -2606,6 +3177,13 @@ initImageModal();
   P.renderVehicles = function () {
     var S = store(), c = S[this.cmpId];
     this.fillCar(this.el.base, this.base);
+    /* 버튼 상태도 같은 GLCTrim 상태를 사용. 처음 그리는 순간에도 정확히 반영. */
+    var activeTrim = this.baseId === 'glc300-4matic-amg-line' ? 'amgline' : 'avantgarde';
+    [].forEach.call(this.el.base.querySelectorAll('.mbvc-base-trim'), function (b) {
+      var selected = b.getAttribute('data-trim-set') === activeTrim;
+      b.setAttribute('aria-pressed', String(selected));
+      b.classList.toggle('is-on', selected);
+    });
     if (c) this.fillCar(this.el.cmp, c);
     var self = this;
     this.opts.forEach(function (o) { o.setAttribute('aria-selected', String(o.getAttribute('data-id') === self.cmpId)); });
@@ -2623,17 +3201,19 @@ initImageModal();
     }).filter(function (r) {
       if (r.a.state === 'na' && r.b.state === 'na') return false;                 // 두 차량 모두 해당 없음
       if (r.a.state !== 'ok' && r.b.state !== 'ok' && !r.a.verify && !r.b.verify) return false; // 두 차량 모두 데이터 없음
+      if (!known(r.a) && !known(r.b) && r.key !== 'price') return false; // 확인된 비교값이 없는 행 제외
       return true;
     });
   };
   P.cell = function (key, r, d) {
+    if ((r.verify || r.status === 'check') && key !== 'price') return '<span class="mbvc-v is-muted">—</span>';
     var cls = 'mbvc-v', txt = display(key, r), html = '';
     if (r.state !== 'ok' || r.status === 'check') cls += ' is-muted';
     if (FIELDS[key].type === 'equip' && r.status === 'na') cls += ' is-na';
     html = '<span class="' + cls + '">' + esc(txt) + '</span>';
-    if (r.verify && !(FIELDS[key].type === 'equip' && r.status === 'check')) html += '<span class="mbvc-flag">확인 필요</span>';
+
     if (d) html += '<span class="mbvc-delta" title="기준 차량 대비 차이">' + esc(d) + '</span>';
-    if (r.note) html += '<span class="mbvc-sub">' + esc(r.note) + '</span>';
+    if (r.note && !r.verify && r.status !== 'check') html += '<span class="mbvc-sub">' + esc(r.note) + '</span>';
     return html;
   };
   P.renderTable = function () {
@@ -2666,11 +3246,10 @@ initImageModal();
   P.renderDetail = function () {
     var v = this.base, html = '';
     CATEGORIES.forEach(function (c) {
-      var items = c.fields.map(function (k) { return { k: k, r: raw(v, k) }; }).filter(function (x) { return x.r.state === 'ok' || x.r.verify; });
+      var items = c.fields.map(function (k) { return { k: k, r: raw(v, k) }; }).filter(function (x) { return known(x.r); });
       if (!items.length) return;
       html += '<div class="mbvc-dgroup"><p class="mbvc-dtitle">' + esc(c.label) + '</p><dl>' + items.map(function (x) {
         return '<div class="mbvc-drow"><dt>' + esc(label(x.k, v)) + '</dt><dd>' + esc(display(x.k, x.r)) +
-          (x.r.verify && x.r.status !== 'check' ? ' <span class="mbvc-flag">확인 필요</span>' : '') +
           (x.r.note ? '<span class="mbvc-sub">' + esc(x.r.note) + '</span>' : '') + '</dd></div>';
       }).join('') + '</dl></div>';
     });
@@ -2766,7 +3345,7 @@ initImageModal();
     b.setAttribute('aria-pressed', String(on));
     b.classList.toggle('is-on', on);
   }));
-  /* 히어로 가격 카드(#avantgarde / #amgline) · 주소 해시 · 뒤로/앞으로 */
+  /* 주소 해시(#avantgarde / #amgline) · 뒤로/앞으로 */
   const fromHash = () => { const k = location.hash.slice(1); if (TRIMS.indexOf(k) >= 0) GLCTrim.set(k); };
   addEventListener('hashchange', fromHash);
   addEventListener('popstate', fromHash);
@@ -2779,11 +3358,23 @@ initImageModal();
   /* 가격 (히어로 포함, GLC_TRIM_DATA 한 곳에서 관리) */
   $$('[data-trim-price]').forEach(el => { const t = D.trims[el.getAttribute('data-trim-price')]; if (t && t.price) el.textContent = won(t.price); });
 
-  /* 헤더 트림 스위치: 히어로를 지나면 표시 */
-  const header = $('#siteHeader'), hero = $('#hero');
-  if (header && hero) {
-    let tick = false;
-    const upd = () => { tick = false; header.classList.toggle('show-trim', hero.getBoundingClientRect().bottom < innerHeight * 0.35); };
+  /* 헤더 섹션 바로가기: 현재 보고 있는 섹션 표시 (이동은 기본 앵커로 바로 이동) */
+  const hdrNav = $('#hdrNav');
+  if (hdrNav) {
+    const links = $$('a[href^="#"]', hdrNav);
+    const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+    let tick = false, curIdx = -2;
+    const upd = () => {
+      tick = false;
+      const line = 61 + innerHeight * 0.25;   // 헤더 아래 1/4 지점을 지난 마지막 섹션
+      let idx = -1;
+      secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= line) idx = i; });
+      if (idx === curIdx) return;
+      curIdx = idx;
+      links.forEach((a, i) => { if (i === idx) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      const a = links[idx];   // 모바일: 선택된 메뉴가 보이도록 메뉴 줄을 바로 맞춤
+      if (a && hdrNav.scrollWidth > hdrNav.clientWidth) hdrNav.scrollLeft = Math.max(0, a.offsetLeft - (hdrNav.clientWidth - a.offsetWidth) / 2);
+    };
     addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
     addEventListener('resize', upd); upd();
   }
@@ -2791,12 +3382,15 @@ initImageModal();
   /* ---------------- 2. 트림 이미지 스테이지 (외관·실내 공통) ----------------
      두 트림 이미지를 겹쳐 두고 클래스만 전환(DOM 재생성 없음). 선택한 이미지가 준비될 때까지 이전 이미지를 유지하고,
      빠르게 여러 번 눌러도 마지막 선택만 표시합니다. 실패하면 대체 화면 + 다시 시도. */
-  function trimStage(stage, urls, altFn) {
+  /* opts(선택): { srcset: { 트림: "… 960w, … 1600w" }, sizes, w, h } → 화면 폭에 맞는 해상도 자동 선택 */
+  function trimStage(stage, urls, altFn, opts) {
+    opts = opts || {};
     const imgs = {}, state = { cur: null, want: null, started: false };
     TRIMS.forEach(k => {
       const im = document.createElement('img');
       im.className = 'stage-img'; im.decoding = 'async'; im.alt = altFn(k);
-      im.width = 1280; im.height = 960;
+      im.width = opts.w || 1280; im.height = opts.h || 960;
+      if (opts.sizes) im.sizes = opts.sizes;
       im.addEventListener('load', () => { im.dataset.ok = '1'; sync(); });
       im.addEventListener('error', () => { im.dataset.err = '1'; sync(); });
       stage.insertBefore(im, stage.firstChild);
@@ -2808,7 +3402,10 @@ initImageModal();
       if (!url) { im.dataset.err = '1'; return; }
       if (im.getAttribute('src') && !retry) return;
       delete im.dataset.err;
-      im.src = retry ? url + (url.indexOf('?') >= 0 ? '&' : '?') + 'retry=' + Date.now() : url;
+      const bust = u => retry ? u + (u.indexOf('?') >= 0 ? '&' : '?') + 'retry=' + Date.now() : u;
+      const set = opts.srcset && opts.srcset[k];
+      if (set) im.srcset = set.split(',').map(s => { const p = s.trim().split(/\s+/); return bust(p[0]) + (p[1] ? ' ' + p[1] : ''); }).join(', ');
+      im.src = bust(url);
     }
     function sync() {
       const w = imgs[state.want];
@@ -2825,7 +3422,7 @@ initImageModal();
       if (o && !imgs[o].getAttribute('src')) idle(() => load(o));
     }
     function show(k) { state.want = k; if (state.started) { load(k); sync(); } }
-    function start() { if (state.started) return; state.started = true; load(state.want); sync(); }
+    function start() { if (state.started) return; state.started = true; if (imgs[state.want]) imgs[state.want].fetchPriority = 'high'; load(state.want); sync(); }
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '700px 0px' });
       io.observe(stage);
@@ -2846,7 +3443,10 @@ initImageModal();
   const extStage = $('#extStage');
   if (extStage) {
     const st = trimStage(extStage, { avantgarde: D.trims.avantgarde.exterior, amgline: D.trims.amgline.exterior },
-      k => `GLC 300 4MATIC ${D.trims[k].name} 외관`);
+      k => `GLC 300 4MATIC ${D.trims[k].name} 외관`,
+      { w: 1600, h: 900, sizes: '(max-width: 1023px) calc(100vw - 32px), 980px',
+        srcset: { avantgarde: `${IMAGES.avantgardeExteriorMobile} 960w, ${IMAGES.avantgardeExterior} 1600w`,
+                  amgline:    `${IMAGES.amgExteriorMobile} 960w, ${IMAGES.amgExterior} 1600w` } });
     /* 외관은 시각적 차이만: 트림 이름 · 한 줄 성격 · 디자인 특징 (구체적인 옵션 명칭은 상세 옵션에서) */
     $('#extCards').innerHTML = TRIMS.map(k => {
       const t = D.trims[k];
@@ -2878,7 +3478,7 @@ initImageModal();
     if (!list.length) return;
 
     /* 두 장을 겹쳐 두고 새 이미지가 완전히 준비된 뒤 교차 전환 → 깜빡임·레이아웃 이동 없음 */
-    const SIZES = '(max-width: 1023px) 92vw, 760px';
+    const SIZES = '(max-width: 1099px) calc(100vw - 32px), min(1060px, calc(100vw - 412px))';   // 실제 표시 폭에 맞춰 960/1600 선택
     const mk = () => { const im = document.createElement('img'); im.className = 'col-img'; im.decoding = 'async'; im.width = 1600; im.height = 900; im.sizes = SIZES; im.draggable = false; stage.insertBefore(im, stage.firstChild); return im; };
     const layers = [mk(), mk()];
     let front = 0;
@@ -3000,59 +3600,141 @@ initImageModal();
     });
   }
 
-  /* ---------------- 6. 테크놀로지 ---------------- */
-  const techGrid = $('#techGrid');
-  if (techGrid) {
-    techGrid.innerHTML = (typeof GLC_TECH !== 'undefined' ? GLC_TECH : []).map(t => `
-      <article class="tech-item${t.image ? ' has-img' : ''}">
-        ${t.image ? `<div class="tech-media"><img src="${esc(t.image)}" alt="${esc(t.imageAlt || t.name)}" loading="lazy" decoding="async" width="1280" height="960"></div>`
-                  : `<div class="tech-plate" aria-hidden="true"><span>${esc(t.key || '')}</span></div>`}
-        <div class="tech-body">
-          <h3 class="tech-name">${esc(t.name)}</h3>
-          <p class="tech-short">${esc(t.short)}</p>
-          <button type="button" class="tech-more" aria-expanded="false" aria-controls="tech-${t.id}">자세히 보기<i class="tc-arrow" aria-hidden="true"></i></button>
-          <div class="tc-collapse" id="tech-${t.id}"><div class="tc-collapse-in"><div class="tech-detail">${(t.detail || []).map(p => `<p>${esc(p)}</p>`).join('')}</div></div></div>
-        </div>
-      </article>`).join('');
-    techGrid.addEventListener('click', e => {
-      const b = e.target.closest('.tech-more');
-      if (b) { const it = b.closest('.tech-item'), open = !it.classList.contains('is-open'); it.classList.toggle('is-open', open); b.setAttribute('aria-expanded', String(open)); return; }
-      const im = e.target.closest('.tech-media img'); if (im) zoom(im);
-    });
-    techGrid.addEventListener('error', e => { if (e.target.tagName === 'IMG') { const m = e.target.closest('.tech-media'); if (m) m.classList.add('is-failed'); } }, true);
-  }
+  /* ---------------- 5-1. 시트 컬러 (GLC_SEAT_COLORS · GLCTrim 연동 · 교차 전환) ---------------- */
+  (function seatColors() {
+    const stage = $('#seatStage'), sw = $('#seatSwatches');
+    if (!stage || !sw || typeof GLC_SEAT_COLORS === 'undefined') return;
+    const ALL = GLC_SEAT_COLORS.filter(c => c && c.trim && c.id && c.name);
+    const forTrim = k => ALL.filter(c => c.trim === k);
+    const note = $('#seatNote');
+    const SIZES = '(max-width: 1099px) calc(100vw - 32px), min(1040px, calc(100vw - 432px))';
+    const won = n => (typeof n === 'number' && n > 0) ? '+' + n.toLocaleString('ko-KR') + '원' : '추가금 없음';
+    const short = c => String(c.name).split(',').pop().trim();          // "시에나 브라운/블랙"
+    const has = c => !!(c.image || c.mobileImage);
+    /* 원형 스와치 배경: 단색 / 2톤(대각선으로 반씩) + 가죽 같은 은은한 빛 */
+    const swBg = c => {
+      const gloss = 'radial-gradient(circle at 32% 28%, rgba(255,255,255,.28), rgba(255,255,255,0) 52%)';
+      return Array.isArray(c.swatch)
+        ? `${gloss}, linear-gradient(135deg, ${c.swatch[0]} 0 50%, ${c.swatch[1]} 50% 100%)`
+        : `${gloss}, ${c.swatch || '#ccc'}`;
+    };
 
-  /* ---------------- 7. 제원 ---------------- */
-  const specWrap = $('#specGroups');
-  if (specWrap) {
-    /* GLC_TRIM_DATA.specs 를 세 그룹으로 표시. 트림별 값(byTrim)은 선택 트림 기준, ref 값은 '확인 필요' + 참고 수치 */
-    const S = l => D.specs.find(s => s.label === l);
-    const GROUPS = [
-      { t: '파워트레인', items: ['엔진', '배기량', '최고 출력', '최대 토크', '변속기', '구동방식'] },
-      { t: '성능 및 효율', items: ['0→100km/h', '최고속도', '복합연비', '도심연비', '고속도로연비'] },
-      { t: '차체 및 휠', items: ['전장', '전폭', '전고', '휠', '타이어'] }
-    ];
-    const LABEL = { '0→100km/h': '0→100 km/h' };
-    const ref = (D.trims.avantgarde || {}).name || '';
-    GLCTrim.on(k => {
-      specWrap.innerHTML = GROUPS.map(g => `<div class="spec-group"><h3>${esc(g.t)}</h3><dl>${g.items.map(l => {
-        const s = S(l); if (!s) return '';
-        const r = D.specFor(s, k), trimSpecific = !!(s.byTrim && s.byTrim[k] && 'value' in s.byTrim[k]);
-        let v, cls = '';
-        if (r.ref || r.value == null) {          /* 확인되지 않은 트림 값은 확정 표시하지 않음 */
-          cls = ' class="is-check"';
-          v = '확인 필요' + (r.ref && r.value ? `<span class="spec-sub">참고: ${esc(ref)} ${esc(r.value)}</span>` : (r.note ? `<span class="spec-sub">${esc(r.note)}</span>` : ''));
-        } else {
-          v = esc(r.value) + (trimSpecific ? ` <span class="spec-trim">${esc(D.trims[k].name)}</span>` : '');
-          if (r.verify) v += ` <span class="tc-badge is-warn">확인 필요</span>${r.note ? `<span class="spec-sub">${esc(r.note)}</span>` : ''}`;
-        }
-        return `<div class="spec-row${s.accent ? ' is-key' : ''}"><dt>${esc(LABEL[l] || l)}</dt><dd${cls}>${v}</dd></div>`;
-      }).join('')}</dl></div>`).join('');
-      $('#specNote').textContent = k === 'amgline'
-        ? '※ AMG Line은 별도 제원표가 없어 파워트레인·차체 수치는 AVANTGARDE 기준으로 표시합니다. 20인치 휠 적용에 따른 연비·타이어 규격은 확인 후 안내해 드립니다.'
-        : '※ 휠 크기 등 트림 사양에 따라 연비·타이어 규격은 달라질 수 있으며, 정확한 제원은 상담 시 안내해 드립니다.';
+    /* 사진 두 장을 겹쳐 두고, 새 사진이 완전히 준비된 뒤 크로스페이드 → 깜빡임·레이아웃 이동 없음 */
+    const mk = () => { const im = document.createElement('img'); im.className = 'seat-img'; im.decoding = 'async'; im.width = 1600; im.height = 1000; im.draggable = false; stage.insertBefore(im, stage.firstChild); return im; };
+    const layers = [mk(), mk()];
+    let front = 0, token = 0, curTrim = null, curId = 'black', started = false;
+
+    /* 표시할 사진: 컬러별 사진 → 없으면 트림 기본 실내 사진
+       휴대폰(767px 이하)은 960px 파일만 받음 (고해상도 폰도 1600px을 받지 않아 데이터·메모리 절약) */
+    const pick = c => {
+      if (!has(c)) return { key: 'base:' + c.trim, src: D.trims[c.trim].interior, srcset: '' };
+      if (mqMobile.matches && c.mobileImage) return { key: c.trim + ':' + c.id + ':m', src: c.mobileImage, srcset: '' };
+      return { key: c.trim + ':' + c.id, src: c.image || c.mobileImage, srcset: [c.mobileImage && c.mobileImage + ' 960w', c.image && c.image + ' 1600w'].filter(Boolean).join(', ') };
+    };
+    const base = k => ({ key: 'base:' + k, src: D.trims[k].interior, srcset: '' });
+    const cache = new Map();
+    function preload(p) {
+      if (!p.src) return Promise.reject();
+      if (cache.has(p.key)) return cache.get(p.key);
+      const im = new Image(); im.decoding = 'async';
+      if (p.srcset) { im.sizes = SIZES; im.srcset = p.srcset; }
+      im.src = p.src;
+      const pr = (im.decode ? im.decode() : new Promise((res, rej) => { im.onload = res; im.onerror = rej; })).then(() => p);
+      pr.catch(() => cache.delete(p.key)); cache.set(p.key, pr); return pr;
+    }
+    function paint(p, alt, my) {
+      if (my !== token) return;
+      const next = layers[1 - front], prev = layers[front];
+      if (next.dataset.key !== p.key) {
+        if (p.srcset) { next.sizes = SIZES; next.srcset = p.srcset; } else { next.removeAttribute('srcset'); next.removeAttribute('sizes'); }
+        next.src = p.src; next.dataset.key = p.key;
+      }
+      next.alt = alt;
+      if (prev.dataset.key === p.key && prev.classList.contains('is-on')) { stage.classList.remove('is-loading'); prev.alt = alt; return; }
+      (next.decode ? next.decode() : Promise.resolve()).then(() => {
+        if (my !== token) return;
+        stage.classList.remove('is-loading', 'is-failed');
+        next.classList.add('is-on'); prev.classList.remove('is-on'); front = 1 - front;
+      }, () => fail(my));
+    }
+    function fail(my) { if (my === token) { stage.classList.remove('is-loading'); stage.classList.add('is-failed'); } }
+    function setNote(text) { note.hidden = !text; note.textContent = text || ''; }
+
+    function show(id) {
+      const list = forTrim(curTrim);
+      const c = list.find(x => x.id === id) || list.find(x => x.id === 'black') || list[0];
+      if (!c) return;
+      curId = c.id; const my = ++token;
+      $$('.seat-sw', sw).forEach(b => { const on = b.dataset.seat === c.id; b.setAttribute('aria-checked', String(on)); b.tabIndex = on ? 0 : -1; });
+      $('#seatName').textContent = c.name;
+      const pr = $('#seatPrice'); pr.textContent = won(c.price); pr.classList.toggle('is-free', !(c.price > 0));
+      const alt = `GLC 300 4MATIC ${D.trims[c.trim].name} 실내`;
+      /* 컬러별 사진이 없으면 다른 컬러 사진을 대신 보여주지 않고, 기본 실내 사진임을 알림 */
+      setNote(has(c) ? '' : '컬러별 실내 사진 준비 중 · 기본 실내 사진');
+      if (!started) return;
+      const want = pick(c);
+      const t = setTimeout(() => { if (my === token) stage.classList.add('is-loading'); }, 140);
+      preload(want).then(p => { clearTimeout(t); paint(p, has(c) ? `${alt} — ${c.name}` : alt, my); }, () => {
+        clearTimeout(t);
+        if (my !== token) return;
+        if (!has(c)) return fail(my);
+        /* 컬러 사진을 못 불러오면 → 기본 실내 사진 + 안내 */
+        setNote('사진을 불러오지 못해 기본 실내 사진을 표시합니다');
+        preload(base(c.trim)).then(p => paint(p, alt, my), () => fail(my));
+      });
+    }
+    function render(k) {
+      curTrim = k;
+      const list = forTrim(k);
+      $('#seatTrimName').textContent = 'GLC 300 4MATIC ' + D.trims[k].name;
+      sw.innerHTML = list.map(c => `<button type="button" class="seat-sw" role="radio" data-seat="${esc(c.id)}" style="--sw-bg:${esc(swBg(c))}" aria-checked="false" tabindex="-1" aria-label="${esc(c.name)} · ${esc(won(c.price))}" title="${esc(short(c))}"><span class="seat-dot" aria-hidden="true"></span></button>`).join('');
+      /* 같은 컬러가 새 트림에도 있으면 유지, 없으면 블랙 */
+      show(list.some(c => c.id === curId) ? curId : 'black');
+      warmTrim(k);
+    }
+    /* 해당 트림의 다른 컬러 사진은 유휴 시간에 한 장씩 미리 받아 두기 (바로 전환) */
+    function warmTrim(k) {
+      if (!started || saveData()) return;
+      const rest = forTrim(k).filter(c => has(c) && c.id !== curId).map(pick);
+      const next = () => { const p = rest.shift(); if (p) preload(p).catch(() => {}).finally(() => idle(next)); };
+      idle(next);
+    }
+
+    sw.addEventListener('click', e => { const b = e.target.closest('.seat-sw'); if (b && b.dataset.seat !== curId) show(b.dataset.seat); });
+    sw.addEventListener('keydown', e => {
+      const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+      if (!(e.key in keys)) return;
+      e.preventDefault();
+      const bs = $$('.seat-sw', sw), i = bs.findIndex(b => b.dataset.seat === curId), n = bs[(i + keys[e.key] + bs.length) % bs.length];
+      show(n.dataset.seat); n.focus();
     });
-  }
+    /* 손가락이 닿거나 마우스를 올리면 그 컬러 사진을 미리 받기 */
+    const warm = e => { const b = e.target.closest && e.target.closest('.seat-sw'); if (!b) return; const c = forTrim(curTrim).find(x => x.id === b.dataset.seat); if (c && has(c)) preload(pick(c)).catch(() => {}); };
+    sw.addEventListener('pointerdown', warm, { passive: true });
+    sw.addEventListener('pointerover', warm, { passive: true });
+    $('#seatRetry').addEventListener('click', e => { e.stopPropagation(); cache.clear(); layers.forEach(l => l.removeAttribute('data-key')); show(curId); });
+    const zoomCur = () => { const im = layers[front]; if (im.classList.contains('is-on') && im.complete && im.naturalWidth) zoom(im); };
+    stage.addEventListener('click', e => { if (!e.target.closest('.stage-fail')) zoomCur(); });
+    stage.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target === stage) { e.preventDefault(); zoomCur(); } });
+
+    GLCTrim.on(k => render(k));
+
+    /* 섹션이 가까워지면 현재 사진부터 → 같은 트림의 나머지 컬러는 유휴 시간에 (다른 트림은 바꿀 때 받기) */
+    const begin = () => {
+      if (started) return; started = true; layers[0].fetchPriority = 'high'; show(curId);
+      warmTrim(curTrim);
+    };
+    /* 화면이 PC↔모바일로 바뀌면 그 크기에 맞는 파일로 다시 표시 */
+    mqMobile.addEventListener && mqMobile.addEventListener('change', () => { if (started) show(curId); });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); begin(); } }, { rootMargin: '700px 0px' });
+      io.observe(stage);
+    } else begin();
+  })();
+
+  /* ---------------- 6. 테크놀로지: gtTechInit 모듈에서 렌더링 ---------------- */
+
+  /* 제원은 경쟁 차량 비교 모듈 한 곳에 표시하며, 별도 제원 카드 중복은 제거했습니다. */
 
   /* ---------------- 8. 경쟁 차량 비교 (공통 모듈) ---------------- */
   const VEH = { avantgarde: 'glc300-4matic-avantgarde', amgline: 'glc300-4matic-amg-line' };
@@ -3060,8 +3742,8 @@ initImageModal();
     MercedesCompare.init({
       container: '#mbvcGlc', baseModel: VEH[GLCTrim.get()], defaultCompare: 'bmw-x3-30i-xdrive',
       keyFields: ['price', 'power', 'torque', 'fuelCombined', 'accel'], keyLabel: '핵심 비교',
-      hideDetail: true,   /* GLC 전체 제원은 바로 위 상세 제원표에서 확인 → 중복 표시 안 함 */
-      compareModels: ['glc300-4matic-avantgarde', 'glc300-4matic-amg-line', 'bmw-x3-30i-xdrive', 'audi-q5-45-tfsi']
+      hideDetail: true,   /* 경쟁차 비교 표 한 곳에서 제원을 확인하므로 중복 상세 보기는 숨김 */
+      compareModels: ['bmw-x3-30i-xdrive', 'audi-q5-45-tfsi']
     });
     GLCTrim.on(k => { const inst = MercedesCompare.instance('#mbvcGlc'); if (inst) inst.setBase(VEH[k]); });
     const R = window.GLC_COMPARE_RATINGS || [], rw = $('#compareRatings');
@@ -3071,9 +3753,9 @@ initImageModal();
     }
   }
 
-  /* ---------------- 9. 상세 옵션 (차이점 | 공통 사양 | 확인 필요) ----------------
+  /* ---------------- 9. 상세 옵션 (차이점 | 공통 사양) ----------------
      - 탭은 comparisonStatus 기준, 개수는 GLC_TRIM_DATA.options 에서 자동 계산
-     - 차이점·확인 필요: 카테고리 필터 + 옵션 카드(설명 아코디언)
+     - 차이점: 카테고리 필터 + 옵션 카드(설명 아코디언)
      - 공통 사양: 카테고리별 아코디언(기본 모두 접힘) — 한 번에 한 종류의 목록만 표시 */
   (function options() {
     const root = $('#tc');
@@ -3082,12 +3764,10 @@ initImageModal();
       { id: 'different',  label: '차이점',
         lead: '두 트림의 사양이 다른 항목입니다. 항목을 누르면 자세한 설명을 볼 수 있어요.' },
       { id: 'same',       label: '공통 사양',
-        lead: '두 트림에 똑같이 적용되는 사양입니다. 카테고리를 눌러 확인하세요.' },
-      { id: 'unverified', label: '확인 필요',
-        lead: '자료에 한쪽 트림 표기가 없어 트림별 적용 여부를 확인하고 있는 사양입니다. 미적용을 뜻하지 않으며, 정확한 적용 여부는 상담 시 안내해 드립니다.' }
+        lead: '두 트림에 똑같이 적용되는 사양입니다. 카테고리를 눌러 확인하세요.' }
     ];
     const st = { tab: 'different', cat: 'all', open: new Set(), grp: new Set() };
-    const byTab = id => D.options.filter(o => o.comparisonStatus === id);
+    const byTab = id => D.options.filter(o => o.comparisonStatus === id && !o.verify); // 미확정 항목 미표시
     const tabsEl = $('#tcTabs'), catsEl = $('#tcCats'), list = $('#tcList'), lead = $('#tcLead'), colhead = $('#tcColhead');
 
     /* 가격 요약 — 가격·차이 모두 GLC_TRIM_DATA.trims 에서 계산 */
@@ -3116,14 +3796,14 @@ initImageModal();
       render(anim);
     }
 
-    const val = (k, v) => (v == null || v === '') ? `<span class="tc-val is-none" data-trim="${k}"><em>${esc(D.trims[k].name)}</em>표기 없음 · 적용 여부 확인 필요</span>`
+    const val = (k, v) => (v == null || v === '') ? `<span class="tc-val is-none" data-trim="${k}"><em>${esc(D.trims[k].name)}</em>미적용</span>`
       : `<span class="tc-val" data-trim="${k}"><em>${esc(D.trims[k].name)}</em>${esc(v)}</span>`;
     function card(o) {
       const cls = { different: 'diff', same: 'same', unverified: 'warn' }[o.comparisonStatus] || 'warn', open = st.open.has(o.id);
       const vals = o.comparisonStatus === 'same' && o.avantgarde === o.amgline ? `<span class="tc-val is-both">${esc(o.avantgarde)}</span>` : val('avantgarde', o.avantgarde) + val('amgline', o.amgline);
       return `<div class="tc-card is-${cls}${open ? ' is-open' : ''}" data-id="${o.id}">
         <button type="button" class="tc-card-btn" aria-expanded="${open}" aria-controls="tcd-${o.id}">
-          <span class="tc-card-title"><span class="tc-card-name">${esc(o.label)}</span>${o.verify ? '<span class="tc-badges"><span class="tc-badge is-warn">표기 확인 필요</span></span>' : ''}</span>
+          <span class="tc-card-title"><span class="tc-card-name">${esc(o.label)}</span></span>
           <span class="tc-vals">${vals}</span><i class="tc-arrow" aria-hidden="true"></i></button>
         <div class="tc-collapse" id="tcd-${o.id}"><div class="tc-collapse-in"><div class="tc-desc">${o.image ? `<img class="tc-opt-img" src="${esc(o.image)}" alt="${esc(o.label)}" loading="lazy">` : ''}<p>${esc(o.description || '')}</p></div></div></div></div>`;
     }
@@ -3135,7 +3815,7 @@ initImageModal();
       lead.textContent = tab.lead;
       const isList = st.tab !== 'same';
       colhead.hidden = !isList;
-      /* 카테고리 필터 (차이점·확인 필요) */
+      /* 카테고리 필터 (차이점) */
       catsEl.hidden = !isList || cats.length < 2;
       if (isList) {
         if (st.cat !== 'all' && !cats.some(x => x.c.id === st.cat)) st.cat = 'all';
@@ -4750,5 +5430,733 @@ initImageModal();
 })(window, document);
 
 </script>
+<script id="glc-technology-atelier-script">
+/* Technology · isolated from original GLC modules. No external JS dependencies.
+   카드 내용·사진은 GLC_TECH 데이터(name · short · detail · key · image · imageAlt)만 사용합니다. */
+(function(){
+'use strict';
+function init(){
+  var root=document.getElementById('technology'), grid=document.getElementById('techGrid'), dialog=document.getElementById('gtTechDialog');
+  if(!root||!grid||!dialog)return;
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+  /* 아이콘: 한 세트 · 16px · 선 굵기 1.5 */
+  var ICON={
+    chevron:'<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+    play:'<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>',
+    pause:'<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>',
+    replay:'<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+    zoom:'<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>'
+  };
+  var plate=function(t){var k=String(t.key||'');return '<div class="gt-plate'+(k.length>6?' is-long':'')+'" aria-hidden="true"><span class="gt-plate-key">'+esc(k)+'</span></div>';};
+  var list=typeof GLC_TECH!=='undefined'?GLC_TECH:[];
+  /* 사진: 크기별 WebP(srcset) + 표시 폭(sizes) → 화면에 맞는 크기만 내려받음. 누르면 확대 창(openImageModal) */
+  var SIZES=['(max-width:767px) 84vw, (max-width:1239px) 31vw, 380px','(max-width:767px) 84vw, (max-width:1239px) 47vw, 580px'];
+  grid.innerHTML=list.map(function(t,i){
+    var media=t.image?'<button type="button" class="gt-media" data-zoom="'+esc(t.zoom||t.image)+'" aria-label="'+esc(t.name)+' 사진 크게 보기">'+
+      '<img src="'+esc(t.image)+'"'+(t.srcset?' srcset="'+esc(t.srcset)+'" sizes="'+SIZES[i<3?0:1]+'"':'')+' alt="'+esc(t.imageAlt||t.name)+'" loading="lazy" decoding="async" fetchpriority="low" width="960" height="600">'+
+      '<span class="gt-zoom" aria-hidden="true">'+ICON.zoom+'</span></button>':plate(t);
+    return '<article class="gt-card" data-tech="'+esc(t.id)+'">'+media+
+      '<div class="gt-body"><h4>'+esc(t.name)+'</h4><p>'+esc(t.short)+'</p>'+
+      (t.verify?'<p class="gt-verify">트림별 적용 여부 확인 필요</p>':'')+
+      '<button type="button" class="gt-more" aria-expanded="false" aria-controls="gt-desc-'+esc(t.id)+'"><span>자세히 보기</span>'+ICON.chevron+'</button>'+
+      '<div id="gt-desc-'+esc(t.id)+'" class="gt-detail" hidden>'+(t.detail||[]).map(function(x){return '<p>'+esc(x)+'</p>'}).join('')+'</div></div></article>';
+  }).join('');
+  /* 사진을 불러오지 못하면 빈 상자 대신 핵심 수치 카드로 바꿈 */
+  grid.querySelectorAll('.gt-media img').forEach(function(img){
+    var swap=function(){var card=img.closest('.gt-card'),t=null;list.forEach(function(x){if(card&&x.id===card.dataset.tech)t=x;});var m=img.closest('.gt-media');if(t&&m)m.outerHTML=plate(t);};
+    if(img.complete&&img.naturalWidth===0&&img.getAttribute('src'))swap();else img.addEventListener('error',swap,{once:true});
+  });
+  grid.addEventListener('click',function(e){var z=e.target.closest('.gt-media');if(z){var im=z.querySelector('img');if(im&&im.naturalWidth&&typeof window.openImageModal==='function')window.openImageModal(z.dataset.zoom||im.currentSrc||im.src,im.alt);return;}});
+  grid.addEventListener('click',function(e){var b=e.target.closest('.gt-more');if(!b)return;var detail=document.getElementById(b.getAttribute('aria-controls'));if(!detail)return;var open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));detail.hidden=open;b.firstChild.textContent=open?'자세히 보기':'접기';});
+  /* AMG Line 카드 사진 → 기존 확대 창(1080px 사진) */
+  var amgGrid=root.querySelector('.gt-amg-grid');
+  if(amgGrid)amgGrid.addEventListener('click',function(e){var z=e.target.closest('.gt-diagram');if(!z)return;var im=z.querySelector('img');if(im&&im.naturalWidth&&typeof window.openImageModal==='function')window.openImageModal(z.dataset.zoom||im.currentSrc||im.src,im.alt);});
+  /* 모바일 슬라이드 위치 표시: scroll 은 rAF 로 묶고, 카드 간격은 크기가 바뀔 때만 측정 */
+  var dotsBox=document.getElementById('gtDots'),dotBtns=dotsBox?dotsBox.querySelectorAll('.gt-dot'):[],dotsN=document.getElementById('gtDotsN'),cardStep=0,dotIdx=-1,dotTick=false;
+  var reduceMo=matchMedia('(prefers-reduced-motion: reduce)');
+  var measureDots=function(){var c=amgGrid&&amgGrid.children;cardStep=c&&c.length>1?c[1].offsetLeft-c[0].offsetLeft:0;};
+  var paintDots=function(){dotTick=false;if(!amgGrid||!cardStep)return;var n=amgGrid.children.length,max=amgGrid.scrollWidth-amgGrid.clientWidth,i=amgGrid.scrollLeft>=max-4?n-1:Math.max(0,Math.min(n-1,Math.round(amgGrid.scrollLeft/cardStep)));if(i===dotIdx)return;dotIdx=i;dotBtns.forEach(function(b,k){if(k===i)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});dotsN.textContent=(i+1)+' / '+n;};
+  if(amgGrid&&dotsBox){
+    amgGrid.addEventListener('scroll',function(){if(!dotTick){dotTick=true;requestAnimationFrame(paintDots);}},{passive:true});
+    dotsBox.addEventListener('click',function(e){var b=e.target.closest('.gt-dot');if(!b)return;var k=+b.dataset.dot,n=amgGrid.children.length,left=k>=n-1?amgGrid.scrollWidth-amgGrid.clientWidth:k*cardStep;amgGrid.scrollTo({left:left,behavior:reduceMo.matches?'auto':'smooth'});});
+    if('ResizeObserver' in window)new ResizeObserver(function(){measureDots();paintDots();}).observe(amgGrid);else window.addEventListener('resize',function(){measureDots();paintDots();});
+    measureDots();paintDots();
+  }
+  /* 모바일 가로 슬라이드일 때만 키보드로 카드 묶음에 들어가 좌우 화살표로 넘길 수 있게 함 */
+  var sliders=[grid,root.querySelector('.gt-amg-grid')].filter(Boolean);
+  var syncSlide=function(){sliders.forEach(function(el){if(el.scrollWidth>el.clientWidth+1)el.setAttribute('tabindex','0');else el.removeAttribute('tabindex');});};
+  syncSlide();if('ResizeObserver' in window)new ResizeObserver(syncSlide).observe(grid);else window.addEventListener('resize',syncSlide);
+  var trimNote=document.getElementById('gtTrimNote');
+  function renderTrim(t){if(!trimNote)return;trimNote.innerHTML=t==='amgline'?'<b>현재 선택: AMG Line</b>아래 두 가지 주행 기술이 2027년형 AMG Line에 적용됩니다.':'<b>현재 선택: AVANTGARDE</b>아래 두 기술은 AVANTGARDE에는 적용되지 않습니다. AMG Line의 기술을 체험할 수 있습니다.';}
+  if(window.GLCTrim&&typeof window.GLCTrim.on==='function')window.GLCTrim.on(renderTrim);
+  else renderTrim('avantgarde');
+  var setPlay=function(btn,state){btn.innerHTML=state==='pause'?ICON.pause+'<span>일시정지</span>':state==='replay'?ICON.replay+'<span>다시 재생</span>':ICON.play+'<span>재생</span>';};
+  var rearDemo=document.getElementById('gtRearDemo'),airDemo=document.getElementById('gtAirDemo');
+  /* 리어 액슬 스티어링은 별도 모듈(glc-ras-script, window.GLC_RAS)에서 처리 */
+  function pauseRear(){if(window.GLC_RAS)window.GLC_RAS.stop();}
+  function openRear(){if(window.GLC_RAS)window.GLC_RAS.open();}
+  /* AIRMATIC 은 별도 모듈(glc-air-script, window.GLC_AIR)에서 처리 */
+  function pauseAir(){if(window.GLC_AIR)window.GLC_AIR.stop();}
+  function resetAir(){if(window.GLC_AIR)window.GLC_AIR.open();}
+  var opener=null;
+  function closeDialog(){pauseAir();pauseRear();if(dialog.open)dialog.close();}
+  document.getElementById('gtDialogClose').addEventListener('click',closeDialog);
+  dialog.addEventListener('cancel',function(){pauseAir();pauseRear();});
+  dialog.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus({preventScroll:true});});
+  dialog.addEventListener('click',function(e){if(e.target===dialog)closeDialog();});
+  root.querySelectorAll('[data-gt-open]').forEach(function(b){b.addEventListener('click',function(){var which=b.dataset.gtOpen;opener=b;rearDemo.hidden=which!=='rear';airDemo.hidden=which!=='air';document.getElementById('gtDialogTitle').textContent=which==='rear'?'리어 액슬 스티어링':'AIRMATIC 에어 서스펜션';if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');if(which==='rear'){openRear();}else{resetAir();}document.getElementById('gtDialogClose').focus();});});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<script id="glc-ras-script">
+/* ==========================================================================
+   GLC 300 AMG Line · 리어 액슬 스티어링 (2027년형 적용 사양 · 최대 후륜 조향각 4.5°)
+   - E53 구조(상태표 사전 계산 → 재생 시 보간)를 참고해 GLC 기준으로 새로 계산
+   - 좌표: 화면 좌표(x 오른쪽, y 아래), 각도는 시계 방향 + (= 오른쪽 조향)
+   - 이미지 주소: RAS_ASSETS 한 곳에서 관리. JNOHJINGYU/images 에 올린 뒤에는
+     'https://raw.githubusercontent.com/JNOHJINGYU/images/main/<경로>' 로 바꾸면 됩니다 (업로드 전에는 로컬 경로 유지)
+   ========================================================================== */
+var RAS_ASSETS = {
+  body: 'images/tech/glc300-ras-body-600.webp',            /* GLC 탑뷰 차체 (투명, 전면 = 위쪽) */
+  road: {
+    low:  'images/tech/glc300-ras-road-uturn-1672.webp',     /* 저속: U턴 도로 1672×941 */
+    high: 'images/tech/glc300-ras-road-highway-1672.webp'    /* 고속: 같은 방향 3차로 고속도로 1672×941 */
+  }
+};
+/* 탑뷰 차체(원본 1448×1086 → 크롭 557×1075) 측정값: 차체 윤곽 폭이 가장 넓어지는 바퀴집 위치로 차축을 정함 */
+var RAS_BODY = { w: 557, h: 1075, axleF: 141, axleR: 777, cx: 279.5, halfTrack: 206, tireW: 65, tireL: 168 };
+var RAS_SCENES = {
+  low: { label: '저속 · U턴', world: [1672, 941],
+    lead: '저속에서는 뒷바퀴가 앞바퀴와 반대 방향으로 최대 4.5°까지 움직여, 같은 핸들 조작으로도 더 작은 원을 그리며 돕니다.',
+    scale: 0.223, startX: 190, endX: 130, laneY: 713, exitY: 235, turnX: 980, ramp: 150, speed: 300 },
+  /* 고속: 도로 사진에서 측정한 차선(2차식, 오차 3px 이내). 가운데 차로 → 왼쪽(위) 차로 변경.
+     rearShare: 후륜 = 앞바퀴 × 0.15 (같은 방향) — 공식 제어값이 아닌 개념 시연용 비율 */
+  high: { label: '고속 · 차선 변경', world: [1672, 941],
+    lead: '같은 목표 경로를 일반 조향과 후륜 조향 ON으로 동시에 달립니다. 위치는 거의 같고, 바퀴 각도와 차체 방향이 다릅니다.',
+    scale: 0.235, top: [3.1076e-05, -0.145089, 208.84], dash1: [2.4423e-05, -0.124995, 408.32], dash2: [2.8251e-05, -0.136076, 629.81], bot: [4.0377e-05, -0.159554, 867.17],
+    startX: 160, endX: 1550, lc0: 330, lc1: 1380, rearShare: 0.15, speed: 320, viewW: { pc: 820, mobile: 560 },
+    steps: [
+      { u: 0,    text: '두 차량 모두 차선을 유지하며 직진합니다. 앞바퀴·뒷바퀴 모두 0°입니다.' },
+      { u: 0.15, text: '앞바퀴가 왼쪽으로 조향을 시작합니다. 후륜 조향 ON 차량은 뒷바퀴도 같은 방향으로 조금 조향합니다.' },
+      { u: 0.6,  text: '두 차량이 같은 목표 차선으로 이동합니다. 차체 방향과 바퀴 각도의 차이를 비교해 보세요.' },
+      { u: 1,    text: '목표 차선에 들어서며 앞바퀴가 반대쪽으로 조향되어 차체를 차선 방향으로 정렬합니다. ON 차량은 뒷바퀴도 같은 쪽으로 조향됩니다.' },
+      { u: Infinity, text: '두 차량 모두 같은 차선으로 이동을 마쳤습니다. 위치는 같고, 바퀴 각도와 차체 방향에서 차이가 났습니다.' }
+    ],
+    toggle: { off: '앞바퀴만 조향합니다. 뒷바퀴는 0°로 고정됩니다.', on: '뒷바퀴도 앞바퀴와 같은 방향으로 조향해, 차선 변경 중 차체 방향을 함께 제어합니다. 반투명 윤곽은 일반 조향입니다.' } }
+};
+var MAX_REAR_STEER = 4.5;
+function clampRearAngle(a) { return Math.max(-MAX_REAR_STEER, Math.min(MAX_REAR_STEER, a)); }
+
+window.GLC_RAS = (function () {
+  'use strict';
+  var root = document.getElementById('gtRearDemo');
+  if (!root) return { open: function () {}, stop: function () {} };
+  var $ = function (id) { return document.getElementById(id); };
+  var D2R = Math.PI / 180, R2D = 180 / Math.PI, B = RAS_BODY, MAG = 4;   /* MAG: 확대도에서만 쓰는 각도 배율 */
+  var WB = B.axleR - B.axleF, REF = (B.axleF + B.axleR) / 2;       /* 기준점 = 앞뒤 차축 중앙 */
+  var smooth = function (u) { return u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (u * 6 - 15) + 10); };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)'), mqSingle = matchMedia('(max-width: 767px)');
+
+  /* ---------- 조향 기하 (자전거 모델, 기준점 = 차축 중앙) ----------
+     β = atan((tanδf + tanδr) / 2),  dθ/ds = cosβ · (tanδf − tanδr) / L  */
+  function step(st, df, dr, L, ds) {
+    var tf = Math.tan(df * D2R), tr = Math.tan(dr * D2R), beta = Math.atan((tf + tr) / 2);
+    st.th += ds * Math.cos(beta) * (tf - tr) / L;
+    st.x += ds * Math.cos(st.th + beta); st.y += ds * Math.sin(st.th + beta);
+  }
+  /* 저속: 직진 → 조향 진입(ramp) → 유지 → 복귀(ramp) → 직진. 후륜 = 앞바퀴 반대 방향, 앞바퀴 각도에 비례해 최대 4.5° */
+  function simLow(S, dfMax, ras) {
+    var L = WB * S.scale, ds = 2, out = [];
+    var rearFor = function (df) { return ras ? clampRearAngle(-Math.sign(df) * MAX_REAR_STEER * Math.abs(df / dfMax)) : 0; };
+    var t = { x: 0, y: 0, th: 0 }, s, outTurn;
+    for (s = 0; s < S.ramp; s += ds) { var d0 = dfMax * (1 - smooth(s / S.ramp)); step(t, d0, rearFor(d0), L, ds); }
+    outTurn = Math.abs(t.th);                                        /* 복귀 구간에서 바뀌는 방향각 */
+    var st = { x: S.startX, y: S.laneY, th: 0 }, phase = 0, ps = 0; s = 0;
+    for (var g = 0; g < 20000; g++) {
+      var df = 0;
+      if (phase === 0 && st.x >= S.turnX) { phase = 1; ps = s; }
+      if (phase === 1) { df = dfMax * smooth((s - ps) / S.ramp); if (s - ps >= S.ramp) phase = 2; }
+      if (phase === 2) { df = dfMax; if (Math.abs(st.th) >= Math.PI - outTurn) { phase = 3; ps = s; } }
+      if (phase === 3) { df = dfMax * (1 - smooth((s - ps) / S.ramp)); if (s - ps >= S.ramp) { phase = 4; st.th = -Math.PI; } }
+      var dr = rearFor(df);
+      out.push({ d: s, x: st.x, y: st.y, th: st.th, f: df, r: dr });
+      if (phase === 4 && st.x <= S.endX) break;
+      step(st, df, dr, L, ds); s += ds;
+    }
+    return out;
+  }
+  /* 후륜 조향 ON 경로가 위 차로 중심으로 나오도록 앞바퀴 최대 조향각을 계산 (일반 조향도 같은 입력 사용) */
+  function solveLow(S) {
+    var lo = -45, hi = -5;
+    for (var i = 0; i < 36; i++) { var m = (lo + hi) / 2, p = simLow(S, m, true); if (p[p.length - 1].y > S.exitY) lo = m; else hi = m; }
+    return (lo + hi) / 2;
+  }
+  /* 고속: 두 방식 모두 같은 목표 경로 Y(x)를 따라감. 각 방식마다 경로 곡률을 내기 위한 앞바퀴 각도와 차체 방향을 따로 계산.
+     κ = cosβ (tanδf − tanδr) / L,  δr = rearShare·δf (ON) 또는 0 (OFF),  차체 방향 θ = 진행 방향 φ − β */
+  function simHigh(S, ras) {
+    var q = function (c, x) { return c[0] * x * x + c[1] * x + c[2]; };
+    var from = function (x) { return (q(S.dash1, x) + q(S.dash2, x)) / 2; }, to = function (x) { return (q(S.top, x) + q(S.dash1, x)) / 2; };
+    var Y = function (x) { return from(x) + (to(x) - from(x)) * smooth((x - S.lc0) / (S.lc1 - S.lc0)); };
+    var L = WB * S.scale, c = ras ? S.rearShare : 0, out = [], d = 0, px = null, py = null;
+    for (var x = S.startX; x <= S.endX; x += 2) {
+      var y = Y(x); if (px !== null) d += Math.hypot(x - px, y - py); px = x; py = y;
+      var h = 1.5, y1 = Y(x - h), y2 = Y(x + h), dy = (y2 - y1) / (2 * h), ddy = (y2 - 2 * y + y1) / (h * h);
+      var phi = Math.atan(dy), kappa = ddy / Math.pow(1 + dy * dy, 1.5), tf = kappa * L / (1 - c);
+      for (var k = 0; k < 4; k++) tf = kappa * L / ((1 - c) * Math.cos(Math.atan(tf * (1 + c) / 2)));
+      var f = Math.atan(tf) * R2D, r = clampRearAngle(Math.atan(c * tf) * R2D);
+      var beta = Math.atan((Math.tan(f * D2R) + Math.tan(r * D2R)) / 2);
+      var road = Math.atan((from(x + h) - from(x - h)) / (2 * h));   /* 차선 방향 (비교 기준) */
+      out.push({ d: d, x: x, y: y, th: phi - beta, f: f, r: r, yaw: (phi - beta - road) * R2D, u: (x - S.lc0) / (S.lc1 - S.lc0) });
+    }
+    return out;
+  }
+  var DATA = {}, PATHS = {};
+  function data(k) {
+    if (DATA[k]) return DATA[k];
+    var S = RAS_SCENES[k];
+    if (k === 'low') { var df = solveLow(S); DATA[k] = { on: simLow(S, df, true), off: simLow(S, df, false) }; }
+    else {
+      DATA[k] = { on: simHigh(S, true), off: simHigh(S, false) };
+      /* 핵심 장면: 두 방식의 차체 방향 차이가 가장 큰 지점을 구간별로 계산 (① 변경 시작~중간, ② 중간~복귀) */
+      var on = DATA[k].on, off = DATA[k].off, key = [null, null];
+      for (var i = 0; i < on.length; i++) {
+        var diff = Math.abs(on[i].th - off[i].th) * R2D, seg = on[i].u >= 0 && on[i].u < 0.5 ? 0 : on[i].u >= 0.5 && on[i].u <= 1 ? 1 : -1;
+        if (seg >= 0 && (!key[seg] || diff > key[seg].diff)) key[seg] = { d: on[i].d, diff: diff };
+      }
+      DATA[k].key = key;
+    }
+    var pd = function (a) { var s = ''; for (var i = 0; i < a.length; i += 3) s += (i ? 'L' : 'M') + a[i].x.toFixed(1) + ' ' + a[i].y.toFixed(1); return s; };
+    PATHS[k] = { on: pd(DATA[k].on), off: pd(DATA[k].off) };
+    return DATA[k];
+  }
+  /* 앞바퀴: 순간 회전중심(ICR)으로 좌우 바퀴 각도 계산(애커만). 뒷바퀴: 좌우 같은 각도(≤4.5°) */
+  function wheelAngles(f, r, L, T) {
+    var tf = Math.tan(f * D2R), tr = Math.tan(r * D2R);
+    if (Math.abs(tf - tr) < 1e-6) return [f, f, r, r];
+    var Yc = L / (tf - tr), xc = L / 2 - Yc * tf;            /* 차량 좌표: x 앞, y 오른쪽 */
+    var fl = Math.atan((L / 2 - xc) / (Yc + T / 2)) * R2D, fr = Math.atan((L / 2 - xc) / (Yc - T / 2)) * R2D;
+    return [fl, fr, r, r];
+  }
+
+  /* ---------- DOM ---------- */
+  var WHEELS = [[B.cx - B.halfTrack, B.axleF], [B.cx + B.halfTrack, B.axleF], [B.cx - B.halfTrack, B.axleR], [B.cx + B.halfTrack, B.axleR]];
+  function buildCar(el) {
+    var h = '<div class="ras-car-in" style="left:' + (-B.cx) + 'px;top:' + (-REF) + 'px"><i class="ras-shadow"></i>';
+    WHEELS.forEach(function (w) { h += '<i class="ras-tire" style="left:' + (w[0] - B.tireW / 2) + 'px;top:' + (w[1] - B.tireL / 2) + 'px"></i>'; });
+    h += '<img class="ras-body" alt="" width="557" height="1075" decoding="async" draggable="false">';
+    h += '<i class="ras-head" style="left:' + B.cx + 'px;top:' + (REF - 1000) + 'px;height:2000px"></i>';   /* 차체 방향선 */
+    h += '<i class="ras-head is-ref" style="left:' + B.cx + 'px;top:' + (REF - 1000) + 'px;height:2000px"></i>';   /* (ON 화면) 같은 순간 일반 조향 차체 방향 */
+    WHEELS.forEach(function (w, i) { h += '<i class="ras-vec' + (i > 1 ? ' is-r' : '') + '" style="left:' + w[0] + 'px;top:' + w[1] + 'px"></i>'; });
+    el.innerHTML = h + '</div>';
+    return { el: el, tires: el.querySelectorAll('.ras-tire'), vecs: el.querySelectorAll('.ras-vec'), img: el.querySelector('.ras-body'), ref: el.querySelector('.ras-head.is-ref'), refTf: '', last: [NaN, NaN, NaN, NaN], tf: '' };
+  }
+  function makeView(n) {
+    var sfx = n === 2 ? '2' : '';
+    return { stage: $('rasStage' + sfx), world: $('rasWorld' + sfx), road: $('rasRoad' + sfx), svg: $('rasPaths' + sfx), pOn: $('rasPathOn' + sfx), pOff: $('rasPathOff' + sfx), fail: $('rasFail' + sfx),
+      car: buildCar($('rasCar' + sfx)), ghost: n === 2 ? null : buildCar($('rasGhost')), w: 0, h: 0, k: 1, camX: 0, camY: 0, camSet: false, tf: '' };
+  }
+  var VA = makeView(1), VB = makeView(2), btn = $('rasPlay'), keyBtn = $('rasKey');
+  /* 확대도 SVG: 차체 + 바퀴 4개(방향선·화살표). 각도는 실제값 × MAG */
+  function figHTML(rearColor) {
+    var wheel = function (x, y, id, col, arrow) {
+      return '<g transform="translate(' + x + ' ' + y + ')"><g><path d="M0 -30 V-12" stroke="' + col + '" stroke-width="2" stroke-linecap="round"/>' +
+        (arrow ? '<path d="M-4 -25 L0 -31 L4 -25" fill="none" stroke="' + col + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' : '') +
+        '<rect x="-5" y="-11" width="10" height="22" rx="3" fill="' + col + '"/></g></g>';
+    };
+    return '<svg viewBox="0 0 96 140" aria-hidden="true"><path d="M48 4 l-6 7 h12z" fill="#8C8C8C"/><rect x="28" y="18" width="40" height="112" rx="14" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"/>' +
+      wheel(22, 44, 'x', '#1F2328', true) + wheel(74, 44, 'x', '#1F2328', true) + wheel(22, 108, 'x', rearColor, rearColor !== '#B8BDC4') + wheel(74, 108, 'x', rearColor, rearColor !== '#B8BDC4') + '</svg>';
+  }
+  $('rasFigOff').innerHTML = figHTML('#B8BDC4'); $('rasFigOn').innerHTML = figHTML('#0B5FFF');
+  var figOff = $('rasFigOff').querySelectorAll('svg > g > g'), figOn = $('rasFigOn').querySelectorAll('svg > g > g');
+  var mini = ['rasMiniFL', 'rasMiniFR', 'rasMiniRL', 'rasMiniRR'].map($);
+  var txt = { mode: $('rasMode'), front: $('rasFront'), deg: $('rasRearDeg'), side: $('rasRearSide'), rel: $('rasRearRel'),
+    offF: $('rasOffF'), offR: $('rasOffR'), offH: $('rasOffH'), onF: $('rasOnF'), onR: $('rasOnR'), onH: $('rasOnH'), diff: $('rasDiff'), phase: $('rasPhaseT'), tog: $('rasToggleT') }, txtLast = {};
+  var setText = function (k, v) { if (txtLast[k] !== v) { txtLast[k] = v; txt[k].textContent = v; } };
+  var rotLast = new Map();
+  var rotate = function (el, a) { var p = rotLast.get(el); if (p !== undefined && Math.abs(p - a) < 0.05) return; rotLast.set(el, a); el.setAttribute('transform', 'rotate(' + a.toFixed(2) + ')'); };
+  var steps = $('rasSteps').children, stepLast = -1;
+  var ICON = {
+    play: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>',
+    pause: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>',
+    replay: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>'
+  };
+  var btnState = '';
+  function setBtn(s) { if (s === btnState) return; btnState = s; btn.innerHTML = ICON[s === 'pause' ? 'pause' : s === 'replay' ? 'replay' : 'play'] + '<span>' + (s === 'pause' ? '일시정지' : s === 'replay' ? '다시 재생' : '재생') + '</span>'; }
+
+  /* ---------- 상태 ---------- */
+  var cur = 'low', steerOn = true, t = 0, rate = 1, playing = false, ended = false, raf = 0, last = 0;
+  var visible = true, isOpen = false, single = mqSingle.matches, compare = false, keyIdx = 0;
+  var hint = {};
+  var bodyLoaded = false;
+
+  function loadBody() {
+    if (bodyLoaded) return; bodyLoaded = true;
+    [VA.car, VA.ghost, VB.car].forEach(function (c) {
+      c.img.addEventListener('error', function () { c.el.classList.add('no-body'); c.img.hidden = true; }, { once: true });
+      c.img.src = RAS_ASSETS.body;                                  /* 세 차량이 같은 파일 → 브라우저 캐시 재사용 */
+    });
+  }
+  function loadRoad(V, k) {
+    var url = RAS_ASSETS.road[k];
+    V.fail.hidden = true; V.world.classList.add('is-swapping');
+    V.road.onload = function () { V.world.classList.remove('is-swapping'); };
+    V.road.onerror = function () { V.fail.hidden = false; V.world.classList.remove('is-swapping'); V.road.removeAttribute('src'); };
+    if (!url) { V.road.onerror(); return; }
+    V.road.src = url;
+    if (V.road.complete && V.road.naturalWidth) V.world.classList.remove('is-swapping');
+  }
+  /* 화면 크기는 리사이즈 때만 측정 (프레임마다 레이아웃을 읽지 않음). 고속은 차량이 크게 보이도록 확대 */
+  function measure(V, w, h) {
+    var S = RAS_SCENES[cur], W = S.world;
+    V.w = w; V.h = h; V.camSet = false;
+    V.k = Math.max(w / W[0], h / W[1]);
+    if (S.viewW) V.k = Math.max(V.k, w / (single ? S.viewW.mobile : S.viewW.pc));
+  }
+  function sample(arr, d, key) {
+    var i = hint[key] || 0; if (i >= arr.length || arr[i].d > d) i = 0;
+    while (i < arr.length - 2 && arr[i + 1].d <= d) i++;
+    hint[key] = i;
+    var A = arr[i], C = arr[Math.min(i + 1, arr.length - 1)], u = C.d > A.d ? Math.max(0, Math.min(1, (d - A.d) / (C.d - A.d))) : 0;
+    var p = { x: A.x + (C.x - A.x) * u, y: A.y + (C.y - A.y) * u, th: A.th + (C.th - A.th) * u, f: A.f + (C.f - A.f) * u, r: A.r + (C.r - A.r) * u };
+    if (A.yaw !== undefined) { p.yaw = A.yaw + (C.yaw - A.yaw) * u; p.u = A.u + (C.u - A.u) * u; }
+    return p;
+  }
+  function placeCar(c, p, S, showVec) {
+    var tf = 'translate3d(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px,0) rotate(' + (p.th * R2D + 90).toFixed(2) + 'deg) scale(' + S.scale + ')';
+    if (tf !== c.tf) { c.tf = tf; c.el.style.transform = tf; }
+    var a = wheelAngles(p.f, p.r, WB * S.scale, B.halfTrack * 2 * S.scale);
+    for (var i = 0; i < 4; i++) {
+      if (Math.abs(a[i] - c.last[i]) < 0.05) continue;            /* 바뀐 바퀴만 갱신 */
+      c.last[i] = a[i];
+      var rot = 'rotate(' + a[i].toFixed(2) + 'deg)';
+      c.tires[i].style.transform = rot;
+      if (showVec) c.vecs[i].style.transform = rot;
+    }
+    return a;
+  }
+  var side = function (v, th) { return Math.abs(v) < th ? '' : v < 0 ? '왼쪽' : '오른쪽'; };
+  var deg1 = function (v) { return (Math.round(Math.abs(v) * 10) / 10).toFixed(1) + '°'; };
+  function readout(p, a) {
+    var fs = side(p.f, 0.5), rs = side(p.r, 0.05);
+    setText('mode', RAS_SCENES[cur].label);
+    setText('front', fs ? fs + '으로 조향' : '직진');
+    setText('deg', deg1(p.r));
+    setText('side', rs);
+    setText('rel', !steerOn ? '조향 안 함 (OFF)' : !rs ? '직진' : (Math.sign(p.f) === Math.sign(p.r) ? '앞바퀴와 같은 방향' : '앞바퀴와 반대 방향'));
+    for (var i = 0; i < 4; i++) rotate(mini[i], a[i]);
+  }
+  /* 고속 비교 패널: 두 방식의 같은 시점 값 (확대도만 MAG 배율, 숫자는 실제 계산값) */
+  function readHigh(pOn, pOff, aOn, aOff) {
+    var fmtF = function (p) { var s = side(p.f, 0.05); return s ? s + ' ' + deg1(p.f) : '직진'; };
+    var fmtH = function (p) { var s = side(p.yaw, 0.05); return s ? s + ' ' + deg1(p.yaw) : '차선과 나란히'; };
+    setText('offF', fmtF(pOff)); setText('offR', '0.0°'); setText('offH', fmtH(pOff));
+    var rs = side(pOn.r, 0.05);
+    setText('onF', fmtF(pOn)); setText('onR', rs ? rs + ' ' + deg1(pOn.r) : '0.0°'); setText('onH', fmtH(pOn));
+    setText('diff', deg1((pOn.th - pOff.th) * R2D));
+    for (var i = 0; i < 4; i++) { rotate(figOff[i], aOff[i] * MAG); rotate(figOn[i], aOn[i] * MAG); }
+    var u = pOn.u, st = u < 0 ? 0 : u < 0.15 ? 1 : u < 0.6 ? 2 : u < 1 ? 3 : 4;
+    if (st !== stepLast) {
+      stepLast = st;
+      for (var j = 0; j < steps.length; j++) { steps[j].classList.toggle('is-on', j === st); steps[j].classList.toggle('is-done', j < st); }
+    }
+    if (!keyText) setText('phase', RAS_SCENES.high.steps[st].text);
+  }
+  var keyText = '';
+  function camera(V, p, dt) {
+    var W = RAS_SCENES[cur].world, k = V.k, vw = V.w / k, vh = V.h / k;
+    var tx = Math.max(vw / 2, Math.min(W[0] - vw / 2, p.x)), ty = Math.max(vh / 2, Math.min(W[1] - vh / 2, p.y));
+    if (!V.camSet || !dt) { V.camX = tx; V.camY = ty; V.camSet = true; }
+    else { var e = 1 - Math.exp(-dt * 5); V.camX += (tx - V.camX) * e; V.camY += (ty - V.camY) * e; }   /* 추적 카메라: 부드럽게 따라감 */
+    var tf = 'translate3d(' + (V.w / 2 - V.camX * k).toFixed(1) + 'px,' + (V.h / 2 - V.camY * k).toFixed(1) + 'px,0) scale(' + k.toFixed(4) + ')';
+    if (tf !== V.tf) { V.tf = tf; V.world.style.transform = tf; }
+  }
+  /* 출발: 정지 상태에서 부드럽게 가속 (τ = 0.35s) */
+  var distAt = function (S, tt) { var tau = 0.35; return S.speed * (tt - tau * (1 - Math.exp(-tt / tau))); };
+  var timeAt = function (S, d) { var lo = 0, hi = 60; for (var n = 0; n < 40; n++) { var m = (lo + hi) / 2; if (distAt(S, m) < d) lo = m; else hi = m; } return lo; };
+  function frame(dt) {
+    var S = RAS_SCENES[cur], Dt = data(cur), d = distAt(S, t), total;
+    if (cur === 'low') {
+      var mainArr = steerOn ? Dt.on : Dt.off, otherArr = steerOn ? Dt.off : Dt.on;
+      var pm = sample(mainArr, d, 'main'), a = placeCar(VA.car, pm, S, true);
+      if (!single) placeCar(VA.ghost, sample(otherArr, d, 'ghost'), S, false);
+      readout(pm, a);
+      if (VA.w) camera(VA, pm, dt);
+      total = !single ? Math.max(mainArr[mainArr.length - 1].d, otherArr[otherArr.length - 1].d) : mainArr[mainArr.length - 1].d;
+    } else {
+      /* 두 방식 모두 같은 시간값 d 로 샘플 → 항상 동기화 */
+      var pOn = sample(Dt.on, d, 'on'), pOff = sample(Dt.off, d, 'off'), aOn, aOff;
+      if (compare) {
+        aOff = placeCar(VA.car, pOff, S, true); aOn = placeCar(VB.car, pOn, S, true);
+        var rtf = 'rotate(' + ((pOff.th - pOn.th) * R2D).toFixed(2) + 'deg)';   /* 두 방향선 사이 각도 = 계산된 차체 방향 차이 */
+        if (rtf !== VB.car.refTf) { VB.car.refTf = rtf; VB.car.ref.style.transform = rtf; }
+        if (VA.w) camera(VA, pOn, dt); if (VB.w) camera(VB, pOn, dt);       /* 두 화면 같은 카메라 위치·배율 */
+      } else {
+        var pm2 = steerOn ? pOn : pOff, pg = steerOn ? pOff : pOn;
+        var am = placeCar(VA.car, pm2, S, true), ag = placeCar(VA.ghost, pg, S, false);
+        aOn = steerOn ? am : ag; aOff = steerOn ? ag : am;
+        if (VA.w) camera(VA, pm2, dt);
+      }
+      readHigh(pOn, pOff, aOn, aOff);
+      total = Dt.on[Dt.on.length - 1].d;
+    }
+    if (d >= total) { ended = true; stopLoop(); setBtn('replay'); }
+  }
+  /* ---------- 재생 루프: 한 개만, 화면 밖·팝업 닫힘·탭 숨김이면 멈춤 ---------- */
+  function canRun() { return playing && isOpen && visible && !document.hidden; }
+  function loop(now) {
+    raf = 0;
+    if (!canRun()) { last = 0; setPlayingClass(false); return; }
+    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0;        /* 복귀 직후 시간이 튀지 않도록 100ms 상한 (10fps 기기까지 실제 속도 유지) */
+    last = now; t += dt * rate; frame(dt);
+    if (playing) raf = requestAnimationFrame(loop);
+  }
+  function setPlayingClass(on) { VA.stage.classList.toggle('is-playing', on); VB.stage.classList.toggle('is-playing', on && compare); }
+  function kick() { if (!raf && canRun()) { last = 0; setPlayingClass(true); raf = requestAnimationFrame(loop); } }
+  function stopLoop() { playing = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } last = 0; setPlayingClass(false); }
+  function play() { if (ended) reset(false); keyText = ''; playing = true; ended = false; setBtn('pause'); kick(); }
+  function pause() { stopLoop(); setBtn(ended ? 'replay' : 'play'); }
+  function resetCaches() {
+    hint = {}; [VA.car, VA.ghost, VB.car].forEach(function (c) { c.last = [NaN, NaN, NaN, NaN]; }); rotLast = new Map(); stepLast = -1;
+  }
+  function reset(auto) {
+    stopLoop(); ended = false; t = 0; keyText = ''; resetCaches();
+    if (reduce.matches && auto) staticFrame(); else frame(0);
+    setBtn('play');
+    if (auto && !reduce.matches) play();
+  }
+  /* 동작 줄이기: 자동 재생 없이 비교 장면을 정지 화면으로 (저속 = 회전 중간, 고속 = 핵심 장면 ①) */
+  function staticFrame() {
+    var S = RAS_SCENES[cur], arr = data(cur).on, target = 0;
+    if (cur === 'low') { for (var i = 0; i < arr.length; i++) if (arr[i].th <= -Math.PI / 2) { target = arr[i].d; break; } }
+    else target = data(cur).key[0].d;
+    t = timeAt(S, target); frame(0);
+  }
+  /* 핵심 장면 ①·② : 계산된 차체 방향 차이가 가장 큰 프레임으로 이동해 멈춤 */
+  function showKey() {
+    var D = data('high'), kk = D.key[keyIdx], S = RAS_SCENES.high;
+    stopLoop(); ended = false; hint = {}; t = timeAt(S, kk.d);
+    keyText = (keyIdx === 0 ? '핵심 장면 ① 차선 변경 시작' : '핵심 장면 ② 자세 복귀') + ' · 두 차량의 차체 방향 차이가 이 구간에서 가장 큰 순간(' + deg1(kk.diff) + ')입니다. 바퀴 방향과 차체 방향선을 비교해 보세요.';
+    setText('phase', keyText);
+    frame(0); setBtn('play');
+    keyIdx = 1 - keyIdx; keyBtn.textContent = keyIdx === 0 ? '핵심 장면 ①' : '핵심 장면 ②';
+  }
+  function setRate(r) {
+    rate = r;
+    root.querySelectorAll('[data-ras-rate]').forEach(function (b) { var on = +b.dataset.rasRate === r; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('is-active', on); });
+  }
+  /* 화면 구성: 고속 + PC = 두 화면 동시 비교 / 고속 + 모바일 = 한 화면 + 반투명 윤곽 / 저속 = 기존 */
+  function layout() {
+    var high = cur === 'high';
+    compare = high && !single;
+    root.classList.toggle('is-high', high); root.classList.toggle('is-compare', compare);
+    VB.stage.hidden = !compare;
+    $('rasToggleM').hidden = !(high && single);
+    $('rasCmp').hidden = !high; root.querySelector('.ras-read').hidden = high; $('rasPhase').hidden = !high;
+    [VA, VB].forEach(function (V) { V.stage.classList.toggle('show-head', high); });
+    VA.stage.classList.toggle('no-ghost', compare);
+    $('rasScene').textContent = compare ? '일반 조향 · 후륜 0°' : RAS_SCENES[cur].label;
+    /* 차체 방향선 색: OFF 회색 · ON 파란색 */
+    var aOn = high && !compare ? steerOn : !high ? steerOn : false;
+    VA.car.el.classList.toggle('mode-on', aOn); VA.ghost.el.classList.toggle('mode-on', high && !compare && !steerOn); VB.car.el.classList.toggle('mode-on', true);
+    if (high && single) setText('tog', RAS_SCENES.high.toggle[steerOn ? 'on' : 'off']);
+  }
+  function setScene(k, auto) {
+    cur = k; var S = RAS_SCENES[k], D = data(k), W = S.world;
+    layout();
+    [VA, VB].forEach(function (V) {
+      V.world.style.width = W[0] + 'px'; V.world.style.height = W[1] + 'px';
+      V.svg.setAttribute('viewBox', '0 0 ' + W[0] + ' ' + W[1]); V.svg.setAttribute('width', W[0]); V.svg.setAttribute('height', W[1]);
+      /* 고속: 두 방식이 같은 목표 경로 → 경로선 1개(흰 점선 = 목표 차선 변경 경로) */
+      V.pOn.setAttribute('d', k === 'low' ? PATHS[k].on : ''); V.pOff.setAttribute('d', PATHS[k].off);
+    });
+    $('rasLead').textContent = S.lead; $('rasLegend').hidden = k !== 'low';
+    root.querySelectorAll('[data-ras-scene]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.rasScene === k)); b.classList.toggle('is-active', b.dataset.rasScene === k); });
+    loadRoad(VA, k); if (compare) loadRoad(VB, k);
+    remeasure();
+    keyIdx = 0; keyBtn.textContent = '핵심 장면 ①';
+    reset(auto);
+  }
+  function setSteer(on) {
+    steerOn = on;
+    VA.stage.classList.toggle('is-on', on); VA.stage.classList.toggle('is-off', !on);
+    root.querySelectorAll('[data-ras-steer]').forEach(function (b) { var a = (b.dataset.rasSteer === 'on') === on; b.setAttribute('aria-pressed', String(a)); b.classList.toggle('is-active', a); });
+    if (cur === 'high') { layout(); resetCaches(); frame(0); }   /* 고속: 같은 시간 유지 → 두 방식을 같은 순간에서 비교 */
+    else reset(true);
+  }
+  function remeasure() { [VA, VB].forEach(function (V) { if (V.stage.hidden) return; var r = V.stage.getBoundingClientRect(); measure(V, r.width, r.height); }); }
+  function applySingle() { single = mqSingle.matches; VA.stage.classList.toggle('is-single', single); }
+
+  /* ---------- 이벤트 ---------- */
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.rasScene && b.dataset.rasScene !== cur) setScene(b.dataset.rasScene, true);
+    else if (b.dataset.rasSteer) { if ((b.dataset.rasSteer === 'on') !== steerOn) setSteer(b.dataset.rasSteer === 'on'); }
+    else if (b.dataset.rasRate) setRate(+b.dataset.rasRate);
+    else if (b === keyBtn) showKey();
+    else if (b === btn) { if (playing) pause(); else play(); }
+  });
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function (en) {
+      en.forEach(function (e) { var V = e.target === VB.stage ? VB : VA; measure(V, e.contentRect.width, e.contentRect.height); });
+      if (!playing) frame(0);
+    });
+    ro.observe(VA.stage); ro.observe(VB.stage);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) kick(); }, { threshold: 0.01 }).observe(VA.stage);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
+  if (mqSingle.addEventListener) mqSingle.addEventListener('change', function () { applySingle(); if (isOpen) setScene(cur, false); });
+  applySingle(); VA.stage.classList.add('is-on'); setBtn('play'); setRate(1);
+
+  return {
+    open: function () {
+      isOpen = true; loadBody(); applySingle();
+      steerOn = true; VA.stage.classList.add('is-on'); VA.stage.classList.remove('is-off');
+      root.querySelectorAll('[data-ras-steer]').forEach(function (b) { var a = b.dataset.rasSteer === 'on'; b.setAttribute('aria-pressed', String(a)); b.classList.toggle('is-active', a); });
+      setScene(cur, true);
+    },
+    stop: function () { isOpen = false; stopLoop(); if (!ended) setBtn('play'); },
+    /* 점검용: 현재 상태 · 특정 시점으로 이동 · 프레임 계산 비용(ms) */
+    debug: function () { return { cur: cur, steerOn: steerOn, t: t, rate: rate, playing: playing, ended: ended, raf: raf, compare: compare, data: data(cur) }; },
+    seek: function (sec) { stopLoop(); ended = false; t = sec; hint = {}; VA.camSet = VB.camSet = false; frame(0); if (!ended) setBtn('play'); },
+    bench: function (n) { var keep = t, t0 = performance.now(); for (var i = 0; i < n; i++) { t = (i % 600) / 60; frame(1 / 60); } var ms = (performance.now() - t0) / n; t = keep; ended = false; frame(0); return ms; }
+  };
+})();
+</script>
+<script id="glc-air-script">
+/* ==========================================================================
+   GLC 300 AMG Line · AIRMATIC 작동 원리 비교 시뮬레이션 (2027년형 적용 사양 · AVANTGARDE 미적용)
+   - 반차(half-car) 4자유도 모델: 차체 상하(heave)·피칭(pitch) + 앞·뒤 바퀴 상하
+   - 물리 계산은 열 때 한 번, 0.5ms 고정 간격으로 미리 계산 → 화면은 저장된 값을 보간해 그림 (계산과 렌더링 분리)
+   - 계수는 일반적인 가정값(실측 아님). 스프링은 모두 같고 감쇠 제어만 다름
+   - 이미지 주소: AIR_ASSETS 한 곳에서 관리 (GitHub images 저장소에 올린 뒤 raw 주소로 교체)
+   ========================================================================== */
+var AIR_ASSETS = {
+  body:  'images/tech/glc300-air-body-1400.webp',   /* 측면 차체 (투명, 전면 = 오른쪽, 바퀴 없음) */
+  wheel: 'images/tech/glc300-air-wheel-480.webp',   /* 회전 레이어: 타이어·휠·디스크 (캘리퍼 영역은 투명) */
+  road:  'images/tech/glc300-air-road-1600.webp'    /* 측면 도로 + 방지턱 (1600px 파일을 월드 3490px 폭으로 표시 · 팝업을 열 때 불러옴) */
+};
+/* 차량·장면 기하: 측면 차체 크롭(1641×546) 픽셀에서 측정 */
+var AIR_GEOM = {
+  axleR: 336, axleF: 1371, axleY: 481, tireR: 132, cgX: 869.3, cgY: 416,   /* 바퀴집 중심 = 바퀴 중심, 지면 = axleY + tireR */
+  pxm: 220, scale: 0.6138, groundY: 512, worldW: 3490, worldH: 740,                                   /* 월드: 1m = 220px, 차체 px → 월드 배율 */
+  bump: { x0: 1355, x1: 1700, h: 0.10, ramp: 0.30 },                       /* 사진 속 방지턱 위치(월드 x), 높이 0.10m 가정 */
+  speed: 2.78, xf0: 855, T: 3.6                                           /* 저속 일정 속도 가정, 시작 앞바퀴 위치, 재생 길이(s) */
+};
+/* 모델 파라미터 (가정값 · 실측 아님) */
+var AIR_VEHICLE = { M: 1650, I: 2600, a: 1.40, b: 1.488, mf: 90, mr: 90, kt: 520e3, kf: 64e3, kr: 68e3, stroke: 0.10, stopK: 4e5 };
+var AIR_MODES = {
+  passive: { label: '일반 서스펜션', type: 'passive', c: 4100,
+    text: '일반 서스펜션(기준) · 고정된 스프링과 댐퍼도 충격을 흡수하지만, 상황에 따라 감쇠 특성을 바꾸지는 못합니다.' },
+  comfort: { label: '컴포트', type: 'semi', cMin: 1200, cMax: 5000, cRel: 1200, cSky: 4500,
+    text: '컴포트 · 방지턱에 닿는 순간은 감쇠를 부드럽게 해 충격을 흡수하고, 통과한 뒤 남는 출렁임은 감쇠를 높여 빠르게 줄입니다.' },
+  sport:   { label: '스포츠', type: 'semi', cMin: 4400, cMax: 9500, cRel: 4400, cSky: 5000,
+    text: '스포츠 · 감쇠를 단단하게 해 차체의 상하·앞뒤 움직임을 더 억제합니다. 대신 방지턱 충격은 더 직접적으로 전달될 수 있습니다.' },
+  sportp:  { label: '스포츠+ (개념 시연)', type: 'semi', cMin: 6200, cMax: 12500, cRel: 6200, cSky: 5000,
+    text: '스포츠+ (개념 시연) · 스포츠보다 더 단단한 감쇠를 가정한 비교입니다. 국내 GLC 300 4MATIC AMG Line의 SPORT+ 지원은 공식 자료로 확인되지 않았습니다.' }
+};
+
+window.GLC_AIR = (function () {
+  'use strict';
+  var root = document.getElementById('gtAirDemo');
+  if (!root) return { open: function () {}, stop: function () {} };
+  var G = AIR_GEOM, V = AIR_VEHICLE, R2D = 180 / Math.PI, s = G.scale;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)'), mqSingle = matchMedia('(max-width: 767px)');
+  var WB = (V.a + V.b) * G.pxm, RW = G.tireR * s, VX = G.speed * G.pxm;     /* 월드 px: 휠베이스·바퀴 반지름·속도 */
+
+  /* ---------- 노면: 방지턱 단면 (월드 x → 높이 m) ---------- */
+  function road(x) {
+    var B = G.bump; if (x <= B.x0 || x >= B.x1) return 0;
+    var u = (x - B.x0) / (B.x1 - B.x0), r = B.ramp, q = u < r ? u / r : u > 1 - r ? (1 - u) / r : 1;
+    return B.h * q * q * (3 - 2 * q);
+  }
+  /* ---------- 반차 모델: 0.5ms 고정 간격 적분, 1/120s 마다 저장 ---------- */
+  function simulate(key) {
+    var P = AIR_MODES[key], dt = 0.0005, every = Math.round(1 / 120 / dt), out = [];
+    var z = 0, zd = 0, th = 0, thd = 0, zf = 0, zfd = 0, zr = 0, zrd = 0;
+    var damp = function (vrel, vbody) {
+      if (P.type === 'passive') return P.c * vrel;                      /* 고정 감쇠 */
+      if (Math.abs(vrel) < 1e-4) return P.cMin * vrel;
+      var c = (P.cRel * vrel - P.cSky * vbody) / vrel;                  /* 반능동(스카이훅 개념): 차체 속도에 따라 감쇠 조절 */
+      return Math.max(P.cMin, Math.min(P.cMax, c)) * vrel;              /* 댐퍼가 낼 수 있는 범위로 제한 */
+    };
+    var stop = function (d) { return d > V.stroke ? V.stopK * (d - V.stroke) : d < -V.stroke ? V.stopK * (d + V.stroke) : 0; };   /* 스트로크 한계(범프 스톱) */
+    for (var i = 0; ; i++) {
+      var t = i * dt; if (t > G.T + 1e-9) break;
+      var xf = G.xf0 + VX * t, xr = xf - WB, rf = road(xf), rr = road(xr);
+      var zbf = z + V.a * th, zbr = z - V.b * th, vbf = zd + V.a * thd, vbr = zd - V.b * thd;
+      var df = zf - zbf, dr = zr - zbr;                                 /* 서스펜션 압축(+) */
+      var Ff = V.kf * df + damp(zfd - vbf, vbf) + stop(df), Fr = V.kr * dr + damp(zrd - vbr, vbr) + stop(dr);
+      var Ftf = Math.max(-6000, V.kt * (rf - zf)), Ftr = Math.max(-6000, V.kt * (rr - zr));   /* 타이어(접지력 감소 한계 포함) */
+      if (i % every === 0) out.push([t, z, th, zf, zr, df / V.stroke, dr / V.stroke]);
+      zd += (Ff + Fr) / V.M * dt; thd += (V.a * Ff - V.b * Fr) / V.I * dt; zfd += (Ftf - Ff) / V.mf * dt; zrd += (Ftr - Fr) / V.mr * dt;
+      z += zd * dt; th += thd * dt; zf += zfd * dt; zr += zrd * dt;
+    }
+    return out;
+  }
+  var SIM = {};
+  function sim(k) { return SIM[k] || (SIM[k] = simulate(k)); }
+  function sampleAt(arr, t) {
+    var f = Math.max(0, Math.min(arr.length - 1.0001, t * 120)), i = Math.floor(f), u = f - i, A = arr[i], C = arr[i + 1] || A, o = [];
+    for (var k = 0; k < 7; k++) o[k] = A[k] + (C[k] - A[k]) * u;
+    return o;
+  }
+  /* 핵심 장면: 계산값으로 찾음 (앞 압축 최대 · 뒤 압축 최대 · 뒷바퀴가 방지턱을 지난 뒤 잔진동 구간) */
+  function keyTimes(k) {
+    var a = sim(k), tf = 0, mf = -1, tr = 0, mr = -1;
+    var tRearIn = (G.bump.x0 + WB - G.xf0) / VX, tRearOut = (G.bump.x1 + WB - G.xf0) / VX;
+    a.forEach(function (p) { if (p[0] < tRearIn && p[5] > mf) { mf = p[5]; tf = p[0]; } if (p[0] >= tRearIn && p[0] <= tRearOut + 0.3 && p[6] > mr) { mr = p[6]; tr = p[0]; } });
+    return { front: tf, rear: tr, settle: Math.min(G.T - 0.05, tRearOut + 0.45) };
+  }
+
+  /* ---------- DOM ---------- */
+  var DISC = '<svg viewBox="0 0 480 480" aria-hidden="true"><circle cx="240" cy="240" r="168" fill="#1C1D20"/><circle cx="240" cy="240" r="140" fill="#8A8E94"/><circle cx="240" cy="240" r="62" fill="#6C7076"/>' +
+    '<path d="M333 167.4 A118 118 0 0 1 333 312.6 L358.2 332.4 A150 150 0 0 0 358.2 147.6 Z" fill="#A7ACB3" stroke="#6F747B" stroke-width="3"/></svg>';   /* 고정: 디스크 바탕 + 캘리퍼 */
+  function buildStage(el, kind) {
+    var w = el.querySelector('.air-world');
+    var wheel = '<div class="air-wheel">' + DISC + '<img alt="" decoding="async" draggable="false"></div>';
+    w.innerHTML = '<img class="air-road" alt="" decoding="async" draggable="false"><i class="air-shadow"></i>' + wheel + wheel +
+      (kind === 'air' ? '<div class="air-body is-ghost"><img alt="" width="1641" height="546" decoding="async" draggable="false"></div>' : '') +   /* 같은 순간 일반 서스펜션 차체 윤곽 */
+      '<div class="air-body is-main"><img alt="" width="1641" height="546" decoding="async" draggable="false"></div>';
+    el.classList.toggle('is-air', kind === 'air');
+    var wh = w.querySelectorAll('.air-wheel');
+    return { el: el, kind: kind, world: w, road: w.querySelector('.air-road'), shadow: w.querySelector('.air-shadow'), body: w.querySelector('.air-body.is-main'), bodyImg: w.querySelector('.air-body.is-main img'), ghost: w.querySelector('.air-body.is-ghost'),
+      wheels: [wh[0], wh[1]], rot: [wh[0].querySelector('img'), wh[1].querySelector('img')], fail: el.querySelector('.ras-fail'),
+      w: 0, h: 0, k: 1, tf: {} };
+  }
+  var SP = buildStage(document.getElementById('airStageP'), 'passive'), SA = buildStage(document.getElementById('airStageA'), 'air');
+  var btn = document.getElementById('airPlay'), headEl = document.getElementById('airHead');
+  var rows = {}; root.querySelectorAll('.air-row').forEach(function (r) { rows[r.dataset.row] = { el: r, bars: r.querySelectorAll('.air-bar b'), tilt: r.querySelector('.air-tilt g'), last: [] }; });
+  var setTf = function (S, key, el, v) { if (S.tf[key] !== v) { S.tf[key] = v; el.style.transform = v; } };
+  var ICON = { play: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>', pause: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>', replay: '<svg class="gt-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>' };
+  var btnState = '';
+  function setBtn(st) { if (st === btnState) return; btnState = st; btn.innerHTML = ICON[st] + '<span>' + (st === 'pause' ? '일시정지' : st === 'replay' ? '다시 재생' : '재생') + '</span>'; }
+
+  /* ---------- 상태 ---------- */
+  var mode = 'comfort', view = 'both', show = 'air', t = 0, rate = 1, playing = false, ended = false, raf = 0, last = 0;
+  var isOpen = false, visible = true, single = mqSingle.matches, loaded = false;
+  function loadImages() {
+    if (loaded) return; loaded = true;
+    [SP, SA].forEach(function (S) {
+      S.road.onerror = function () { S.fail.hidden = false; }; S.road.src = AIR_ASSETS.road;
+      S.bodyImg.onerror = function () { S.fail.hidden = false; }; S.bodyImg.src = AIR_ASSETS.body;
+      if (S.ghost) S.ghost.querySelector('img').src = AIR_ASSETS.body;
+      S.rot.forEach(function (im) { im.onerror = function () { S.fail.hidden = false; }; im.src = AIR_ASSETS.wheel; });   /* 같은 파일 → 캐시 재사용 */
+    });
+  }
+  /* 화면 크기는 리사이즈 때만 측정: 차 전체(+여백)가 들어오도록 배율 결정 */
+  function measure(S, w, h) { S.w = w; S.h = h; S.k = Math.min(h / 500, w / (1641 * s + 240)); S.tf = {}; }
+  /* 한 차량 그리기: 같은 시간 t 의 계산값 p 사용 */
+  function bodyTf(xr, p) {
+    var X = xr + V.b * G.pxm, Y = G.groundY - (G.axleY + G.tireR - G.cgY) * s - p[1] * G.pxm;
+    return 'translate3d(' + X.toFixed(1) + 'px,' + Y.toFixed(1) + 'px,0) rotate(' + (-p[2] * R2D).toFixed(3) + 'deg) scale(' + s + ')';
+  }
+  function place(S, p, pg) {
+    var xf = G.xf0 + VX * t, xr = xf - WB, gy = G.groundY;
+    /* 카메라: 차량 중심을 따라 이동 (세로 고정), 도로 범위 안으로 제한 */
+    var k = S.k, vw = S.w / k, cx = Math.max(vw / 2, Math.min(G.worldW - vw / 2, xr + V.b * G.pxm)), cy = Math.max(S.h / k / 2, Math.min(G.worldH - S.h / k / 2, gy - 165));
+    setTf(S, 'w', S.world, 'translate3d(' + (S.w / 2 - cx * k).toFixed(1) + 'px,' + (S.h / 2 - cy * k).toFixed(1) + 'px,0) scale(' + k.toFixed(4) + ')');
+    /* 차체: 무게중심 기준 상하 이동 + 피칭 (앞이 들리면 반시계 회전) */
+    var X = xr + V.b * G.pxm;
+    setTf(S, 'b', S.body, bodyTf(xr, p));
+    if (S.ghost && pg) setTf(S, 'g', S.ghost, bodyTf(xr, pg));
+    var spin = ((xf - G.xf0) / RW * R2D) % 360;
+    [[xr, p[4]], [xf, p[3]]].forEach(function (w, i) {
+      var wy = gy - RW - w[1] * G.pxm;                                   /* 바퀴 중심: 노면 + 바퀴 상하 */
+      setTf(S, 'w' + i, S.wheels[i], 'translate3d(' + (w[0] - RW).toFixed(1) + 'px,' + (wy - RW).toFixed(1) + 'px,0)');
+      setTf(S, 'r' + i, S.rot[i], 'rotate(' + spin.toFixed(1) + 'deg)');  /* 회전: 이동 거리 ÷ 반지름 (캘리퍼·디스크 바탕은 고정) */
+    });
+    setTf(S, 'sh', S.shadow, 'translate3d(' + X.toFixed(1) + 'px,' + gy + 'px,0)');
+  }
+  function gauges(row, p) {
+    var R = rows[row], v = [p[5], p[6], p[1] / 0.08, null];
+    for (var i = 0; i < 3; i++) { var x = Math.max(-1, Math.min(1, v[i])); if (Math.abs((R.last[i] || 0) - x) > 0.004) { R.last[i] = x; R.bars[i].style.transform = 'scaleX(' + x.toFixed(3) + ')'; } }
+    var tilt = (-p[2] * R2D * 3).toFixed(2);                             /* 자세: 3배 확대 표시 */
+    if (R.last[3] !== tilt) { R.last[3] = tilt; R.tilt.setAttribute('transform', 'rotate(' + tilt + ' 32 12)'); }
+  }
+  var headLast = '';
+  function frame() {
+    var pp = sampleAt(sim('passive'), t), pa = sampleAt(sim(mode), t);
+    if (!SP.el.hidden && SP.w) place(SP, pp);
+    if (!SA.el.hidden && SA.w) place(SA, pa, pp);
+    gauges('passive', pp); gauges('air', pa);
+    var hx = 'translate(' + (t / G.T * 600).toFixed(1) + ' 0)'; if (hx !== headLast) { headLast = hx; headEl.setAttribute('transform', hx); }
+    if (t >= G.T) { ended = true; stopLoop(); setBtn('replay'); }
+  }
+  /* 그래프: 같은 시간축·같은 세로축 (모드를 바꿀 때만 다시 그림) */
+  function drawGraph() {
+    var path = function (k) { var a = sim(k), d = ''; a.forEach(function (p, i) { d += (i ? 'L' : 'M') + (p[0] / G.T * 600).toFixed(1) + ' ' + (60 - p[1] / 0.08 * 50).toFixed(1); }); return d; };
+    document.getElementById('airCurveP').setAttribute('d', path('passive'));
+    document.getElementById('airCurveA').setAttribute('d', path(mode));
+  }
+  /* ---------- 루프: 하나만 · 화면 밖/팝업 닫힘/탭 숨김이면 정지 ---------- */
+  function canRun() { return playing && isOpen && visible && !document.hidden; }
+  function setPlayingClass(on) { SP.el.classList.toggle('is-playing', on); SA.el.classList.toggle('is-playing', on); }
+  function loop(now) {
+    raf = 0;
+    if (!canRun()) { last = 0; setPlayingClass(false); return; }
+    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0; last = now;
+    t = Math.min(G.T, t + dt * rate); frame();
+    if (playing) raf = requestAnimationFrame(loop);
+  }
+  function kick() { if (!raf && canRun()) { last = 0; setPlayingClass(true); raf = requestAnimationFrame(loop); } }
+  function stopLoop() { playing = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } last = 0; setPlayingClass(false); }
+  function play() { if (ended || t >= G.T) { t = 0; ended = false; } playing = true; setBtn('pause'); kick(); }
+  function pause() { stopLoop(); setBtn(ended ? 'replay' : 'play'); }
+  function seek(sec) { stopLoop(); ended = false; t = Math.max(0, Math.min(G.T, sec)); frame(); if (!ended) setBtn('play'); }
+  function press(sel, attr, val) { root.querySelectorAll(sel).forEach(function (b) { var on = b.getAttribute(attr) === String(val); b.setAttribute('aria-pressed', String(on)); b.classList.toggle('is-active', on); }); }
+  function setMode(m) {
+    mode = m; press('[data-air-mode]', 'data-air-mode', m);
+    document.getElementById('airSceneA').textContent = 'AIRMATIC · ' + AIR_MODES[m].label;
+    document.getElementById('airRowMode').textContent = AIR_MODES[m].label;
+    document.getElementById('airModeT').textContent = AIR_MODES[m].text;
+    drawGraph(); frame();                                                /* 같은 시간 t 유지 → 즉시 비교 */
+  }
+  function layout() {
+    single = mqSingle.matches;
+    var both = !single && view === 'both';
+    SP.el.hidden = single ? show !== 'passive' : !both;
+    SA.el.hidden = single ? show !== 'air' : false;
+    root.classList.toggle('is-solo', !single && view === 'solo');
+    document.getElementById('airToggleM').hidden = !single;
+    press('[data-air-view]', 'data-air-view', view); press('[data-air-show]', 'data-air-show', show);
+    requestAnimationFrame(function () { [SP, SA].forEach(function (S) { if (!S.el.hidden) { var r = S.el.getBoundingClientRect(); measure(S, r.width, r.height); } }); frame(); });
+  }
+
+  /* ---------- 이벤트 ---------- */
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.airMode) setMode(b.dataset.airMode);
+    else if (b.dataset.airView) { view = b.dataset.airView; layout(); }
+    else if (b.dataset.airShow) { show = b.dataset.airShow; layout(); }
+    else if (b.dataset.airRate) { rate = +b.dataset.airRate; press('[data-air-rate]', 'data-air-rate', rate); }
+    else if (b.dataset.airKey) seek(keyTimes(mode)[b.dataset.airKey]);
+    else if (b === btn) { if (playing) pause(); else play(); }
+  });
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function (en) { en.forEach(function (e) { var S = e.target === SP.el ? SP : SA; measure(S, e.contentRect.width, e.contentRect.height); }); if (!playing) frame(); });
+    ro.observe(SP.el); ro.observe(SA.el);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en.some(function (x) { return x.isIntersecting; }); if (visible) kick(); }, { threshold: 0.01 }).observe(document.getElementById('airStages'));
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
+  if (mqSingle.addEventListener) mqSingle.addEventListener('change', function () { if (isOpen) layout(); });
+  setBtn('play'); press('[data-air-rate]', 'data-air-rate', 1);
+
+  return {
+    open: function () {
+      isOpen = true; loadImages(); layout(); setMode(mode);
+      ended = false; t = 0;
+      if (reduce.matches) seek(keyTimes(mode).front);                    /* 동작 줄이기: 자동 재생 없이 앞바퀴 충격 장면 */
+      else { frame(); play(); }
+    },
+    stop: function () { isOpen = false; stopLoop(); if (!ended) setBtn('play'); },
+    /* 점검용 */
+    debug: function () { return { mode: mode, view: view, show: show, t: t, rate: rate, playing: playing, ended: ended, raf: raf, keys: keyTimes(mode), sim: sim, sampleAt: sampleAt }; },
+    seek: seek,
+    bench: function (n) { var keep = t, t0 = performance.now(); for (var i = 0; i < n; i++) { t = (i % 432) / 120; frame(); } var ms = (performance.now() - t0) / n; t = keep; ended = false; frame(); return ms; }
+  };
+})();
+</script>
+
 </body>
 </html>
